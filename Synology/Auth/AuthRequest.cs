@@ -5,7 +5,7 @@ namespace Synology.Auth
 {
 	public class AuthRequest : SynologyRequest
 	{
-		string _sessionNumber;
+		readonly string _sessionNumber;
 
 		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth", 4)
 		{
