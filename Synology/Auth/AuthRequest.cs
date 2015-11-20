@@ -13,13 +13,13 @@ namespace Synology.Auth
 			_sessionNumber = string.Format("session{0}", rand.Next());
 		}
 
-		public ResultData<AuthResult> Login(string username, string password, string otpCode = null)
+		public ResultData<LoginResult> Login(string username, string password, string otpCode = null)
 		{
 			var extraLoginParams = !string.IsNullOrWhiteSpace(otpCode) ? string.Format("&otp_code={0}", otpCode) : string.Empty;
 			var additionalParams = string.Format("account={0}&passwd={1}&session={2}&format=sid{3}", username, password, _sessionNumber, extraLoginParams);
 			var url = GetApiUrl("login", additionalParams);
 
-			return Connection.GetDataFromUrl<AuthResult>(url);
+			return Connection.GetDataFromUrl<LoginResult>(url);
 		}
 
 		public ResultData<object> Logout()
