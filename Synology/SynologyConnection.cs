@@ -25,16 +25,24 @@ namespace Synology
 			_ssl = ssl;
 			_port = port;
 			_sslPort = sslPort;
+			_client.BaseAddress = string.Format("http{0}://{1}:{2}/webapi/", _ssl ? "s" : string.Empty, _url, _ssl ? _sslPort : _port);
 		}
 
 		internal string GetApiUrl(string cgi, string api, int version, string method, string additionalParams = null)
 		{
-			return string.Format("http{0}://{1}:{2}/webapi/{3}?api={4}&version={5}&method={6}{7}", _ssl ? "s" : string.Empty, _url, _ssl ? _sslPort : _port, cgi, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
+			return string.Format("{0}?api={1}&version={2}&method={3}{4}", cgi, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
 		}
 
 		internal ResultData<T> GetDataFromUrl<T>(string url)
 		{
-			return JsonConvert.DeserializeObject<ResultData<T>>(_client.DownloadString(url));
+			var json = _client.DownloadString(url);
+			return JsonConvert.DeserializeObject<ResultData<T>>(json);
+		}
+
+		internal async Task<ResultData<T>> GetDataFromUrlAsync<T>(string url)
+		{
+			var json = await _client.DownloadStringTaskAsync(url);
+			return JsonConvert.DeserializeObject<ResultData<T>>(json);
 		}
 
 		public void Dispose()
