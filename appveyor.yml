@@ -1,4 +1,6 @@
 version: 0.1.{build}
+pull_requests:
+  do_not_increment_build_number: true
 branches:
   except:
   - gh-pages
@@ -17,14 +19,12 @@ build:
   publish_nuget: true
   verbosity: minimal
 deploy:
-- provider: GitHub
-  auth_token:
-    secure: QUNpmgp2dvA0M/Veuo7NJkjNXBJOxFsDAartHAjZfKhaLzFKdITHHhmST6ZUTdxu
-  on:
-    branch: master
 - provider: NuGet
   api_key:
     secure: Dg2RuAuaLz+RP1kNxH6LqoEbVhsRIYI15lObO46PoTFYFwP87lXojzI91vdk+Km5
-  skip_symbols: true
+  skip_symbols: false
   on:
     branch: master
+- provider: GitHub
+  auth_token:
+    secure: QUNpmgp2dvA0M/Veuo7NJkjNXBJOxFsDAartHAjZfKhaLzFKdITHHhmST6ZUTdxu
