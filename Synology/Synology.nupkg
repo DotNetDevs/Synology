@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>$id$</id>
-        <version>$version$</version>
+        <version>$version$-alpha</version>
         <title>Synology</title>
         <authors>$author$</authors>
         <owners>Matteo Bruni</owners>
