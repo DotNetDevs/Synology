@@ -48,7 +48,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Synology.nupkg" />
+    <None Include="Synology.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Auth\" />
