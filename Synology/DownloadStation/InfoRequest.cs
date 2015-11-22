@@ -8,23 +8,23 @@ namespace Synology.DownloadStation
 {
 	public class InfoRequest : SynologyRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "DownloadStation/info.cgi", "SYNO.DownloadStation.Info", 1)
+		public InfoRequest(SynologyConnection connection) : base(connection, "DownloadStation/info.cgi", "SYNO.DownloadStation.Info")
 		{
 		}
 
-		public ResultData<object> Info()
+		public ResultData<InfoResult> Info()
 		{
 			var url = GetApiUrl("getinfo");
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<InfoResult>(url);
 		}
 
-		public ResultData<object> Config()
+		public ResultData<ConfigResult> Config()
 		{
-			var url = GetApiUrl("getconfig");
-			return Connection.GetDataFromUrl<object>(url);
+			var url = GetApiUrl("getconfig", 2);
+			return Connection.GetDataFromUrl<ConfigResult>(url);
 		}
 
-		public ResultData<object> SetConfig(int? kbpsTorrentMaxDownload, int? kbpsTorrentMaxUpload, int? kbpsEmuleMaxDownload, int? kbpsEmuleMaxUpload, int? kbpsNzbMaxDownload, int? kbpsHttpMaxDownload, int? kbpsFtpMaxDownload, bool? emuleEnabled, bool? unzipEnabled, string defaultDestination, string emuleDefaultDestination)
+		public ResultData SetConfig(int? kbpsTorrentMaxDownload, int? kbpsTorrentMaxUpload, int? kbpsEmuleMaxDownload, int? kbpsEmuleMaxUpload, int? kbpsNzbMaxDownload, int? kbpsHttpMaxDownload, int? kbpsFtpMaxDownload, bool? emuleEnabled, bool? unzipEnabled, string defaultDestination, string emuleDefaultDestination)
 		{
 			var additionalParams = new List<string>();
 
@@ -83,7 +83,7 @@ namespace Synology.DownloadStation
 				additionalParams.Add(string.Format("emule_default_destination={0}", emuleDefaultDestination));
 			}
 
-			var url = GetApiUrl("setserverconfig", string.Join("&", additionalParams));
+			var url = GetApiUrl("setserverconfig", 2, string.Join("&", additionalParams));
 			return Connection.GetDataFromUrl<object>(url);
 		}
 	}

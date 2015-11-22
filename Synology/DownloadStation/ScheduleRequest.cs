@@ -6,17 +6,17 @@ namespace Synology.DownloadStation
 {
 	public class ScheduleRequest : SynologyRequest
 	{
-		public ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule", 1)
+		public ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule")
 		{
 		}
 
-		public ResultData<object> Config()
+		public ResultData<ScheduleResult> Config()
 		{
-			var url = GetApiUrl("getconfig");
-			return Connection.GetDataFromUrl<object>(url);
+			var url = GetApiUrl("getconfig", 1);
+			return Connection.GetDataFromUrl<ScheduleResult>(url);
 		}
 
-		public ResultData<object> SetConfig(bool? enabled, bool? emuleEnabled)
+		public ResultData SetConfig(bool? enabled, bool? emuleEnabled)
 		{
 			var additionalParams = new List<string>();
 
@@ -30,7 +30,7 @@ namespace Synology.DownloadStation
 				additionalParams.Add(string.Format("emule_enabled={0}", emuleEnabled));
 			}
 
-			var url = GetApiUrl("setserverconfig", string.Join("&", additionalParams));
+			var url = GetApiUrl("setserverconfig", 1, string.Join("&", additionalParams));
 			return Connection.GetDataFromUrl<object>(url);
 		}
 	}
