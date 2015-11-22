@@ -32,7 +32,7 @@ namespace Synology
 
 		internal string GetApiUrl(string cgi, string api, int version, string method, string additionalParams = null)
 		{
-			return string.Format("{0}?{1}api={2}&version={3}&method={4}{5}", cgi, !string.IsNullOrWhiteSpace(Sid) ? "sid=" + Sid + "&" : string.Empty, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
+			return string.Format("{0}?{1}api={2}&version={3}&method={4}{5}", cgi, !string.IsNullOrWhiteSpace(Sid) ? "_sid=" + Sid + "&" : string.Empty, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
 		}
 
 		internal ResultData<T> GetDataFromUrl<T>(string url)

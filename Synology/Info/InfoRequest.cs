@@ -5,7 +5,7 @@ namespace Synology.Info
 {
 	public class InfoRequest : SynologyRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "SYNO.API.Info", 1)
+		public InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "SYNO.API.Info")
 		{
 		}
 
@@ -2484,7 +2484,7 @@ namespace Synology.Info
   "success" : true
 }*/
 			const string additionalParams = "query=all";
-			var url = GetApiUrl("query", additionalParams);
+			var url = GetApiUrl("query", 1, additionalParams);
 			return Connection.GetDataFromUrl<object>(url);
 		}
 	}

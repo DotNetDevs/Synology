@@ -7,7 +7,7 @@ namespace Synology.Auth
 	{
 		readonly string _sessionNumber;
 
-		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth", 4)
+		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
 		{
 			var rand = new Random((int)DateTime.Now.Ticks);
 			_sessionNumber = string.Format("session{0}", rand.Next());
@@ -16,8 +16,8 @@ namespace Synology.Auth
 		public ResultData<LoginResult> Login(string username, string password, string otpCode = null)
 		{
 			var extraLoginParams = !string.IsNullOrWhiteSpace(otpCode) ? string.Format("&otp_code={0}", otpCode) : string.Empty;
-			var additionalParams = string.Format("account={0}&passwd={1}&session={2}&format=sid{3}", username, password, _sessionNumber, extraLoginParams);
-			var url = GetApiUrl("login", additionalParams);
+			var additionalParams = string.Format("account={0}&passwd={1}&session={2}&format=cookie{3}", username, password, _sessionNumber, extraLoginParams);
+			var url = GetApiUrl("login", 4, additionalParams);
 			var result = Connection.GetDataFromUrl<LoginResult>(url);
 
 			if (result.Success && result.Data != null && !string.IsNullOrWhiteSpace(result.Data.Sid))
@@ -28,10 +28,10 @@ namespace Synology.Auth
 			return result;
 		}
 
-		public ResultData<object> Logout()
+		public ResultData Logout()
 		{
 			var additionalParams = string.Format("session={0}", _sessionNumber);
-			var url = GetApiUrl("logout", additionalParams);
+			var url = GetApiUrl("logout", 1, additionalParams);
 			var result = Connection.GetDataFromUrl<object>(url);
 
 			if (result.Success)
