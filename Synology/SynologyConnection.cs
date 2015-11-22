@@ -18,6 +18,8 @@ namespace Synology
 
 		int _sslPort { get; set; }
 
+		internal string Sid { get; set; }
+
 		public SynologyConnection(string baseHost, bool ssl = false, int port = 5000, int sslPort = 5001)
 		{
 			_client = new WebClient();
@@ -30,7 +32,7 @@ namespace Synology
 
 		internal string GetApiUrl(string cgi, string api, int version, string method, string additionalParams = null)
 		{
-			return string.Format("{0}?api={1}&version={2}&method={3}{4}", cgi, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
+			return string.Format("{0}?{1}api={2}&version={3}&method={4}{5}", cgi, !string.IsNullOrWhiteSpace(Sid) ? "sid=" + Sid + "&" : string.Empty, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
 		}
 
 		internal ResultData<T> GetDataFromUrl<T>(string url)
