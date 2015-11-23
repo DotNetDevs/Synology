@@ -35,6 +35,12 @@ namespace Synology
 			return string.Format("{0}?{1}api={2}&version={3}&method={4}{5}", cgi, !string.IsNullOrWhiteSpace(Sid) ? "_sid=" + Sid + "&" : string.Empty, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
 		}
 
+		internal ResultData GetDataFromUrl(string url)
+		{
+			var json = _client.DownloadString(url);
+			return JsonConvert.DeserializeObject<ResultData>(json);
+		}
+
 		internal ResultData<T> GetDataFromUrl<T>(string url)
 		{
 			var json = _client.DownloadString(url);

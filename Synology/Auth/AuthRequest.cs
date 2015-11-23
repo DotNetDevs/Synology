@@ -32,7 +32,7 @@ namespace Synology.Auth
 		{
 			var additionalParams = string.Format("session={0}", _sessionNumber);
 			var url = GetApiUrl("logout", 1, additionalParams);
-			var result = Connection.GetDataFromUrl<object>(url);
+			var result = Connection.GetDataFromUrl(url);
 
 			if (result.Success)
 			{

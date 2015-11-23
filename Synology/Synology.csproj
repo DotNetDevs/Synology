@@ -47,6 +47,7 @@
     <Compile Include="DownloadStation\InfoResult.cs" />
     <Compile Include="DownloadStation\ConfigResult.cs" />
     <Compile Include="DownloadStation\ScheduleResult.cs" />
+    <Compile Include="DownloadStation\TaskRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
