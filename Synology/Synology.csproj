@@ -59,6 +59,7 @@
     <Compile Include="DownloadStation\TaskRequest.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
+    <Compile Include="DownloadStation\TaskMinimalResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
