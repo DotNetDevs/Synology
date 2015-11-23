@@ -1,5 +1,7 @@
 ﻿using Synology.Classes;
 using Synology.Utilities;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Synology.DownloadStation
 {
@@ -21,7 +23,7 @@ namespace Synology.DownloadStation
 			return Connection.GetDataFromUrl<TaskListResult>(url);
 		}
 
-		public ResultData<object> Info(string[] ids, string additional = null)
+		public ResultData<IEnumerable<TaskResult>> Info(string[] ids, string additional = null)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
@@ -29,7 +31,7 @@ namespace Synology.DownloadStation
 			};
 			var url = GetApiUrl("getinfo", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<IEnumerable<TaskResult>>(url);
 		}
 
 		public ResultData Create(string uri, string file, string username, string password, string unzipPassword, string destination)
@@ -47,7 +49,7 @@ namespace Synology.DownloadStation
 			return Connection.GetDataFromUrl(url);
 		}
 
-		public ResultData<object> Delete(string[] ids, bool forceComplete)
+		public ResultData<IEnumerable<TaskMinimalResult>> Delete(string[] ids, bool forceComplete)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
@@ -55,30 +57,30 @@ namespace Synology.DownloadStation
 			};
 			var url = GetApiUrl("delete", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
 		}
 
-		public ResultData<object> Pause(string[] ids)
+		public ResultData<IEnumerable<TaskMinimalResult>> Pause(string[] ids)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids)
 			};
 			var url = GetApiUrl("pause", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
 		}
 
-		public ResultData<object> Resume(string[] ids)
+		public ResultData<IEnumerable<TaskMinimalResult>> Resume(string[] ids)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
 			};
 			var url = GetApiUrl("resume", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
 		}
 
-		public ResultData<object> Edit(string[] ids, string destination = null)
+		public ResultData<IEnumerable<TaskMinimalResult>> Edit(string[] ids, string destination = null)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
@@ -87,7 +89,7 @@ namespace Synology.DownloadStation
 
 			var url = GetApiUrl("edit", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
 		}
 	}
 }
