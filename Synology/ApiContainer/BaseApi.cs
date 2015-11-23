@@ -1,4 +1,4 @@
-namespace Synology.Apis
+namespace Synology.ApiContainer
 {
 	public abstract class BaseApi
 	{

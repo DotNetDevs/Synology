@@ -34,10 +34,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apis\Api.cs" />
-    <Compile Include="Apis\BaseApi.cs" />
-    <Compile Include="Apis\DownloadStationApi.cs" />
-    <Compile Include="Apis\FileStationApi.cs" />
+    <Compile Include="ApiContainer\Api.cs" />
+    <Compile Include="ApiContainer\BaseApi.cs" />
+    <Compile Include="ApiContainer\DownloadStationApi.cs" />
+    <Compile Include="ApiContainer\FileStationApi.cs" />
     <Compile Include="DownloadStation\TaskAdditionalResult.cs" />
     <Compile Include="DownloadStation\TaskDetailResult.cs" />
     <Compile Include="DownloadStation\TaskFileResult.cs" />

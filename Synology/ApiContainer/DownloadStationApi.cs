@@ -1,6 +1,6 @@
 ﻿using Synology.DownloadStation;
 
-namespace Synology.Apis
+namespace Synology.ApiContainer
 {
 	public class DownloadStationApi : BaseApi
 	{

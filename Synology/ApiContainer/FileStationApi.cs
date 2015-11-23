@@ -1,6 +1,6 @@
 using Synology.FileStation;
 
-namespace Synology.Apis
+namespace Synology.ApiContainer
 {
 	public class FileStationApi : BaseApi
 	{

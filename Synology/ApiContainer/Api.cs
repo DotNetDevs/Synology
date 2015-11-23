@@ -1,7 +1,7 @@
 using Synology.Auth;
 using Synology.Info;
 
-namespace Synology.Apis
+namespace Synology.ApiContainer
 {
 	public class Api : BaseApi
 	{
