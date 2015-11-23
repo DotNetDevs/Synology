@@ -7,8 +7,11 @@ namespace Synology.ApiContainer
 		internal FileStationApi(SynologyConnection connection) : base(connection)
 		{
 			Info = new InfoRequest(connection);
+			FileShare = new FileShareRequest(connection);
 		}
 
-		public InfoRequest Info { get; internal set; }
+		public InfoRequest Info { get; private set; }
+
+		public FileShareRequest FileShare { get; private set; }
 	}
 }
