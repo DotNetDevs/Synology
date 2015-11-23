@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -48,16 +48,13 @@
     <Compile Include="DownloadStation\ConfigResult.cs" />
     <Compile Include="DownloadStation\ScheduleResult.cs" />
     <Compile Include="DownloadStation\TaskRequest.cs" />
+    <Compile Include="Utilities\QueryStringManager.cs" />
+    <Compile Include="Utilities\QueryStringParameter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Synology.nuspec" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Auth\" />
-    <Folder Include="Info\" />
-    <Folder Include="Classes\" />
-    <Folder Include="DownloadStation\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using Synology.Utilities;
 
 namespace Synology.Classes
 {
 	public abstract class SynologyRequest
 	{
 		protected readonly SynologyConnection Connection;
-		readonly string _cgiPath;
-		readonly string _api;
+		private readonly string _cgiPath;
+		private readonly string _api;
 
 		protected SynologyRequest(SynologyConnection connection, string cgiPath, string api)
 		{
@@ -15,7 +16,7 @@ namespace Synology.Classes
 			_api = api;
 		}
 
-		protected internal string GetApiUrl(string method, int version = 1, string additionalParams = null)
+		protected internal string GetApiUrl(string method, int version = 1, params QueryStringParameter[] additionalParams)
 		{
 			return Connection.GetApiUrl(_cgiPath, _api, version, method, additionalParams);
 		}

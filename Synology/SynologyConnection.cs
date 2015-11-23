@@ -1,38 +1,50 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using Newtonsoft.Json;
 using Synology.Classes;
 using System.Threading.Tasks;
+using Synology.Auth;
+using Synology.DownloadStation;
+using Synology.Utilities;
+using InfoRequest = Synology.Info.InfoRequest;
 
 namespace Synology
 {
 	public class SynologyConnection : IDisposable
 	{
-		readonly WebClient _client;
+		private readonly WebClient _client;
 
-		string _url { get; set; }
-
-		bool _ssl { get; set; }
-
-		int _port { get; set; }
-
-		int _sslPort { get; set; }
-
-		internal string Sid { get; set; }
+		internal string Sid;
 
 		public SynologyConnection(string baseHost, bool ssl = false, int port = 5000, int sslPort = 5001)
 		{
-			_client = new WebClient();
-			_url = baseHost;
-			_ssl = ssl;
-			_port = port;
-			_sslPort = sslPort;
-			_client.BaseAddress = string.Format("http{0}://{1}:{2}/webapi/", _ssl ? "s" : string.Empty, _url, _ssl ? _sslPort : _port);
+			_client = new WebClient
+			{
+				BaseAddress = $"http{(ssl ? "s" : string.Empty)}://{baseHost}:{(ssl ? sslPort : port)}/webapi/"
+			};
+
+			Auth = new AuthRequest(this);
+			Info = new InfoRequest(this);
+			DownloadStation = new DownloadStationApi
+			{
+				Info = new DownloadStation.InfoRequest(this),
+				Schedule = new ScheduleRequest(this),
+				Task = new TaskRequest(this)
+			};
 		}
 
-		internal string GetApiUrl(string cgi, string api, int version, string method, string additionalParams = null)
+		internal string GetApiUrl(string cgi, string api, int version, string method, IEnumerable<QueryStringParameter> additionalParams = null)
 		{
-			return string.Format("{0}?{1}api={2}&version={3}&method={4}{5}", cgi, !string.IsNullOrWhiteSpace(Sid) ? "_sid=" + Sid + "&" : string.Empty, api, version, method, !string.IsNullOrWhiteSpace(additionalParams) ? "&" + additionalParams : string.Empty);
+			var url = new QueryStringManager(cgi);
+
+			url.AddParameter(new QueryStringParameter("_sid", Sid));
+			url.AddParameter(new QueryStringParameter("api", api));
+			url.AddParameter(new QueryStringParameter("version", version));
+			url.AddParameter(new QueryStringParameter("method", method));
+			url.AddParameters(additionalParams);
+
+			return url.ToString();
 		}
 
 		internal ResultData GetDataFromUrl(string url)
@@ -52,6 +64,25 @@ namespace Synology
 			var json = await _client.DownloadStringTaskAsync(url);
 			return JsonConvert.DeserializeObject<ResultData<T>>(json);
 		}
+
+		#region Requests
+		public AuthRequest Auth { get; private set; }
+
+		public InfoRequest Info { get; private set; }
+
+		public class DownloadStationApi
+		{
+			internal DownloadStationApi()
+			{
+			}
+
+			public DownloadStation.InfoRequest Info { get; internal set; }
+			public ScheduleRequest Schedule { get; internal set; }
+			public TaskRequest Task { get; internal set; }
+		}
+
+		public DownloadStationApi DownloadStation { get; private set; }
+		#endregion
 
 		public void Dispose()
 		{
