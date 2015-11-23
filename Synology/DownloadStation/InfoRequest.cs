@@ -84,7 +84,7 @@ namespace Synology.DownloadStation
 			}
 
 			var url = GetApiUrl("setserverconfig", 2, string.Join("&", additionalParams));
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl(url);
 		}
 	}
 }
