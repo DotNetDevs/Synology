@@ -5,9 +5,9 @@ namespace Synology.FileStation
 {
 	public class ShareVolumeStatusResult
 	{
-		public int FreeSpace { get; set; }
+		public long FreeSpace { get; set; }
 
-		public int TotalSpace { get; set; }
+		public long TotalSpace { get; set; }
 
 		public bool Readonly { get; set; }
 	}
