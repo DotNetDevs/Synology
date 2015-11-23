@@ -16,7 +16,7 @@ namespace Synology.Auth
 		public ResultData<LoginResult> Login(string username, string password, string otpCode = null)
 		{
 			var extraLoginParams = !string.IsNullOrWhiteSpace(otpCode) ? string.Format("&otp_code={0}", otpCode) : string.Empty;
-			var additionalParams = string.Format("account={0}&passwd={1}&session={2}&format=cookie{3}", username, password, _sessionNumber, extraLoginParams);
+			var additionalParams = string.Format("account={0}&passwd={1}&session={2}&format=sid{3}", username, password, _sessionNumber, extraLoginParams);
 			var url = GetApiUrl("login", 4, additionalParams);
 			var result = Connection.GetDataFromUrl<LoginResult>(url);
 
