@@ -34,6 +34,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiContainer\Api.cs" />
+    <Compile Include="ApiContainer\BaseApi.cs" />
+    <Compile Include="ApiContainer\DownloadStationApi.cs" />
+    <Compile Include="ApiContainer\FileStationApi.cs" />
     <Compile Include="DownloadStation\TaskAdditionalResult.cs" />
     <Compile Include="DownloadStation\TaskDetailResult.cs" />
     <Compile Include="DownloadStation\TaskFileResult.cs" />
@@ -43,6 +47,8 @@
     <Compile Include="DownloadStation\TaskStatusExtraResult.cs" />
     <Compile Include="DownloadStation\TaskTrackerResult.cs" />
     <Compile Include="DownloadStation\TaskTransferResult.cs" />
+    <Compile Include="FileStation\InfoRequest.cs" />
+    <Compile Include="FileStation\InfoResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynologyConnection.cs" />
     <Compile Include="Auth\AuthRequest.cs" />
