@@ -11,8 +11,10 @@ namespace Synology.ApiContainer
 			Task = new TaskRequest(connection);
 		}
 
-		public InfoRequest Info { get; internal set; }
-		public ScheduleRequest Schedule { get; internal set; }
-		public TaskRequest Task { get; internal set; }
+		public InfoRequest Info { get; private set; }
+
+		public ScheduleRequest Schedule { get; private set; }
+
+		public TaskRequest Task { get; private set; }
 	}
 }

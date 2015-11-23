@@ -66,6 +66,16 @@
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
     <Compile Include="DownloadStation\TaskMinimalResult.cs" />
+    <Compile Include="FileStation\FileShareRequest.cs" />
+    <Compile Include="FileStation\ShareListResult.cs" />
+    <Compile Include="FileStation\ShareResult.cs" />
+    <Compile Include="FileStation\ShareAdditionalResult.cs" />
+    <Compile Include="FileStation\ShareOwnerResult.cs" />
+    <Compile Include="FileStation\SharePermAclResult.cs" />
+    <Compile Include="FileStation\SharePermAdvRightResult.cs" />
+    <Compile Include="FileStation\SharePermResult.cs" />
+    <Compile Include="FileStation\ShareTimeResult.cs" />
+    <Compile Include="FileStation\ShareVolumeStatusResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

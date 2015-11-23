@@ -11,7 +11,7 @@ namespace Synology.DownloadStation
 		{
 		}
 
-		public ResultData<TaskListResult> List(int offset = 0, int limit = -1, string additional = null)
+		public ResultData<TaskListResult> List(string additional = null, int offset = 0, int limit = -1)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("offset", offset),
@@ -42,6 +42,7 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("username", username),
 				new QueryStringParameter("password", password),
 				new QueryStringParameter("unzip_password", unzipPassword),
+				new QueryStringParameter("destination", destination),
 			};
 
 			var url = GetApiUrl("create", 3, additionalParams);
