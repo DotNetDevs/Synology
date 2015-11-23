@@ -6,7 +6,7 @@ namespace Synology.Info
 {
 	public class InfoRequest : SynologyRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "SYNO.API.Info")
+		internal InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "SYNO.API.Info")
 		{
 		}
 
