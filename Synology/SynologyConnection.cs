@@ -4,10 +4,8 @@ using System.Net;
 using Newtonsoft.Json;
 using Synology.Classes;
 using System.Threading.Tasks;
-using Synology.Auth;
-using Synology.DownloadStation;
+using Synology.Apis;
 using Synology.Utilities;
-using InfoRequest = Synology.Info.InfoRequest;
 
 namespace Synology
 {
@@ -24,14 +22,9 @@ namespace Synology
 				BaseAddress = $"http{(ssl ? "s" : string.Empty)}://{baseHost}:{(ssl ? sslPort : port)}/webapi/"
 			};
 
-			Auth = new AuthRequest(this);
-			Info = new InfoRequest(this);
-			DownloadStation = new DownloadStationApi
-			{
-				Info = new DownloadStation.InfoRequest(this),
-				Schedule = new ScheduleRequest(this),
-				Task = new TaskRequest(this)
-			};
+			Api = new Api(this);
+			DownloadStation = new DownloadStationApi(this);
+			FileStation = new FileStationApi(this);
 		}
 
 		internal string GetApiUrl(string cgi, string api, int version, string method, IEnumerable<QueryStringParameter> additionalParams = null)
@@ -65,24 +58,10 @@ namespace Synology
 			return JsonConvert.DeserializeObject<ResultData<T>>(json);
 		}
 
-		#region Requests
-		public AuthRequest Auth { get; private set; }
-
-		public InfoRequest Info { get; private set; }
-
-		public class DownloadStationApi
-		{
-			internal DownloadStationApi()
-			{
-			}
-
-			public DownloadStation.InfoRequest Info { get; internal set; }
-			public ScheduleRequest Schedule { get; internal set; }
-			public TaskRequest Task { get; internal set; }
-		}
+		public Api Api { get; set; }
 
 		public DownloadStationApi DownloadStation { get; private set; }
-		#endregion
+		public FileStationApi FileStation { get; private set; }
 
 		public void Dispose()
 		{
