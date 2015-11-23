@@ -6,7 +6,7 @@ namespace Synology.DownloadStation
 {
 	public class InfoRequest : SynologyRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "DownloadStation/info.cgi", "SYNO.DownloadStation.Info")
+		internal InfoRequest(SynologyConnection connection) : base(connection, "DownloadStation/info.cgi", "SYNO.DownloadStation.Info")
 		{
 		}
 

@@ -5,7 +5,7 @@ namespace Synology.DownloadStation
 {
 	public class TaskRequest : SynologyRequest
 	{
-		public TaskRequest(SynologyConnection connection) : base(connection, "task.cgi", "SYNO.DownloadStation.Task")
+		internal TaskRequest(SynologyConnection connection) : base(connection, "task.cgi", "SYNO.DownloadStation.Task")
 		{
 		}
 

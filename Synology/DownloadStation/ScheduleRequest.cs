@@ -7,7 +7,7 @@ namespace Synology.DownloadStation
 {
 	public class ScheduleRequest : SynologyRequest
 	{
-		public ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule")
+		internal ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule")
 		{
 		}
 
