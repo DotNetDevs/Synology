@@ -1,6 +1,7 @@
 ﻿using System;
 using Synology.Classes;
 using Synology.Utilities;
+using System.Collections.Generic;
 
 namespace Synology.FileStation
 {
@@ -25,7 +26,7 @@ namespace Synology.FileStation
 			return Connection.GetDataFromUrl<ShareListResult>(url);
 		}
 
-		public ResultData<object> List(string folderPath, string pattern = null, string fileType = "all", string gotoPath = null, string additional = null, int offset = 0, int limit = 0, string sortBy = "name", string sortDirection = "asc")
+		public ResultData<FileListResult> List(string folderPath, string pattern = null, string fileType = "all", string gotoPath = null, string additional = null, int offset = 0, int limit = 0, string sortBy = "name", string sortDirection = "asc")
 		{
 			var additionalParams = new [] {
 				new QueryStringParameter("additional", additional),
@@ -40,7 +41,18 @@ namespace Synology.FileStation
 			};
 
 			var url = GetApiUrl("list", 1, additionalParams);
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<FileListResult>(url);
+		}
+
+		public ResultData<FileListResult> Info(string path, string additional = null)
+		{
+			var additionalParams = new [] {
+				new QueryStringParameter("path", path),
+				new QueryStringParameter("additional", additional)
+			};
+
+			var url = GetApiUrl("getinfo", 1, additionalParams);
+			return Connection.GetDataFromUrl<FileListResult>(url);
 		}
 	}
 }

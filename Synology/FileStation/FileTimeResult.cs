@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Synology.FileStation
 {
-	public class ShareTimeResult
+	public class FileTimeResult
 	{
 		public int Atime { get; set; }
 

@@ -76,6 +76,13 @@
     <Compile Include="FileStation\SharePermResult.cs" />
     <Compile Include="FileStation\ShareTimeResult.cs" />
     <Compile Include="FileStation\ShareVolumeStatusResult.cs" />
+    <Compile Include="FileStation\FileListResult.cs" />
+    <Compile Include="FileStation\FileResult.cs" />
+    <Compile Include="FileStation\FileAdditionalResult.cs" />
+    <Compile Include="FileStation\FileOwnerResult.cs" />
+    <Compile Include="FileStation\FileTimeResult.cs" />
+    <Compile Include="FileStation\FilePermResult.cs" />
+    <Compile Include="FileStation\FilePermAclResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
