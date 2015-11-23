@@ -5,14 +5,15 @@ namespace Synology.DownloadStation
 {
 	public class TaskRequest : SynologyRequest
 	{
-		internal TaskRequest(SynologyConnection connection) : base(connection, "task.cgi", "SYNO.DownloadStation.Task")
+		internal TaskRequest(SynologyConnection connection) : base(connection, "DownloadStation/task.cgi", "SYNO.DownloadStation.Task")
 		{
 		}
 
 		public ResultData<object> List(int offset = 0, int limit = -1, string additional = null)
 		{
-			var additionalParams = new[]
-			{
+			//"offeset":0,"tasks":[],"total":0
+
+			var additionalParams = new[] {
 				new QueryStringParameter("offset", offset),
 				new QueryStringParameter("limit", limit),
 				new QueryStringParameter("additional", additional)
@@ -24,8 +25,7 @@ namespace Synology.DownloadStation
 
 		public ResultData<object> Info(string[] ids, string additional = null)
 		{
-			var additionalParams = new[]
-			{
+			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
 				new QueryStringParameter("additional", additional)
 			};
@@ -36,8 +36,7 @@ namespace Synology.DownloadStation
 
 		public ResultData Create(string uri, string file, string username, string password, string unzipPassword, string destination)
 		{
-			var additionalParams = new[]
-			{
+			var additionalParams = new[] {
 				new QueryStringParameter("uri", uri),
 				new QueryStringParameter("file", file),
 				new QueryStringParameter("username", username),
@@ -52,8 +51,7 @@ namespace Synology.DownloadStation
 
 		public ResultData<object> Delete(string[] ids, bool forceComplete)
 		{
-			var additionalParams = new[]
-			{
+			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
 				new QueryStringParameter("force_complete", forceComplete)
 			};
@@ -64,8 +62,7 @@ namespace Synology.DownloadStation
 
 		public ResultData<object> Pause(string[] ids)
 		{
-			var additionalParams = new[]
-			{
+			var additionalParams = new[] {
 				new QueryStringParameter("id", ids)
 			};
 			var url = GetApiUrl("pause", 1, additionalParams);
@@ -75,8 +72,7 @@ namespace Synology.DownloadStation
 
 		public ResultData<object> Resume(string[] ids)
 		{
-			var additionalParams = new[]
-			{
+			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
 			};
 			var url = GetApiUrl("resume", 1, additionalParams);
@@ -86,8 +82,7 @@ namespace Synology.DownloadStation
 
 		public ResultData<object> Edit(string[] ids, string destination = null)
 		{
-			var additionalParams = new[]
-			{
+			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
 				new QueryStringParameter("destination", destination)
 			};

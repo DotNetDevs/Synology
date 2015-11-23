@@ -17,7 +17,7 @@ namespace Synology.Utilities
 
 		public QueryStringParameter(string name, string value)
 		{
-			if (!string.IsNullOrWhiteSpace(value)) return;
+			if (string.IsNullOrWhiteSpace(value)) return;
 
 			_name = name;
 			_value = value;
