@@ -9,10 +9,8 @@ namespace Synology.DownloadStation
 		{
 		}
 
-		public ResultData<object> List(int offset = 0, int limit = -1, string additional = null)
+		public ResultData<TaskListResult> List(int offset = 0, int limit = -1, string additional = null)
 		{
-			//"offeset":0,"tasks":[],"total":0
-
 			var additionalParams = new[] {
 				new QueryStringParameter("offset", offset),
 				new QueryStringParameter("limit", limit),
@@ -20,7 +18,7 @@ namespace Synology.DownloadStation
 			};
 			var url = GetApiUrl("list", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<object>(url);
+			return Connection.GetDataFromUrl<TaskListResult>(url);
 		}
 
 		public ResultData<object> Info(string[] ids, string additional = null)
