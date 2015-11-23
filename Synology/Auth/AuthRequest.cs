@@ -1,5 +1,6 @@
 ﻿using System;
 using Synology.Classes;
+using Synology.Utilities;
 
 namespace Synology.Auth
 {
@@ -7,7 +8,7 @@ namespace Synology.Auth
 	{
 		readonly string _sessionNumber;
 
-		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
+		internal AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
 		{
 			var rand = new Random((int)DateTime.Now.Ticks);
 			_sessionNumber = string.Format("session{0}", rand.Next());
@@ -15,12 +16,19 @@ namespace Synology.Auth
 
 		public ResultData<LoginResult> Login(string username, string password, string otpCode = null)
 		{
-			var extraLoginParams = !string.IsNullOrWhiteSpace(otpCode) ? string.Format("&otp_code={0}", otpCode) : string.Empty;
-			var additionalParams = string.Format("account={0}&passwd={1}&session={2}&format=sid{3}", username, password, _sessionNumber, extraLoginParams);
-			var url = GetApiUrl("login", 4, additionalParams);
+			var parameters = new[]
+			{
+				new QueryStringParameter("otp_code", otpCode),
+				new QueryStringParameter("account", username),
+				new QueryStringParameter("passwd", password),
+				new QueryStringParameter("session", _sessionNumber),
+				new QueryStringParameter("format", "sid")
+			};
+
+			var url = GetApiUrl("login", 4, parameters);
 			var result = Connection.GetDataFromUrl<LoginResult>(url);
 
-			if (result.Success && result.Data != null && !string.IsNullOrWhiteSpace(result.Data.Sid))
+			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
 			{
 				Connection.Sid = result.Data.Sid;
 			}
@@ -30,8 +38,12 @@ namespace Synology.Auth
 
 		public ResultData Logout()
 		{
-			var additionalParams = string.Format("session={0}", _sessionNumber);
-			var url = GetApiUrl("logout", 1, additionalParams);
+			var parameters = new[]
+			{
+				new QueryStringParameter("session", _sessionNumber),
+			};
+
+			var url = GetApiUrl("logout", 1, parameters);
 			var result = Connection.GetDataFromUrl(url);
 
 			if (result.Success)

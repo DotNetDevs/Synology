@@ -1,8 +1,6 @@
-﻿using System;
-using Synology.Classes;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿using Synology.Classes;
 using System.Collections.Generic;
+using Synology.Utilities;
 
 namespace Synology.DownloadStation
 {
@@ -26,64 +24,22 @@ namespace Synology.DownloadStation
 
 		public ResultData SetConfig(int? kbpsTorrentMaxDownload, int? kbpsTorrentMaxUpload, int? kbpsEmuleMaxDownload, int? kbpsEmuleMaxUpload, int? kbpsNzbMaxDownload, int? kbpsHttpMaxDownload, int? kbpsFtpMaxDownload, bool? emuleEnabled, bool? unzipEnabled, string defaultDestination, string emuleDefaultDestination)
 		{
-			var additionalParams = new List<string>();
-
-			if (kbpsTorrentMaxDownload.HasValue)
+			var additionalParams = new[]
 			{
-				additionalParams.Add(string.Format("bt_max_download={0}", kbpsTorrentMaxDownload));
-			}
+				new QueryStringParameter("bt_max_download",kbpsTorrentMaxDownload),
+				new QueryStringParameter("bt_max_upload",kbpsTorrentMaxUpload),
+				new QueryStringParameter("emule_max_download",kbpsEmuleMaxDownload),
+				new QueryStringParameter("emule_max_upload",kbpsEmuleMaxUpload),
+				new QueryStringParameter("nzb_max_download",kbpsNzbMaxDownload),
+				new QueryStringParameter("http_max_download",kbpsHttpMaxDownload),
+				new QueryStringParameter("ftp_max_upload",kbpsFtpMaxDownload),
+				new QueryStringParameter("emule_enabled",emuleEnabled),
+				new QueryStringParameter("unzip_service_enabled",unzipEnabled),
+				new QueryStringParameter("default_destination",defaultDestination),
+				new QueryStringParameter("emule_default_destination",emuleDefaultDestination)
+			};
 
-			if (kbpsTorrentMaxUpload.HasValue)
-			{
-				additionalParams.Add(string.Format("bt_max_upload={0}", kbpsTorrentMaxUpload));
-			}
-
-			if (kbpsEmuleMaxDownload.HasValue)
-			{
-				additionalParams.Add(string.Format("emule_max_download={0}", kbpsEmuleMaxDownload));
-			}
-
-			if (kbpsEmuleMaxUpload.HasValue)
-			{
-				additionalParams.Add(string.Format("emule_max_upload={0}", kbpsEmuleMaxUpload));
-			}
-
-			if (kbpsNzbMaxDownload.HasValue)
-			{
-				additionalParams.Add(string.Format("nzb_max_download={0}", kbpsNzbMaxDownload));
-			}
-
-			if (kbpsHttpMaxDownload.HasValue)
-			{
-				additionalParams.Add(string.Format("http_max_download={0}", kbpsHttpMaxDownload));
-			}
-
-			if (kbpsFtpMaxDownload.HasValue)
-			{
-				additionalParams.Add(string.Format("ftp_max_upload={0}", kbpsFtpMaxDownload));
-			}
-
-			if (emuleEnabled.HasValue)
-			{
-				additionalParams.Add(string.Format("emule_enabled={0}", emuleEnabled));
-			}
-
-			if (unzipEnabled.HasValue)
-			{
-				additionalParams.Add(string.Format("unzip_service_enabled={0}", unzipEnabled));
-			}
-
-			if (!string.IsNullOrWhiteSpace(defaultDestination))
-			{
-				additionalParams.Add(string.Format("default_destination={0}", defaultDestination));
-			}
-
-			if (!string.IsNullOrWhiteSpace(emuleDefaultDestination))
-			{
-				additionalParams.Add(string.Format("emule_default_destination={0}", emuleDefaultDestination));
-			}
-
-			var url = GetApiUrl("setserverconfig", 2, string.Join("&", additionalParams));
+			var url = GetApiUrl("setserverconfig", 2, additionalParams);
 			return Connection.GetDataFromUrl(url);
 		}
 	}
