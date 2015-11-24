@@ -6,7 +6,7 @@ namespace Synology.Auth
 {
 	public class AuthRequest : SynologyRequest
 	{
-		readonly string _sessionNumber;
+		private string _sessionNumber;
 
 		internal AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
 		{
@@ -14,10 +14,11 @@ namespace Synology.Auth
 			_sessionNumber = string.Format("session{0}", rand.Next());
 		}
 
-		public ResultData<LoginResult> Login(string username, string password, string otpCode = null)
+		public ResultData<LoginResult> Login(string username, string password, string otpCode = null, string sessionName = null)
 		{
-			var parameters = new[]
-			{
+			_sessionNumber = sessionName ?? _sessionNumber;
+
+			var parameters = new[] {
 				new QueryStringParameter("otp_code", otpCode),
 				new QueryStringParameter("account", username),
 				new QueryStringParameter("passwd", password),
@@ -38,8 +39,7 @@ namespace Synology.Auth
 
 		public ResultData Logout()
 		{
-			var parameters = new[]
-			{
+			var parameters = new[] {
 				new QueryStringParameter("session", _sessionNumber),
 			};
 
