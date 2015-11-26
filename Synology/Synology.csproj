@@ -83,6 +83,9 @@
     <Compile Include="FileStation\FileTimeResult.cs" />
     <Compile Include="FileStation\FilePermResult.cs" />
     <Compile Include="FileStation\FilePermAclResult.cs" />
+    <Compile Include="FileStation\SearchRequest.cs" />
+    <Compile Include="FileStation\StartSearchResult.cs" />
+    <Compile Include="FileStation\SearchListResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
