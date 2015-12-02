@@ -14,7 +14,7 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <dependencies>
             <group targetFramework=".NETFramework4.5">
-                <dependency id="Synology" version="$version$-alpha" />
+                <dependency id="Synology" version="$version$" />
             </group>
         </dependencies>
     </metadata>
