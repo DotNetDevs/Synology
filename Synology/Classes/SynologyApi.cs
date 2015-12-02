@@ -9,14 +9,9 @@ namespace Synology.Classes
 			_connection = connection;
 		}
 
-		public void RegisterRequest<T>() where T : SynologyRequest
+		public T Request<T>() where T : SynologyRequest
 		{
-			_connection.RegisterRequest<T>();
-		}
-
-		public T GetRequest<T>() where T : SynologyRequest
-		{
-			return _connection.GetRequest<T>();
+			return _connection.Request<T>();
 		}
 	}
 }

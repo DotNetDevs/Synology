@@ -37,30 +37,36 @@ namespace Synology
 			_containerScope = _container.BeginLifetimeScope();
 		}
 
-		public void RegisterApi<T>() where T : SynologyApi
+		private void RegisterType<T>()
 		{
 			var builder = new ContainerBuilder();
 
-			builder.RegisterType<T>().AsSelf().As<SynologyApi>();
+			builder.RegisterType<T>();
 			builder.Update(_container);
 		}
 
-		public void RegisterRequest<TRequest>() where TRequest : SynologyRequest
+		private T ResolveType<T>() where T : class
 		{
-			var builder = new ContainerBuilder();
+			var res = default(T);
 
-			builder.RegisterType<TRequest>().AsSelf().As<SynologyRequest>();
-			builder.Update(_container);
+			if (!_container.TryResolve<T>(out res))
+			{
+				RegisterType<T>();
+
+				return ResolveType<T>();
+			}
+
+			return res;
 		}
 
-		public T GetRequest<T>() where T : SynologyRequest
+		public T Request<T>() where T : SynologyRequest
 		{
-			return _container.Resolve<T>();
+			return ResolveType<T>();
 		}
 
-		public T GetApi<T>() where T : SynologyApi
+		public T Api<T>() where T : SynologyApi
 		{
-			return _container.Resolve<T>();
+			return ResolveType<T>();
 		}
 
 		public string GetApiUrl(string cgi, string api, int version, string method, IEnumerable<QueryStringParameter> additionalParams = null)

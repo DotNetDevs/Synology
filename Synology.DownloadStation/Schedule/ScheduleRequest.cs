@@ -1,6 +1,5 @@
 ﻿using System;
 using Synology.Classes;
-using System.Collections.Generic;
 using Synology.Utilities;
 
 namespace Synology.DownloadStation.Schedule

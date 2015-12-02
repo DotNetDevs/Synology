@@ -45,6 +45,8 @@
     <Compile Include="Classes\ResultError.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
+    <Compile Include="Extensions\ApiExtension.cs" />
+    <Compile Include="Extensions\RequestExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -52,4 +54,7 @@
     <None Include="Synology.nuspec" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
 </Project>
