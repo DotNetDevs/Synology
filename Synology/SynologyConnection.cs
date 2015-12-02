@@ -6,6 +6,7 @@ using Synology.Classes;
 using System.Threading.Tasks;
 using Synology.ApiContainer;
 using Synology.Utilities;
+using Autofac;
 
 namespace Synology
 {
@@ -15,16 +16,32 @@ namespace Synology
 
 		internal string Sid;
 
+		private readonly IContainer _container;
+		private readonly ILifetimeScope _containerScope;
+
 		public SynologyConnection(string baseHost, bool ssl = false, int port = 5000, int sslPort = 5001)
 		{
-			_client = new WebClient
-			{
-				BaseAddress = $"http{(ssl ? "s" : string.Empty)}://{baseHost}:{(ssl ? sslPort : port)}/webapi/"
+			var sslPostfix = ssl ? "s" : string.Empty;
+			var usedPort = ssl ? sslPort : port;
+
+			_client = new WebClient {
+				BaseAddress = $"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"
 			};
 
-			Api = new Api(this);
-			DownloadStation = new DownloadStationApi(this);
-			FileStation = new FileStationApi(this);
+			var builder = new ContainerBuilder();
+
+			builder.RegisterType<FileStationApi>().As<SynologyRequest>();
+			builder.RegisterType<DownloadStationApi>().As<SynologyRequest>();
+			builder.RegisterType<Api>().As<SynologyRequest>();
+			builder.RegisterInstance(this).As<SynologyConnection>();
+
+			_container = builder.Build();
+
+			_containerScope = _container.BeginLifetimeScope();
+
+			Api = _container.Resolve<Api>();
+			DownloadStation = _container.Resolve<DownloadStationApi>();
+			FileStation = _container.Resolve<FileStationApi>();
 		}
 
 		internal string GetApiUrl(string cgi, string api, int version, string method, IEnumerable<QueryStringParameter> additionalParams = null)
@@ -61,11 +78,13 @@ namespace Synology
 		public Api Api { get; set; }
 
 		public DownloadStationApi DownloadStation { get; private set; }
+
 		public FileStationApi FileStation { get; private set; }
 
 		public void Dispose()
 		{
 			_client.Dispose();
+			_containerScope.Dispose();
 		}
 	}
 }
