@@ -4,9 +4,10 @@ using System.Net;
 using Newtonsoft.Json;
 using Synology.Classes;
 using System.Threading.Tasks;
-using Synology.ApiContainer;
 using Synology.Utilities;
 using Autofac;
+using Synology.DownloadStation;
+using Synology.FileStation;
 
 namespace Synology
 {
@@ -16,6 +17,7 @@ namespace Synology
 
 		internal string Sid;
 
+		private readonly ContainerBuilder _builder;
 		private readonly IContainer _container;
 		private readonly ILifetimeScope _containerScope;
 
@@ -24,24 +26,48 @@ namespace Synology
 			var sslPostfix = ssl ? "s" : string.Empty;
 			var usedPort = ssl ? sslPort : port;
 
-			_client = new WebClient {
+			_client = new WebClient
+			{
 				BaseAddress = $"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"
 			};
 
-			var builder = new ContainerBuilder();
+			_builder = new ContainerBuilder();
 
-			builder.RegisterType<FileStationApi>().As<SynologyRequest>();
-			builder.RegisterType<DownloadStationApi>().As<SynologyRequest>();
-			builder.RegisterType<Api>().As<SynologyRequest>();
-			builder.RegisterInstance(this).As<SynologyConnection>();
+			_builder.RegisterInstance(this).As<SynologyConnection>();
 
-			_container = builder.Build();
+			_container = _builder.Build();
 
 			_containerScope = _container.BeginLifetimeScope();
 
-			Api = _container.Resolve<Api>();
+			RegisterApi<Api.Api>();
+			RegisterApi<DownloadStationApi>();
+			RegisterApi<FileStationApi>();
+
+			Api = _container.Resolve<Api.Api>();
 			DownloadStation = _container.Resolve<DownloadStationApi>();
 			FileStation = _container.Resolve<FileStationApi>();
+		}
+
+		public void RegisterApi<T>() where T : SynologyApi
+		{
+			_builder.RegisterType<T>().As<SynologyApi>();
+			_builder.Update(_container);
+		}
+
+		public void RegisterRequest<TRequest>() where TRequest : SynologyRequest
+		{
+			_builder.RegisterType<TRequest>().As<SynologyRequest>();
+			_builder.Update(_container);
+		}
+
+		public T GetRequest<T>() where T : SynologyRequest
+		{
+			return _container.Resolve<T>();
+		}
+
+		public T GetApi<T>() where T : SynologyApi
+		{
+			return _container.Resolve<T>();
 		}
 
 		internal string GetApiUrl(string cgi, string api, int version, string method, IEnumerable<QueryStringParameter> additionalParams = null)
@@ -75,7 +101,7 @@ namespace Synology
 			return JsonConvert.DeserializeObject<ResultData<T>>(json);
 		}
 
-		public Api Api { get; set; }
+		public Api.Api Api { get; set; }
 
 		public DownloadStationApi DownloadStation { get; private set; }
 

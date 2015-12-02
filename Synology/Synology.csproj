@@ -37,10 +37,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiContainer\Api.cs" />
-    <Compile Include="ApiContainer\BaseApi.cs" />
-    <Compile Include="ApiContainer\DownloadStationApi.cs" />
-    <Compile Include="ApiContainer\FileStationApi.cs" />
+    <Compile Include="Api\Api.cs" />
+    <Compile Include="Api\SynologyConnectionExtension.cs" />
+    <Compile Include="Classes\SynologyApi.cs" />
+    <Compile Include="DownloadStation\DownloadStationApi.cs" />
+    <Compile Include="FileStation\FileStationApi.cs" />
+    <Compile Include="DownloadStation\SynologyConnectionExtension.cs" />
     <Compile Include="DownloadStation\TaskAdditionalResult.cs" />
     <Compile Include="DownloadStation\TaskDetailResult.cs" />
     <Compile Include="DownloadStation\TaskFileResult.cs" />
@@ -52,16 +54,17 @@
     <Compile Include="DownloadStation\TaskTransferResult.cs" />
     <Compile Include="FileStation\InfoRequest.cs" />
     <Compile Include="FileStation\InfoResult.cs" />
+    <Compile Include="FileStation\SynologyConnectionExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynologyConnection.cs" />
-    <Compile Include="Auth\AuthRequest.cs" />
-    <Compile Include="Info\InfoRequest.cs" />
+    <Compile Include="Api\AuthRequest.cs" />
+    <Compile Include="Api\InfoRequest.cs" />
     <Compile Include="Classes\SynologyRequest.cs" />
     <Compile Include="Classes\ResultData.cs" />
     <Compile Include="Classes\ResultError.cs" />
     <Compile Include="DownloadStation\InfoRequest.cs" />
     <Compile Include="DownloadStation\ScheduleRequest.cs" />
-    <Compile Include="Auth\LoginResult.cs" />
+    <Compile Include="Api\LoginResult.cs" />
     <Compile Include="DownloadStation\InfoResult.cs" />
     <Compile Include="DownloadStation\ConfigResult.cs" />
     <Compile Include="DownloadStation\ScheduleResult.cs" />
