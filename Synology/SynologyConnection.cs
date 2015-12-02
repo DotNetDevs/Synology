@@ -42,10 +42,6 @@ namespace Synology
 			RegisterApi<Api.Api>();
 			RegisterApi<DownloadStationApi>();
 			RegisterApi<FileStationApi>();
-
-			Api = _container.Resolve<Api.Api>();
-			DownloadStation = _container.Resolve<DownloadStationApi>();
-			FileStation = _container.Resolve<FileStationApi>();
 		}
 
 		public void RegisterApi<T>() where T : SynologyApi
@@ -100,12 +96,6 @@ namespace Synology
 			var json = await _client.DownloadStringTaskAsync(url);
 			return JsonConvert.DeserializeObject<ResultData<T>>(json);
 		}
-
-		public Api.Api Api { get; set; }
-
-		public DownloadStationApi DownloadStation { get; private set; }
-
-		public FileStationApi FileStation { get; private set; }
 
 		public void Dispose()
 		{
