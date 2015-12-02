@@ -1,9 +1,9 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Synology.FileStation
+namespace Synology.FileStation.FileShare
 {
-	public class FilePermAclResult
+	public class SharePermAclResult
 	{
 		public bool Append { get; set; }
 

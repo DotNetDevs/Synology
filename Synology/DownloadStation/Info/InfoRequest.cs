@@ -10,7 +10,7 @@ namespace Synology.DownloadStation.Info
 		{
 		}
 
-		public ResultData<InfoResult> Info()
+		public ResultData<InfoResult> GetInfo()
 		{
 			return GetData<InfoResult>("getinfo");
 		}
@@ -40,4 +40,3 @@ namespace Synology.DownloadStation.Info
 		}
 	}
 }
-

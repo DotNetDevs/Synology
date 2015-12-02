@@ -9,7 +9,7 @@ namespace Synology.Api.Info
 		{
 		}
 
-		public object Info()
+		public object GetInfo()
 		{
 			var additionalParams = new QueryStringParameter("query", "all");
 

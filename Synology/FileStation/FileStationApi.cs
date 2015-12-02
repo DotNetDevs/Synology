@@ -1,4 +1,7 @@
 using Synology.Classes;
+using Synology.FileStation.Search;
+using Synology.FileStation.Info;
+using Synology.FileStation.FileShare;
 
 namespace Synology.FileStation
 {
@@ -8,13 +11,7 @@ namespace Synology.FileStation
 		{
 			RegisterRequest<FileShareRequest>();
 			RegisterRequest<InfoRequest>();
-
-			FileShare = GetRequest<FileShareRequest>();
-			Info = GetRequest<InfoRequest>();
+			RegisterRequest<SearchRequest>();
 		}
-
-		public InfoRequest Info { get; private set; }
-
-		public FileShareRequest FileShare { get; private set; }
 	}
 }

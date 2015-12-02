@@ -2,7 +2,7 @@
 using System.Dynamic;
 using System.Configuration;
 
-namespace Synology.FileStation
+namespace Synology.FileStation.FileShare
 {
 	public class ShareResult
 	{

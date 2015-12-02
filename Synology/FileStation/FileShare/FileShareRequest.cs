@@ -3,7 +3,7 @@ using Synology.Classes;
 using Synology.Utilities;
 using System.Collections.Generic;
 
-namespace Synology.FileStation
+namespace Synology.FileStation.FileShare
 {
 	public class FileShareRequest : SynologyRequest
 	{

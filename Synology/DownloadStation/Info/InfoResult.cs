@@ -14,4 +14,3 @@ namespace Synology.DownloadStation.Info
 		public string VersionString { get; set; }
 	}
 }
-

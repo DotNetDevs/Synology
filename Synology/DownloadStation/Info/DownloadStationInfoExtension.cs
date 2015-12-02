@@ -1,8 +1,7 @@
-﻿using System;
-using Synology;
+﻿using Synology.DownloadStation;
 using Synology.DownloadStation.Info;
 
-namespace Synology.DownloadStation
+namespace Synology
 {
 	public static class DownloadStationInfoExtension
 	{
@@ -14,4 +13,3 @@ namespace Synology.DownloadStation
 		}
 	}
 }
-

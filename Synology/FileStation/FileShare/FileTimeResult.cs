@@ -1,9 +1,9 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Synology.FileStation
+namespace Synology.FileStation.FileShare
 {
-	public class ShareTimeResult
+	public class FileTimeResult
 	{
 		public int Atime { get; set; }
 

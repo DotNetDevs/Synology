@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Synology.Classes;
 
-namespace Synology.FileStation
+namespace Synology.FileStation.Info
 {
 	public class InfoRequest : SynologyRequest
 	{
@@ -13,7 +13,7 @@ namespace Synology.FileStation
 		{
 		}
 
-		public ResultData<InfoResult> Info()
+		public ResultData<InfoResult> GetInfo()
 		{
 			return GetData<InfoResult>("getinfo");
 		}

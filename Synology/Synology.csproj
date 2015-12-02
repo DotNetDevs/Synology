@@ -38,13 +38,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\Api.cs" />
-    <Compile Include="Api\SynologyConnectionExtension.cs" />
     <Compile Include="Classes\SynologyApi.cs" />
     <Compile Include="DownloadStation\DownloadStationApi.cs" />
     <Compile Include="FileStation\FileStationApi.cs" />
-    <Compile Include="DownloadStation\SynologyConnectionExtension.cs" />
-    <Compile Include="FileStation\InfoRequest.cs" />
-    <Compile Include="FileStation\InfoResult.cs" />
     <Compile Include="FileStation\SynologyConnectionExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynologyConnection.cs" />
@@ -53,26 +49,6 @@
     <Compile Include="Classes\ResultError.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
-    <Compile Include="FileStation\FileShareRequest.cs" />
-    <Compile Include="FileStation\ShareListResult.cs" />
-    <Compile Include="FileStation\ShareResult.cs" />
-    <Compile Include="FileStation\ShareAdditionalResult.cs" />
-    <Compile Include="FileStation\ShareOwnerResult.cs" />
-    <Compile Include="FileStation\SharePermAclResult.cs" />
-    <Compile Include="FileStation\SharePermAdvRightResult.cs" />
-    <Compile Include="FileStation\SharePermResult.cs" />
-    <Compile Include="FileStation\ShareTimeResult.cs" />
-    <Compile Include="FileStation\ShareVolumeStatusResult.cs" />
-    <Compile Include="FileStation\FileListResult.cs" />
-    <Compile Include="FileStation\FileResult.cs" />
-    <Compile Include="FileStation\FileAdditionalResult.cs" />
-    <Compile Include="FileStation\FileOwnerResult.cs" />
-    <Compile Include="FileStation\FileTimeResult.cs" />
-    <Compile Include="FileStation\FilePermResult.cs" />
-    <Compile Include="FileStation\FilePermAclResult.cs" />
-    <Compile Include="FileStation\SearchRequest.cs" />
-    <Compile Include="FileStation\StartSearchResult.cs" />
-    <Compile Include="FileStation\SearchListResult.cs" />
     <Compile Include="Api\Auth\AuthRequest.cs" />
     <Compile Include="Api\Auth\LoginResult.cs" />
     <Compile Include="Api\Info\InfoRequest.cs" />
@@ -97,6 +73,33 @@
     <Compile Include="DownloadStation\Schedule\DownloadStationScheduleExtension.cs" />
     <Compile Include="DownloadStation\Info\DownloadStationInfoExtension.cs" />
     <Compile Include="DownloadStation\Task\DownloadStationTaskExtension.cs" />
+    <Compile Include="FileStation\FileShare\FileShareRequest.cs" />
+    <Compile Include="FileStation\Search\SearchListResult.cs" />
+    <Compile Include="FileStation\Search\SearchRequest.cs" />
+    <Compile Include="FileStation\Search\StartSearchResult.cs" />
+    <Compile Include="FileStation\Info\InfoRequest.cs" />
+    <Compile Include="FileStation\Info\InfoResult.cs" />
+    <Compile Include="FileStation\Info\FileStationInfoExtension.cs" />
+    <Compile Include="FileStation\FileShare\FileStationFileShareExtension.cs" />
+    <Compile Include="FileStation\FileShare\FileListResult.cs" />
+    <Compile Include="FileStation\FileShare\ShareListResult.cs" />
+    <Compile Include="FileStation\Search\FileStationSearchExtension.cs" />
+    <Compile Include="FileStation\FileShare\FileResult.cs" />
+    <Compile Include="FileStation\FileShare\FileAdditionalResult.cs" />
+    <Compile Include="FileStation\FileShare\FileOwnerResult.cs" />
+    <Compile Include="FileStation\FileShare\FilePermAclResult.cs" />
+    <Compile Include="FileStation\FileShare\FilePermResult.cs" />
+    <Compile Include="FileStation\FileShare\FileTimeResult.cs" />
+    <Compile Include="FileStation\FileShare\ShareAdditionalResult.cs" />
+    <Compile Include="FileStation\FileShare\ShareOwnerResult.cs" />
+    <Compile Include="FileStation\FileShare\SharePermAclResult.cs" />
+    <Compile Include="FileStation\FileShare\SharePermAdvRightResult.cs" />
+    <Compile Include="FileStation\FileShare\SharePermResult.cs" />
+    <Compile Include="FileStation\FileShare\ShareResult.cs" />
+    <Compile Include="FileStation\FileShare\ShareTimeResult.cs" />
+    <Compile Include="FileStation\FileShare\ShareVolumeStatusResult.cs" />
+    <Compile Include="DownloadStation\SynologyConnectionDownloadStationExtension.cs" />
+    <Compile Include="Api\SynologyConnectionApiExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -110,5 +113,8 @@
     <Folder Include="DownloadStation\Info\" />
     <Folder Include="DownloadStation\Schedule\" />
     <Folder Include="DownloadStation\Task\" />
+    <Folder Include="FileStation\FileShare\" />
+    <Folder Include="FileStation\Search\" />
+    <Folder Include="FileStation\Info\" />
   </ItemGroup>
 </Project>

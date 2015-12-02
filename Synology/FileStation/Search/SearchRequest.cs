@@ -3,7 +3,7 @@ using Synology.Classes;
 using Synology.Utilities;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Synology.FileStation
+namespace Synology.FileStation.Search
 {
 	public class SearchRequest : SynologyRequest
 	{
