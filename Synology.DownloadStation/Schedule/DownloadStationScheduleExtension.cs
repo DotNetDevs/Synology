@@ -9,7 +9,13 @@ namespace Synology
 
 		public static ScheduleRequest Schedule(this DownloadStationApi api)
 		{
-			return _schedule ?? (_schedule = api.GetRequest<ScheduleRequest>());
+			if (_schedule == null)
+			{
+				api.RegisterRequest<ScheduleRequest>();
+				_schedule = api.GetRequest<ScheduleRequest>();
+			}
+
+			return _schedule;
 		}
 	}
 }

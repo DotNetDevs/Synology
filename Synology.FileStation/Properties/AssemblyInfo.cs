@@ -4,8 +4,8 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("Synology")]
-[assembly: AssemblyDescription("Synology Core API for .NET")]
+[assembly: AssemblyTitle("Synology.FileStation")]
+[assembly: AssemblyDescription("Synology FileStation API for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Caelan")]
 [assembly: AssemblyProduct("Synology")]

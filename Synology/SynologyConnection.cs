@@ -6,8 +6,6 @@ using Synology.Classes;
 using System.Threading.Tasks;
 using Synology.Utilities;
 using Autofac;
-using Synology.DownloadStation;
-using Synology.FileStation;
 using Autofac.Core;
 
 namespace Synology
@@ -37,10 +35,6 @@ namespace Synology
 			_container = builder.Build();
 
 			_containerScope = _container.BeginLifetimeScope();
-
-			RegisterApi<DownloadStationApi>();
-			RegisterApi<FileStationApi>();
-			RegisterApi<Api.Api>();
 		}
 
 		public void RegisterApi<T>() where T : SynologyApi

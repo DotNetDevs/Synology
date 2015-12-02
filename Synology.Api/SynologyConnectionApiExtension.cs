@@ -6,7 +6,13 @@
 
 		public static Api.Api Api(this SynologyConnection connection)
 		{
-			return _api ?? (_api = connection.GetApi<Api.Api>());
+			if (_api == null)
+			{
+				connection.RegisterApi<Api.Api>();
+				_api = connection.GetApi<Api.Api>();
+			}
+
+			return _api;
 		}
 	}
 }

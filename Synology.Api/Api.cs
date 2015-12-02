@@ -8,8 +8,6 @@ namespace Synology.Api
 	{
 		public Api(SynologyConnection connection) : base(connection)
 		{
-			RegisterRequest<AuthRequest>();
-			RegisterRequest<InfoRequest>();
 		}
 	}
 }

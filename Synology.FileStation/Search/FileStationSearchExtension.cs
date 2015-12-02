@@ -9,7 +9,13 @@ namespace Synology
 
 		public static SearchRequest Search(this FileStationApi api)
 		{
-			return _search ?? (_search = api.GetRequest<SearchRequest>());
+			if (_search == null)
+			{
+				api.RegisterRequest<SearchRequest>();
+				_search = api.GetRequest<SearchRequest>();
+			}
+
+			return _search;
 		}
 	}
 }

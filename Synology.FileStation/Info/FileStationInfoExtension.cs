@@ -9,7 +9,13 @@ namespace Synology
 
 		public static InfoRequest Info(this FileStationApi api)
 		{
-			return _info ?? (_info = api.GetRequest<InfoRequest>());
+			if (_info == null)
+			{
+				api.RegisterRequest<InfoRequest>();
+				_info = api.GetRequest<InfoRequest>();
+			}
+
+			return _info;
 		}
 	}
 }
