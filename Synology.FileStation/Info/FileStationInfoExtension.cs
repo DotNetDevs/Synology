@@ -1,21 +1,14 @@
 ﻿using Synology.FileStation;
 using Synology.FileStation.Info;
+using Synology.Extensions;
 
 namespace Synology
 {
 	public static class FileStationInfoExtension
 	{
-		private static InfoRequest _info;
-
 		public static InfoRequest Info(this FileStationApi api)
 		{
-			if (_info == null)
-			{
-				api.RegisterRequest<InfoRequest>();
-				_info = api.GetRequest<InfoRequest>();
-			}
-
-			return _info;
+			return RequestExtension<InfoRequest>.Request(api);
 		}
 	}
 }
