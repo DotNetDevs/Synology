@@ -16,7 +16,7 @@ namespace Synology.Classes
 			_api = api;
 		}
 
-		protected internal string GetApiUrl(string method, int version = 1, params QueryStringParameter[] additionalParams)
+		protected string GetApiUrl(string method, int version = 1, params QueryStringParameter[] additionalParams)
 		{
 			return Connection.GetApiUrl(_cgiPath, _api, version, method, additionalParams);
 		}

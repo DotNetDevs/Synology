@@ -2,7 +2,7 @@
 using Synology.Classes;
 using Synology.Utilities;
 
-namespace Synology.Auth
+namespace Synology.Api
 {
 	public class AuthRequest : SynologyRequest
 	{
@@ -11,7 +11,7 @@ namespace Synology.Auth
 		internal AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
 		{
 			var rand = new Random((int)DateTime.Now.Ticks);
-			_sessionNumber = string.Format("session{0}", rand.Next());
+			_sessionNumber = $"session{rand.Next()}";
 		}
 
 		public ResultData<LoginResult> Login(string username, string password, string otpCode = null, string sessionName = null)

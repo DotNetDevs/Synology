@@ -15,6 +15,7 @@
         <dependencies>
             <group targetFramework=".NETFramework4.5">
                 <dependency id="Newtonsoft.Json" version="7.0.1" />
+                <dependency id="Autofac" version="3.5.2" />
             </group>
         </dependencies>
     </metadata>
