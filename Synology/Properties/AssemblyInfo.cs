@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Synology")]
-[assembly: AssemblyDescription("Synology API for .NET")]
+[assembly: AssemblyDescription("Synology Core API for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Caelan")]
 [assembly: AssemblyProduct("Synology")]

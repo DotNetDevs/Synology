@@ -5,11 +5,11 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle("Synology.Api")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Synology Main API for .NET")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Matteo Bruni")]
+[assembly: AssemblyCompany("Caelan")]
+[assembly: AssemblyProduct("Synology")]
+[assembly: AssemblyCopyright("Caelan © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
