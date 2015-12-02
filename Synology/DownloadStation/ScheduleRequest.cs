@@ -7,7 +7,7 @@ namespace Synology.DownloadStation
 {
 	public class ScheduleRequest : SynologyRequest
 	{
-		internal ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule")
+		public ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule")
 		{
 		}
 
@@ -19,10 +19,9 @@ namespace Synology.DownloadStation
 
 		public ResultData SetConfig(bool? enabled, bool? emuleEnabled)
 		{
-			var additionalParams = new[]
-			{
-				new QueryStringParameter("enabled",enabled),
-				new QueryStringParameter("emule_enabled",emuleEnabled)
+			var additionalParams = new[] {
+				new QueryStringParameter("enabled", enabled),
+				new QueryStringParameter("emule_enabled", emuleEnabled)
 			};
 
 			var url = GetApiUrl("setserverconfig", 1, additionalParams);

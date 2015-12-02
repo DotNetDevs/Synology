@@ -8,6 +8,7 @@ using Synology.Utilities;
 using Autofac;
 using Synology.DownloadStation;
 using Synology.FileStation;
+using Autofac.Core;
 
 namespace Synology
 {
@@ -17,7 +18,6 @@ namespace Synology
 
 		public string Sid { private get; set; }
 
-		private readonly ContainerBuilder _builder;
 		private readonly IContainer _container;
 		private readonly ILifetimeScope _containerScope;
 
@@ -26,34 +26,37 @@ namespace Synology
 			var sslPostfix = ssl ? "s" : string.Empty;
 			var usedPort = ssl ? sslPort : port;
 
-			_client = new WebClient
-			{
+			_client = new WebClient {
 				BaseAddress = $"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"
 			};
 
-			_builder = new ContainerBuilder();
+			var builder = new ContainerBuilder();
 
-			_builder.RegisterInstance(this).As<SynologyConnection>();
+			builder.RegisterInstance(this).As<SynologyConnection>();
 
-			_container = _builder.Build();
+			_container = builder.Build();
 
 			_containerScope = _container.BeginLifetimeScope();
 
-			RegisterApi<Api.Api>();
 			RegisterApi<DownloadStationApi>();
 			RegisterApi<FileStationApi>();
+			RegisterApi<Api.Api>();
 		}
 
 		public void RegisterApi<T>() where T : SynologyApi
 		{
-			_builder.RegisterType<T>().As<SynologyApi>();
-			_builder.Update(_container);
+			var builder = new ContainerBuilder();
+
+			builder.RegisterType<T>().AsSelf().As<SynologyApi>();
+			builder.Update(_container);
 		}
 
 		public void RegisterRequest<TRequest>() where TRequest : SynologyRequest
 		{
-			_builder.RegisterType<TRequest>().As<SynologyRequest>();
-			_builder.Update(_container);
+			var builder = new ContainerBuilder();
+
+			builder.RegisterType<TRequest>().AsSelf().As<SynologyRequest>();
+			builder.Update(_container);
 		}
 
 		public T GetRequest<T>() where T : SynologyRequest

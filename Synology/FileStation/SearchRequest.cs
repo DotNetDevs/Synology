@@ -7,7 +7,7 @@ namespace Synology.FileStation
 {
 	public class SearchRequest : SynologyRequest
 	{
-		internal SearchRequest(SynologyConnection connection) : base(connection, "FileStation/file_find.cgi", "SYNO.FileStation.Search")
+		public SearchRequest(SynologyConnection connection) : base(connection, "FileStation/file_find.cgi", "SYNO.FileStation.Search")
 		{
 		}
 

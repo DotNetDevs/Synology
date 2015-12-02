@@ -4,7 +4,7 @@ namespace Synology.Api
 {
 	public class Api : SynologyApi
 	{
-		internal Api(SynologyConnection connection) : base(connection)
+		public Api(SynologyConnection connection) : base(connection)
 		{
 			RegisterRequest<AuthRequest>();
 			RegisterRequest<InfoRequest>();
