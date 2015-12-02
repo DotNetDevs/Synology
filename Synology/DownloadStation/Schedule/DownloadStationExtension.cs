@@ -1,8 +1,8 @@
 ﻿using System;
 using Synology;
-using Synology.DownloadStation;
+using Synology.DownloadStation.Schedule;
 
-namespace Synology.DownloadStation.Schedule
+namespace Synology.DownloadStation
 {
 	public static class DownloadStationExtension
 	{
