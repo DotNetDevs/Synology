@@ -9,9 +9,6 @@ namespace Synology.DownloadStation
 	{
 		public DownloadStationApi(SynologyConnection connection) : base(connection)
 		{
-			RegisterRequest<ScheduleRequest>();
-			RegisterRequest<InfoRequest>();
-			RegisterRequest<TaskRequest>();
 		}
 	}
 }

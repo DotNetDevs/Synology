@@ -9,7 +9,13 @@ namespace Synology
 
 		public static TaskRequest Task(this DownloadStationApi api)
 		{
-			return _task ?? (_task = api.GetRequest<TaskRequest>());
+			if (_task == null)
+			{
+				api.RegisterRequest<TaskRequest>();
+				_task = api.GetRequest<TaskRequest>();
+			}
+
+			return _task;
 		}
 	}
 }

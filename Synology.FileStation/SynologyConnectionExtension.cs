@@ -8,7 +8,13 @@ namespace Synology
 
 		public static FileStationApi FileStation(this SynologyConnection connection)
 		{
-			return _api ?? (_api = connection.GetApi<FileStationApi>());
+			if (_api == null)
+			{
+				connection.RegisterApi<FileStationApi>();
+				_api = connection.GetApi<FileStationApi>();
+			}
+
+			return _api;
 		}
 	}
 }

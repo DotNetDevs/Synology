@@ -8,7 +8,13 @@ namespace Synology
 
 		public static AuthRequest Auth(this Api.Api api)
 		{
-			return _auth ?? (_auth = api.GetRequest<AuthRequest>());
+			if (_auth == null)
+			{
+				api.RegisterRequest<AuthRequest>();
+				_auth = api.GetRequest<AuthRequest>();
+			}
+
+			return _auth;
 		}
 	}
 }

@@ -8,7 +8,13 @@ namespace Synology
 
 		public static DownloadStationApi DownloadStation(this SynologyConnection connection)
 		{
-			return _api ?? (_api = connection.GetApi<DownloadStationApi>());
+			if (_api == null)
+			{
+				connection.RegisterApi<DownloadStationApi>();
+				_api = connection.GetApi<DownloadStationApi>();
+			}
+
+			return _api;
 		}
 	}
 }

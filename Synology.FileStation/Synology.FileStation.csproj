@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BFCC3C3D-4D75-4C45-A007-D1F8388FBCCE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Synology.FileStation</RootNamespace>
+    <AssemblyName>Synology.FileStation</AssemblyName>
+    <Description>Synology FileStation Api Library</Description>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FileShare\FileAdditionalResult.cs" />
+    <Compile Include="FileShare\FileListResult.cs" />
+    <Compile Include="FileShare\FileOwnerResult.cs" />
+    <Compile Include="FileShare\FilePermAclResult.cs" />
+    <Compile Include="FileShare\FilePermResult.cs" />
+    <Compile Include="FileShare\FileResult.cs" />
+    <Compile Include="FileShare\FileShareRequest.cs" />
+    <Compile Include="FileShare\FileStationFileShareExtension.cs" />
+    <Compile Include="FileShare\FileTimeResult.cs" />
+    <Compile Include="FileShare\ShareAdditionalResult.cs" />
+    <Compile Include="FileShare\ShareListResult.cs" />
+    <Compile Include="FileShare\ShareOwnerResult.cs" />
+    <Compile Include="FileShare\SharePermAclResult.cs" />
+    <Compile Include="FileShare\SharePermAdvRightResult.cs" />
+    <Compile Include="FileShare\SharePermResult.cs" />
+    <Compile Include="FileShare\ShareResult.cs" />
+    <Compile Include="FileShare\ShareTimeResult.cs" />
+    <Compile Include="FileShare\ShareVolumeStatusResult.cs" />
+    <Compile Include="Info\FileStationInfoExtension.cs" />
+    <Compile Include="Info\InfoRequest.cs" />
+    <Compile Include="Info\InfoResult.cs" />
+    <Compile Include="Search\FileStationSearchExtension.cs" />
+    <Compile Include="Search\SearchListResult.cs" />
+    <Compile Include="Search\SearchRequest.cs" />
+    <Compile Include="Search\StartSearchResult.cs" />
+    <Compile Include="FileStationApi.cs" />
+    <Compile Include="SynologyConnectionExtension.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="FileShare\" />
+    <Folder Include="Info\" />
+    <Folder Include="Search\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Synology\Synology.csproj">
+      <Project>{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}</Project>
+      <Name>Synology</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Synology.FileStation.nuspec" />
+  </ItemGroup>
+</Project>

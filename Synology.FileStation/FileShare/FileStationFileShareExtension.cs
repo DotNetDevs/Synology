@@ -9,7 +9,13 @@ namespace Synology
 
 		public static FileShareRequest FileShare(this FileStationApi api)
 		{
-			return _fileShare ?? (_fileShare = api.GetRequest<FileShareRequest>());
+			if (_fileShare == null)
+			{
+				api.RegisterRequest<FileShareRequest>();
+				_fileShare = api.GetRequest<FileShareRequest>();
+			}
+
+			return _fileShare;
 		}
 	}
 }

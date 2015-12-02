@@ -9,9 +9,6 @@ namespace Synology.FileStation
 	{
 		public FileStationApi(SynologyConnection connection) : base(connection)
 		{
-			RegisterRequest<FileShareRequest>();
-			RegisterRequest<InfoRequest>();
-			RegisterRequest<SearchRequest>();
 		}
 	}
 }
