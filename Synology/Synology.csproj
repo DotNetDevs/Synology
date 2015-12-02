@@ -60,8 +60,6 @@
     <Compile Include="Classes\SynologyRequest.cs" />
     <Compile Include="Classes\ResultData.cs" />
     <Compile Include="Classes\ResultError.cs" />
-    <Compile Include="DownloadStation\ScheduleRequest.cs" />
-    <Compile Include="DownloadStation\ScheduleResult.cs" />
     <Compile Include="DownloadStation\TaskRequest.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
@@ -95,6 +93,9 @@
     <Compile Include="DownloadStation\Info\InfoResult.cs" />
     <Compile Include="DownloadStation\Info\DownloadStationExtension.cs" />
     <Compile Include="DownloadStation\Info\ConfigResult.cs" />
+    <Compile Include="DownloadStation\Schedule\ScheduleRequest.cs" />
+    <Compile Include="DownloadStation\Schedule\ScheduleResult.cs" />
+    <Compile Include="DownloadStation\Schedule\DownloadStationExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -106,5 +107,6 @@
     <Folder Include="Api\Auth\" />
     <Folder Include="Api\Info\" />
     <Folder Include="DownloadStation\Info\" />
+    <Folder Include="DownloadStation\Schedule\" />
   </ItemGroup>
 </Project>
