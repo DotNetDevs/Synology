@@ -4,7 +4,7 @@ namespace Synology.FileStation
 {
 	public class FileStationApi : SynologyApi
 	{
-		internal FileStationApi(SynologyConnection connection) : base(connection)
+		public FileStationApi(SynologyConnection connection) : base(connection)
 		{
 			RegisterRequest<FileShareRequest>();
 			RegisterRequest<InfoRequest>();

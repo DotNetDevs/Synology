@@ -8,7 +8,7 @@ namespace Synology.Api
 	{
 		private string _sessionNumber;
 
-		internal AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
+		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
 		{
 			var rand = new Random((int)DateTime.Now.Ticks);
 			_sessionNumber = $"session{rand.Next()}";

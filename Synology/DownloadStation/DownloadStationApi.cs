@@ -4,7 +4,7 @@ namespace Synology.DownloadStation
 {
 	public class DownloadStationApi : SynologyApi
 	{
-		internal DownloadStationApi(SynologyConnection connection) : base(connection)
+		public DownloadStationApi(SynologyConnection connection) : base(connection)
 		{
 			RegisterRequest<ScheduleRequest>();
 			RegisterRequest<InfoRequest>();

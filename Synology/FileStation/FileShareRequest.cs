@@ -7,7 +7,7 @@ namespace Synology.FileStation
 {
 	public class FileShareRequest : SynologyRequest
 	{
-		internal FileShareRequest(SynologyConnection connection) : base(connection, "FileStation/file_share.cgi", "SYNO.FileStation.List")
+		public FileShareRequest(SynologyConnection connection) : base(connection, "FileStation/file_share.cgi", "SYNO.FileStation.List")
 		{
 		}
 

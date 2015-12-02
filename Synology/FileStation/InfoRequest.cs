@@ -9,7 +9,7 @@ namespace Synology.FileStation
 {
 	public class InfoRequest : SynologyRequest
 	{
-		internal InfoRequest(SynologyConnection connection) : base(connection, "FileStation/info.cgi", "SYNO.FileStation.Info")
+		public InfoRequest(SynologyConnection connection) : base(connection, "FileStation/info.cgi", "SYNO.FileStation.Info")
 		{
 		}
 
