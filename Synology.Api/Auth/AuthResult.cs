@@ -1,6 +1,6 @@
 ﻿namespace Synology.Api.Auth
 {
-	public class LoginResult
+	public class AuthResult
 	{
 		public string Sid { get; set; }
 	}

@@ -14,7 +14,7 @@ namespace Synology.Api.Auth
 			_sessionNumber = $"session{rand.Next()}";
 		}
 
-		public ResultData<LoginResult> Login(string username, string password, string otpCode = null, string sessionName = null)
+		public ResultData<AuthResult> Login(string username, string password, string otpCode = null, string sessionName = null, AuthFormat format = AuthFormat.Sid)
 		{
 			_sessionNumber = sessionName ?? _sessionNumber;
 
@@ -23,10 +23,10 @@ namespace Synology.Api.Auth
 				new QueryStringParameter("account", username),
 				new QueryStringParameter("passwd", password),
 				new QueryStringParameter("session", _sessionNumber),
-				new QueryStringParameter("format", "sid")
+				new QueryStringParameter("format", format)
 			};
-				
-			var result = GetData<LoginResult>("login", 4, parameters);
+
+			var result = GetData<AuthResult>("login", 4, parameters);
 
 			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
 			{
