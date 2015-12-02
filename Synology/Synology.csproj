@@ -76,15 +76,11 @@
     <Compile Include="Api\Auth\AuthRequest.cs" />
     <Compile Include="Api\Auth\LoginResult.cs" />
     <Compile Include="Api\Info\InfoRequest.cs" />
-    <Compile Include="Api\Auth\ApiExtension.cs" />
-    <Compile Include="Api\Info\ApiExtension.cs" />
     <Compile Include="DownloadStation\Info\InfoRequest.cs" />
     <Compile Include="DownloadStation\Info\InfoResult.cs" />
-    <Compile Include="DownloadStation\Info\DownloadStationExtension.cs" />
     <Compile Include="DownloadStation\Info\ConfigResult.cs" />
     <Compile Include="DownloadStation\Schedule\ScheduleRequest.cs" />
     <Compile Include="DownloadStation\Schedule\ScheduleResult.cs" />
-    <Compile Include="DownloadStation\Schedule\DownloadStationExtension.cs" />
     <Compile Include="DownloadStation\Task\TaskAdditionalResult.cs" />
     <Compile Include="DownloadStation\Task\TaskDetailResult.cs" />
     <Compile Include="DownloadStation\Task\TaskFileResult.cs" />
@@ -96,7 +92,11 @@
     <Compile Include="DownloadStation\Task\TaskStatusExtraResult.cs" />
     <Compile Include="DownloadStation\Task\TaskTrackerResult.cs" />
     <Compile Include="DownloadStation\Task\TaskTransferResult.cs" />
-    <Compile Include="DownloadStation\Task\DownloadStationExtension.cs" />
+    <Compile Include="Api\Auth\ApiAuthExtension.cs" />
+    <Compile Include="Api\Info\ApiInfoExtension.cs" />
+    <Compile Include="DownloadStation\Schedule\DownloadStationScheduleExtension.cs" />
+    <Compile Include="DownloadStation\Info\DownloadStationInfoExtension.cs" />
+    <Compile Include="DownloadStation\Task\DownloadStationTaskExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

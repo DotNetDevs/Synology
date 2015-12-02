@@ -4,7 +4,7 @@ using Synology.DownloadStation.Schedule;
 
 namespace Synology.DownloadStation
 {
-	public static class DownloadStationExtension
+	public static class DownloadStationScheduleExtension
 	{
 		private static ScheduleRequest _schedule;
 

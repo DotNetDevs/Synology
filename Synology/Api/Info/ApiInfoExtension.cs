@@ -1,10 +1,10 @@
 ﻿using System;
 using Synology;
-using Synology.DownloadStation;
+using Synology.Api.Info;
 
-namespace Synology.Api.Info
+namespace Synology.Api
 {
-	public static class ApiExtension
+	public static class ApiInfoExtension
 	{
 		private static InfoRequest _info;
 

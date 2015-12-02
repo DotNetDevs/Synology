@@ -4,7 +4,7 @@ using Synology.DownloadStation.Info;
 
 namespace Synology.DownloadStation
 {
-	public static class DownloadStationExtension
+	public static class DownloadStationInfoExtension
 	{
 		private static InfoRequest _info;
 

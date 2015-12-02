@@ -4,7 +4,7 @@ using Synology.DownloadStation.Task;
 
 namespace Synology.DownloadStation
 {
-	public static class DownloadStationExtension
+	public static class DownloadStationTaskExtension
 	{
 		private static TaskRequest _task;
 

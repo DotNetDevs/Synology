@@ -1,9 +1,10 @@
 ﻿using System;
 using Synology;
+using Synology.Api.Auth;
 
-namespace Synology.Api.Auth
+namespace Synology.Api
 {
-	public static class ApiExtension
+	public static class ApiAuthExtension
 	{
 		private static AuthRequest _auth;
 
