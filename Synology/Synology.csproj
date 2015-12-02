@@ -43,15 +43,6 @@
     <Compile Include="DownloadStation\DownloadStationApi.cs" />
     <Compile Include="FileStation\FileStationApi.cs" />
     <Compile Include="DownloadStation\SynologyConnectionExtension.cs" />
-    <Compile Include="DownloadStation\TaskAdditionalResult.cs" />
-    <Compile Include="DownloadStation\TaskDetailResult.cs" />
-    <Compile Include="DownloadStation\TaskFileResult.cs" />
-    <Compile Include="DownloadStation\TaskListResult.cs" />
-    <Compile Include="DownloadStation\TaskPeerResult.cs" />
-    <Compile Include="DownloadStation\TaskResult.cs" />
-    <Compile Include="DownloadStation\TaskStatusExtraResult.cs" />
-    <Compile Include="DownloadStation\TaskTrackerResult.cs" />
-    <Compile Include="DownloadStation\TaskTransferResult.cs" />
     <Compile Include="FileStation\InfoRequest.cs" />
     <Compile Include="FileStation\InfoResult.cs" />
     <Compile Include="FileStation\SynologyConnectionExtension.cs" />
@@ -60,10 +51,8 @@
     <Compile Include="Classes\SynologyRequest.cs" />
     <Compile Include="Classes\ResultData.cs" />
     <Compile Include="Classes\ResultError.cs" />
-    <Compile Include="DownloadStation\TaskRequest.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
-    <Compile Include="DownloadStation\TaskMinimalResult.cs" />
     <Compile Include="FileStation\FileShareRequest.cs" />
     <Compile Include="FileStation\ShareListResult.cs" />
     <Compile Include="FileStation\ShareResult.cs" />
@@ -96,6 +85,18 @@
     <Compile Include="DownloadStation\Schedule\ScheduleRequest.cs" />
     <Compile Include="DownloadStation\Schedule\ScheduleResult.cs" />
     <Compile Include="DownloadStation\Schedule\DownloadStationExtension.cs" />
+    <Compile Include="DownloadStation\Task\TaskAdditionalResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskDetailResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskFileResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskListResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskMinimalResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskPeerResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskRequest.cs" />
+    <Compile Include="DownloadStation\Task\TaskResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskStatusExtraResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskTrackerResult.cs" />
+    <Compile Include="DownloadStation\Task\TaskTransferResult.cs" />
+    <Compile Include="DownloadStation\Task\DownloadStationExtension.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -108,5 +109,6 @@
     <Folder Include="Api\Info\" />
     <Folder Include="DownloadStation\Info\" />
     <Folder Include="DownloadStation\Schedule\" />
+    <Folder Include="DownloadStation\Task\" />
   </ItemGroup>
 </Project>

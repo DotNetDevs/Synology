@@ -3,7 +3,7 @@ using Synology.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Synology.DownloadStation
+namespace Synology.DownloadStation.Task
 {
 	public class TaskRequest : SynologyRequest
 	{

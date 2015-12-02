@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Synology.DownloadStation
+namespace Synology.DownloadStation.Task
 {
 	public class TaskDetailResult
 	{

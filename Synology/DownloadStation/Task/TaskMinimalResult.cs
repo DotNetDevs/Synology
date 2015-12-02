@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synology.DownloadStation
+namespace Synology.DownloadStation.Task
 {
 	public class TaskMinimalResult
 	{
