@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Synology.Utilities;
 
-namespace Synology.DownloadStation
+namespace Synology.DownloadStation.Info
 {
 	public class InfoRequest : SynologyRequest
 	{
@@ -12,14 +12,12 @@ namespace Synology.DownloadStation
 
 		public ResultData<InfoResult> Info()
 		{
-			var url = GetApiUrl("getinfo");
-			return Connection.GetDataFromUrl<InfoResult>(url);
+			return GetData<InfoResult>("getinfo");
 		}
 
 		public ResultData<ConfigResult> Config()
 		{
-			var url = GetApiUrl("getconfig", 2);
-			return Connection.GetDataFromUrl<ConfigResult>(url);
+			return GetData<ConfigResult>("getconfig", 2);
 		}
 
 		public ResultData SetConfig(int? kbpsTorrentMaxDownload, int? kbpsTorrentMaxUpload, int? kbpsEmuleMaxDownload, int? kbpsEmuleMaxUpload, int? kbpsNzbMaxDownload, int? kbpsHttpMaxDownload, int? kbpsFtpMaxDownload, bool? emuleEnabled, bool? unzipEnabled, string defaultDestination, string emuleDefaultDestination)
@@ -37,9 +35,8 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("default_destination", defaultDestination),
 				new QueryStringParameter("emule_default_destination", emuleDefaultDestination)
 			};
-
-			var url = GetApiUrl("setserverconfig", 2, additionalParams);
-			return Connection.GetDataFromUrl(url);
+				
+			return GetData("setserverconfig", 2, additionalParams);
 		}
 	}
 }

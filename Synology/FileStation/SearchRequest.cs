@@ -31,8 +31,7 @@ namespace Synology.FileStation
 				new QueryStringParameter("group", group)
 			};
 
-			var url = GetApiUrl("list_share", 1, additionalParams);
-			return Connection.GetDataFromUrl<StartSearchResult>(url);
+			return GetData<StartSearchResult>("list_share", 1, additionalParams);
 		}
 
 		public ResultData<SearchListResult> List(string taskId, int offset = 0, int limit = 0, string sortBy = "name", string sortDirection = "asc", string pattern = null, string fileType = "all", string additional = null)
@@ -48,8 +47,7 @@ namespace Synology.FileStation
 				new QueryStringParameter("sort_direction", sortDirection)
 			};
 
-			var url = GetApiUrl("list", 1, additionalParams);
-			return Connection.GetDataFromUrl<SearchListResult>(url);
+			return GetData<SearchListResult>("list", 1, additionalParams);
 		}
 
 		public ResultData Stop(string[] taskId)
@@ -58,8 +56,7 @@ namespace Synology.FileStation
 				new QueryStringParameter("taskid", taskId)
 			};
 
-			var url = GetApiUrl("stop", 1, additionalParams);
-			return Connection.GetDataFromUrl(url);
+			return GetData("stop", 1, additionalParams);
 		}
 
 		public ResultData Clean(string[] taskId)
@@ -68,8 +65,7 @@ namespace Synology.FileStation
 				new QueryStringParameter("taskid", taskId)
 			};
 
-			var url = GetApiUrl("clean", 1, additionalParams);
-			return Connection.GetDataFromUrl(url);
+			return GetData("clean", 1, additionalParams);
 		}
 	}
 }

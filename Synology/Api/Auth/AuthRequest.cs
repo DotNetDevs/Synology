@@ -2,7 +2,7 @@
 using Synology.Classes;
 using Synology.Utilities;
 
-namespace Synology.Api
+namespace Synology.Api.Auth
 {
 	public class AuthRequest : SynologyRequest
 	{
@@ -25,9 +25,8 @@ namespace Synology.Api
 				new QueryStringParameter("session", _sessionNumber),
 				new QueryStringParameter("format", "sid")
 			};
-
-			var url = GetApiUrl("login", 4, parameters);
-			var result = Connection.GetDataFromUrl<LoginResult>(url);
+				
+			var result = GetData<LoginResult>("login", 4, parameters);
 
 			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
 			{
@@ -43,8 +42,7 @@ namespace Synology.Api
 				new QueryStringParameter("session", _sessionNumber),
 			};
 
-			var url = GetApiUrl("logout", 1, parameters);
-			var result = Connection.GetDataFromUrl(url);
+			var result = GetData("logout", 1, parameters);
 
 			if (result.Success)
 			{

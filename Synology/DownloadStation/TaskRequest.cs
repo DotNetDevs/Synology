@@ -18,9 +18,8 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("limit", limit),
 				new QueryStringParameter("additional", additional)
 			};
-			var url = GetApiUrl("list", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<TaskListResult>(url);
+			return GetData<TaskListResult>("list", 1, additionalParams);
 		}
 
 		public ResultData<IEnumerable<TaskResult>> Info(string[] ids, string additional = null)
@@ -29,9 +28,8 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("id", ids),
 				new QueryStringParameter("additional", additional)
 			};
-			var url = GetApiUrl("getinfo", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<IEnumerable<TaskResult>>(url);
+			return GetData<IEnumerable<TaskResult>>("getinfo", 1, additionalParams);
 		}
 
 		public ResultData Create(string uri, string file, string username, string password, string unzipPassword, string destination)
@@ -45,9 +43,7 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("destination", destination),
 			};
 
-			var url = GetApiUrl("create", 3, additionalParams);
-
-			return Connection.GetDataFromUrl(url);
+			return GetData("create", 3, additionalParams);
 		}
 
 		public ResultData<IEnumerable<TaskMinimalResult>> Delete(string[] ids, bool forceComplete)
@@ -56,9 +52,8 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("id", ids),
 				new QueryStringParameter("force_complete", forceComplete)
 			};
-			var url = GetApiUrl("delete", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
+			return GetData<IEnumerable<TaskMinimalResult>>("delete", 1, additionalParams);
 		}
 
 		public ResultData<IEnumerable<TaskMinimalResult>> Pause(string[] ids)
@@ -66,9 +61,8 @@ namespace Synology.DownloadStation
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids)
 			};
-			var url = GetApiUrl("pause", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
+			return GetData<IEnumerable<TaskMinimalResult>>("pause", 1, additionalParams);
 		}
 
 		public ResultData<IEnumerable<TaskMinimalResult>> Resume(string[] ids)
@@ -76,9 +70,8 @@ namespace Synology.DownloadStation
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
 			};
-			var url = GetApiUrl("resume", 1, additionalParams);
 
-			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
+			return GetData<IEnumerable<TaskMinimalResult>>("resume", 1, additionalParams);
 		}
 
 		public ResultData<IEnumerable<TaskMinimalResult>> Edit(string[] ids, string destination = null)
@@ -88,9 +81,7 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("destination", destination)
 			};
 
-			var url = GetApiUrl("edit", 1, additionalParams);
-
-			return Connection.GetDataFromUrl<IEnumerable<TaskMinimalResult>>(url);
+			return GetData<IEnumerable<TaskMinimalResult>>("edit", 1, additionalParams);
 		}
 	}
 }

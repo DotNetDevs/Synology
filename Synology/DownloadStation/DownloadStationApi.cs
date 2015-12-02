@@ -1,4 +1,5 @@
 ﻿using Synology.Classes;
+using Synology.DownloadStation.Info;
 
 namespace Synology.DownloadStation
 {
@@ -10,12 +11,10 @@ namespace Synology.DownloadStation
 			RegisterRequest<InfoRequest>();
 			RegisterRequest<TaskRequest>();
 
-			Schedule = ResolveRequest<ScheduleRequest>();
-			Info = ResolveRequest<InfoRequest>();
-			Task = ResolveRequest<TaskRequest>();
+			Schedule = GetRequest<ScheduleRequest>();
+			Task = GetRequest<TaskRequest>();
 		}
 
-		public InfoRequest Info { get; private set; }
 
 		public ScheduleRequest Schedule { get; private set; }
 

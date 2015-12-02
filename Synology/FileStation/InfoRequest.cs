@@ -15,8 +15,7 @@ namespace Synology.FileStation
 
 		public ResultData<InfoResult> Info()
 		{
-			var url = GetApiUrl("getinfo");
-			return Connection.GetDataFromUrl<InfoResult>(url);
+			return GetData<InfoResult>("getinfo");
 		}
 	}
 }

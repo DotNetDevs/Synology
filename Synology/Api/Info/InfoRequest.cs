@@ -1,7 +1,7 @@
 ﻿using Synology.Classes;
 using Synology.Utilities;
 
-namespace Synology.Api
+namespace Synology.Api.Info
 {
 	public class InfoRequest : SynologyRequest
 	{
@@ -12,8 +12,8 @@ namespace Synology.Api
 		public object Info()
 		{
 			var additionalParams = new QueryStringParameter("query", "all");
-			var url = GetApiUrl("query", 1, additionalParams);
-			return Connection.GetDataFromUrl<object>(url);
+
+			return GetData<object>("query", 1, additionalParams);
 		}
 	}
 }

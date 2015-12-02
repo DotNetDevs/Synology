@@ -9,8 +9,8 @@ namespace Synology.FileStation
 			RegisterRequest<FileShareRequest>();
 			RegisterRequest<InfoRequest>();
 
-			FileShare = ResolveRequest<FileShareRequest>();
-			Info = ResolveRequest<InfoRequest>();
+			FileShare = GetRequest<FileShareRequest>();
+			Info = GetRequest<InfoRequest>();
 		}
 
 		public InfoRequest Info { get; private set; }

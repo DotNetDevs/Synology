@@ -13,8 +13,7 @@ namespace Synology.DownloadStation
 
 		public ResultData<ScheduleResult> Config()
 		{
-			var url = GetApiUrl("getconfig", 1);
-			return Connection.GetDataFromUrl<ScheduleResult>(url);
+			return GetData<ScheduleResult>("getconfig", 1);
 		}
 
 		public ResultData SetConfig(bool? enabled, bool? emuleEnabled)
@@ -24,8 +23,7 @@ namespace Synology.DownloadStation
 				new QueryStringParameter("emule_enabled", emuleEnabled)
 			};
 
-			var url = GetApiUrl("setserverconfig", 1, additionalParams);
-			return Connection.GetDataFromUrl(url);
+			return GetData("setserverconfig", 1, additionalParams);
 		}
 	}
 }

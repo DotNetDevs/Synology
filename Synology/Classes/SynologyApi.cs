@@ -14,7 +14,7 @@ namespace Synology.Classes
 			_connection.RegisterRequest<T>();
 		}
 
-		public T ResolveRequest<T>() where T : SynologyRequest
+		public T GetRequest<T>() where T : SynologyRequest
 		{
 			return _connection.GetRequest<T>();
 		}

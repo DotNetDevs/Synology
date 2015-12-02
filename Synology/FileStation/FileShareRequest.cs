@@ -22,8 +22,7 @@ namespace Synology.FileStation
 				new QueryStringParameter("onlywritable", onlyWritable)
 			};
 
-			var url = GetApiUrl("list_share", 1, additionalParams);
-			return Connection.GetDataFromUrl<ShareListResult>(url);
+			return GetData<ShareListResult>("list_share", 1, additionalParams);
 		}
 
 		public ResultData<FileListResult> List(string folderPath, string pattern = null, string fileType = "all", string gotoPath = null, string additional = null, int offset = 0, int limit = 0, string sortBy = "name", string sortDirection = "asc")
@@ -40,8 +39,7 @@ namespace Synology.FileStation
 				new QueryStringParameter("sort_direction", sortDirection)
 			};
 
-			var url = GetApiUrl("list", 1, additionalParams);
-			return Connection.GetDataFromUrl<FileListResult>(url);
+			return GetData<FileListResult>("list", 1, additionalParams);
 		}
 
 		public ResultData<FileListResult> Info(string path, string additional = null)
@@ -51,8 +49,7 @@ namespace Synology.FileStation
 				new QueryStringParameter("additional", additional)
 			};
 
-			var url = GetApiUrl("getinfo", 1, additionalParams);
-			return Connection.GetDataFromUrl<FileListResult>(url);
+			return GetData<FileListResult>("getinfo", 1, additionalParams);
 		}
 	}
 }

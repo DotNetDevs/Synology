@@ -1,4 +1,6 @@
 using Synology.Classes;
+using Synology.Api.Auth;
+using Synology.Api.Info;
 
 namespace Synology.Api
 {
@@ -8,13 +10,6 @@ namespace Synology.Api
 		{
 			RegisterRequest<AuthRequest>();
 			RegisterRequest<InfoRequest>();
-
-			Auth = ResolveRequest<AuthRequest>();
-			Info = ResolveRequest<InfoRequest>();
 		}
-
-		public AuthRequest Auth { get; private set; }
-
-		public InfoRequest Info { get; private set; }
 	}
 }
