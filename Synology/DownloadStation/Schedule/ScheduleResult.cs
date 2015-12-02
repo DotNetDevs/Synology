@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Synology.DownloadStation
+namespace Synology.DownloadStation.Schedule
 {
 	public class ScheduleResult
 	{
