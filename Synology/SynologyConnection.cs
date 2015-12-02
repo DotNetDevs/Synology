@@ -15,7 +15,7 @@ namespace Synology
 	{
 		private readonly WebClient _client;
 
-		internal string Sid;
+		public string Sid { private get; set; }
 
 		private readonly ContainerBuilder _builder;
 		private readonly IContainer _container;
