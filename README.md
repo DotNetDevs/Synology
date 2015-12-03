@@ -2,7 +2,7 @@
 
 The following code is my test project, you can use it as a guide for now. I will write the documentation, I promise.
 
-```
+```csharp
 using (var syno = new SynologyConnection(LoginData.Url, true))
 {
 	Console.WriteLine("Info");

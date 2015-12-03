@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Synology.Classes;
 
 namespace Synology.Utilities
 {
@@ -25,6 +26,8 @@ namespace Synology.Utilities
 
 		public static string GetEnumDescription(Enum value)
 		{
+			if (value == null) return null;
+
 			var type = value.GetType();
 			var res = value.ToString();
 
