@@ -26,17 +26,29 @@ namespace Synology.Utilities
 		public static string GetEnumDescription(Enum value)
 		{
 			var type = value.GetType();
-			var memInfo = type.GetMember(value.ToString());
+			var res = value.ToString();
 
-			if (memInfo?.Length > 0)
+			if (type.CustomAttributes.Any(t => t.AttributeType == typeof(FlagsAttribute)))
 			{
-				var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+				var members = type.GetMembers();
+				var conversion = members.SelectMany(t => t.GetCustomAttributes(typeof(DescriptionAttribute), false).Select(a => new KeyValuePair<string, string>(t.Name, ((DescriptionAttribute)a).Description))).ToDictionary(t => t.Key, t => t.Value);
 
-				if (attrs?.Length > 0)
-					return ((DescriptionAttribute)attrs[0]).Description;
+				res = string.Join(",", res.Split(',').Select(t => t.Trim()).Select(t => conversion.ContainsKey(t) ? conversion[t] : t));
+			}
+			else
+			{
+				var memInfo = type.GetMember(value.ToString());
+
+				if (memInfo?.Length > 0)
+				{
+					var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+					if (attrs?.Length > 0)
+						res = ((DescriptionAttribute)attrs[0]).Description;
+				}
 			}
 
-			return value.ToString();
+			return res;
 		}
 
 		public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
