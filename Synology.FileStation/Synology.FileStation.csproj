@@ -73,6 +73,13 @@
     <Compile Include="Search\FilePermResult.cs" />
     <Compile Include="Search\FileResult.cs" />
     <Compile Include="Search\FileTimeResult.cs" />
+    <Compile Include="FileShare\FileType.cs" />
+    <Compile Include="FileShare\FileSortType.cs" />
+    <Compile Include="FileShare\FileDetailsType.cs" />
+    <Compile Include="FileShare\FileShareDetailsType.cs" />
+    <Compile Include="Search\FileDetailsType.cs" />
+    <Compile Include="Search\FileSortType.cs" />
+    <Compile Include="Search\FileType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

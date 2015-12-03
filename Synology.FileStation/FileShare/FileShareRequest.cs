@@ -2,6 +2,7 @@
 using Synology.Classes;
 using Synology.Utilities;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Synology.FileStation.FileShare
 {
@@ -11,7 +12,7 @@ namespace Synology.FileStation.FileShare
 		{
 		}
 
-		public ResultData<ShareListResult> ListShare(string additional = null, int offset = 0, int limit = 0, string sortBy = "name", string sortDirection = "asc", bool onlyWritable = false)
+		public ResultData<ShareListResult> ListShare(FileShareDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, bool onlyWritable = false)
 		{
 			var additionalParams = new [] {
 				new QueryStringParameter("additional", additional),
@@ -25,7 +26,7 @@ namespace Synology.FileStation.FileShare
 			return GetData<ShareListResult>("list_share", 1, additionalParams);
 		}
 
-		public ResultData<FileListResult> List(string folderPath, string pattern = null, string fileType = "all", string gotoPath = null, string additional = null, int offset = 0, int limit = 0, string sortBy = "name", string sortDirection = "asc")
+		public ResultData<FileListResult> List(string folderPath, string pattern = null, FileType fileType = FileType.All, string gotoPath = null, FileDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
 		{
 			var additionalParams = new [] {
 				new QueryStringParameter("additional", additional),
@@ -42,7 +43,7 @@ namespace Synology.FileStation.FileShare
 			return GetData<FileListResult>("list", 1, additionalParams);
 		}
 
-		public ResultData<FileListResult> Info(string path, string additional = null)
+		public ResultData<FileListResult> Info(string path, FileDetailsType? additional = null)
 		{
 			var additionalParams = new [] {
 				new QueryStringParameter("path", path),
