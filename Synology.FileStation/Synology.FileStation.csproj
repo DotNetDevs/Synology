@@ -66,6 +66,13 @@
     <Compile Include="Search\StartSearchResult.cs" />
     <Compile Include="FileStationApi.cs" />
     <Compile Include="SynologyConnectionExtension.cs" />
+    <Compile Include="Search\FileAdditionalResult.cs" />
+    <Compile Include="Search\FileListResult.cs" />
+    <Compile Include="Search\FileOwnerResult.cs" />
+    <Compile Include="Search\FilePermAclResult.cs" />
+    <Compile Include="Search\FilePermResult.cs" />
+    <Compile Include="Search\FileResult.cs" />
+    <Compile Include="Search\FileTimeResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

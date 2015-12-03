@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Synology.Utilities
 {
@@ -13,19 +14,33 @@ namespace Synology.Utilities
 		private readonly string _name;
 		private readonly string _value;
 
-		public bool Empty => string.IsNullOrWhiteSpace(_name) || string.IsNullOrWhiteSpace(_value);
-
 		public QueryStringParameter(string name, string value)
 		{
-			if (string.IsNullOrWhiteSpace(value)) return;
+			if (string.IsNullOrWhiteSpace(value))
+				return;
 
 			_name = name;
 			_value = value;
 		}
 
-		public override string ToString()
+		public static string GetEnumDescription(Enum value)
 		{
-			return Empty ? string.Empty : $"{_name}={_value}";
+			var type = value.GetType();
+			var memInfo = type.GetMember(value.ToString());
+
+			if (memInfo?.Length > 0)
+			{
+				var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+				if (attrs?.Length > 0)
+					return ((DescriptionAttribute)attrs[0]).Description;
+			}
+
+			return value.ToString();
+		}
+
+		public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
+		{
 		}
 
 		public QueryStringParameter(string name, int? value) : this(name, value?.ToString())
@@ -82,6 +97,13 @@ namespace Synology.Utilities
 
 		public QueryStringParameter(string name, object value) : this(name, value?.ToString())
 		{
+		}
+
+		public bool Empty => string.IsNullOrWhiteSpace(_name) || string.IsNullOrWhiteSpace(_value);
+
+		public override string ToString()
+		{
+			return Empty ? string.Empty : $"{_name}={_value}";
 		}
 	}
 }

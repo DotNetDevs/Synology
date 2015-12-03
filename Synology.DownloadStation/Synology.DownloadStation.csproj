@@ -60,6 +60,7 @@
     <Compile Include="Task\TaskTransferResult.cs" />
     <Compile Include="DownloadStationApi.cs" />
     <Compile Include="SynologyConnectionDownloadStationExtension.cs" />
+    <Compile Include="Task\TaskDetailsType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
