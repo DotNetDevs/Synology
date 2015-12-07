@@ -22,5 +22,40 @@ namespace Synology.FileStation.Favorite
 
 			return GetData<FavoriteListResult>("list", 1, additionalParams);
 		}
+
+		public ResultData Add(string path, string name, int index = -1)
+		{
+			var additionalParams = new [] {
+				new QueryStringParameter("path", path),
+				new QueryStringParameter("name", name),
+				new QueryStringParameter("index", index)
+			};
+
+			return GetData<FavoriteListResult>("add", 1, additionalParams);
+		}
+
+		public ResultData Delete(string path)
+		{
+			var additionalParams = new [] {
+				new QueryStringParameter("path", path)
+			};
+
+			return GetData<FavoriteListResult>("delete", 1, additionalParams);
+		}
+
+		public ResultData ClearBroken()
+		{
+			return GetData<FavoriteListResult>("clear_broken", 1);
+		}
+
+		public ResultData Edit(string path, string name)
+		{
+			var additionalParams = new [] {
+				new QueryStringParameter("path", path),
+				new QueryStringParameter("name", name)
+			};
+
+			return GetData<FavoriteListResult>("edit", 1, additionalParams);
+		}
 	}
 }
