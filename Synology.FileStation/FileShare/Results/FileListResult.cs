@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Synology.FileStation.FileShare
+namespace Synology.FileStation.FileShare.Results
 {
 	public class FileListResult
 	{

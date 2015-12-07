@@ -1,9 +1,9 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Synology.FileStation.Favorite
+namespace Synology.FileStation.FileShare.Results
 {
-	public class FavoriteOwnerResult
+	public class ShareOwnerResult
 	{
 		public string User { get; set; }
 

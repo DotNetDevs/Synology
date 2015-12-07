@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Synology.FileStation.Favorite
+namespace Synology.FileStation.Favorite.Parameters
 {
 	public enum StatusFilterType
 	{

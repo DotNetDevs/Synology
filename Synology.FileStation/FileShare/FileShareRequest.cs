@@ -3,6 +3,8 @@ using Synology.Classes;
 using Synology.Utilities;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Synology.FileStation.FileShare.Results;
+using Synology.FileStation.FileShare.Parameters;
 
 namespace Synology.FileStation.FileShare
 {

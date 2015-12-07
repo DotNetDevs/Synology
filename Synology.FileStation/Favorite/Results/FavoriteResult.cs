@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Configuration;
 
-namespace Synology.FileStation.Favorite
+namespace Synology.FileStation.Favorite.Results
 {
 	public class FavoriteResult
 	{

@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Synology.FileStation.Favorite
+namespace Synology.FileStation.Favorite.Results
 {
 	public class FavoriteListResult
 	{

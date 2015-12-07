@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Synology.FileStation.FileShare
+namespace Synology.FileStation.FileShare.Parameters
 {
 	public enum FileType
 	{

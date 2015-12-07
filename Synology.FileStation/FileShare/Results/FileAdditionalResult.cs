@@ -4,18 +4,20 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Configuration;
 
-namespace Synology.FileStation.Favorite
+namespace Synology.FileStation.FileShare.Results
 {
-	public class FavoriteAdditionalResult
+	public class FileAdditionalResult
 	{
 		[JsonProperty("real_path")]
 		public string RealPath { get; set; }
 
-		public FavoriteOwnerResult Owner { get; set; }
+		public long Size { get; set; }
 
-		public FavoriteTimeResult Time { get; set; }
+		public FileOwnerResult Owner { get; set; }
 
-		public FavoritePermResult Perm { get; set; }
+		public FileTimeResult Time { get; set; }
+
+		public FilePermResult Perm { get; set; }
 
 		[JsonProperty("mount_point_type")]
 		public string MountPointType { get; set; }
