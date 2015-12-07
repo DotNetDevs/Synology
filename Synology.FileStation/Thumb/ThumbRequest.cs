@@ -7,7 +7,7 @@ namespace Synology.FileStation.Thumb
 {
 	public class ThumbRequest : SynologyRequest
 	{
-		public ThumbRequest(SynologyConnection connection) : base(connection, "FileStation/file_virtual.cgi", "SYNO.FileStation.VirtualFolder")
+		public ThumbRequest(SynologyConnection connection) : base(connection, "FileStation/file_thumb.cgi", "SYNO.FileStation.Thumb")
 		{
 		}
 
