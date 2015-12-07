@@ -54,6 +54,24 @@ namespace Synology.Utilities
 			return res;
 		}
 
+		public static string GetSortDirectionDescription(ListSortDirection? value)
+		{
+			if (value == null)
+				return null;
+
+			if (value == ListSortDirection.Ascending)
+				return "asc";
+			
+			if (value == ListSortDirection.Descending)
+				return "desc";
+
+			return null;
+		}
+
+		public QueryStringParameter(string name, ListSortDirection? value) : this(name, GetSortDirectionDescription(value))
+		{
+		}
+
 		public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
 		{
 		}

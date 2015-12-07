@@ -73,12 +73,45 @@
     <Compile Include="Search\FilePermResult.cs" />
     <Compile Include="Search\FileResult.cs" />
     <Compile Include="Search\FileTimeResult.cs" />
+    <Compile Include="FileShare\FileType.cs" />
+    <Compile Include="FileShare\FileSortType.cs" />
+    <Compile Include="FileShare\FileDetailsType.cs" />
+    <Compile Include="FileShare\FileShareDetailsType.cs" />
+    <Compile Include="Search\FileDetailsType.cs" />
+    <Compile Include="Search\FileSortType.cs" />
+    <Compile Include="Search\FileType.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderRequest.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderType.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderSortType.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderDetailsType.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderListResult.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderOwnerResult.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderResult.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderTimeResult.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderPermResult.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderPermAclResult.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderAdditionalResult.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderVolumeStatusResult.cs" />
+    <Compile Include="VirtualFolder\FileStationVirtualFolderExtension.cs" />
+    <Compile Include="Favorite\FileStationFavoriteExtension.cs" />
+    <Compile Include="Favorite\FavoriteRequest.cs" />
+    <Compile Include="Favorite\FavoriteListResult.cs" />
+    <Compile Include="Favorite\FavoriteResult.cs" />
+    <Compile Include="Favorite\FavoriteAdditionalResult.cs" />
+    <Compile Include="Favorite\FavoriteOwnerResult.cs" />
+    <Compile Include="Favorite\FavoriteDetailsType.cs" />
+    <Compile Include="Favorite\FavoritePermAclResult.cs" />
+    <Compile Include="Favorite\FavoritePermResult.cs" />
+    <Compile Include="Favorite\FavoriteTimeResult.cs" />
+    <Compile Include="Favorite\StatusFilterType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="FileShare\" />
     <Folder Include="Info\" />
     <Folder Include="Search\" />
+    <Folder Include="VirtualFolder\" />
+    <Folder Include="Favorite\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Synology\Synology.csproj">

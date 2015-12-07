@@ -1,7 +1,7 @@
 ﻿using System;
 using Synology.Classes;
 using Synology.Utilities;
-using System.Security.Cryptography.X509Certificates;
+using System.ComponentModel;
 
 namespace Synology.FileStation.Search
 {
@@ -11,7 +11,7 @@ namespace Synology.FileStation.Search
 		{
 		}
 
-		public ResultData<StartSearchResult> Start(string folderPath, bool recursive = true, string pattern = null, string extension = null, string fileType = "all", long? sizeFrom = null, long? sizeTo = null, long? mTimeFrom = null, long? mTimeTo = null, long? crTimeFrom = null, long? crTimeTo = null, long? aTimeFrom = null, long? aTimeTo = null, string owner = null, string group = null)
+		public ResultData<StartSearchResult> Start(string folderPath, bool recursive = true, string pattern = null, string extension = null, FileType fileType = FileType.All, long? sizeFrom = null, long? sizeTo = null, long? mTimeFrom = null, long? mTimeTo = null, long? crTimeFrom = null, long? crTimeTo = null, long? aTimeFrom = null, long? aTimeTo = null, string owner = null, string group = null)
 		{
 			var additionalParams = new [] {
 				new QueryStringParameter("folder_path", folderPath),
@@ -34,7 +34,7 @@ namespace Synology.FileStation.Search
 			return GetData<StartSearchResult>("list_share", 1, additionalParams);
 		}
 
-		public ResultData<SearchListResult> List(string taskId, int offset = 0, int limit = 0, string sortBy = "name", string sortDirection = "asc", string pattern = null, string fileType = "all", string additional = null)
+		public ResultData<SearchListResult> List(string taskId, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, string pattern = null, FileType fileType = FileType.All, FileDetailsType? additional = null)
 		{
 			var additionalParams = new [] {
 				new QueryStringParameter("additional", additional),
