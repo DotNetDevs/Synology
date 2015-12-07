@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using Newtonsoft.Json;
 using Synology.Classes;
 using System.Threading.Tasks;
 using Synology.Utilities;
 using Autofac;
-using Autofac.Core;
-using System.Linq;
 
 namespace Synology
 {
@@ -51,7 +48,7 @@ namespace Synology
 		{
 			var res = default(T);
 
-			if (!_container.TryResolve<T>(out res))
+			if (!_container.TryResolve(out res))
 			{
 				RegisterType<T>();
 
@@ -61,7 +58,7 @@ namespace Synology
 			return res;
 		}
 
-		public T Request<T>() where T : ApiRequest
+		public T Request<T>() where T : SynologyRequest
 		{
 			return ResolveType<T>();
 		}
@@ -86,26 +83,22 @@ namespace Synology
 
 		public ResultData GetDataFromApi(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
 		{
-			var json = _client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams));
-			return JsonConvert.DeserializeObject<ResultData>(json);
+			return JsonConvert.DeserializeObject<ResultData>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
 		}
 
 		public ResultData<T> GetDataFromApi<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
 		{
-			var json = _client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams));
-			return JsonConvert.DeserializeObject<ResultData<T>>(json);
+			return JsonConvert.DeserializeObject<ResultData<T>>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
 		}
 
 		public async Task<ResultData<T>> GetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
 		{
-			var json = await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams));
-			return JsonConvert.DeserializeObject<ResultData<T>>(json);
+			return JsonConvert.DeserializeObject<ResultData<T>>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
 		}
 
 		public async Task<ResultData> GetDataFromApiAsync(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
 		{
-			var json = await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams));
-			return JsonConvert.DeserializeObject<ResultData>(json);
+			return JsonConvert.DeserializeObject<ResultData>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
 		}
 
 		public void Dispose()
