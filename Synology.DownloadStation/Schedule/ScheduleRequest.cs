@@ -1,28 +1,27 @@
-﻿using System;
-using Synology.Classes;
-using Synology.Utilities;
+﻿using Synology.Classes;
+using Synology.DownloadStation.Schedule.Parameters;
+using Synology.DownloadStation.Schedule.Results;
 
 namespace Synology.DownloadStation.Schedule
 {
-	public class ScheduleRequest : SynologyRequest
+	public class ScheduleRequest : DownloadStationRequest
 	{
-		public ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule")
+		public ScheduleRequest(SynologyConnection connection) : base(connection, "schedule.cgi", "Schedule")
 		{
 		}
 
 		public ResultData<ScheduleResult> Config()
 		{
-			return GetData<ScheduleResult>("getconfig", 1);
+			return GetData<ScheduleResult>(new SynologyRequestParameters { Method = "getconfig" });
 		}
 
-		public ResultData SetConfig(bool? enabled, bool? emuleEnabled)
+		public ResultData SetConfig(SetConfigParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("enabled", enabled),
-				new QueryStringParameter("emule_enabled", emuleEnabled)
-			};
-
-			return GetData("setserverconfig", 1, additionalParams);
+			return GetData(new SynologyRequestParameters
+			{
+				Method = "setserverconfig",
+				Additional = parameters
+			});
 		}
 	}
 }

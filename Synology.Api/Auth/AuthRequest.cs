@@ -1,37 +1,32 @@
 ﻿using System;
 using Synology.Classes;
 using Synology.Utilities;
+using Synology.Api.Auth.Parameters;
+using Synology.Api.Auth.Results;
 
 namespace Synology.Api.Auth
 {
-	public class AuthRequest : SynologyRequest
+	public class AuthRequest : MainApiRequest
 	{
 		private string _sessionNumber;
 
-		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
+		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "Auth")
 		{
-			var rand = new Random((int)DateTime.Now.Ticks);
-			_sessionNumber = $"session{rand.Next()}";
 		}
 
-		public ResultData<AuthResult> Login(string username, string password, string otpCode = null, string sessionName = null, AuthFormat format = AuthFormat.Sid)
+		public ResultData<AuthResult> Login(LoginParameters parameters)
 		{
-			_sessionNumber = sessionName ?? _sessionNumber;
+			_sessionNumber = parameters.SessionName;
 
-			var parameters = new[] {
-				new QueryStringParameter("otp_code", otpCode),
-				new QueryStringParameter("account", username),
-				new QueryStringParameter("passwd", password),
-				new QueryStringParameter("session", _sessionNumber),
-				new QueryStringParameter("format", format)
-			};
-
-			var result = GetData<AuthResult>("login", 4, parameters);
+			var result = GetData<AuthResult>(new SynologyRequestParameters
+			{
+				Method = "login",
+				Version = 4,
+				Additional = parameters
+			});
 
 			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
-			{
 				Connection.Sid = result.Data.Sid;
-			}
 
 			return result;
 		}
@@ -42,12 +37,14 @@ namespace Synology.Api.Auth
 				new QueryStringParameter("session", _sessionNumber),
 			};
 
-			var result = GetData("logout", 1, parameters);
+			var result = GetData(new SynologyRequestParameters
+			{
+				Method = "logout",
+				Additional = parameters
+			});
 
 			if (result.Success)
-			{
 				Connection.Sid = null;
-			}
 
 			return result;
 		}

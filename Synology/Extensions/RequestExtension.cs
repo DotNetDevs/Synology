@@ -3,7 +3,7 @@ using Synology.Classes;
 
 namespace Synology.Extensions
 {
-	public static class RequestExtension<T> where T : SynologyRequest
+	public static class RequestExtension<T> where T : ApiRequest
 	{
 		private static T _request;
 

@@ -35,9 +35,11 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\SynologyApi.cs" />
+    <Compile Include="Classes\SynologyRequestParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynologyConnection.cs" />
     <Compile Include="Classes\SynologyRequest.cs" />
@@ -47,6 +49,7 @@
     <Compile Include="Utilities\QueryStringParameter.cs" />
     <Compile Include="Extensions\ApiExtension.cs" />
     <Compile Include="Extensions\RequestExtension.cs" />
+    <Compile Include="Classes\RequestParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -54,7 +57,5 @@
     <None Include="Synology.nuspec" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

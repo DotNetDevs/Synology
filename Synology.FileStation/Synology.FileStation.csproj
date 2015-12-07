@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,88 +36,83 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileStationRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FileShare\FileAdditionalResult.cs" />
-    <Compile Include="FileShare\FileListResult.cs" />
-    <Compile Include="FileShare\FileOwnerResult.cs" />
-    <Compile Include="FileShare\FilePermAclResult.cs" />
-    <Compile Include="FileShare\FilePermResult.cs" />
-    <Compile Include="FileShare\FileResult.cs" />
+    <Compile Include="FileShare\Results\FileAdditionalResult.cs" />
+    <Compile Include="FileShare\Results\FileListResult.cs" />
+    <Compile Include="FileShare\Results\FileOwnerResult.cs" />
+    <Compile Include="FileShare\Results\FilePermAclResult.cs" />
+    <Compile Include="FileShare\Results\FilePermResult.cs" />
+    <Compile Include="FileShare\Results\FileResult.cs" />
     <Compile Include="FileShare\FileShareRequest.cs" />
     <Compile Include="FileShare\FileStationFileShareExtension.cs" />
-    <Compile Include="FileShare\FileTimeResult.cs" />
-    <Compile Include="FileShare\ShareAdditionalResult.cs" />
-    <Compile Include="FileShare\ShareListResult.cs" />
-    <Compile Include="FileShare\ShareOwnerResult.cs" />
-    <Compile Include="FileShare\SharePermAclResult.cs" />
-    <Compile Include="FileShare\SharePermAdvRightResult.cs" />
-    <Compile Include="FileShare\SharePermResult.cs" />
-    <Compile Include="FileShare\ShareResult.cs" />
-    <Compile Include="FileShare\ShareTimeResult.cs" />
-    <Compile Include="FileShare\ShareVolumeStatusResult.cs" />
+    <Compile Include="FileShare\Results\FileTimeResult.cs" />
+    <Compile Include="FileShare\Results\ShareAdditionalResult.cs" />
+    <Compile Include="FileShare\Results\ShareListResult.cs" />
+    <Compile Include="FileShare\Results\ShareOwnerResult.cs" />
+    <Compile Include="FileShare\Results\SharePermAclResult.cs" />
+    <Compile Include="FileShare\Results\SharePermAdvRightResult.cs" />
+    <Compile Include="FileShare\Results\SharePermResult.cs" />
+    <Compile Include="FileShare\Results\ShareResult.cs" />
+    <Compile Include="FileShare\Results\ShareTimeResult.cs" />
+    <Compile Include="FileShare\Results\ShareVolumeStatusResult.cs" />
     <Compile Include="Info\FileStationInfoExtension.cs" />
     <Compile Include="Info\InfoRequest.cs" />
-    <Compile Include="Info\InfoResult.cs" />
+    <Compile Include="Info\Results\InfoResult.cs" />
     <Compile Include="Search\FileStationSearchExtension.cs" />
-    <Compile Include="Search\SearchListResult.cs" />
+    <Compile Include="Search\Results\SearchListResult.cs" />
     <Compile Include="Search\SearchRequest.cs" />
-    <Compile Include="Search\StartSearchResult.cs" />
+    <Compile Include="Search\Results\StartSearchResult.cs" />
     <Compile Include="FileStationApi.cs" />
     <Compile Include="SynologyConnectionExtension.cs" />
-    <Compile Include="Search\FileAdditionalResult.cs" />
-    <Compile Include="Search\FileListResult.cs" />
-    <Compile Include="Search\FileOwnerResult.cs" />
-    <Compile Include="Search\FilePermAclResult.cs" />
-    <Compile Include="Search\FilePermResult.cs" />
-    <Compile Include="Search\FileResult.cs" />
-    <Compile Include="Search\FileTimeResult.cs" />
-    <Compile Include="FileShare\FileType.cs" />
-    <Compile Include="FileShare\FileSortType.cs" />
-    <Compile Include="FileShare\FileDetailsType.cs" />
-    <Compile Include="FileShare\FileShareDetailsType.cs" />
-    <Compile Include="Search\FileDetailsType.cs" />
-    <Compile Include="Search\FileSortType.cs" />
-    <Compile Include="Search\FileType.cs" />
+    <Compile Include="Search\Results\FileAdditionalResult.cs" />
+    <Compile Include="Search\Results\FileListResult.cs" />
+    <Compile Include="Search\Results\FileOwnerResult.cs" />
+    <Compile Include="Search\Results\FilePermAclResult.cs" />
+    <Compile Include="Search\Results\FilePermResult.cs" />
+    <Compile Include="Search\Results\FileResult.cs" />
+    <Compile Include="Search\Results\FileTimeResult.cs" />
+    <Compile Include="FileShare\Parameters\FileType.cs" />
+    <Compile Include="FileShare\Parameters\FileSortType.cs" />
+    <Compile Include="FileShare\Parameters\FileDetailsType.cs" />
+    <Compile Include="FileShare\Parameters\FileShareDetailsType.cs" />
+    <Compile Include="Search\Parameters\FileDetailsType.cs" />
+    <Compile Include="Search\Parameters\FileSortType.cs" />
+    <Compile Include="Search\Parameters\FileType.cs" />
     <Compile Include="VirtualFolder\VirtualFolderRequest.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderType.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderSortType.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderDetailsType.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderListResult.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderOwnerResult.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderResult.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderTimeResult.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderPermResult.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderPermAclResult.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderAdditionalResult.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderVolumeStatusResult.cs" />
+    <Compile Include="VirtualFolder\Parameters\VirtualFolderType.cs" />
+    <Compile Include="VirtualFolder\Parameters\VirtualFolderSortType.cs" />
+    <Compile Include="VirtualFolder\Parameters\VirtualFolderDetailsType.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderListResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderOwnerResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderTimeResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderPermResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderPermAclResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderAdditionalResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderVolumeStatusResult.cs" />
     <Compile Include="VirtualFolder\FileStationVirtualFolderExtension.cs" />
     <Compile Include="Favorite\FileStationFavoriteExtension.cs" />
     <Compile Include="Favorite\FavoriteRequest.cs" />
-    <Compile Include="Favorite\FavoriteListResult.cs" />
-    <Compile Include="Favorite\FavoriteResult.cs" />
-    <Compile Include="Favorite\FavoriteAdditionalResult.cs" />
-    <Compile Include="Favorite\FavoriteOwnerResult.cs" />
-    <Compile Include="Favorite\FavoriteDetailsType.cs" />
-    <Compile Include="Favorite\FavoritePermAclResult.cs" />
-    <Compile Include="Favorite\FavoritePermResult.cs" />
-    <Compile Include="Favorite\FavoriteTimeResult.cs" />
-    <Compile Include="Favorite\StatusFilterType.cs" />
+    <Compile Include="Favorite\Results\FavoriteListResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteAdditionalResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteOwnerResult.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteDetailsType.cs" />
+    <Compile Include="Favorite\Results\FavoritePermAclResult.cs" />
+    <Compile Include="Favorite\Results\FavoritePermResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteTimeResult.cs" />
+    <Compile Include="Favorite\Parameters\StatusFilterType.cs" />
     <Compile Include="Thumb\FileStationFavoriteExtension.cs" />
     <Compile Include="Thumb\ThumbRequest.cs" />
-    <Compile Include="Thumb\ThumbSize.cs" />
-    <Compile Include="Thumb\ThumbRotation.cs" />
+    <Compile Include="Thumb\Parameters\ThumbSize.cs" />
+    <Compile Include="Thumb\Parameters\ThumbRotation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="FileShare\" />
-    <Folder Include="Info\" />
-    <Folder Include="Search\" />
-    <Folder Include="VirtualFolder\" />
-    <Folder Include="Favorite\" />
-    <Folder Include="Thumb\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Synology\Synology.csproj">
       <Project>{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}</Project>

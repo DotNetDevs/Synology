@@ -3,17 +3,23 @@ using Synology.Utilities;
 
 namespace Synology.Api.Info
 {
-	public class InfoRequest : SynologyRequest
+	public class InfoRequest : MainApiRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "SYNO.API.Info")
+		public InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "Info")
 		{
 		}
 
 		public object GetInfo()
 		{
-			var additionalParams = new QueryStringParameter("query", "all");
+			var additionalParams = new[] {
+				new QueryStringParameter("query", "all")
+			};
 
-			return GetData<object>("query", 1, additionalParams);
+			return GetData<object>(new SynologyRequestParameters
+			{
+				Method = "query",
+				Additional = additionalParams
+			});
 		}
 	}
 }

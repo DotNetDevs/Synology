@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,8 +36,10 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainApiRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auth\ApiAuthExtension.cs" />
     <Compile Include="Auth\AuthRequest.cs" />
@@ -45,14 +47,12 @@
     <Compile Include="Info\InfoRequest.cs" />
     <Compile Include="Api.cs" />
     <Compile Include="SynologyConnectionApiExtension.cs" />
-    <Compile Include="Auth\AuthFormat.cs" />
-    <Compile Include="Auth\AuthResult.cs" />
+    <Compile Include="Auth\Parameters\AuthFormat.cs" />
+    <Compile Include="Auth\Results\AuthResult.cs" />
+    <Compile Include="Auth\Parameters\LoginParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Auth\" />
-    <Folder Include="Info\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Synology.Api.nuspec" />

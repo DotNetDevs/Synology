@@ -4,31 +4,37 @@ using System.Threading.Tasks;
 
 namespace Synology.Classes
 {
-	public abstract class SynologyRequest
+	public abstract class ApiRequest
 	{
 		protected readonly SynologyConnection Connection;
 		private readonly string _cgiPath;
 		private readonly string _api;
 
-		protected SynologyRequest(SynologyConnection connection, string cgiPath, string api)
+		protected ApiRequest(SynologyConnection connection, string cgiPath, string api)
 		{
 			Connection = connection;
 			_cgiPath = cgiPath;
-			_api = api;
+			_api = $"SYNO.{api}";
 		}
 
-		protected ResultData<T> GetData<T>(string method, int version = 1, params QueryStringParameter[] additionalParams)
+		protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
 		{
-			var url = Connection.GetApiUrl(_cgiPath, _api, version, method, additionalParams);
-
-			return Connection.GetDataFromUrl<T>(url);
+			return Connection.GetDataFromApi<T>(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
 		}
 
-		protected ResultData GetData(string method, int version = 1, params QueryStringParameter[] additionalParams)
+		protected ResultData GetData(SynologyRequestParameters parameters)
 		{
-			var url = Connection.GetApiUrl(_cgiPath, _api, version, method, additionalParams);
+			return Connection.GetDataFromApi(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
+		}
 
-			return Connection.GetDataFromUrl(url);
+		protected async Task<ResultData<T>> GetDataAsync<T>(SynologyRequestParameters parameters)
+		{
+			return await Connection.GetDataFromApiAsync<T>(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
+		}
+
+		protected async Task<ResultData> GetDataAsync(SynologyRequestParameters parameters)
+		{
+			return await Connection.GetDataFromApiAsync(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
 		}
 	}
 }

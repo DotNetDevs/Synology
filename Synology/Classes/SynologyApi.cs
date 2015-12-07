@@ -9,7 +9,7 @@ namespace Synology.Classes
 			_connection = connection;
 		}
 
-		public T Request<T>() where T : SynologyRequest
+		public T Request<T>() where T : ApiRequest
 		{
 			return _connection.Request<T>();
 		}
