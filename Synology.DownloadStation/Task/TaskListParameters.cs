@@ -1,6 +1,7 @@
 ﻿using System;
 using Synology.Classes;
 using Synology.Utilities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Synology.DownloadStation.Task
 {
@@ -8,9 +9,11 @@ namespace Synology.DownloadStation.Task
 	{
 		public TaskDetailsType? Additional { get; set; }
 
-		public int Offset  { get; set; }
+		[Required]
+		public int Offset { get; set; }
 
-		public int Limit  { get; set; }
+		[Required]
+		public int Limit { get; set; }
 
 		public TaskListParameters()
 		{

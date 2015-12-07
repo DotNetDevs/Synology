@@ -3,19 +3,24 @@ using Synology.Api.Auth;
 using System.Runtime.Serialization;
 using Synology.Classes;
 using Synology.Utilities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Synology.Api.Auth
 {
 	public class LoginParameters : RequestParameters
 	{
+		[Required]
 		public string Username { get; set; }
 
+		[Required]
 		public string Password { get; set; }
 
 		public string OtpCode  { get; set; }
 
+		[Required]
 		public string SessionName  { get; set; }
 
+		[Required]
 		public AuthFormat Format { get; set; }
 
 		public LoginParameters()
