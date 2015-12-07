@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Synology.FileStation.VirtualFolder
+namespace Synology.FileStation.VirtualFolder.Parameters
 {
 	[Flags]
 	public enum VirtualFolderDetailsType

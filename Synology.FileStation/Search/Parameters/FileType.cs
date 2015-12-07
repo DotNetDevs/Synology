@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Synology.FileStation.Search
+namespace Synology.FileStation.Search.Parameters
 {
 	public enum FileType
 	{

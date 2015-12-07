@@ -4,9 +4,9 @@ using Synology.DownloadStation.Info.Parameters;
 
 namespace Synology.DownloadStation.Info
 {
-	public class InfoRequest : SynologyRequest
+	public class InfoRequest : DownloadStationRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "DownloadStation/info.cgi", "SYNO.DownloadStation.Info")
+		public InfoRequest(SynologyConnection connection) : base(connection, "info.cgi", "Info")
 		{
 		}
 

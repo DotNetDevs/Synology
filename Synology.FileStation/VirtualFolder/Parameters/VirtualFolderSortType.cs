@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Synology.FileStation.Search
+namespace Synology.FileStation.VirtualFolder.Parameters
 {
-	public enum FileSortType
+	public enum VirtualFolderSortType
 	{
 		[Description("name")]
 		Name,

@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Synology.FileStation.Info
+namespace Synology.FileStation.Info.Results
 {
 	public class InfoResult
 	{

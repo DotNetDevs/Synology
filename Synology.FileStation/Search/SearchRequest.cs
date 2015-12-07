@@ -2,12 +2,14 @@
 using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel;
+using Synology.FileStation.FileShare.Parameters;
+using Synology.FileStation.Search.Results;
 
 namespace Synology.FileStation.Search
 {
-	public class SearchRequest : SynologyRequest
+	public class SearchRequest : FileStationRequest
 	{
-		public SearchRequest(SynologyConnection connection) : base(connection, "FileStation/file_find.cgi", "SYNO.FileStation.Search")
+		public SearchRequest(SynologyConnection connection) : base(connection, "file_find.cgi", "Search")
 		{
 		}
 

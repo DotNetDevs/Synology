@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Synology.FileStation.Search
+namespace Synology.FileStation.Search.Results
 {
 	public class StartSearchResult
 	{

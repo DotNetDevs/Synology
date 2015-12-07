@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Synology.FileStation.Search
+namespace Synology.FileStation.Search.Results
 {
 	public class FileTimeResult
 	{

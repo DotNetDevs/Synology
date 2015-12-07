@@ -3,9 +3,9 @@ using Synology.Utilities;
 
 namespace Synology.Api.Info
 {
-	public class InfoRequest : SynologyRequest
+	public class InfoRequest : MainApiRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "SYNO.API.Info")
+		public InfoRequest(SynologyConnection connection) : base(connection, "query.cgi", "Info")
 		{
 		}
 

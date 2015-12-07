@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Synology.FileStation.VirtualFolder
+namespace Synology.FileStation.VirtualFolder.Results
 {
 	public class VirtualFolderOwnerResult
 	{

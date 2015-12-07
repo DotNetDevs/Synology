@@ -4,17 +4,17 @@ using System.Threading.Tasks;
 
 namespace Synology.Classes
 {
-	public abstract class SynologyRequest
+	public abstract class ApiRequest
 	{
 		protected readonly SynologyConnection Connection;
 		private readonly string _cgiPath;
 		private readonly string _api;
 
-		protected SynologyRequest(SynologyConnection connection, string cgiPath, string api)
+		protected ApiRequest(SynologyConnection connection, string cgiPath, string api)
 		{
 			Connection = connection;
 			_cgiPath = cgiPath;
-			_api = api;
+			_api = $"SYNO.{api}";
 		}
 
 		protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)

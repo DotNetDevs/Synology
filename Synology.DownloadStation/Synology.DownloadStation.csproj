@@ -39,6 +39,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DownloadStationRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Info\Results\ConfigResult.cs" />
     <Compile Include="Info\DownloadStationInfoExtension.cs" />

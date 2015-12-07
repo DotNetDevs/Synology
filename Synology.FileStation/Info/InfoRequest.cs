@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Synology.Classes;
+using Synology.FileStation.Info.Results;
 
 namespace Synology.FileStation.Info
 {
-	public class InfoRequest : SynologyRequest
+	public class InfoRequest : FileStationRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "FileStation/info.cgi", "SYNO.FileStation.Info")
+		public InfoRequest(SynologyConnection connection) : base(connection, "info.cgi", "Info")
 		{
 		}
 

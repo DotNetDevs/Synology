@@ -2,12 +2,13 @@
 using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel;
+using Synology.FileStation.Thumb.Parameters;
 
 namespace Synology.FileStation.Thumb
 {
-	public class ThumbRequest : SynologyRequest
+	public class ThumbRequest : FileStationRequest
 	{
-		public ThumbRequest(SynologyConnection connection) : base(connection, "FileStation/file_thumb.cgi", "SYNO.FileStation.Thumb")
+		public ThumbRequest(SynologyConnection connection) : base(connection, "file_thumb.cgi", "Thumb")
 		{
 		}
 

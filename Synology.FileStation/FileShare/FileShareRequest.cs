@@ -8,9 +8,9 @@ using Synology.FileStation.FileShare.Parameters;
 
 namespace Synology.FileStation.FileShare
 {
-	public class FileShareRequest : SynologyRequest
+	public class FileShareRequest : FileStationRequest
 	{
-		public FileShareRequest(SynologyConnection connection) : base(connection, "FileStation/file_share.cgi", "SYNO.FileStation.List")
+		public FileShareRequest(SynologyConnection connection) : base(connection, "file_share.cgi", "List")
 		{
 		}
 

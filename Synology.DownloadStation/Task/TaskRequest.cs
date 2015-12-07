@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace Synology.DownloadStation.Task
 {
-	public class TaskRequest : SynologyRequest
+	public class TaskRequest : DownloadStationRequest
 	{
-		public TaskRequest(SynologyConnection connection) : base(connection, "DownloadStation/task.cgi", "SYNO.DownloadStation.Task")
+		public TaskRequest(SynologyConnection connection) : base(connection, "task.cgi", "Task")
 		{
 		}
 

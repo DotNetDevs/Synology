@@ -61,7 +61,7 @@ namespace Synology
 			return res;
 		}
 
-		public T Request<T>() where T : SynologyRequest
+		public T Request<T>() where T : ApiRequest
 		{
 			return ResolveType<T>();
 		}

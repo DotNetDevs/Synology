@@ -7,9 +7,9 @@ using Synology.FileStation.Favorite.Parameters;
 
 namespace Synology.FileStation.Favorite
 {
-	public class FavoriteRequest : SynologyRequest
+	public class FavoriteRequest : FileStationRequest
 	{
-		public FavoriteRequest(SynologyConnection connection) : base(connection, "FileStation/file_favorite.cgi", "SYNO.FileStation.Favorite")
+		public FavoriteRequest(SynologyConnection connection) : base(connection, "file_favorite.cgi", "Favorite")
 		{
 		}
 

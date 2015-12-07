@@ -2,12 +2,14 @@
 using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel;
+using Synology.FileStation.VirtualFolder.Parameters;
+using Synology.FileStation.VirtualFolder.Results;
 
 namespace Synology.FileStation.VirtualFolder
 {
-	public class VirtualFolderRequest : SynologyRequest
+	public class VirtualFolderRequest : FileStationRequest
 	{
-		public VirtualFolderRequest(SynologyConnection connection) : base(connection, "FileStation/file_virtual.cgi", "SYNO.FileStation.VirtualFolder")
+		public VirtualFolderRequest(SynologyConnection connection) : base(connection, "file_virtual.cgi", "VirtualFolder")
 		{
 		}
 

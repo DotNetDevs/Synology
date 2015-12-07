@@ -6,11 +6,11 @@ using Synology.Api.Auth.Results;
 
 namespace Synology.Api.Auth
 {
-	public class AuthRequest : SynologyRequest
+	public class AuthRequest : MainApiRequest
 	{
 		private string _sessionNumber;
 
-		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "SYNO.API.Auth")
+		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "Auth")
 		{
 		}
 

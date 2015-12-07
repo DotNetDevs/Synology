@@ -4,9 +4,9 @@ using Synology.DownloadStation.Schedule.Results;
 
 namespace Synology.DownloadStation.Schedule
 {
-	public class ScheduleRequest : SynologyRequest
+	public class ScheduleRequest : DownloadStationRequest
 	{
-		public ScheduleRequest(SynologyConnection connection) : base(connection, "DownloadStation/schedule.cgi", "SYNO.DownloadStation.Schedule")
+		public ScheduleRequest(SynologyConnection connection) : base(connection, "schedule.cgi", "Schedule")
 		{
 		}
 

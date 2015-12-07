@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Synology.FileStation.Search
+namespace Synology.FileStation.Search.Results
 {
 	public class FileListResult
 	{

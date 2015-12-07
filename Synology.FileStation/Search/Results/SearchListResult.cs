@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Synology.FileStation.Search
+namespace Synology.FileStation.Search.Results
 {
 	public class SearchListResult
 	{

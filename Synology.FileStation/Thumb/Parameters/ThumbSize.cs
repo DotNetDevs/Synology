@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Synology.FileStation.Thumb
+namespace Synology.FileStation.Thumb.Parameters
 {
 	public enum ThumbSize
 	{

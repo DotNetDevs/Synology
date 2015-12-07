@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Configuration;
 
-namespace Synology.FileStation.Search
+namespace Synology.FileStation.Search.Results
 {
 	public class FileResult
 	{

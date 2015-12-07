@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Synology.FileStation.VirtualFolder
+namespace Synology.FileStation.VirtualFolder.Results
 {
 	public class VirtualFolderListResult
 	{

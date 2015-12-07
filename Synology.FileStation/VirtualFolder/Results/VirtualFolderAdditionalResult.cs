@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Configuration;
 
-namespace Synology.FileStation.VirtualFolder
+namespace Synology.FileStation.VirtualFolder.Results
 {
 	public class VirtualFolderAdditionalResult
 	{
