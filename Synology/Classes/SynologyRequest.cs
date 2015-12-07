@@ -30,5 +30,15 @@ namespace Synology.Classes
 
 			return Connection.GetDataFromUrl(url);
 		}
+
+		protected ResultData<T> GetData<T>(string method, int version = 1, RequestParameters parameters = null)
+		{
+			return GetData<T>(method, version, parameters);
+		}
+
+		protected ResultData GetData(string method, int version = 1, RequestParameters parameters = null)
+		{
+			return GetData(method, version, parameters);
+		}
 	}
 }

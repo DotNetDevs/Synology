@@ -15,14 +15,9 @@ namespace Synology.DownloadStation.Schedule
 			return GetData<ScheduleResult>("getconfig", 1);
 		}
 
-		public ResultData SetConfig(bool? enabled, bool? emuleEnabled)
+		public ResultData SetConfig(SetConfigParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("enabled", enabled),
-				new QueryStringParameter("emule_enabled", emuleEnabled)
-			};
-
-			return GetData("setserverconfig", 1, additionalParams);
+			return GetData("setserverconfig", 1, parameters);
 		}
 	}
 }

@@ -11,25 +11,14 @@ namespace Synology.DownloadStation.Task
 		{
 		}
 
-		public ResultData<TaskListResult> List(TaskDetailsType? additional = null, int offset = 0, int limit = -1)
+		public ResultData<TaskListResult> List(TaskListParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("offset", offset),
-				new QueryStringParameter("limit", limit),
-				new QueryStringParameter("additional", additional)
-			};
-
-			return GetData<TaskListResult>("list", 1, additionalParams);
+			return GetData<TaskListResult>("list", 1, parameters);
 		}
 
-		public ResultData<IEnumerable<TaskResult>> Info(string[] ids, TaskDetailsType? additional = null)
+		public ResultData<IEnumerable<TaskResult>> Info(TaskInfoParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("id", ids),
-				new QueryStringParameter("additional", additional)
-			};
-
-			return GetData<IEnumerable<TaskResult>>("getinfo", 1, additionalParams);
+			return GetData<IEnumerable<TaskResult>>("getinfo", 1, parameters);
 		}
 
 		public ResultData Create(string uri, string file, string username, string password, string unzipPassword, string destination)

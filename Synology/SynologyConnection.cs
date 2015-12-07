@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Synology.Utilities;
 using Autofac;
 using Autofac.Core;
+using System.Linq;
 
 namespace Synology
 {

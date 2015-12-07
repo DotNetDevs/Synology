@@ -61,6 +61,10 @@
     <Compile Include="DownloadStationApi.cs" />
     <Compile Include="SynologyConnectionDownloadStationExtension.cs" />
     <Compile Include="Task\TaskDetailsType.cs" />
+    <Compile Include="Info\SetConfigParameters.cs" />
+    <Compile Include="Schedule\SetConfigParameters.cs" />
+    <Compile Include="Task\TaskListParameters.cs" />
+    <Compile Include="Task\TaskInfoParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

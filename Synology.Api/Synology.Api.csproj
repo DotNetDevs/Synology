@@ -47,6 +47,7 @@
     <Compile Include="SynologyConnectionApiExtension.cs" />
     <Compile Include="Auth\AuthFormat.cs" />
     <Compile Include="Auth\AuthResult.cs" />
+    <Compile Include="Auth\LoginParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

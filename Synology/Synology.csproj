@@ -47,6 +47,7 @@
     <Compile Include="Utilities\QueryStringParameter.cs" />
     <Compile Include="Extensions\ApiExtension.cs" />
     <Compile Include="Extensions\RequestExtension.cs" />
+    <Compile Include="Classes\RequestParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
