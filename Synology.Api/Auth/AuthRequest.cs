@@ -16,7 +16,12 @@ namespace Synology.Api.Auth
 		{
 			_sessionNumber = parameters.SessionName;
 
-			var result = GetData<AuthResult>("login", 4, parameters);
+			var result = GetData<AuthResult>(new SynologyRequestParameters
+			{
+				Method = "login",
+				Version = 4,
+				Additional = parameters
+			});
 
 			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
 				Connection.Sid = result.Data.Sid;
@@ -30,7 +35,11 @@ namespace Synology.Api.Auth
 				new QueryStringParameter("session", _sessionNumber),
 			};
 
-			var result = GetData("logout", 1, parameters);
+			var result = GetData(new SynologyRequestParameters
+			{
+				Method = "logout",
+				Additional = parameters
+			});
 
 			if (result.Success)
 				Connection.Sid = null;

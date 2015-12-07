@@ -13,7 +13,7 @@ namespace Synology.FileStation.VirtualFolder
 
 		public ResultData<VirtualFolderListResult> List(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
 		{
-			var additionalParams = new [] {
+			var additionalParams = new[] {
 				new QueryStringParameter("type", type),
 				new QueryStringParameter("offset", offset),
 				new QueryStringParameter("limit", limit),
@@ -22,7 +22,11 @@ namespace Synology.FileStation.VirtualFolder
 				new QueryStringParameter("additional", additional)
 			};
 
-			return GetData<VirtualFolderListResult>("list", 1, additionalParams);
+			return GetData<VirtualFolderListResult>(new SynologyRequestParameters
+			{
+				Method = "list",
+				Additional = additionalParams
+			});
 		}
 	}
 }

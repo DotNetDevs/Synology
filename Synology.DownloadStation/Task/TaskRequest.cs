@@ -13,64 +13,74 @@ namespace Synology.DownloadStation.Task
 
 		public ResultData<TaskListResult> List(TaskListParameters parameters)
 		{
-			return GetData<TaskListResult>("list", 1, parameters);
+			return GetData<TaskListResult>(new SynologyRequestParameters
+			{
+				Method = "list",
+				Additional = parameters
+			});
 		}
 
 		public ResultData<IEnumerable<TaskResult>> Info(TaskInfoParameters parameters)
 		{
-			return GetData<IEnumerable<TaskResult>>("getinfo", 1, parameters);
+			return GetData<IEnumerable<TaskResult>>(new SynologyRequestParameters
+			{
+				Method = "getinfo",
+				Additional = parameters
+			});
 		}
 
-		public ResultData Create(string uri, string file, string username, string password, string unzipPassword, string destination)
+		public ResultData Create(TaskCreateParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("uri", uri),
-				new QueryStringParameter("file", file),
-				new QueryStringParameter("username", username),
-				new QueryStringParameter("password", password),
-				new QueryStringParameter("unzip_password", unzipPassword),
-				new QueryStringParameter("destination", destination),
-			};
-
-			return GetData("create", 3, additionalParams);
+			return GetData(new SynologyRequestParameters
+			{
+				Method = "create",
+				Version = 3,
+				Additional = parameters
+			});
 		}
 
-		public ResultData<IEnumerable<TaskMinimalResult>> Delete(string[] ids, bool forceComplete)
+		public ResultData<IEnumerable<TaskMinimalResult>> Delete(TaskDeleteParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("id", ids),
-				new QueryStringParameter("force_complete", forceComplete)
-			};
-
-			return GetData<IEnumerable<TaskMinimalResult>>("delete", 1, additionalParams);
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
+			{
+				Method = "delete",
+				Additional = parameters
+			});
 		}
 
-		public ResultData<IEnumerable<TaskMinimalResult>> Pause(string[] ids)
+		public ResultData<IEnumerable<TaskMinimalResult>> Pause(params string[] ids)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids)
 			};
 
-			return GetData<IEnumerable<TaskMinimalResult>>("pause", 1, additionalParams);
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
+			{
+				Method = "pause",
+				Additional = additionalParams
+			});
 		}
 
-		public ResultData<IEnumerable<TaskMinimalResult>> Resume(string[] ids)
+		public ResultData<IEnumerable<TaskMinimalResult>> Resume(params string[] ids)
 		{
 			var additionalParams = new[] {
 				new QueryStringParameter("id", ids),
 			};
 
-			return GetData<IEnumerable<TaskMinimalResult>>("resume", 1, additionalParams);
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
+			{
+				Method = "resume",
+				Additional = additionalParams
+			});
 		}
 
-		public ResultData<IEnumerable<TaskMinimalResult>> Edit(string[] ids, string destination = null)
+		public ResultData<IEnumerable<TaskMinimalResult>> Edit(TaskEditParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("id", ids),
-				new QueryStringParameter("destination", destination)
-			};
-
-			return GetData<IEnumerable<TaskMinimalResult>>("edit", 1, additionalParams);
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
+			{
+				Method = "edit",
+				Additional = parameters
+			});
 		}
 	}
 }

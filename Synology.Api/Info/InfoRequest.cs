@@ -11,9 +11,15 @@ namespace Synology.Api.Info
 
 		public object GetInfo()
 		{
-			var additionalParams = new QueryStringParameter("query", "all");
+			var additionalParams = new[] {
+				new QueryStringParameter("query", "all")
+			};
 
-			return GetData<object>("query", 1, additionalParams);
+			return GetData<object>(new SynologyRequestParameters
+			{
+				Method = "query",
+				Additional = additionalParams
+			});
 		}
 	}
 }

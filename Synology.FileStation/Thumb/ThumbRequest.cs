@@ -13,13 +13,17 @@ namespace Synology.FileStation.Thumb
 
 		public ResultData<byte[]> Get(string path, ThumbSize size = ThumbSize.Small, ThumbRotation rotate = ThumbRotation.Original)
 		{
-			var additionalParams = new [] {
+			var additionalParams = new[] {
 				new QueryStringParameter("path", path),
 				new QueryStringParameter("size", size),
 				new QueryStringParameter("rotate", (int)rotate)
 			};
 
-			return GetData<byte[]>("get", 1, additionalParams);
+			return GetData<byte[]>(new SynologyRequestParameters
+			{
+				Method = "get",
+				Additional = additionalParams
+			});
 		}
 	}
 }

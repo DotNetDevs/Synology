@@ -12,12 +12,16 @@ namespace Synology.DownloadStation.Schedule
 
 		public ResultData<ScheduleResult> Config()
 		{
-			return GetData<ScheduleResult>("getconfig", 1);
+			return GetData<ScheduleResult>(new SynologyRequestParameters { Method = "getconfig" });
 		}
 
 		public ResultData SetConfig(SetConfigParameters parameters)
 		{
-			return GetData("setserverconfig", 1, parameters);
+			return GetData(new SynologyRequestParameters
+			{
+				Method = "setserverconfig",
+				Additional = parameters
+			});
 		}
 	}
 }

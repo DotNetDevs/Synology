@@ -49,7 +49,10 @@
     <Compile Include="Schedule\ScheduleResult.cs" />
     <Compile Include="Task\DownloadStationTaskExtension.cs" />
     <Compile Include="Task\TaskAdditionalResult.cs" />
+    <Compile Include="Task\TaskCreateParameters.cs" />
+    <Compile Include="Task\TaskDeleteParameters.cs" />
     <Compile Include="Task\TaskDetailResult.cs" />
+    <Compile Include="Task\TaskEditParameters.cs" />
     <Compile Include="Task\TaskFileResult.cs" />
     <Compile Include="Task\TaskListResult.cs" />
     <Compile Include="Task\TaskMinimalResult.cs" />

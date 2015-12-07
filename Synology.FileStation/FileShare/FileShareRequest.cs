@@ -14,7 +14,7 @@ namespace Synology.FileStation.FileShare
 
 		public ResultData<ShareListResult> ListShare(FileShareDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, bool onlyWritable = false)
 		{
-			var additionalParams = new [] {
+			var additionalParams = new[] {
 				new QueryStringParameter("additional", additional),
 				new QueryStringParameter("offset", offset),
 				new QueryStringParameter("limit", limit),
@@ -23,12 +23,16 @@ namespace Synology.FileStation.FileShare
 				new QueryStringParameter("onlywritable", onlyWritable)
 			};
 
-			return GetData<ShareListResult>("list_share", 1, additionalParams);
+			return GetData<ShareListResult>(new SynologyRequestParameters
+			{
+				Method = "list_share",
+				Additional = additionalParams
+			});
 		}
 
 		public ResultData<FileListResult> List(string folderPath, string pattern = null, FileType fileType = FileType.All, string gotoPath = null, FileDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
 		{
-			var additionalParams = new [] {
+			var additionalParams = new[] {
 				new QueryStringParameter("additional", additional),
 				new QueryStringParameter("folder_path", folderPath),
 				new QueryStringParameter("offset", offset),
@@ -40,17 +44,25 @@ namespace Synology.FileStation.FileShare
 				new QueryStringParameter("sort_direction", sortDirection)
 			};
 
-			return GetData<FileListResult>("list", 1, additionalParams);
+			return GetData<FileListResult>(new SynologyRequestParameters
+			{
+				Method = "list",
+				Additional = additionalParams
+			});
 		}
 
 		public ResultData<FileListResult> Info(string path, FileDetailsType? additional = null)
 		{
-			var additionalParams = new [] {
+			var additionalParams = new[] {
 				new QueryStringParameter("path", path),
 				new QueryStringParameter("additional", additional)
 			};
 
-			return GetData<FileListResult>("getinfo", 1, additionalParams);
+			return GetData<FileListResult>(new SynologyRequestParameters
+			{
+				Method = "getinfo",
+				Additional = additionalParams
+			});
 		}
 	}
 }

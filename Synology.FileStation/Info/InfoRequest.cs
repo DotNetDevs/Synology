@@ -15,7 +15,7 @@ namespace Synology.FileStation.Info
 
 		public ResultData<InfoResult> GetInfo()
 		{
-			return GetData<InfoResult>("getinfo");
+			return GetData<InfoResult>(new SynologyRequestParameters { Method = "getinfo" });
 		}
 	}
 }

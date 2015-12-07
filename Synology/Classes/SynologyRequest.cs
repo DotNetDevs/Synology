@@ -17,28 +17,24 @@ namespace Synology.Classes
 			_api = api;
 		}
 
-		protected ResultData<T> GetData<T>(string method, int version = 1, params QueryStringParameter[] additionalParams)
+		protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
 		{
-			var url = Connection.GetApiUrl(_cgiPath, _api, version, method, additionalParams);
-
-			return Connection.GetDataFromUrl<T>(url);
+			return Connection.GetDataFromApi<T>(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
 		}
 
-		protected ResultData GetData(string method, int version = 1, params QueryStringParameter[] additionalParams)
+		protected ResultData GetData(SynologyRequestParameters parameters)
 		{
-			var url = Connection.GetApiUrl(_cgiPath, _api, version, method, additionalParams);
-
-			return Connection.GetDataFromUrl(url);
+			return Connection.GetDataFromApi(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
 		}
 
-		protected ResultData<T> GetData<T>(string method, int version = 1, RequestParameters parameters = null)
+		protected async Task<ResultData<T>> GetDataAsync<T>(SynologyRequestParameters parameters)
 		{
-			return GetData<T>(method, version, parameters);
+			return await Connection.GetDataFromApiAsync<T>(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
 		}
 
-		protected ResultData GetData(string method, int version = 1, RequestParameters parameters = null)
+		protected async Task<ResultData> GetDataAsync(SynologyRequestParameters parameters)
 		{
-			return GetData(method, version, parameters);
+			return await Connection.GetDataFromApiAsync(_cgiPath, _api, parameters.Version, parameters.Method, parameters.Additional);
 		}
 	}
 }

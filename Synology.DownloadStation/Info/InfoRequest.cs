@@ -12,17 +12,22 @@ namespace Synology.DownloadStation.Info
 
 		public ResultData<InfoResult> GetInfo()
 		{
-			return GetData<InfoResult>("getinfo");
+			return GetData<InfoResult>(new SynologyRequestParameters { Method = "getinfo" });
 		}
 
 		public ResultData<ConfigResult> Config()
 		{
-			return GetData<ConfigResult>("getconfig", 2);
+			return GetData<ConfigResult>(new SynologyRequestParameters { Method = "getconfig", Version = 2 });
 		}
 
 		public ResultData SetConfig(SetConfigParameters parameters)
 		{
-			return GetData("setserverconfig", 2, parameters);
+			return GetData(new SynologyRequestParameters
+			{
+				Method = "setserverconfig",
+				Version = 2,
+				Additional = parameters
+			});
 		}
 	}
 }
