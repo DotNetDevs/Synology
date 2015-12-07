@@ -93,6 +93,17 @@
     <Compile Include="VirtualFolder\VirtualFolderAdditionalResult.cs" />
     <Compile Include="VirtualFolder\VirtualFolderVolumeStatusResult.cs" />
     <Compile Include="VirtualFolder\FileStationVirtualFolderExtension.cs" />
+    <Compile Include="Favorite\FileStationFavoriteExtension.cs" />
+    <Compile Include="Favorite\FavoriteRequest.cs" />
+    <Compile Include="Favorite\FavoriteListResult.cs" />
+    <Compile Include="Favorite\FavoriteResult.cs" />
+    <Compile Include="Favorite\FavoriteAdditionalResult.cs" />
+    <Compile Include="Favorite\FavoriteOwnerResult.cs" />
+    <Compile Include="Favorite\FavoriteDetailsType.cs" />
+    <Compile Include="Favorite\FavoritePermAclResult.cs" />
+    <Compile Include="Favorite\FavoritePermResult.cs" />
+    <Compile Include="Favorite\FavoriteTimeResult.cs" />
+    <Compile Include="Favorite\StatusFilterType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -100,6 +111,7 @@
     <Folder Include="Info\" />
     <Folder Include="Search\" />
     <Folder Include="VirtualFolder\" />
+    <Folder Include="Favorite\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Synology\Synology.csproj">
