@@ -104,6 +104,10 @@
     <Compile Include="Favorite\FavoritePermResult.cs" />
     <Compile Include="Favorite\FavoriteTimeResult.cs" />
     <Compile Include="Favorite\StatusFilterType.cs" />
+    <Compile Include="Thumb\FileStationFavoriteExtension.cs" />
+    <Compile Include="Thumb\ThumbRequest.cs" />
+    <Compile Include="Thumb\ThumbSize.cs" />
+    <Compile Include="Thumb\ThumbRotation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -112,6 +116,7 @@
     <Folder Include="Search\" />
     <Folder Include="VirtualFolder\" />
     <Folder Include="Favorite\" />
+    <Folder Include="Thumb\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Synology\Synology.csproj">

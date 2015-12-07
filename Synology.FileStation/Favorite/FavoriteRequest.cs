@@ -7,7 +7,7 @@ namespace Synology.FileStation.Favorite
 {
 	public class FavoriteRequest : SynologyRequest
 	{
-		public FavoriteRequest(SynologyConnection connection) : base(connection, "FileStation/file_virtual.cgi", "SYNO.FileStation.VirtualFolder")
+		public FavoriteRequest(SynologyConnection connection) : base(connection, "FileStation/file_favorite.cgi", "SYNO.FileStation.Favorite")
 		{
 		}
 
