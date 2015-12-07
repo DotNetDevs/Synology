@@ -1,4 +1,4 @@
-﻿namespace Synology.Api.Auth
+﻿namespace Synology.Api.Auth.Results
 {
 	public class AuthResult
 	{

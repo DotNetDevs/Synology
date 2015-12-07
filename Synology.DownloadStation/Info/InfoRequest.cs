@@ -1,6 +1,6 @@
 ﻿using Synology.Classes;
-using System.Collections.Generic;
-using Synology.Utilities;
+using Synology.DownloadStation.Info.Results;
+using Synology.DownloadStation.Info.Parameters;
 
 namespace Synology.DownloadStation.Info
 {

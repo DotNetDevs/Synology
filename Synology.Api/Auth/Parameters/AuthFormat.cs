@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using System.ComponentModel;
 
-namespace Synology.Api.Auth
+namespace Synology.Api.Auth.Parameters
 {
 	public enum AuthFormat
 	{

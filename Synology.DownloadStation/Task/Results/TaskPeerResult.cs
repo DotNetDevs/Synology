@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Synology.DownloadStation.Task
+namespace Synology.DownloadStation.Task.Results
 {
 	public class TaskPeerResult
 	{

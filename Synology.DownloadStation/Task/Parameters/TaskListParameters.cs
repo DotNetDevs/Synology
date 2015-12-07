@@ -3,7 +3,7 @@ using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Synology.DownloadStation.Task
+namespace Synology.DownloadStation.Task.Parameters
 {
 	public class TaskListParameters : RequestParameters
 	{

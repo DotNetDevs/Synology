@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using Synology.Utilities;
 
-namespace Synology.DownloadStation.Task
+namespace Synology.DownloadStation.Task.Parameters
 {
 	[Flags]
 	public enum TaskDetailsType

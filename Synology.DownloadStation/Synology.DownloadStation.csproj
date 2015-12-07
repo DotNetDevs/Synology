@@ -40,35 +40,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Info\ConfigResult.cs" />
+    <Compile Include="Info\Results\ConfigResult.cs" />
     <Compile Include="Info\DownloadStationInfoExtension.cs" />
     <Compile Include="Info\InfoRequest.cs" />
-    <Compile Include="Info\InfoResult.cs" />
+    <Compile Include="Info\Results\InfoResult.cs" />
     <Compile Include="Schedule\DownloadStationScheduleExtension.cs" />
     <Compile Include="Schedule\ScheduleRequest.cs" />
-    <Compile Include="Schedule\ScheduleResult.cs" />
+    <Compile Include="Schedule\Results\ScheduleResult.cs" />
     <Compile Include="Task\DownloadStationTaskExtension.cs" />
-    <Compile Include="Task\TaskAdditionalResult.cs" />
-    <Compile Include="Task\TaskCreateParameters.cs" />
-    <Compile Include="Task\TaskDeleteParameters.cs" />
-    <Compile Include="Task\TaskDetailResult.cs" />
-    <Compile Include="Task\TaskEditParameters.cs" />
-    <Compile Include="Task\TaskFileResult.cs" />
-    <Compile Include="Task\TaskListResult.cs" />
-    <Compile Include="Task\TaskMinimalResult.cs" />
-    <Compile Include="Task\TaskPeerResult.cs" />
+    <Compile Include="Task\Results\TaskAdditionalResult.cs" />
+    <Compile Include="Task\Parameters\TaskCreateParameters.cs" />
+    <Compile Include="Task\Parameters\TaskDeleteParameters.cs" />
+    <Compile Include="Task\Results\TaskDetailResult.cs" />
+    <Compile Include="Task\Parameters\TaskEditParameters.cs" />
+    <Compile Include="Task\Results\TaskFileResult.cs" />
+    <Compile Include="Task\Results\TaskListResult.cs" />
+    <Compile Include="Task\Results\TaskMinimalResult.cs" />
+    <Compile Include="Task\Results\TaskPeerResult.cs" />
     <Compile Include="Task\TaskRequest.cs" />
-    <Compile Include="Task\TaskResult.cs" />
-    <Compile Include="Task\TaskStatusExtraResult.cs" />
-    <Compile Include="Task\TaskTrackerResult.cs" />
-    <Compile Include="Task\TaskTransferResult.cs" />
+    <Compile Include="Task\Results\TaskResult.cs" />
+    <Compile Include="Task\Results\TaskStatusExtraResult.cs" />
+    <Compile Include="Task\Results\TaskTrackerResult.cs" />
+    <Compile Include="Task\Results\TaskTransferResult.cs" />
     <Compile Include="DownloadStationApi.cs" />
     <Compile Include="SynologyConnectionDownloadStationExtension.cs" />
-    <Compile Include="Task\TaskDetailsType.cs" />
-    <Compile Include="Info\SetConfigParameters.cs" />
-    <Compile Include="Schedule\SetConfigParameters.cs" />
-    <Compile Include="Task\TaskListParameters.cs" />
-    <Compile Include="Task\TaskInfoParameters.cs" />
+    <Compile Include="Task\Parameters\TaskDetailsType.cs" />
+    <Compile Include="Info\Parameters\SetConfigParameters.cs" />
+    <Compile Include="Schedule\Parameters\SetConfigParameters.cs" />
+    <Compile Include="Task\Parameters\TaskListParameters.cs" />
+    <Compile Include="Task\Parameters\TaskInfoParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />

@@ -1,4 +1,6 @@
 ﻿using Synology.Classes;
+using Synology.DownloadStation.Task.Parameters;
+using Synology.DownloadStation.Task.Results;
 using Synology.Utilities;
 using System.Collections;
 using System.Collections.Generic;

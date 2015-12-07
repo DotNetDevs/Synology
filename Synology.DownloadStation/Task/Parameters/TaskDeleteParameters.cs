@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Synology.DownloadStation.Task
+namespace Synology.DownloadStation.Task.Parameters
 {
-	public class TaskEditParameters : RequestParameters
+	public class TaskDeleteParameters : RequestParameters
 	{
 		[Required]
 		public string[] Ids { get; set; }
-		public string Destination { get; set; }
-
-		public TaskEditParameters()
-		{
-			Destination = null;
-		}
+		public bool ForceComplete { get; set; }
 
 		public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
@@ -34,7 +29,7 @@ namespace Synology.DownloadStation.Task
 		{
 			return new[] {
 				new QueryStringParameter("id", Ids),
-				new QueryStringParameter("destination", Destination)
+				new QueryStringParameter("force_complete", ForceComplete)
 			};
 		}
 	}

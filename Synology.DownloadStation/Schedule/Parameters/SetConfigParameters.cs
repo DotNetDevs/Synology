@@ -2,7 +2,7 @@
 using Synology.Classes;
 using Synology.Utilities;
 
-namespace Synology.DownloadStation.Schedule
+namespace Synology.DownloadStation.Schedule.Parameters
 {
 	public class SetConfigParameters : RequestParameters
 	{

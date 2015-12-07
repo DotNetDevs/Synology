@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Synology.Utilities;
 
-namespace Synology.DownloadStation.Task
+namespace Synology.DownloadStation.Task.Parameters
 {
 	public class TaskCreateParameters : RequestParameters
 	{

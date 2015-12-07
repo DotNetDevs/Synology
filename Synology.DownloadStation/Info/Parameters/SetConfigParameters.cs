@@ -2,7 +2,7 @@
 using Synology.Classes;
 using Synology.Utilities;
 
-namespace Synology.DownloadStation.Info
+namespace Synology.DownloadStation.Info.Parameters
 {
 	public class SetConfigParameters : RequestParameters
 	{

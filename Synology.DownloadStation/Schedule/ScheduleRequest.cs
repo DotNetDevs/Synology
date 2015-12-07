@@ -1,6 +1,6 @@
-﻿using System;
-using Synology.Classes;
-using Synology.Utilities;
+﻿using Synology.Classes;
+using Synology.DownloadStation.Schedule.Parameters;
+using Synology.DownloadStation.Schedule.Results;
 
 namespace Synology.DownloadStation.Schedule
 {

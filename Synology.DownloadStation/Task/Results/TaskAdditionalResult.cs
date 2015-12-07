@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Synology.DownloadStation.Task
+namespace Synology.DownloadStation.Task.Results
 {
 	public class TaskAdditionalResult
 	{

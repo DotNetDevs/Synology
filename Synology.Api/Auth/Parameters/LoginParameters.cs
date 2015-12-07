@@ -5,7 +5,7 @@ using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Synology.Api.Auth
+namespace Synology.Api.Auth.Parameters
 {
 	public class LoginParameters : RequestParameters
 	{
