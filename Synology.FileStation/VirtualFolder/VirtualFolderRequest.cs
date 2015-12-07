@@ -9,7 +9,7 @@ namespace Synology.FileStation.VirtualFolder
 {
 	public class VirtualFolderRequest : FileStationRequest
 	{
-		public VirtualFolderRequest(SynologyConnection connection) : base(connection, "file_virtual.cgi", "VirtualFolder")
+		public VirtualFolderRequest(SynologyApi api) : base(api, "file_virtual.cgi", "VirtualFolder")
 		{
 		}
 

@@ -2,9 +2,9 @@
 
 namespace Synology.Api
 {
-	public abstract class MainApiRequest : ApiRequest
+	public abstract class MainApiRequest : SynologyRequest
 	{
-		protected MainApiRequest(SynologyConnection connection, string cgiPath, string api) : base(connection, cgiPath, $"API.{api}")
+		protected MainApiRequest(SynologyApi parentApi, string cgiPath, string api) : base(parentApi, cgiPath, $"API.{api}")
 		{
 		}
 	}

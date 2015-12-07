@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Synology.FileStation
 {
-	public abstract class FileStationRequest : ApiRequest
+	public abstract class FileStationRequest : SynologyRequest
 	{
-		protected FileStationRequest(SynologyConnection connection, string cgiPath, string api) : base(connection, $"FileStation/{cgiPath}", $"FileStation.{api}")
+		protected FileStationRequest(SynologyApi parentApi, string cgiPath, string api) : base(parentApi, $"FileStation/{cgiPath}", $"FileStation.{api}")
 		{
 		}
 	}

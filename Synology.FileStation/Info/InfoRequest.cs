@@ -10,7 +10,7 @@ namespace Synology.FileStation.Info
 {
 	public class InfoRequest : FileStationRequest
 	{
-		public InfoRequest(SynologyConnection connection) : base(connection, "info.cgi", "Info")
+		public InfoRequest(SynologyApi api) : base(api, "info.cgi", "Info")
 		{
 		}
 

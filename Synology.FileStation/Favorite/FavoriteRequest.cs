@@ -9,7 +9,7 @@ namespace Synology.FileStation.Favorite
 {
 	public class FavoriteRequest : FileStationRequest
 	{
-		public FavoriteRequest(SynologyConnection connection) : base(connection, "file_favorite.cgi", "Favorite")
+		public FavoriteRequest(SynologyApi api) : base(api, "file_favorite.cgi", "Favorite")
 		{
 		}
 

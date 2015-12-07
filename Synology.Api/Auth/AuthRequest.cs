@@ -10,7 +10,7 @@ namespace Synology.Api.Auth
 	{
 		private string _sessionNumber;
 
-		public AuthRequest(SynologyConnection connection) : base(connection, "auth.cgi", "Auth")
+		public AuthRequest(SynologyApi api) : base(api, "auth.cgi", "Auth")
 		{
 		}
 
@@ -26,7 +26,7 @@ namespace Synology.Api.Auth
 			});
 
 			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
-				Connection.Sid = result.Data.Sid;
+				Api.Connection.Sid = result.Data.Sid;
 
 			return result;
 		}
@@ -44,7 +44,7 @@ namespace Synology.Api.Auth
 			});
 
 			if (result.Success)
-				Connection.Sid = null;
+				Api.Connection.Sid = null;
 
 			return result;
 		}

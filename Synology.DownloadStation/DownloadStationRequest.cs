@@ -2,9 +2,9 @@
 
 namespace Synology.DownloadStation
 {
-	public abstract class DownloadStationRequest : ApiRequest
+	public abstract class DownloadStationRequest : SynologyRequest
 	{
-		protected DownloadStationRequest(SynologyConnection connection, string cgiPath, string api) : base(connection, $"DownloadStation/{cgiPath}", $"DownloadStation.{api}")
+		protected DownloadStationRequest(SynologyApi parentApi, string cgiPath, string api) : base(parentApi, $"DownloadStation/{cgiPath}", $"DownloadStation.{api}")
 		{
 		}
 	}

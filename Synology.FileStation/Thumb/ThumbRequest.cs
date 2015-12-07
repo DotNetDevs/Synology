@@ -8,7 +8,7 @@ namespace Synology.FileStation.Thumb
 {
 	public class ThumbRequest : FileStationRequest
 	{
-		public ThumbRequest(SynologyConnection connection) : base(connection, "file_thumb.cgi", "Thumb")
+		public ThumbRequest(SynologyApi api) : base(api, "file_thumb.cgi", "Thumb")
 		{
 		}
 
