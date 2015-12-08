@@ -11,7 +11,7 @@ namespace Synology.Classes
 			Connection = connection;
 		}
 
-		public T Request<T>() where T : SynologyRequest
+		internal T Request<T>() where T : SynologyRequest
 		{
 			return Connection.Request<T>();
 		}

@@ -13,47 +13,27 @@ namespace Synology.FileStation.Favorite
 		{
 		}
 
-		public ResultData<FavoriteListResult> List(FavoriteDetailsType? additional = null, int offset = 0, int limit = 0, StatusFilterType statusFilter = StatusFilterType.All)
+		public ResultData<FavoriteListResult> List(FavoriteListParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("offset", offset),
-				new QueryStringParameter("limit", limit),
-				new QueryStringParameter("status_filter", statusFilter),
-				new QueryStringParameter("additional", additional)
-			};
-
-			return GetData<FavoriteListResult>(new SynologyRequestParameters
-			{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters {
 				Method = "list",
-				Additional = additionalParams
+				Additional = parameters
 			});
 		}
 
-		public ResultData Add(string path, string name, int index = -1)
+		public ResultData Add(FavoriteAddParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("path", path),
-				new QueryStringParameter("name", name),
-				new QueryStringParameter("index", index)
-			};
-
-			return GetData<FavoriteListResult>(new SynologyRequestParameters
-			{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters {
 				Method = "add",
-				Additional = additionalParams
+				Additional = parameters
 			});
 		}
 
-		public ResultData Delete(string path)
+		public ResultData Delete(FavoriteDeleteParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("path", path)
-			};
-
-			return GetData<FavoriteListResult>(new SynologyRequestParameters
-			{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters {
 				Method = "delete",
-				Additional = additionalParams
+				Additional = parameters
 			});
 		}
 
@@ -62,17 +42,11 @@ namespace Synology.FileStation.Favorite
 			return GetData<FavoriteListResult>(new SynologyRequestParameters { Method = "clear_broken" });
 		}
 
-		public ResultData Edit(string path, string name)
+		public ResultData Edit(FavoriteEditParameters parameters)
 		{
-			var additionalParams = new[] {
-				new QueryStringParameter("path", path),
-				new QueryStringParameter("name", name)
-			};
-
-			return GetData<FavoriteListResult>(new SynologyRequestParameters
-			{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters {
 				Method = "edit",
-				Additional = additionalParams
+				Additional = parameters
 			});
 		}
 	}
