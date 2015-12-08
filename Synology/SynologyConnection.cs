@@ -5,6 +5,7 @@ using Synology.Classes;
 using System.Threading.Tasks;
 using Synology.Utilities;
 using Autofac;
+using System.Collections.Generic;
 
 namespace Synology
 {
@@ -22,8 +23,7 @@ namespace Synology
 			var sslPostfix = ssl ? "s" : string.Empty;
 			var usedPort = ssl ? sslPort : port;
 
-			_client = new WebClient
-			{
+			_client = new WebClient {
 				BaseAddress = $"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"
 			};
 
@@ -58,12 +58,12 @@ namespace Synology
 			return res;
 		}
 
-		public T Request<T>() where T : SynologyRequest
+		internal T Request<T>() where T : SynologyRequest
 		{
 			return ResolveType<T>();
 		}
 
-		public T Api<T>() where T : SynologyApi
+		internal T Api<T>() where T : SynologyApi
 		{
 			return ResolveType<T>();
 		}

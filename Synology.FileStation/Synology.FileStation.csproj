@@ -110,6 +110,10 @@
     <Compile Include="Thumb\ThumbRequest.cs" />
     <Compile Include="Thumb\Parameters\ThumbSize.cs" />
     <Compile Include="Thumb\Parameters\ThumbRotation.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteListParameters.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteAddParameters.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteEditParameters.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteDeleteParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
