@@ -114,6 +114,7 @@
     <Compile Include="Favorite\Parameters\FavoriteAddParameters.cs" />
     <Compile Include="Favorite\Parameters\FavoriteEditParameters.cs" />
     <Compile Include="Favorite\Parameters\FavoriteDeleteParameters.cs" />
+    <Compile Include="Thumb\Parameters\ThumbGetParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
