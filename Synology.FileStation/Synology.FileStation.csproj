@@ -30,13 +30,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileStationRequest.cs" />
@@ -115,6 +115,12 @@
     <Compile Include="Favorite\Parameters\FavoriteEditParameters.cs" />
     <Compile Include="Favorite\Parameters\FavoriteDeleteParameters.cs" />
     <Compile Include="Thumb\Parameters\ThumbGetParameters.cs" />
+    <Compile Include="DirSize\FileStationDirSizeExtension.cs" />
+    <Compile Include="DirSize\DirSizeRequest.cs" />
+    <Compile Include="DirSize\Parameters\DirSizeStartParameters.cs" />
+    <Compile Include="DirSize\Results\DirSizeStartResult.cs" />
+    <Compile Include="DirSize\Results\DirSizeStatusResult.cs" />
+    <Compile Include="DirSize\Parameters\DirSizeStatusParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -127,5 +133,10 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Synology.FileStation.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DirSize\" />
+    <Folder Include="DirSize\Parameters\" />
+    <Folder Include="DirSize\Results\" />
   </ItemGroup>
 </Project>
