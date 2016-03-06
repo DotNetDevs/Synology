@@ -122,6 +122,13 @@
     <Compile Include="DirSize\Results\DirSizeStatusResult.cs" />
     <Compile Include="DirSize\Parameters\DirSizeStatusParameters.cs" />
     <Compile Include="DirSize\Parameters\DirSizeStopParameters.cs" />
+    <Compile Include="MD5\MD5Request.cs" />
+    <Compile Include="MD5\FileStationMD5Extension.cs" />
+    <Compile Include="MD5\Parameters\MD5StartParameters.cs" />
+    <Compile Include="MD5\Parameters\MD5StatusParameters.cs" />
+    <Compile Include="MD5\Parameters\MD5StopParameters.cs" />
+    <Compile Include="MD5\Results\MD5StartResult.cs" />
+    <Compile Include="MD5\Results\MD5StatusResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -139,5 +146,8 @@
     <Folder Include="DirSize\" />
     <Folder Include="DirSize\Parameters\" />
     <Folder Include="DirSize\Results\" />
+    <Folder Include="MD5\" />
+    <Folder Include="MD5\Parameters\" />
+    <Folder Include="MD5\Results\" />
   </ItemGroup>
 </Project>
