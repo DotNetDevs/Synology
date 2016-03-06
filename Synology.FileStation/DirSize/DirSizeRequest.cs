@@ -27,5 +27,14 @@ namespace Synology.FileStation.DirSize
 				Additional = parameters
 			});
 		}
+
+		public ResultData Stop(DirSizeStatusParameters parameters)
+		{
+			return GetData(new SynologyRequestParameters
+			{
+				Method = "stop",
+				Additional = parameters
+			});
+		}
 	}
 }

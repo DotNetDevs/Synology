@@ -121,6 +121,7 @@
     <Compile Include="DirSize\Results\DirSizeStartResult.cs" />
     <Compile Include="DirSize\Results\DirSizeStatusResult.cs" />
     <Compile Include="DirSize\Parameters\DirSizeStatusParameters.cs" />
+    <Compile Include="DirSize\Parameters\DirSizeStopParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
