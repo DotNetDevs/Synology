@@ -106,7 +106,7 @@
     <Compile Include="Favorite\Results\FavoritePermResult.cs" />
     <Compile Include="Favorite\Results\FavoriteTimeResult.cs" />
     <Compile Include="Favorite\Parameters\StatusFilterType.cs" />
-    <Compile Include="Thumb\FileStationFavoriteExtension.cs" />
+    <Compile Include="Thumb\FileStationThumbExtension.cs" />
     <Compile Include="Thumb\ThumbRequest.cs" />
     <Compile Include="Thumb\Parameters\ThumbSize.cs" />
     <Compile Include="Thumb\Parameters\ThumbRotation.cs" />
@@ -129,6 +129,9 @@
     <Compile Include="MD5\Parameters\MD5StopParameters.cs" />
     <Compile Include="MD5\Results\MD5StartResult.cs" />
     <Compile Include="MD5\Results\MD5StatusResult.cs" />
+    <Compile Include="CheckPermission\FileStationCheckPermissionExtension.cs" />
+    <Compile Include="CheckPermission\Parameters\CheckPermissionWriteParameters.cs" />
+    <Compile Include="CheckPermission\CheckPermissionRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
@@ -149,5 +152,6 @@
     <Folder Include="MD5\" />
     <Folder Include="MD5\Parameters\" />
     <Folder Include="MD5\Results\" />
+    <Folder Include="CheckPermission\" />
   </ItemGroup>
 </Project>
