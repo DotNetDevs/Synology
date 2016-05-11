@@ -24,7 +24,8 @@ namespace Synology
 			var sslPostfix = ssl ? "s" : string.Empty;
 			var usedPort = ssl ? sslPort : port;
 
-			_client = new WebClient {
+			_client = new WebClient
+			{
 				BaseAddress = $"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"
 			};
 
@@ -37,23 +38,45 @@ namespace Synology
 			_containerScope = _container.BeginLifetimeScope();
 		}
 
-		private void RegisterType<T>()
+		private void RegisterApi<T>() where T : SynologyApi
 		{
 			var builder = new ContainerBuilder();
 
-			builder.RegisterType<T>();
+			builder.RegisterType<T>().AsSelf().As<SynologyApi>();
 			builder.Update(_container);
 		}
 
-		private T ResolveType<T>() where T : class
+		private void RegisterRequest<T>() where T : SynologyRequest
+		{
+			var builder = new ContainerBuilder();
+
+			builder.RegisterType<T>().AsSelf().As<SynologyRequest>();
+			builder.Update(_container);
+		}
+
+		private T ResolveRequest<T>() where T : SynologyRequest
 		{
 			T res;
 
 			if (!_container.TryResolve(out res))
 			{
-				RegisterType<T>();
+				RegisterRequest<T>();
 
-				return ResolveType<T>();
+				return ResolveRequest<T>();
+			}
+
+			return res;
+		}
+
+		private T ResolveApi<T>() where T : SynologyApi
+		{
+			T res;
+
+			if (!_container.TryResolve(out res))
+			{
+				RegisterApi<T>();
+
+				return ResolveApi<T>();
 			}
 
 			return res;
@@ -61,19 +84,19 @@ namespace Synology
 
 		internal T Request<T>() where T : SynologyRequest
 		{
-			return ResolveType<T>();
+			return ResolveRequest<T>();
 		}
 
 		internal T Api<T>() where T : SynologyApi
 		{
-			return ResolveType<T>();
+			return ResolveApi<T>();
 		}
 
 		private string GetApiUrl(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
 		{
 			var url = new QueryStringManager(cgi);
-				
-			url.AddParameters(additionalParams.Concat(new [] {
+
+			url.AddParameters(additionalParams.Concat(new[] {
 				new  QueryStringParameter("_sid", Sid),
 				new QueryStringParameter("api", api),
 				new QueryStringParameter("version", version),
