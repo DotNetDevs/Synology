@@ -105,7 +105,8 @@ public static void DoConnection(SynologyConnection syno)
 		{
 			DownloadStationTests(syno);
 
-			FileStationTests(syno);
+			//FileStation APIs have some issues with DSM 6
+			//FileStationTests(syno);
 
 			Console.WriteLine("Auth Logout");
 			var resLogout = syno.Api().Auth().Logout();
