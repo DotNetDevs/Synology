@@ -50,6 +50,10 @@
     <Compile Include="Schedule\DownloadStationScheduleExtension.cs" />
     <Compile Include="Schedule\ScheduleRequest.cs" />
     <Compile Include="Schedule\Results\ScheduleResult.cs" />
+    <Compile Include="TaskEx\Parameters\TaskCreateParameters.cs" />
+    <Compile Include="TaskEx\Results\TaskCreateResult.cs" />
+    <Compile Include="TaskEx\TaskRequest.cs" />
+    <Compile Include="TaskEx\TaskRequestExtensions.cs" />
     <Compile Include="Task\DownloadStationTaskExtension.cs" />
     <Compile Include="Task\Results\TaskAdditionalResult.cs" />
     <Compile Include="Task\Parameters\TaskCreateParameters.cs" />
@@ -80,6 +84,10 @@
     <None Include="Synology.DownloadStation.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Synology.FileStation\Synology.FileStation.csproj">
+      <Project>{BFCC3C3D-4D75-4C45-A007-D1F8388FBCCE}</Project>
+      <Name>Synology.FileStation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Synology\Synology.csproj">
       <Project>{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}</Project>
       <Name>Synology</Name>

@@ -84,6 +84,9 @@
     <Compile Include="Search\Parameters\FileDetailsType.cs" />
     <Compile Include="Search\Parameters\FileSortType.cs" />
     <Compile Include="Search\Parameters\FileType.cs" />
+    <Compile Include="Upload\FileStationUploadExtension.cs" />
+    <Compile Include="Upload\Parameters\UploadParameters.cs" />
+    <Compile Include="Upload\UploadRequest.cs" />
     <Compile Include="VirtualFolder\VirtualFolderRequest.cs" />
     <Compile Include="VirtualFolder\Parameters\VirtualFolderType.cs" />
     <Compile Include="VirtualFolder\Parameters\VirtualFolderSortType.cs" />
