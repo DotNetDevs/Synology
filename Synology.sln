@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology", "Synology\Synology.csproj", "{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Yml", "Yml", "{7546B616-9319-4BF6-BB9C-864ADCA98837}"
@@ -14,12 +16,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.DownloadStation", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.FileStation", "Synology.FileStation\Synology.FileStation.csproj", "{BFCC3C3D-4D75-4C45-A007-D1F8388FBCCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.Tests", "Synology.Tests\Synology.Tests.csproj", "{461410D3-5F09-4187-ADFA-E3881E505CB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{12426522-8068-47C7-A704-A9A6726C3C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{12426522-8068-47C7-A704-A9A6726C3C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12426522-8068-47C7-A704-A9A6726C3C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -32,11 +40,12 @@ Global
 		{BFCC3C3D-4D75-4C45-A007-D1F8388FBCCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFCC3C3D-4D75-4C45-A007-D1F8388FBCCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFCC3C3D-4D75-4C45-A007-D1F8388FBCCE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461410D3-5F09-4187-ADFA-E3881E505CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461410D3-5F09-4187-ADFA-E3881E505CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461410D3-5F09-4187-ADFA-E3881E505CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461410D3-5F09-4187-ADFA-E3881E505CB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

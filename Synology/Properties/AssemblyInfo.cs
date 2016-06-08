@@ -24,4 +24,5 @@ using System.Runtime.CompilerServices;
 
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
-
+// Added a Frindly assembly attribute to make some unit tests on internal classes
+[assembly: InternalsVisibleTo("Synology.Tests")]
