@@ -18,7 +18,4 @@
             </group>
         </dependencies>
     </metadata>
-    <files>
-        <file src="bin\$configuration$\$id$.dll" target="lib\$id$.dll" />
-    </files>
 </package>
