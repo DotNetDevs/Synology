@@ -23,7 +23,7 @@ namespace Synology.Classes
             var isValid = Validator.TryValidateObject(parameters, new ValidationContext(parameters, null, null), results, true);
 
             if (isValid)
-                return parameters?.Parameters();
+                return parameters.Parameters();
 
             var message = $"Errors:{Environment.NewLine}{string.Join(Environment.NewLine, results.Select(t => $"{string.Join(",", t.MemberNames)}: {t.ErrorMessage}"))}";
 

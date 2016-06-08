@@ -6,7 +6,6 @@ using Synology.Classes;
 using System.Threading.Tasks;
 using Synology.Utilities;
 using Autofac;
-using System.Net.Http;
 
 namespace Synology
 {
@@ -209,7 +208,7 @@ namespace Synology
         /// <returns>Result of the request</returns>
         internal async Task<ResultData> PostDataFromApiAsync(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
         {
-            Uri uri = GetPostApiUrl(cgi, api, version, method);
+            var uri = GetPostApiUrl(cgi, api, version, method);
 
             var allParameters = new[] {
                 new FormParameter("api", api),
@@ -219,11 +218,11 @@ namespace Synology
 
             using (var content = new FormParameterManager(allParameters))
             {
-                byte[] formContent = await content.ToByteArrayAsync();
+                var formContent = await content.ToByteArrayAsync();
 
                 _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
 
-                byte[] result = await _client.UploadDataTaskAsync(uri, formContent);
+                var result = await _client.UploadDataTaskAsync(uri, formContent);
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
@@ -243,7 +242,7 @@ namespace Synology
         /// <returns>Result of the request and the specific API/Method response</returns>
         internal async Task<ResultData<T>> PostDataFromApiAsync<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
         {
-            Uri uri = GetPostApiUrl(cgi, api, version, method);
+            var uri = GetPostApiUrl(cgi, api, version, method);
 
             var allParameters = new[] {
                 //new FormParameter("_sid", Sid),
@@ -254,11 +253,11 @@ namespace Synology
 
             using (var content = new FormParameterManager(allParameters))
             {
-                byte[] formContent = await content.ToByteArrayAsync();
+                var formContent = await content.ToByteArrayAsync();
 
                 _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
 
-                byte[] result = await _client.UploadDataTaskAsync(uri, formContent);
+                var result = await _client.UploadDataTaskAsync(uri, formContent);
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
@@ -277,7 +276,7 @@ namespace Synology
         /// <returns>Result of the request</returns>
         internal ResultData PostDataFromApi(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
         {
-            Uri uri = GetPostApiUrl(cgi, api, version, method);
+            var uri = GetPostApiUrl(cgi, api, version, method);
 
             var allParameters = new[] {
                 //new FormParameter("_sid", Sid),
@@ -291,11 +290,11 @@ namespace Synology
                 var formContentTask = content.ToByteArrayAsync();
                 formContentTask.Wait();
 
-                byte[] formContent = formContentTask.Result;
+                var formContent = formContentTask.Result;
 
                 _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
 
-                byte[] result = _client.UploadData(uri, formContent);
+                var result = _client.UploadData(uri, formContent);
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
@@ -315,7 +314,7 @@ namespace Synology
         /// <returns>Result of the request and the specific API/Method response</returns>
         internal ResultData<T> PostDataFromApi<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
         {
-            Uri uri = GetPostApiUrl(cgi, api, version, method);
+            var uri = GetPostApiUrl(cgi, api, version, method);
 
             var allParameters = new[] {
                 //new FormParameter("_sid", Sid),
@@ -329,11 +328,11 @@ namespace Synology
                 var formContentTask = content.ToByteArrayAsync();
                 formContentTask.Wait();
 
-                byte[] formContent = formContentTask.Result;
+                var formContent = formContentTask.Result;
 
                 _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
 
-                byte[] result = _client.UploadData(uri, formContent);
+                var result = _client.UploadData(uri, formContent);
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
