@@ -38,15 +38,22 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\PostParameters.cs" />
     <Compile Include="Classes\SynologyApi.cs" />
+    <Compile Include="Classes\SynologyPostParameters.cs" />
     <Compile Include="Classes\SynologyRequestParameters.cs" />
+    <Compile Include="Extensions\SystemExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynologyConnection.cs" />
     <Compile Include="Classes\SynologyRequest.cs" />
     <Compile Include="Classes\ResultData.cs" />
     <Compile Include="Classes\ResultError.cs" />
+    <Compile Include="Utilities\FileFormDataParameter.cs" />
+    <Compile Include="Utilities\FormParameter.cs" />
+    <Compile Include="Utilities\FormParameterManager.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
     <Compile Include="Extensions\ApiExtension.cs" />

@@ -124,7 +124,7 @@ namespace Synology.Utilities
 		{
 		}
 
-		public QueryStringParameter(string name, IEnumerable value, string separator) : this(name, string.Join(separator, value))
+		public QueryStringParameter(string name, IEnumerable value, string separator) : this(name, string.Join(separator, value.Cast<string>()))
 		{
 		}
 
