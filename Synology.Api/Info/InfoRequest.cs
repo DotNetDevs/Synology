@@ -10,7 +10,7 @@ namespace Synology.Api.Info
         {
         }
 
-        public ResultData<Dictionary<string, ApiInfoResult>> GetInfo()
+        public ResultData<Dictionary<string, ApiInfoResult>> Query()
         {
             var additionalParams = new[] {
                 new QueryStringParameter("query", "all")
@@ -23,7 +23,7 @@ namespace Synology.Api.Info
             });
         }
 
-        public ResultData<Dictionary<string, ApiInfoResult>> GetInfo(params string[] apis)
+        public ResultData<Dictionary<string, ApiInfoResult>> Query(params string[] apis)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("query", apis)
