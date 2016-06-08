@@ -1,6 +1,8 @@
-# Synology
+# Synology #
 
-This is a Synology API Wrapper for .NET
+This is a Synology API Wrapper for .NET.
+
+## Pull request will be accepted only if targeting `dev` branch. ##
 
 The following code is my test project, you can use it as a guide for now. I will write the documentation, I promise.
 
