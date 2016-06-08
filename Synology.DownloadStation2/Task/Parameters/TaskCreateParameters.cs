@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using Synology.Utilities;
 
-namespace Synology.DownloadStation.TaskEx.Parameters
+namespace Synology.DownloadStation2.Task.Parameters
 {
     /// <summary>
     /// Parameters of the TaskEx Create method
     /// </summary>
-    public class TaskCreateExParameters : PostParameters
+    public class TaskCreateParameters : PostParameters
     {
         /// <summary>
         /// The file data
@@ -36,18 +36,17 @@ namespace Synology.DownloadStation.TaskEx.Parameters
         /// <returns></returns>
         public override FormParameter[] Parameters()
         {
-            int fileCondition = new Random().Next();
+            var fileCondition = new Random().Next();
 
             var parameters = new List<FormParameter>
             {
                 new FormParameter("file", $"[\"{fileCondition}\"]"),
-                new FormParameter("type", $"\"file\""),
+                new FormParameter("type", "\"file\""),
                 new FormParameter("create_list", $"{CreateList.ToString().ToLowerInvariant()}"),
                 new FormParameter("destination", $"\"{Destination}\""),
+                // From the documentation, the file must always be the last parameter
+                new FileFormDataParameter(fileCondition.ToString(), Filename, File)
             };
-
-            // From the documentation, the file must always be the last parameter
-            parameters.Add(new FileFormDataParameter(fileCondition.ToString(), Filename, File));
 
             return parameters.ToArray();
         }

@@ -8,7 +8,7 @@ namespace Synology.FileStation.CheckPermission
 {
 	public class CheckPermissionRequest : FileStationRequest
 	{
-		public CheckPermissionRequest(SynologyApi api) : base(api, "file_permission.cgi", "CheckPermission")
+		public CheckPermissionRequest(SynologyApi api) : base(api, "CheckPermission")
 		{
 		}
 

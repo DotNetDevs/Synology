@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Synology.Utilities
@@ -12,17 +10,15 @@ namespace Synology.Utilities
     /// </summary>
     internal class FormParameterManager : IDisposable
     {
-        private MultipartFormDataContent content;
+        internal MultipartFormDataContent MultipartContent { get; }
 
-        internal MultipartFormDataContent MultipartContent { get {return content;} }
-
-        public FormParameterManager(FormParameter[] parameters)
+        public FormParameterManager(IEnumerable<FormParameter> parameters)
         {
-            content = new MultipartFormDataContent();
-            
+            MultipartContent = new MultipartFormDataContent();
+
             foreach (var parameter in parameters)
             {
-                if(parameter is FileFormDataParameter)
+                if (parameter is FileFormDataParameter)
                 {
                     /// Convert a <seealso cref="FileFormDataParameter"/> into <seealso cref="ByteArrayContent"/>
                     var fileParameter = (FileFormDataParameter)parameter;
@@ -38,7 +34,7 @@ namespace Synology.Utilities
                     contentData.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
 
                     // Add the ByteArrayContent object to the multipart data content
-                    content.Add(contentData);
+                    MultipartContent.Add(contentData);
                 }
                 else
                 {
@@ -54,7 +50,7 @@ namespace Synology.Utilities
                     contentData.Headers.TryAddWithoutValidation("Content-Disposition", $"form-data; name=\"{parameter.Name}\"");
 
                     // Add the StringContent object to the multipart data content
-                    content.Add(contentData);
+                    MultipartContent.Add(contentData);
                 }
             }
         }
@@ -65,12 +61,12 @@ namespace Synology.Utilities
         /// <returns></returns>
         public async Task<byte[]> ToByteArrayAsync()
         {
-            return await content.ReadAsByteArrayAsync();
+            return await MultipartContent.ReadAsByteArrayAsync();
         }
 
         public void Dispose()
         {
-            ((IDisposable)content).Dispose();
+            MultipartContent.Dispose();
         }
     }
 }

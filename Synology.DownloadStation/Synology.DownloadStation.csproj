@@ -50,10 +50,6 @@
     <Compile Include="Schedule\DownloadStationScheduleExtension.cs" />
     <Compile Include="Schedule\ScheduleRequest.cs" />
     <Compile Include="Schedule\Results\ScheduleResult.cs" />
-    <Compile Include="TaskEx\Parameters\TaskCreateParameters.cs" />
-    <Compile Include="TaskEx\Results\TaskCreateResult.cs" />
-    <Compile Include="TaskEx\TaskRequest.cs" />
-    <Compile Include="TaskEx\TaskRequestExtensions.cs" />
     <Compile Include="Task\DownloadStationTaskExtension.cs" />
     <Compile Include="Task\Results\TaskAdditionalResult.cs" />
     <Compile Include="Task\Parameters\TaskCreateParameters.cs" />

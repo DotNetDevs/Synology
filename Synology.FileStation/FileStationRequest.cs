@@ -9,7 +9,7 @@ namespace Synology.FileStation
 {
 	public abstract class FileStationRequest : SynologyRequest
 	{
-		protected FileStationRequest(SynologyApi parentApi, string cgiPath, string api) : base(parentApi, $"FileStation/{cgiPath}", $"FileStation.{api}")
+		protected FileStationRequest(SynologyApi parentApi, string api) : base(parentApi, "entry.cgi", $"FileStation.{api}")
 		{
 		}
 	}

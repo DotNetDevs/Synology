@@ -1,39 +1,41 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Synology.Attributes;
 
 namespace Synology.Classes
 {
     public abstract class SynologyRequest
-	{
-		public readonly SynologyApi Api;
-		private readonly string _cgiPath;
-		private readonly string _api;
+    {
+        public readonly SynologyApi Api;
+        public readonly string CgiPath;
+        public readonly string ApiName;
 
-		protected SynologyRequest(SynologyApi parentApi, string cgiPath, string api)
-		{
-			Api = parentApi;
-			_cgiPath = cgiPath;
-			_api = $"SYNO.{api}";
-		}
+        protected SynologyRequest(SynologyApi parentApi, string cgiPath, string api)
+        {
+            Api = parentApi;
+            CgiPath = cgiPath;
+            ApiName = $"SYNO.{api}";
+        }
 
-		protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
-		{
-			return Api.GetData<T>(_cgiPath, _api, parameters);
-		}
+        protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
+        {
+            return Api.GetData<T>(CgiPath, ApiName, parameters);
+        }
 
-		protected ResultData GetData(SynologyRequestParameters parameters)
-		{
-			return Api.GetData(_cgiPath, _api, parameters);
-		}
+        protected ResultData GetData(SynologyRequestParameters parameters)
+        {
+            return Api.GetData(CgiPath, ApiName, parameters);
+        }
 
-		protected async Task<ResultData<T>> GetDataAsync<T>(SynologyRequestParameters parameters)
-		{
-			return await Api.GetDataAsync<T>(_cgiPath, _api, parameters);
-		}
+        protected async Task<ResultData<T>> GetDataAsync<T>(SynologyRequestParameters parameters)
+        {
+            return await Api.GetDataAsync<T>(CgiPath, ApiName, parameters);
+        }
 
-		protected async Task<ResultData> GetDataAsync(SynologyRequestParameters parameters)
-		{
-			return await Api.GetDataAsync(_cgiPath, _api, parameters);
-		}
+        protected async Task<ResultData> GetDataAsync(SynologyRequestParameters parameters)
+        {
+            return await Api.GetDataAsync(CgiPath, ApiName, parameters);
+        }
 
         /// <summary>
         /// Performs synchronous post request with specific response
@@ -43,7 +45,7 @@ namespace Synology.Classes
         /// <returns>Specific result data</returns>
         protected ResultData<T> PostData<T>(SynologyPostParameters parameters)
         {
-            return Api.PostData<T>(_cgiPath, _api, parameters);
+            return Api.PostData<T>(CgiPath, ApiName, parameters);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Synology.Classes
         /// <returns>Generic result data</returns>
         protected ResultData PostData(SynologyPostParameters parameters)
         {
-            return Api.PostData(_cgiPath, _api, parameters);
+            return Api.PostData(CgiPath, ApiName, parameters);
         }
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace Synology.Classes
         /// <returns>Specific result data</returns>
         protected async Task<ResultData<T>> PostDataAsync<T>(SynologyPostParameters parameters)
         {
-            return await Api.PostDataAsync<T>(_cgiPath, _api, parameters);
+            return await Api.PostDataAsync<T>(CgiPath, ApiName, parameters);
         }
 
         /// <summary>
@@ -74,7 +76,25 @@ namespace Synology.Classes
         /// <returns>Generic result data</returns>
         protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters)
         {
-            return await Api.PostDataAsync(_cgiPath, _api, parameters);
+            return await Api.PostDataAsync(CgiPath, ApiName, parameters);
+        }
+
+        internal ResultData Method(string name, params object[] parameters)
+        {
+            try
+            {
+
+                var methods = GetType().GetMethods().Where(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(RequestMethodAttribute)));
+
+                foreach (var method in methods)
+                    if (method.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().First().Name == name)
+                        return method.Invoke(this, parameters) as ResultData;
+            }
+            catch
+            {
+            }
+
+            return null;
         }
     }
 }
