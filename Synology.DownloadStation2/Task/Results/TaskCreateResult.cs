@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Synology.DownloadStation.TaskEx.Results
+namespace Synology.DownloadStation2.Task.Results
 {
     public class TaskCreateResult
     {

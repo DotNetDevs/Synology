@@ -1,13 +1,13 @@
 ﻿using Synology.Classes;
-using Synology.DownloadStation.TaskEx.Parameters;
-using Synology.DownloadStation.TaskEx.Results;
+using Synology.DownloadStation2.Task.Parameters;
+using Synology.DownloadStation2.Task.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Synology.DownloadStation.TaskEx
+namespace Synology.DownloadStation2.Task
 {
     /// <summary>
     /// Task (Extended) returning the ids of the downloads.
@@ -26,7 +26,7 @@ namespace Synology.DownloadStation.TaskEx
         /// </summary>
         /// <param name="parameters">Parameters of the request</param>
         /// <returns>The result of the create task operation with task id and list id if requested.</returns>
-        public ResultData<TaskCreateResult> Create(TaskCreateExParameters parameters)
+        public ResultData<TaskCreateResult> Create(TaskCreateParameters parameters)
         {
             return PostData<TaskCreateResult>(new SynologyPostParameters
             {
