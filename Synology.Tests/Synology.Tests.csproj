@@ -59,9 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DownloadStationTests.cs" />
     <Compile Include="QueryStringManagerTests.cs" />
-    <Compile Include="UploadTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,11 +79,6 @@
       <Project>{defd33fe-74da-4938-ad97-5d559b9f0cca}</Project>
       <Name>Synology</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SynologyUploadTestFile.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
