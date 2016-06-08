@@ -41,6 +41,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\GenericParameters.cs" />
     <Compile Include="Classes\PostParameters.cs" />
     <Compile Include="Classes\SynologyApi.cs" />
     <Compile Include="Classes\SynologyPostParameters.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Utilities\FileFormDataParameter.cs" />
     <Compile Include="Utilities\FormParameter.cs" />
     <Compile Include="Utilities\FormParameterManager.cs" />
+    <Compile Include="Utilities\IParameter.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
     <Compile Include="Extensions\ApiExtension.cs" />

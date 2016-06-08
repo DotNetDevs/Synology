@@ -214,7 +214,7 @@ namespace Synology
                 new FormParameter("api", api),
                 new FormParameter("version", version),
                 new FormParameter("method", method)
-            }.Concat(additionalParams).ToArray();
+            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
 
             using (var content = new FormParameterManager(allParameters))
             {
@@ -249,7 +249,7 @@ namespace Synology
                 new FormParameter("api", api),
                 new FormParameter("version", version),
                 new FormParameter("method", method)
-            }.Concat(additionalParams).ToArray();
+            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
 
             using (var content = new FormParameterManager(allParameters))
             {
@@ -283,7 +283,7 @@ namespace Synology
                 new FormParameter("api", api),
                 new FormParameter("version", version),
                 new FormParameter("method", method)
-            }.Concat(additionalParams).ToArray();
+            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
 
             using (var content = new FormParameterManager(allParameters))
             {
@@ -321,7 +321,7 @@ namespace Synology
                 new FormParameter("api", api),
                 new FormParameter("version", version),
                 new FormParameter("method", method)
-            }.Concat(additionalParams).ToArray();
+            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
 
             using (var content = new FormParameterManager(allParameters))
             {
