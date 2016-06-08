@@ -1,6 +1,7 @@
 ﻿using Synology.Classes;
 using Synology.Utilities;
 using System.Collections.Generic;
+using Synology.Attributes;
 
 namespace Synology.Api.Info
 {
@@ -10,6 +11,7 @@ namespace Synology.Api.Info
         {
         }
 
+        [RequestMethod("query")]
         public ResultData<Dictionary<string, ApiInfoResult>> Query()
         {
             var additionalParams = new[] {
@@ -23,6 +25,7 @@ namespace Synology.Api.Info
             });
         }
 
+        [RequestMethod("query")]
         public ResultData<Dictionary<string, ApiInfoResult>> Query(params string[] apis)
         {
             var additionalParams = new[] {

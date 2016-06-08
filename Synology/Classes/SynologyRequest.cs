@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Synology.Attributes;
 
 namespace Synology.Classes
 {
@@ -75,6 +77,24 @@ namespace Synology.Classes
         protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters)
         {
             return await Api.PostDataAsync(CgiPath, ApiName, parameters);
+        }
+
+        internal ResultData Method(string name, params object[] parameters)
+        {
+            try
+            {
+
+                var methods = GetType().GetMethods().Where(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(RequestMethodAttribute)));
+
+                foreach (var method in methods)
+                    if (method.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().First().Name == name)
+                        return method.Invoke(this, parameters) as ResultData;
+            }
+            catch
+            {
+            }
+
+            return null;
         }
     }
 }
