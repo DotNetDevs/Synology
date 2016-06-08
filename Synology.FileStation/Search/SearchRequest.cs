@@ -9,7 +9,7 @@ namespace Synology.FileStation.Search
 {
 	public class SearchRequest : FileStationRequest
 	{
-		public SearchRequest(SynologyApi api) : base(api, "file_find.cgi", "Search")
+		public SearchRequest(SynologyApi api) : base(api, "Search")
 		{
 		}
 

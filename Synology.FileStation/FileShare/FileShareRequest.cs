@@ -10,7 +10,7 @@ namespace Synology.FileStation.FileShare
 {
 	public class FileShareRequest : FileStationRequest
 	{
-		public FileShareRequest(SynologyApi api) : base(api, "file_share.cgi", "List")
+		public FileShareRequest(SynologyApi api) : base(api, "List")
 		{
 		}
 

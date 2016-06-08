@@ -6,7 +6,7 @@ namespace Synology.FileStation.DirSize
 {
 	public class DirSizeRequest : FileStationRequest
 	{
-		public DirSizeRequest(SynologyApi api) : base(api, "file_dirsize.cgi", "DirSize")
+		public DirSizeRequest(SynologyApi api) : base(api, "DirSize")
 		{
 		}
 

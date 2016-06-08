@@ -3,9 +3,9 @@ using Synology.FileStation.Upload.Parameters;
 
 namespace Synology.FileStation.Upload
 {
-    public class UploadRequest : SynologyRequest
+    public class UploadRequest : FileStationRequest
     {
-        public UploadRequest(SynologyApi api) : base(api, "entry.cgi", "FileStation.Upload")
+        public UploadRequest(SynologyApi api) : base(api, "Upload")
         {
         }
 
