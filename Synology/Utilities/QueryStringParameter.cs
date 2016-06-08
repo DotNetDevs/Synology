@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel;
-using Synology.Classes;
 
 namespace Synology.Utilities
 {
@@ -42,11 +39,11 @@ namespace Synology.Utilities
             {
                 var memInfo = type.GetMember(value.ToString());
 
-                if (memInfo?.Length > 0)
+                if (memInfo.Length > 0)
                 {
                     var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-                    if (attrs?.Length > 0)
+                    if (attrs.Length > 0)
                         res = ((DescriptionAttribute)attrs[0]).Description;
                 }
             }
@@ -124,7 +121,15 @@ namespace Synology.Utilities
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable value, string separator) : this(name, string.Join(separator, value.Cast<string>()))
+        public QueryStringParameter(string name, IEnumerable value, string separator) : this(name, string.Join(separator, value))
+        {
+        }
+
+        public QueryStringParameter(string name, IEnumerable<string> value) : this(name, string.Join(",", value.Cast<object>().Select(t => t.ToString())))
+        {
+        }
+
+        public QueryStringParameter(string name, IEnumerable<string> value, string separator) : this(name, string.Join(separator, value))
         {
         }
 
