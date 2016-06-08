@@ -52,8 +52,22 @@ namespace Synology
         private void RegisterRequest<T>() where T : SynologyRequest
         {
             var builder = new ContainerBuilder();
+            string apiName;
+            try
+            {
+                var request = Activator.CreateInstance<T>();
 
-            builder.RegisterType<T>().AsSelf().As<SynologyRequest>();
+                apiName = request.ApiName;
+            }
+            catch (Exception)
+            {
+                apiName = null;
+            }
+
+            if (!string.IsNullOrEmpty(apiName))
+                builder.RegisterType<T>().Named<SynologyRequest>(apiName).Named<T>(apiName).AsSelf().As<SynologyRequest>();
+            else
+                builder.RegisterType<T>().AsSelf().As<SynologyRequest>();
             builder.Update(_container);
         }
 
@@ -71,6 +85,30 @@ namespace Synology
             return res;
         }
 
+        private SynologyRequest ResolveRequest(string name)
+        {
+            object req;
+
+            if (!_container.TryResolveNamed(name, typeof(SynologyRequest), out req))
+            {
+                req = null;
+            }
+
+            return req as SynologyRequest;
+        }
+
+        private T ResolveRequest<T>(string name) where T : SynologyRequest
+        {
+            object req;
+
+            if (!_container.TryResolveNamed(name, typeof(T), out req))
+            {
+                req = null;
+            }
+
+            return req as T;
+        }
+
         private T ResolveApi<T>() where T : SynologyApi
         {
             T res;
@@ -83,6 +121,16 @@ namespace Synology
             }
 
             return res;
+        }
+
+        internal SynologyRequest Request(string name)
+        {
+            return ResolveRequest(name);
+        }
+
+        internal SynologyRequest Request<T>(string name) where T : SynologyRequest
+        {
+            return ResolveRequest<T>(name);
         }
 
         internal T Request<T>() where T : SynologyRequest
@@ -119,7 +167,7 @@ namespace Synology
         /// <param name="version">Version of the api</param>
         /// <param name="method">Method of the API</param>
         /// <returns>The Uri object where the request has to be sent</returns>
-        private Uri GetPostApiUrl(string cgi,string api, int version, string method)
+        private Uri GetPostApiUrl(string cgi, string api, int version, string method)
         {
             var url = new QueryStringManager(cgi);
 
@@ -215,7 +263,7 @@ namespace Synology
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
                 return JsonConvert.DeserializeObject<ResultData<T>>(System.Text.Encoding.Default.GetString(result));
-            }            
+            }
         }
 
         /// <summary>
