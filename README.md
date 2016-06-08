@@ -1,5 +1,7 @@
 # Synology
 
+This is a Synology API Wrapper for .NET
+
 The following code is my test project, you can use it as a guide for now. I will write the documentation, I promise.
 
 ```csharp
@@ -105,7 +107,8 @@ public static void DoConnection(SynologyConnection syno)
 		{
 			DownloadStationTests(syno);
 
-			FileStationTests(syno);
+			//FileStation APIs have some issues with DSM 6
+			//FileStationTests(syno);
 
 			Console.WriteLine("Auth Logout");
 			var resLogout = syno.Api().Auth().Logout();
