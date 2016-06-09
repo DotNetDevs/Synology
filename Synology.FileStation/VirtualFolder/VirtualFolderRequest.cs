@@ -2,6 +2,7 @@
 using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel;
+using Synology.Attributes;
 using Synology.FileStation.VirtualFolder.Parameters;
 using Synology.FileStation.VirtualFolder.Results;
 
@@ -13,6 +14,7 @@ namespace Synology.FileStation.VirtualFolder
         {
         }
 
+        [RequestMethod("list")]
         public ResultData<VirtualFolderListResult> List(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
         {
             var additionalParams = new[] {
@@ -26,7 +28,6 @@ namespace Synology.FileStation.VirtualFolder
 
             return GetData<VirtualFolderListResult>(new SynologyRequestParameters
             {
-                Method = "list",
                 Additional = additionalParams
             });
         }

@@ -12,29 +12,14 @@ namespace Synology.Api.Info
         }
 
         [RequestMethod("query")]
-        public ResultData<Dictionary<string, ApiInfoResult>> Query()
-        {
-            var additionalParams = new[] {
-                new QueryStringParameter("query", "all")
-            };
-
-            return GetData<Dictionary<string, ApiInfoResult>>(new SynologyRequestParameters
-            {
-                Method = "query",
-                Additional = additionalParams
-            });
-        }
-
-        [RequestMethod("query")]
         public ResultData<Dictionary<string, ApiInfoResult>> Query(params string[] apis)
         {
             var additionalParams = new[] {
-                new QueryStringParameter("query", apis)
+                apis?.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
             };
 
             return GetData<Dictionary<string, ApiInfoResult>>(new SynologyRequestParameters
             {
-                Method = "query",
                 Additional = additionalParams
             });
         }

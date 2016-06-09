@@ -21,7 +21,6 @@ namespace Synology.Api.Auth
 
             var result = GetData<AuthResult>(new SynologyRequestParameters
             {
-                Method = "login",
                 Version = 4,
                 Additional = parameters
             });
@@ -41,7 +40,6 @@ namespace Synology.Api.Auth
 
             var result = GetData(new SynologyRequestParameters
             {
-                Method = "logout",
                 Additional = parameters
             });
 

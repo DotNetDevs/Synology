@@ -2,22 +2,24 @@
 using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel;
+using Synology.Attributes;
 using Synology.FileStation.Thumb.Parameters;
 
 namespace Synology.FileStation.Thumb
 {
-	public class ThumbRequest : FileStationRequest
-	{
-		public ThumbRequest(SynologyApi api) : base(api, "Thumb")
-		{
-		}
+    public class ThumbRequest : FileStationRequest
+    {
+        public ThumbRequest(SynologyApi api) : base(api, "Thumb")
+        {
+        }
 
-		public ResultData<byte[]> Get(ThumbGetParameters parameters)
-		{
-			return GetData<byte[]>(new SynologyRequestParameters {
-				Method = "get",
-				Additional = parameters
-			});
-		}
-	}
+        [RequestMethod("get")]
+        public ResultData<byte[]> Get(ThumbGetParameters parameters)
+        {
+            return GetData<byte[]>(new SynologyRequestParameters
+            {
+                Additional = parameters
+            });
+        }
+    }
 }
