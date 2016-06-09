@@ -71,6 +71,10 @@
     <Compile Include="Info\FileStationInfoExtension.cs" />
     <Compile Include="Info\InfoRequest.cs" />
     <Compile Include="Info\Results\InfoResult.cs" />
+    <Compile Include="Rename\FileStationRenameExtension.cs" />
+    <Compile Include="Rename\Parameters\RenameAdditional.cs" />
+    <Compile Include="Rename\Parameters\RenameParameters.cs" />
+    <Compile Include="Rename\RenameRequest.cs" />
     <Compile Include="Search\FileStationSearchExtension.cs" />
     <Compile Include="Search\Results\SearchListResult.cs" />
     <Compile Include="Search\SearchRequest.cs" />

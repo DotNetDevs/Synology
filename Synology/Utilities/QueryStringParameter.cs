@@ -72,7 +72,11 @@ namespace Synology.Utilities
 		{
 		}
 
-		public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
+        public QueryStringParameter(string name, Enum value, bool surroundBrackets) : this(name, surroundBrackets ? "[" + GetEnumDescription(value) + "]" : GetEnumDescription(value))
+        {
+        }
+
+        public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
 		{
 		}
 
@@ -120,15 +124,23 @@ namespace Synology.Utilities
 		{
 		}
 
-		public QueryStringParameter(string name, IEnumerable value) : this(name, value, ",")
+		public QueryStringParameter(string name, IEnumerable value) : this(name, value, ",", false)
 		{
 		}
 
-		public QueryStringParameter(string name, IEnumerable value, string separator) : this(name, string.Join(separator, value.Cast<string>()))
+        public QueryStringParameter(string name, IEnumerable value, bool surroundBrackets) : this(name, value, ",", surroundBrackets)
+        {
+        }
+
+        public QueryStringParameter(string name, IEnumerable value, string separator) : this(name, value, separator, false)
 		{
 		}
 
-		public QueryStringParameter(string name, object value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, IEnumerable value, string separator, bool surroundBrackets) : this(name, surroundBrackets ? "[" +  string.Join(separator, value.Cast<string>()) + "]" : string.Join(separator, value.Cast<string>()))
+        {
+        }
+
+        public QueryStringParameter(string name, object value) : this(name, value?.ToString())
 		{
 		}
 

@@ -67,7 +67,7 @@ namespace Synology.FileStation.CopyMove.Parameters
         {
             return new[]
             {
-                new QueryStringParameter("path", $"({string.Join(",", Path)})"),
+                new QueryStringParameter("path", Path, true),
                 new QueryStringParameter("dest_folder_path", DestinationFolder),
                 new QueryStringParameter("overwrite", Overwrite),
                 new QueryStringParameter("remove_src", Move),
