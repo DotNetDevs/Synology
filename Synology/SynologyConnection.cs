@@ -122,25 +122,13 @@ namespace Synology
             return res;
         }
 
-        internal SynologyRequest Request(string name)
-        {
-            return ResolveRequest(name);
-        }
+        internal SynologyRequest Request(string name) => ResolveRequest(name);
 
-        internal SynologyRequest Request<T>(string name) where T : SynologyRequest
-        {
-            return ResolveRequest<T>(name);
-        }
+        internal SynologyRequest Request<T>(string name) where T : SynologyRequest => ResolveRequest<T>(name);
 
-        internal T Request<T>() where T : SynologyRequest
-        {
-            return ResolveRequest<T>();
-        }
+        internal T Request<T>() where T : SynologyRequest => ResolveRequest<T>();
 
-        internal T Api<T>() where T : SynologyApi
-        {
-            return ResolveApi<T>();
-        }
+        internal T Api<T>() where T : SynologyApi => ResolveApi<T>();
 
         private string GetApiUrl(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
         {
@@ -177,25 +165,13 @@ namespace Synology
             return new Uri(new Uri(_client.BaseAddress), url.ToString());
         }
 
-        internal ResultData GetDataFromApi(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
-        {
-            return JsonConvert.DeserializeObject<ResultData>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
-        }
+        internal ResultData GetDataFromApi(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
 
-        internal ResultData<T> GetDataFromApi<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
-        {
-            return JsonConvert.DeserializeObject<ResultData<T>>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
-        }
+        internal ResultData<T> GetDataFromApi<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData<T>>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
 
-        internal async Task<ResultData<T>> GetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
-        {
-            return JsonConvert.DeserializeObject<ResultData<T>>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
-        }
+        internal async Task<ResultData<T>> GetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData<T>>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
 
-        internal async Task<ResultData> GetDataFromApiAsync(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null)
-        {
-            return JsonConvert.DeserializeObject<ResultData>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
-        }
+        internal async Task<ResultData> GetDataFromApiAsync(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
 
         /// <summary>
         /// Performs an asynchronous post request to the Synology API

@@ -40,6 +40,10 @@ namespace Synology.Utilities
         {
         }
 
+        public FormParameter(string parameterName, long parameterValue) : this(parameterName, parameterValue.ToString())
+        {
+        }
+
         public FormParameter(string parameterName, DateTime parameterValue) : this(parameterName, parameterValue.ToUnixTimeStamp())
         {
         }

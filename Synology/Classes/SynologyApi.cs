@@ -2,24 +2,24 @@ using System.Threading.Tasks;
 
 namespace Synology.Classes
 {
-	public abstract class SynologyApi
-	{
-		public readonly SynologyConnection Connection;
+    public abstract class SynologyApi
+    {
+        public readonly SynologyConnection Connection;
 
-		protected SynologyApi(SynologyConnection connection)
-		{
-			Connection = connection;
-		}
+        protected SynologyApi(SynologyConnection connection)
+        {
+            Connection = connection;
+        }
 
-		internal T Request<T>() where T : SynologyRequest
-		{
-			return Connection.Request<T>();
-		}
+        internal T Request<T>() where T : SynologyRequest
+        {
+            return Connection.Request<T>();
+        }
 
-		public ResultData<T> GetData<T>(string cgiPath, string api, SynologyRequestParameters parameters)
-		{
-			return Connection.GetDataFromApi<T>(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
-		}
+        public ResultData<T> GetData<T>(string cgiPath, string api, SynologyRequestParameters parameters)
+        {
+            return Connection.GetDataFromApi<T>(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
+        }
 
         /// <summary>
         /// Perform post requests returning specific data
@@ -35,9 +35,9 @@ namespace Synology.Classes
         }
 
         public ResultData GetData(string cgiPath, string api, SynologyRequestParameters parameters)
-		{
-			return Connection.GetDataFromApi(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
-		}
+        {
+            return Connection.GetDataFromApi(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
+        }
 
         /// <summary>
         /// Perform post requests returning generic success / error data
@@ -52,9 +52,9 @@ namespace Synology.Classes
         }
 
         public async Task<ResultData<T>> GetDataAsync<T>(string cgiPath, string api, SynologyRequestParameters parameters)
-		{
-			return await Connection.GetDataFromApiAsync<T>(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
-		}
+        {
+            return await Connection.GetDataFromApiAsync<T>(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
+        }
 
         /// <summary>
         /// Perform asynchronous post requests returning specific data
@@ -70,9 +70,9 @@ namespace Synology.Classes
         }
 
         public async Task<ResultData> GetDataAsync(string cgiPath, string api, SynologyRequestParameters parameters)
-		{
-			return await Connection.GetDataFromApiAsync(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
-		}
+        {
+            return await Connection.GetDataFromApiAsync(cgiPath, api, parameters.Version, parameters.Method, parameters.Additional);
+        }
 
         /// <summary>
         /// Perform asynchronous post requests returning generic success / error data

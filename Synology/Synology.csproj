@@ -45,6 +45,7 @@
     <Compile Include="Classes\GenericParameters.cs" />
     <Compile Include="Classes\PostParameters.cs" />
     <Compile Include="Classes\SynologyApi.cs" />
+    <Compile Include="Classes\SynologyParameters.cs" />
     <Compile Include="Classes\SynologyPostParameters.cs" />
     <Compile Include="Classes\SynologyRequestParameters.cs" />
     <Compile Include="Extensions\SystemExtensions.cs" />

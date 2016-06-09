@@ -13,9 +13,9 @@ namespace Synology.Extensions
         /// </summary>
         /// <param name="dateTime">The DateTime to convert</param>
         /// <returns>Unix timestamp</returns>
-        public static int ToUnixTimeStamp(this DateTime dateTime)
+        public static long ToUnixTimeStamp(this DateTime dateTime)
         {
-            return (int)(dateTime.ToUniversalTime().Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            return (long)dateTime.ToUniversalTime().Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         }
     }
 }
