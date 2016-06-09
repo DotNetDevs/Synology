@@ -15,6 +15,16 @@ namespace Synology.Classes
             Api = parentApi;
             CgiPath = cgiPath;
             ApiName = $"SYNO.{api}";
+
+            //TODO: when implementation completes it can be tested here.
+            //LoadInfo();
+        }
+
+        protected void LoadInfo()
+        {
+            Api.Connection.Request("Syno.API.Info").Method("query", ApiName);
+
+            //TODO: Load data from the method above to set the correct cgi and eventually the available version.
         }
 
         protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
