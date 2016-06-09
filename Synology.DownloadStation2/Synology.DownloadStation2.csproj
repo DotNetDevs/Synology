@@ -56,7 +56,7 @@
     <Compile Include="Task\Parameters\TaskCreateParameters.cs" />
     <Compile Include="Task\Results\TaskCreateResult.cs" />
     <Compile Include="Task\TaskRequest.cs" />
-    <Compile Include="Task\TaskRequestExtensions.cs" />
+    <Compile Include="Task\DownloadStation2TaskExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

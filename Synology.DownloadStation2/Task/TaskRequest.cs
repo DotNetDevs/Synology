@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Synology.Attributes;
 
 namespace Synology.DownloadStation2.Task
 {
@@ -26,6 +27,7 @@ namespace Synology.DownloadStation2.Task
         /// </summary>
         /// <param name="parameters">Parameters of the request</param>
         /// <returns>The result of the create task operation with task id and list id if requested.</returns>
+        [RequestMethod("create")]
         public ResultData<TaskCreateResult> Create(TaskCreateParameters parameters)
         {
             return PostData<TaskCreateResult>(new SynologyPostParameters

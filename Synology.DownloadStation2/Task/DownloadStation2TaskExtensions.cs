@@ -9,7 +9,7 @@ using Synology.DownloadStation2.Task;
 
 namespace Synology
 {
-    public static class TaskRequestExtensions
+    public static class DownloadStation2TaskExtension
     {
         /// <summary>
         /// Download Station Task API (Extended)
