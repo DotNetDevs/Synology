@@ -52,7 +52,6 @@
     <Compile Include="Auth\Parameters\AuthFormat.cs" />
     <Compile Include="Auth\Results\AuthResult.cs" />
     <Compile Include="Auth\Parameters\LoginParameters.cs" />
-    <Compile Include="Info\ApiInfoResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />
