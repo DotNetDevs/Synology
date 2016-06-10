@@ -22,9 +22,9 @@ namespace Synology.Classes
 
         protected void LoadInfo()
         {
-            var data = Api.Connection.Request("Syno.API.Info").Method("query", ApiName) as ResultData<Dictionary<string, ApiInfo>>;
+            var data = Api.Connection.Request("Syno.API.Info")?.Method("query", ApiName) as ResultData<Dictionary<string, ApiInfo>>;
 
-            if (data.Data.ContainsKey(ApiName))
+            if (data != null && data.Data.ContainsKey(ApiName))
             {
                 var info = data.Data[ApiName];
                 CgiPath = info.Path;
