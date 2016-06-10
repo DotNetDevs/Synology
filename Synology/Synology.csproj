@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\RequestMethodAttribute.cs" />
+    <Compile Include="Classes\ApiInfo.cs" />
     <Compile Include="Classes\GenericParameters.cs" />
     <Compile Include="Classes\PostParameters.cs" />
     <Compile Include="Classes\SynologyApi.cs" />

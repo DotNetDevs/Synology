@@ -1,7 +1,7 @@
 ﻿using System;
-namespace Synology.Api.Info
+namespace Synology
 {
-	public class ApiInfoResult
+	public class ApiInfo
 	{
 		public string Path { get; set; }
 		public int MinVersion { get; set; }

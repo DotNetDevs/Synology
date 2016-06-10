@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Synology.Attributes;
+using System.Collections.Generic;
 
 namespace Synology.Classes
 {
     public abstract class SynologyRequest
     {
         public readonly SynologyApi Api;
-        public readonly string CgiPath;
+        public string CgiPath { get; private set; }
         public readonly string ApiName;
 
         protected SynologyRequest(SynologyApi parentApi, string cgiPath, string api)
@@ -16,15 +17,18 @@ namespace Synology.Classes
             CgiPath = cgiPath;
             ApiName = $"SYNO.{api}";
 
-            //TODO: when implementation completes it can be tested here.
-            //LoadInfo();
+            LoadInfo();
         }
 
         protected void LoadInfo()
         {
-            Api.Connection.Request("Syno.API.Info").Method("query", ApiName);
+            var data = Api.Connection.Request("Syno.API.Info").Method("query", ApiName) as ResultData<Dictionary<string, ApiInfo>>;
 
-            //TODO: Load data from the method above to set the correct cgi and eventually the available version.
+            if (data.Data.ContainsKey(ApiName))
+            {
+                var info = data.Data[ApiName];
+                CgiPath = info.Path;
+            }
         }
 
         protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
