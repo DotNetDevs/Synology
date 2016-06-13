@@ -1,6 +1,6 @@
 # Synology #
 
-This is a Synology API Wrapper for .NET.
+This is an implementation of Synology APIs for .NET projects.
 
 ## Pull request will be accepted only if targeting `dev` branch. ##
 
@@ -109,8 +109,7 @@ public static void DoConnection(SynologyConnection syno)
 		{
 			DownloadStationTests(syno);
 
-			//FileStation APIs have some issues with DSM 6
-			//FileStationTests(syno);
+			FileStationTests(syno);
 
 			Console.WriteLine("Auth Logout");
 			var resLogout = syno.Api().Auth().Logout();
