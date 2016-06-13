@@ -58,6 +58,7 @@
     <Compile Include="Utilities\FileFormDataParameter.cs" />
     <Compile Include="Utilities\FormParameter.cs" />
     <Compile Include="Utilities\FormParameterManager.cs" />
+    <Compile Include="Utilities\GenericParameter.cs" />
     <Compile Include="Utilities\IParameter.cs" />
     <Compile Include="Utilities\QueryStringManager.cs" />
     <Compile Include="Utilities\QueryStringParameter.cs" />
