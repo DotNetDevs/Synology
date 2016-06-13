@@ -22,8 +22,10 @@ namespace Synology.Classes
 
         protected void LoadInfo()
         {
-            var data = Api.Connection.Request("Syno.API.Info")?.Method("query", ApiName) as ResultData<Dictionary<string, ApiInfo>>;
+            //Request and Method returns null if the API or the Method is not found.
+            var data = Api.Connection.Request("Syno.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", ApiName);
 
+            //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
             if (data != null && data.Data.ContainsKey(ApiName))
             {
                 var info = data.Data[ApiName];
@@ -31,25 +33,13 @@ namespace Synology.Classes
             }
         }
 
-        protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
-        {
-            return Api.GetData<T>(CgiPath, ApiName, parameters);
-        }
+        protected ResultData<T> GetData<T>(SynologyRequestParameters parameters) => Api.GetData<T>(CgiPath, ApiName, parameters);
 
-        protected ResultData GetData(SynologyRequestParameters parameters)
-        {
-            return Api.GetData(CgiPath, ApiName, parameters);
-        }
+        protected ResultData GetData(SynologyRequestParameters parameters) => Api.GetData(CgiPath, ApiName, parameters);
 
-        protected async Task<ResultData<T>> GetDataAsync<T>(SynologyRequestParameters parameters)
-        {
-            return await Api.GetDataAsync<T>(CgiPath, ApiName, parameters);
-        }
+        protected async Task<ResultData<T>> GetDataAsync<T>(SynologyRequestParameters parameters) => await Api.GetDataAsync<T>(CgiPath, ApiName, parameters);
 
-        protected async Task<ResultData> GetDataAsync(SynologyRequestParameters parameters)
-        {
-            return await Api.GetDataAsync(CgiPath, ApiName, parameters);
-        }
+        protected async Task<ResultData> GetDataAsync(SynologyRequestParameters parameters) => await Api.GetDataAsync(CgiPath, ApiName, parameters);
 
         /// <summary>
         /// Performs synchronous post request with specific response
@@ -57,20 +47,14 @@ namespace Synology.Classes
         /// <typeparam name="T">Type of the result data</typeparam>
         /// <param name="parameters">Parameters used for the request</param>
         /// <returns>Specific result data</returns>
-        protected ResultData<T> PostData<T>(SynologyPostParameters parameters)
-        {
-            return Api.PostData<T>(CgiPath, ApiName, parameters);
-        }
+        protected ResultData<T> PostData<T>(SynologyPostParameters parameters) => Api.PostData<T>(CgiPath, ApiName, parameters);
 
         /// <summary>
         /// Performs synchronous post request
         /// </summary>
         /// <param name="parameters">Parameters used for the request</param>
         /// <returns>Generic result data</returns>
-        protected ResultData PostData(SynologyPostParameters parameters)
-        {
-            return Api.PostData(CgiPath, ApiName, parameters);
-        }
+        protected ResultData PostData(SynologyPostParameters parameters) => Api.PostData(CgiPath, ApiName, parameters);
 
         /// <summary>
         /// Performs asynchronous post request with specific response
@@ -78,22 +62,16 @@ namespace Synology.Classes
         /// <typeparam name="T">Type of the result data</typeparam>
         /// <param name="parameters">Parameters used for the request</param>
         /// <returns>Specific result data</returns>
-        protected async Task<ResultData<T>> PostDataAsync<T>(SynologyPostParameters parameters)
-        {
-            return await Api.PostDataAsync<T>(CgiPath, ApiName, parameters);
-        }
+        protected async Task<ResultData<T>> PostDataAsync<T>(SynologyPostParameters parameters) => await Api.PostDataAsync<T>(CgiPath, ApiName, parameters);
 
         /// <summary>
         /// Performs asynchronous post request
         /// </summary>
         /// <param name="parameters">Parameters used for the request</param>
         /// <returns>Generic result data</returns>
-        protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters)
-        {
-            return await Api.PostDataAsync(CgiPath, ApiName, parameters);
-        }
+        protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters) => await Api.PostDataAsync(CgiPath, ApiName, parameters);
 
-        internal ResultData Method(string name, params object[] parameters)
+        private T MethodResult<T>(string name, params object[] parameters) where T : ResultData
         {
             try
             {
@@ -102,7 +80,7 @@ namespace Synology.Classes
 
                 foreach (var method in methods)
                     if (method.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().First().Name == name)
-                        return method.Invoke(this, parameters) as ResultData;
+                        return method.Invoke(this, parameters) as T;
             }
             catch
             {
@@ -110,5 +88,9 @@ namespace Synology.Classes
 
             return null;
         }
+
+        internal ResultData Method(string name, params object[] parameters) => MethodResult<ResultData>(name, parameters);
+
+        internal ResultData<T> Method<T>(string name, params object[] parameters) => MethodResult<ResultData<T>>(name, parameters);
     }
 }
