@@ -1,21 +1,16 @@
 ﻿using Synology.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Synology.Attributes;
 
 namespace Synology.Classes
 {
-	public class SynologyRequestParameters
-	{
-		public string Method { get; set; }
-		public int Version { get; set; }
-		public QueryStringParameter[] Additional { get; set; }
-
-		public SynologyRequestParameters()
-		{
-			Version = 1;
-		}
-	}
+    public class SynologyRequestParameters : SynologyParameters<QueryStringParameter>
+    {
+    }
 }

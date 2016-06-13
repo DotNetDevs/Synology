@@ -1,4 +1,5 @@
-﻿using Synology.Classes;
+﻿using Synology.Attributes;
+using Synology.Classes;
 using Synology.FileStation.Upload.Parameters;
 
 namespace Synology.FileStation.Upload
@@ -9,6 +10,7 @@ namespace Synology.FileStation.Upload
         {
         }
 
+        [RequestMethod("upload")]
         public ResultData Upload(UploadParameters parameters)
         {
             return PostData(new SynologyPostParameters

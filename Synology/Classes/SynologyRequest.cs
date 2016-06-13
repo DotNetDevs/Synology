@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Synology.Attributes;
+using System.Collections.Generic;
 
 namespace Synology.Classes
 {
     public abstract class SynologyRequest
     {
         public readonly SynologyApi Api;
-        public readonly string CgiPath;
+        public string CgiPath { get; private set; }
         public readonly string ApiName;
 
         protected SynologyRequest(SynologyApi parentApi, string cgiPath, string api)
@@ -15,6 +16,19 @@ namespace Synology.Classes
             Api = parentApi;
             CgiPath = cgiPath;
             ApiName = $"SYNO.{api}";
+
+            LoadInfo();
+        }
+
+        protected void LoadInfo()
+        {
+            var data = Api.Connection.Request("Syno.API.Info")?.Method("query", ApiName) as ResultData<Dictionary<string, ApiInfo>>;
+
+            if (data != null && data.Data.ContainsKey(ApiName))
+            {
+                var info = data.Data[ApiName];
+                CgiPath = info.Path;
+            }
         }
 
         protected ResultData<T> GetData<T>(SynologyRequestParameters parameters)
