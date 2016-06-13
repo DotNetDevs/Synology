@@ -22,8 +22,10 @@ namespace Synology.Classes
 
         protected void LoadInfo()
         {
+            //Request and Method returns null if the API or the Method is not found.
             var data = Api.Connection.Request("Syno.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", ApiName);
 
+            //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
             if (data != null && data.Data.ContainsKey(ApiName))
             {
                 var info = data.Data[ApiName];
