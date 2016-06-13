@@ -7,18 +7,10 @@ using System.ComponentModel;
 
 namespace Synology.Utilities
 {
-    public sealed class QueryStringParameter : IParameter
+    public sealed class QueryStringParameter : GenericParameter
     {
-        private readonly string _name;
-        private readonly string _value;
-
-        public QueryStringParameter(string name, string value)
+        public QueryStringParameter(string name, string value) : base(name, value)
         {
-            if (string.IsNullOrWhiteSpace(value))
-                return;
-
-            _name = name;
-            _value = value;
         }
 
         public static string GetEnumDescription(Enum value)
@@ -73,75 +65,73 @@ namespace Synology.Utilities
         {
         }
 
-        public QueryStringParameter(string name, int? value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, int? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, double? value) : this(name, value?.ToString(CultureInfo.InvariantCulture))
+        public QueryStringParameter(string name, double? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, float? value) : this(name, value?.ToString(CultureInfo.InvariantCulture))
+        public QueryStringParameter(string name, float? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, decimal? value) : this(name, value?.ToString(CultureInfo.InvariantCulture))
+        public QueryStringParameter(string name, decimal? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, long? value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, long? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, short? value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, short? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, bool value) : this(name, value.ToString())
+        public QueryStringParameter(string name, bool value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, char value) : this(name, value.ToString())
+        public QueryStringParameter(string name, char value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, uint? value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, uint? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, ulong? value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, ulong? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, ushort? value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, ushort? value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable value) : this(name, value, ",")
+        public QueryStringParameter(string name, IEnumerable value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable value, string separator) : this(name, string.Join(separator, value))
+        public QueryStringParameter(string name, IEnumerable value, string separator) : base(name, value, separator)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable<string> value) : this(name, string.Join(",", value.Cast<object>().Select(t => t.ToString())))
+        public QueryStringParameter(string name, IEnumerable<string> value) : base(name, value)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable<string> value, string separator) : this(name, string.Join(separator, value))
+        public QueryStringParameter(string name, IEnumerable<string> value, string separator) : base(name, value, separator)
         {
         }
 
-        public QueryStringParameter(string name, object value) : this(name, value?.ToString())
+        public QueryStringParameter(string name, object value) : base(name, value)
         {
         }
-
-        public bool Empty => string.IsNullOrWhiteSpace(_name) || string.IsNullOrWhiteSpace(_value);
 
         public override string ToString()
         {
-            return Empty ? string.Empty : $"{_name}={_value}";
+            return Empty ? string.Empty : $"{Name}={Value}";
         }
     }
 }

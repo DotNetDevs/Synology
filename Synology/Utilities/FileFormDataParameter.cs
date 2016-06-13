@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Synology.Utilities
+﻿namespace Synology.Utilities
 {
     /// <summary>
     /// A <seealso cref="FormParameter"/> specifying a file to be send as parameter of a post request

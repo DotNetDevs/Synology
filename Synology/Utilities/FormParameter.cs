@@ -1,34 +1,80 @@
 ﻿using Synology.Extensions;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Synology.Utilities
 {
     /// <summary>
     /// A form parameter used to send data in a post request
     /// </summary>
-    public class FormParameter : IParameter
+    public class FormParameter : GenericParameter
     {
-        /// <summary>
-        /// Name of the parameter
-        /// </summary>
-        public string Name { get; }
-        /// <summary>
-        /// Value of the parameter
-        /// </summary>
-        public string Value { get; }
-
-        /// <summary>
-        /// Constructs a FormParameter
-        /// </summary>
-        /// <param name="parameterName">Name of the parameter</param>
-        /// <param name="parameterValue">Value of the parameter</param>
-        public FormParameter(string parameterName, string parameterValue)
+        public FormParameter(string name, string value) : base(name, value)
         {
-            Name = parameterName;
-            Value = parameterValue;
         }
 
-        public FormParameter(string parameterName, bool parameterValue) : this(parameterName, parameterValue.ToString().ToLowerInvariant())
+        public FormParameter(string name, int? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, double? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, float? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, decimal? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, long? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, short? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, bool value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, char value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, uint? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, ulong? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, ushort? value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, IEnumerable value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, IEnumerable value, string separator) : base(name, value, separator)
+        {
+        }
+
+        public FormParameter(string name, IEnumerable<string> value) : base(name, value)
+        {
+        }
+
+        public FormParameter(string name, IEnumerable<string> value, string separator) : base(name, value, separator)
+        {
+        }
+
+        public FormParameter(string name, object value) : base(name, value)
         {
         }
 
@@ -36,21 +82,8 @@ namespace Synology.Utilities
         {
         }
 
-        public FormParameter(string parameterName, int parameterValue) : this(parameterName, parameterValue.ToString())
-        {
-        }
-
-        public FormParameter(string parameterName, long parameterValue) : this(parameterName, parameterValue.ToString())
-        {
-        }
-
         public FormParameter(string parameterName, DateTime parameterValue) : this(parameterName, parameterValue.ToUnixTimeStamp())
         {
         }
-
-        /// <summary>
-        /// Is the parameter empty
-        /// </summary>
-        public virtual bool Empty => string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Value);
     }
 }
