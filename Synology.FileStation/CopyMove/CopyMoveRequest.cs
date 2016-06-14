@@ -1,3 +1,4 @@
+using Synology.Attributes;
 using Synology.Classes;
 using Synology.FileStation.CopyMove.Parameters;
 using Synology.FileStation.CopyMove.Results;
