@@ -9,7 +9,7 @@ namespace Synology.Tests
         [TestMethod]
         public void QueryStringManagerArrayTest()
         {
-            QueryStringManager manager = new QueryStringManager("http://test.com");
+            var manager = new QueryStringManager("http://test.com");
 
             manager.AddParameter(new QueryStringParameter("arrayParam", new string[] { "testString1", "testString2" }));
 
