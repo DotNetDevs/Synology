@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Synology.Attributes;
 using Synology.Utilities;
 
-namespace Synology.Classes
+namespace Synology.Parameters
 {
     public class SynologyParameters<T> where T : IParameter
     {

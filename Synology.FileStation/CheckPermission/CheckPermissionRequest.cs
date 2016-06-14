@@ -4,6 +4,7 @@ using Synology.Utilities;
 using System.ComponentModel;
 using Synology.Attributes;
 using Synology.FileStation.CheckPermission.Parameters;
+using Synology.Parameters;
 
 namespace Synology.FileStation.CheckPermission
 {

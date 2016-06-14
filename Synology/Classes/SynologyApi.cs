@@ -1,3 +1,4 @@
+using Synology.Parameters;
 using System.Threading.Tasks;
 
 namespace Synology.Classes

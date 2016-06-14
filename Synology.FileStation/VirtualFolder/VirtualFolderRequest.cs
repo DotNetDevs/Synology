@@ -5,6 +5,7 @@ using System.ComponentModel;
 using Synology.Attributes;
 using Synology.FileStation.VirtualFolder.Parameters;
 using Synology.FileStation.VirtualFolder.Results;
+using Synology.Parameters;
 
 namespace Synology.FileStation.VirtualFolder
 {

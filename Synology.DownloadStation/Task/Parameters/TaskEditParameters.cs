@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
+using Synology.Parameters;
 
 namespace Synology.DownloadStation.Task.Parameters
 {

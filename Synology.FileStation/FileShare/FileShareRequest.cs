@@ -6,6 +6,7 @@ using System.ComponentModel;
 using Synology.Attributes;
 using Synology.FileStation.FileShare.Results;
 using Synology.FileStation.FileShare.Parameters;
+using Synology.Parameters;
 
 namespace Synology.FileStation.FileShare
 {

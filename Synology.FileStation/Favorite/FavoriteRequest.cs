@@ -5,6 +5,7 @@ using System.ComponentModel;
 using Synology.Attributes;
 using Synology.FileStation.Favorite.Results;
 using Synology.FileStation.Favorite.Parameters;
+using Synology.Parameters;
 
 namespace Synology.FileStation.Favorite
 {

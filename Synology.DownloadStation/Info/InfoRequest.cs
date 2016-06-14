@@ -2,6 +2,7 @@
 using Synology.Classes;
 using Synology.DownloadStation.Info.Results;
 using Synology.DownloadStation.Info.Parameters;
+using Synology.Parameters;
 
 namespace Synology.DownloadStation.Info
 {

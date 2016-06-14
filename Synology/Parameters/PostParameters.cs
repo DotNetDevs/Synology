@@ -1,6 +1,6 @@
 ﻿using Synology.Utilities;
 
-namespace Synology.Classes
+namespace Synology.Parameters
 {
     public abstract class PostParameters : GenericParameters<FormParameter>
     {

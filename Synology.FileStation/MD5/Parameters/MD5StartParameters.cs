@@ -2,6 +2,8 @@
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using Synology.Parameters;
+
 namespace Synology.FileStation.MD5.Parameters
 {
 	public class MD5StartParameters : RequestParameters
