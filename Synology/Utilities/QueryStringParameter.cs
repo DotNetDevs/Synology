@@ -9,7 +9,7 @@ namespace Synology.Utilities
 {
     public sealed class QueryStringParameter : GenericParameter
     {
-        public QueryStringParameter(string name, string value) : base(name, value)
+        public QueryStringParameter(string name, string value, bool surroundBrackets = false) : base(name, value, surroundBrackets)
         {
         }
 
@@ -62,6 +62,10 @@ namespace Synology.Utilities
         }
 
         public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
+        {
+        }
+
+        public QueryStringParameter(string name, Enum value, bool surroundBrackets) : this(name, GetEnumDescription(value), surroundBrackets)
         {
         }
 
@@ -118,6 +122,10 @@ namespace Synology.Utilities
         }
 
         public QueryStringParameter(string name, IEnumerable<string> value) : base(name, value)
+        {
+        }
+
+        public QueryStringParameter(string name, IEnumerable<string> value, bool surroundBrackets) : base(name, value, surroundBrackets)
         {
         }
 
