@@ -19,7 +19,7 @@ namespace Synology.FileStation.CopyMove
         /// Start to copy/move files.
         /// </summary>
         /// <param name="parameters">Parameters of the operation</param>
-        [RequestMethod(“start”)]
+        [RequestMethod("start")]
         public ResultData<StartResult> Start(StartParameters parameters)
         {
             return GetData<StartResult>(new SynologyRequestParameters
@@ -33,7 +33,7 @@ namespace Synology.FileStation.CopyMove
         /// <summary>
         /// Get the copying/moving status.
         /// </summary>
-        [RequestMethod(“status”)]
+        [RequestMethod("status")]
         public ResultData<StatusResult> Status(StatusParameters parameters)
         {
             return GetData<StatusResult>(new SynologyRequestParameters
@@ -47,7 +47,7 @@ namespace Synology.FileStation.CopyMove
         /// <summary>
         /// Stop a copy/move task.
         /// </summary>
-        [RequestMethod(“stop”)]
+        [RequestMethod("stop")]
         public ResultData Stop(StopParameters parameters)
         {
             return GetData(new SynologyRequestParameters
