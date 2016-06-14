@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Synology.Utilities;
 
 namespace Synology.Tests
@@ -10,7 +9,7 @@ namespace Synology.Tests
         [TestMethod]
         public void QueryStringManagerArrayTest()
         {
-            var manager = new QueryStringManager("http://test.com");
+            QueryStringManager manager = new QueryStringManager("http://test.com");
 
             manager.AddParameter(new QueryStringParameter("arrayParam", new string[] { "testString1", "testString2" }));
 
