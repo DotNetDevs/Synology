@@ -41,6 +41,13 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CopyMove\CopyMoveRequest.cs" />
+    <Compile Include="CopyMove\FileStationCopyMoveExtension.cs" />
+    <Compile Include="CopyMove\Parameters\StartParameters.cs" />
+    <Compile Include="CopyMove\Parameters\StatusParameters.cs" />
+    <Compile Include="CopyMove\Parameters\StopParameters.cs" />
+    <Compile Include="CopyMove\Results\StartResult.cs" />
+    <Compile Include="CopyMove\Results\StatusResult.cs" />
     <Compile Include="FileStationRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FileShare\Results\FileAdditionalResult.cs" />
@@ -64,6 +71,10 @@
     <Compile Include="Info\FileStationInfoExtension.cs" />
     <Compile Include="Info\InfoRequest.cs" />
     <Compile Include="Info\Results\InfoResult.cs" />
+    <Compile Include="Rename\FileStationRenameExtension.cs" />
+    <Compile Include="Rename\Parameters\RenameAdditional.cs" />
+    <Compile Include="Rename\Parameters\RenameParameters.cs" />
+    <Compile Include="Rename\RenameRequest.cs" />
     <Compile Include="Search\FileStationSearchExtension.cs" />
     <Compile Include="Search\Results\SearchListResult.cs" />
     <Compile Include="Search\SearchRequest.cs" />

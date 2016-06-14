@@ -2,6 +2,7 @@
 using Synology.Utilities;
 using System.Collections.Generic;
 using Synology.Attributes;
+using Synology.Parameters;
 
 namespace Synology.Api.Info
 {

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Synology.Attributes;
 using System.Collections.Generic;
+using Synology.Parameters;
 
 namespace Synology.Classes
 {
@@ -23,7 +24,7 @@ namespace Synology.Classes
         protected void LoadInfo()
         {
             //Request and Method returns null if the API or the Method is not found.
-            var data = Api.Connection.Request("Syno.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", ApiName);
+            var data = Api.Connection.Request("SYNO.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", ApiName);
 
             //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
             if (data != null && data.Data.ContainsKey(ApiName))
@@ -71,23 +72,7 @@ namespace Synology.Classes
         /// <returns>Generic result data</returns>
         protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters) => await Api.PostDataAsync(CgiPath, ApiName, parameters);
 
-        private T MethodResult<T>(string name, params object[] parameters) where T : ResultData
-        {
-            try
-            {
-
-                var methods = GetType().GetMethods().Where(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(RequestMethodAttribute)));
-
-                foreach (var method in methods)
-                    if (method.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().First().Name == name)
-                        return method.Invoke(this, parameters) as T;
-            }
-            catch
-            {
-            }
-
-            return null;
-        }
+        private T MethodResult<T>(string name, params object[] parameters) where T : ResultData => GetType().GetMethods().Where(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(RequestMethodAttribute))).FirstOrDefault(t => t.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().FirstOrDefault()?.Name == name)?.Invoke(this, parameters) as T;
 
         internal ResultData Method(string name, params object[] parameters) => MethodResult<ResultData>(name, parameters);
 

@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Synology.Utilities;
 
-namespace Synology.Classes
+namespace Synology.Parameters
 {
     public abstract class GenericParameters<T> : IValidatableObject where T : IParameter
     {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Synology.Attributes;
+using Synology.Parameters;
 
 namespace Synology.DownloadStation2.Task
 {

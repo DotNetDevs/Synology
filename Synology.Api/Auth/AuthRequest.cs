@@ -3,6 +3,7 @@ using Synology.Utilities;
 using Synology.Api.Auth.Parameters;
 using Synology.Api.Auth.Results;
 using Synology.Attributes;
+using Synology.Parameters;
 
 namespace Synology.Api.Auth
 {

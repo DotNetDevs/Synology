@@ -2,6 +2,7 @@
 using Synology.Classes;
 using Synology.DownloadStation.Schedule.Parameters;
 using Synology.DownloadStation.Schedule.Results;
+using Synology.Parameters;
 
 namespace Synology.DownloadStation.Schedule
 {

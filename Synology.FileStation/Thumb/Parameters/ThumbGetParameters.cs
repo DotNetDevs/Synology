@@ -2,6 +2,7 @@
 using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
+using Synology.Parameters;
 
 namespace Synology.FileStation.Thumb.Parameters
 {

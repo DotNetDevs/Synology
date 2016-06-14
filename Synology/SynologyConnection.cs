@@ -6,6 +6,7 @@ using Synology.Classes;
 using System.Threading.Tasks;
 using Synology.Utilities;
 using Autofac;
+using System.Text;
 
 namespace Synology
 {
@@ -84,17 +85,7 @@ namespace Synology
             return res;
         }
 
-        private SynologyRequest ResolveRequest(string name)
-        {
-            object req;
-
-            if (!_container.TryResolveNamed(name, typeof(SynologyRequest), out req))
-            {
-                req = null;
-            }
-
-            return req as SynologyRequest;
-        }
+        private SynologyRequest ResolveRequest(string name) => ResolveRequest<SynologyRequest>(name);
 
         private T ResolveRequest<T>(string name) where T : SynologyRequest
         {
@@ -202,7 +193,7 @@ namespace Synology
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
-                return JsonConvert.DeserializeObject<ResultData>(System.Text.Encoding.Default.GetString(result));
+                return JsonConvert.DeserializeObject<ResultData>(Encoding.Default.GetString(result));
             }
         }
 
@@ -237,7 +228,7 @@ namespace Synology
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
-                return JsonConvert.DeserializeObject<ResultData<T>>(System.Text.Encoding.Default.GetString(result));
+                return JsonConvert.DeserializeObject<ResultData<T>>(Encoding.Default.GetString(result));
             }
         }
 
@@ -274,7 +265,7 @@ namespace Synology
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
-                return JsonConvert.DeserializeObject<ResultData>(System.Text.Encoding.Default.GetString(result));
+                return JsonConvert.DeserializeObject<ResultData>(Encoding.Default.GetString(result));
             }
         }
 
@@ -312,14 +303,14 @@ namespace Synology
 
                 _client.Headers[HttpRequestHeader.ContentType] = null;
 
-                return JsonConvert.DeserializeObject<ResultData<T>>(System.Text.Encoding.Default.GetString(result));
+                return JsonConvert.DeserializeObject<ResultData<T>>(Encoding.Default.GetString(result));
             }
         }
 
         public void Dispose()
         {
-            _client.Dispose();
-            _containerScope.Dispose();
+            _client?.Dispose();
+            _containerScope?.Dispose();
         }
     }
 }

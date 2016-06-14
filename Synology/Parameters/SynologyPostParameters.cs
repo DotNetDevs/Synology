@@ -1,6 +1,6 @@
 ﻿using Synology.Utilities;
 
-namespace Synology.Classes
+namespace Synology.Parameters
 {
     /// <summary>
     /// Parameters used for post requests

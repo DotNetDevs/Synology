@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Synology.Attributes;
 using Synology.Classes;
 using Synology.FileStation.Info.Results;
+using Synology.Parameters;
 
 namespace Synology.FileStation.Info
 {

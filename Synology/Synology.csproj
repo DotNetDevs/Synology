@@ -43,12 +43,12 @@
   <ItemGroup>
     <Compile Include="Attributes\RequestMethodAttribute.cs" />
     <Compile Include="Classes\ApiInfo.cs" />
-    <Compile Include="Classes\GenericParameters.cs" />
-    <Compile Include="Classes\PostParameters.cs" />
+    <Compile Include="Parameters\GenericParameters.cs" />
+    <Compile Include="Parameters\PostParameters.cs" />
     <Compile Include="Classes\SynologyApi.cs" />
-    <Compile Include="Classes\SynologyParameters.cs" />
-    <Compile Include="Classes\SynologyPostParameters.cs" />
-    <Compile Include="Classes\SynologyRequestParameters.cs" />
+    <Compile Include="Parameters\SynologyParameters.cs" />
+    <Compile Include="Parameters\SynologyPostParameters.cs" />
+    <Compile Include="Parameters\SynologyRequestParameters.cs" />
     <Compile Include="Extensions\SystemExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynologyConnection.cs" />
@@ -64,7 +64,7 @@
     <Compile Include="Utilities\QueryStringParameter.cs" />
     <Compile Include="Extensions\ApiExtension.cs" />
     <Compile Include="Extensions\RequestExtension.cs" />
-    <Compile Include="Classes\RequestParameters.cs" />
+    <Compile Include="Parameters\RequestParameters.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
+using Synology.Parameters;
 
 namespace Synology.Api.Auth.Parameters
 {

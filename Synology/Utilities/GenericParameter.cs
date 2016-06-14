@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Synology.Utilities
 {
@@ -24,10 +21,11 @@ namespace Synology.Utilities
         /// </summary>
         /// <param name="name">Name of the parameter</param>
         /// <param name="value">Value of the parameter</param>
-        protected GenericParameter(string name, string value)
+        /// <param name="surroundBrackets">Surround parameter value(s) by brackets</param>
+        protected GenericParameter(string name, string value, bool surroundBrackets = false)
         {
             Name = name;
-            Value = value;
+            Value = surroundBrackets ? $"[{value}]" : value;
         }
 
         protected GenericParameter(string name, int? value) : this(name, value?.ToString())
@@ -86,7 +84,15 @@ namespace Synology.Utilities
         {
         }
 
+        protected GenericParameter(string name, IEnumerable<string> value, bool surroundBrackets) : this(name, value, ",", surroundBrackets)
+        {
+        }
+
         protected GenericParameter(string name, IEnumerable<string> value, string separator) : this(name, string.Join(separator, value))
+        {
+        }
+
+        protected GenericParameter(string name, IEnumerable<string> value, string separator, bool surroundBrackets) : this(name, string.Join(separator, value), surroundBrackets)
         {
         }
 
