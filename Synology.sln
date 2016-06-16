@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.Tests", "Synology.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.DownloadStation2", "Synology.DownloadStation2\Synology.DownloadStation2.csproj", "{AE8B626D-B128-4780-B9D2-41B1F626EA57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.SurveillanceStation", "Synology.SurveillanceStation\Synology.SurveillanceStation.csproj", "{CFA989C5-57B2-465F-86B8-2B54AA674B8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{AE8B626D-B128-4780-B9D2-41B1F626EA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE8B626D-B128-4780-B9D2-41B1F626EA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE8B626D-B128-4780-B9D2-41B1F626EA57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA989C5-57B2-465F-86B8-2B54AA674B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA989C5-57B2-465F-86B8-2B54AA674B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA989C5-57B2-465F-86B8-2B54AA674B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA989C5-57B2-465F-86B8-2B54AA674B8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
