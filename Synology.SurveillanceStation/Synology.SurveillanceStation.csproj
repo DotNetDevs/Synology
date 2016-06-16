@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Info\Results\InfoUserPrivilege.cs" />
+    <Compile Include="Info\Results\InfoVersion.cs" />
+    <Compile Include="Info\SurveillanceStationInfoExtension.cs" />
+    <Compile Include="Info\InfoRequest.cs" />
+    <Compile Include="Info\Results\InfoResult.cs" />
     <Compile Include="SurveillanceStationApi.cs" />
     <Compile Include="SurveillanceStationRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
