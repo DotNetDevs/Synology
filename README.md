@@ -4,7 +4,8 @@
 
 [![Stories in Progress](https://badge.waffle.io/DotNetDevs/Synology.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/DotNetDevs/Synology)
 
-This is an implementation of Synology APIs for .NET projects.
+This is an implementation of Synology Built-In APIs for .NET projects.
+You can use it for access your Synology information, upload/download files from disk, use the built-in torrent client and all other services available.
 
 ## Pull request will be accepted only if targeting `dev` branch. ##
 
