@@ -1,4 +1,5 @@
 # Synology #
+[![Stories in Ready](https://badge.waffle.io/Ar3sDevelopment/Synology.png?label=ready&title=Ready)](http://waffle.io/Ar3sDevelopment/Synology)
 
 This is an implementation of Synology APIs for .NET projects.
 
