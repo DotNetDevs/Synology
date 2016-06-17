@@ -1,8 +1,8 @@
 # Synology #
 
-[![Stories in Ready](https://badge.waffle.io/Ar3sDevelopment/Synology.png?label=ready&title=Ready)](http://waffle.io/Ar3sDevelopment/Synology)
+[![Stories in Ready](https://badge.waffle.io/DotNetDevs/Synology.png?label=ready&title=Ready)](http://waffle.io/DotNetDevs/Synology)
 
-[![Stories in Progress](https://badge.waffle.io/Ar3sDevelopment/Synology.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/Ar3sDevelopment/Synology)
+[![Stories in Progress](https://badge.waffle.io/DotNetDevs/Synology.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/DotNetDevs/Synology)
 
 This is an implementation of Synology APIs for .NET projects.
 
