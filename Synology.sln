@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.DownloadStation2",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.SurveillanceStation", "Synology.SurveillanceStation\Synology.SurveillanceStation.csproj", "{CFA989C5-57B2-465F-86B8-2B54AA674B8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.AudioStation", "Synology.AudioStation\Synology.AudioStation.csproj", "{0288FC10-C072-49FD-BA00-4D2557DFA2EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology.VideoStation", "Synology.VideoStation\Synology.VideoStation.csproj", "{D77FF137-D189-4349-BEF4-44E033677800}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +60,14 @@ Global
 		{CFA989C5-57B2-465F-86B8-2B54AA674B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFA989C5-57B2-465F-86B8-2B54AA674B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFA989C5-57B2-465F-86B8-2B54AA674B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0288FC10-C072-49FD-BA00-4D2557DFA2EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0288FC10-C072-49FD-BA00-4D2557DFA2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0288FC10-C072-49FD-BA00-4D2557DFA2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0288FC10-C072-49FD-BA00-4D2557DFA2EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D77FF137-D189-4349-BEF4-44E033677800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77FF137-D189-4349-BEF4-44E033677800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77FF137-D189-4349-BEF4-44E033677800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77FF137-D189-4349-BEF4-44E033677800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
