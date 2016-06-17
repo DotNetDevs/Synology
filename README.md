@@ -1,5 +1,9 @@
 # Synology #
 
+[![Stories in Ready](https://badge.waffle.io/Ar3sDevelopment/Synology.png?label=ready&title=Ready)](http://waffle.io/Ar3sDevelopment/Synology)
+
+[![Stories in Progress](https://badge.waffle.io/Ar3sDevelopment/Synology.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/Ar3sDevelopment/Synology)
+
 This is an implementation of Synology APIs for .NET projects.
 
 ## Pull request will be accepted only if targeting `dev` branch. ##
