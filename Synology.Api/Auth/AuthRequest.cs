@@ -7,6 +7,7 @@ using Synology.Parameters;
 
 namespace Synology.Api.Auth
 {
+    [Request("Auth")]
     public class AuthRequest : MainApiRequest
     {
         private string _sessionNumber;

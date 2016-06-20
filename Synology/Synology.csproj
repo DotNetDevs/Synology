@@ -45,6 +45,7 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\RequestAttribute.cs" />
     <Compile Include="Attributes\RequestMethodAttribute.cs" />
     <Compile Include="Classes\ApiInfo.cs" />
     <Compile Include="Parameters\GenericParameters.cs" />

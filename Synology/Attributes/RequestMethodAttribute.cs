@@ -3,7 +3,7 @@
 namespace Synology.Attributes
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class RequestMethodAttribute : Attribute
+    public sealed class RequestMethodAttribute : Attribute
     {
         public readonly string Name;
 
