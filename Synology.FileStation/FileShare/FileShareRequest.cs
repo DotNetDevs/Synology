@@ -10,6 +10,7 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.FileShare
 {
+    [Request("List")]
     public class FileShareRequest : FileStationRequest
     {
         public FileShareRequest(SynologyApi api) : base(api, "List")

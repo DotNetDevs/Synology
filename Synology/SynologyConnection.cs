@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
 using Newtonsoft.Json;
 using Synology.Classes;
 using System.Threading.Tasks;
@@ -25,9 +24,6 @@ namespace Synology
 
         public SynologyConnection(string baseHost, bool ssl = false, int port = 5000, int sslPort = 5001)
         {
-            // Remove Expect: 100-continue header.
-            ServicePointManager.Expect100Continue = false;
-
             var sslPostfix = ssl ? "s" : string.Empty;
             var usedPort = ssl ? sslPort : port;
 
@@ -35,8 +31,10 @@ namespace Synology
 
             _client = new HttpClient
             {
-                BaseAddress = new Uri($"http{sslPostfix}://{baseHost}:{usedPort}/webapi/")
+                BaseAddress = new Uri($"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"),
             };
+
+            _client.DefaultRequestHeaders.ExpectContinue = false;
 
             var builder = new ContainerBuilder();
 

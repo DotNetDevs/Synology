@@ -17,9 +17,10 @@ namespace Synology.DownloadStation2.Task
     /// <remarks>
     /// The API is not the same as the normal task request, so a new SynologyRequest has to be created
     /// </remarks>
-    public class TaskRequest : SynologyRequest
+    [Request("Task")]
+    public class TaskRequest : DownloadStation2Request
     {
-        public TaskRequest(SynologyApi parentApi) : base(parentApi, "entry.cgi", "DownloadStation2.Task")
+        public TaskRequest(SynologyApi parentApi) : base(parentApi, "Task")
         {
         }
 
