@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 using Synology.Utilities;
 using Autofac;
 using System.Text;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Synology
 {
     public class SynologyConnection : IDisposable
     {
-        private readonly WebClient _client;
+        private readonly HttpClient _client;
 
         public string Sid { private get; set; }
 
@@ -27,9 +29,9 @@ namespace Synology
             var sslPostfix = ssl ? "s" : string.Empty;
             var usedPort = ssl ? sslPort : port;
 
-            _client = new WebClient
+            _client = new HttpClient
             {
-                BaseAddress = $"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"
+                BaseAddress = new Uri($"http{sslPostfix}://{baseHost}:{usedPort}/webapi/")
             };
 
             var builder = new ContainerBuilder();
@@ -153,27 +155,20 @@ namespace Synology
                 new QueryStringParameter("_sid", Sid),
             });
 
-            return new Uri(new Uri(_client.BaseAddress), url.ToString());
+            return new Uri(_client.BaseAddress, url.ToString());
         }
 
-        internal ResultData GetDataFromApi(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
+        private async Task<T> GenericGetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) where T : ResultData => JsonConvert.DeserializeObject<T>(await _client.GetStringAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
 
-        internal ResultData<T> GetDataFromApi<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData<T>>(_client.DownloadString(GetApiUrl(cgi, api, version, method, additionalParams)));
+        internal ResultData GetDataFromApi(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => GetDataFromApiAsync(cgi, api, version, method, additionalParams).Result;
 
-        internal async Task<ResultData<T>> GetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData<T>>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
+        internal ResultData<T> GetDataFromApi<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => GetDataFromApiAsync<T>(cgi, api, version, method, additionalParams).Result;
 
-        internal async Task<ResultData> GetDataFromApiAsync(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => JsonConvert.DeserializeObject<ResultData>(await _client.DownloadStringTaskAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
+        internal async Task<ResultData<T>> GetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => await GenericGetDataFromApiAsync<ResultData<T>>(cgi, api, version, method, additionalParams);
 
-        /// <summary>
-        /// Performs an asynchronous post request to the Synology API
-        /// </summary>
-        /// <param name="cgi">CGI path handling the request</param>
-        /// <param name="api">API name handling the request</param>
-        /// <param name="version">Version of the api</param>
-        /// <param name="method">Method of the API</param>
-        /// <param name="additionalParams">Parameters of the request</param>
-        /// <returns>Result of the request</returns>
-        internal async Task<ResultData> PostDataFromApiAsync(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
+        internal async Task<ResultData> GetDataFromApiAsync(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => await GenericGetDataFromApiAsync<ResultData>(cgi, api, version, method, additionalParams);
+
+        private async Task<T> GenericPostDataFromApiAsync<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null) where T : ResultData
         {
             var uri = GetPostApiUrl(cgi, api, version, method);
 
@@ -187,15 +182,28 @@ namespace Synology
             {
                 var formContent = await content.ToByteArrayAsync();
 
-                _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
+                using (var requestContent = new ByteArrayContent(formContent))
+                {
+                    requestContent.Headers.ContentType = new MediaTypeHeaderValue(content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty));
 
-                var result = await _client.UploadDataTaskAsync(uri, formContent);
+                    var result = await _client.PostAsync(uri, requestContent);
+                    var data = await result.Content.ReadAsByteArrayAsync();
 
-                _client.Headers[HttpRequestHeader.ContentType] = null;
-
-                return JsonConvert.DeserializeObject<ResultData>(Encoding.Default.GetString(result));
+                    return JsonConvert.DeserializeObject<T>(Encoding.Default.GetString(data));
+                }
             }
         }
+
+        /// <summary>
+        /// Performs an asynchronous post request to the Synology API
+        /// </summary>
+        /// <param name="cgi">CGI path handling the request</param>
+        /// <param name="api">API name handling the request</param>
+        /// <param name="version">Version of the api</param>
+        /// <param name="method">Method of the API</param>
+        /// <param name="additionalParams">Parameters of the request</param>
+        /// <returns>Result of the request</returns>
+        internal async Task<ResultData> PostDataFromApiAsync(string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => await GenericPostDataFromApiAsync<ResultData>(cgi, api, version, method, additionalParams);
 
         /// <summary>
         /// Performs an asynchronous post request to the Synology API
@@ -207,30 +215,7 @@ namespace Synology
         /// <param name="method">Method of the API</param>
         /// <param name="additionalParams">Parameters of the request</param>
         /// <returns>Result of the request and the specific API/Method response</returns>
-        internal async Task<ResultData<T>> PostDataFromApiAsync<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
-        {
-            var uri = GetPostApiUrl(cgi, api, version, method);
-
-            var allParameters = new[] {
-                //new FormParameter("_sid", Sid),
-                new FormParameter("api", api),
-                new FormParameter("version", version),
-                new FormParameter("method", method)
-            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
-
-            using (var content = new FormParameterManager(allParameters))
-            {
-                var formContent = await content.ToByteArrayAsync();
-
-                _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
-
-                var result = await _client.UploadDataTaskAsync(uri, formContent);
-
-                _client.Headers[HttpRequestHeader.ContentType] = null;
-
-                return JsonConvert.DeserializeObject<ResultData<T>>(Encoding.Default.GetString(result));
-            }
-        }
+        internal async Task<ResultData<T>> PostDataFromApiAsync<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => await GenericPostDataFromApiAsync<ResultData<T>>(cgi, api, version, method, additionalParams);
 
         /// <summary>
         /// Performs a post request to the Synology API
@@ -241,33 +226,7 @@ namespace Synology
         /// <param name="method">Method of the API</param>
         /// <param name="additionalParams">Parameters of the request</param>
         /// <returns>Result of the request</returns>
-        internal ResultData PostDataFromApi(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
-        {
-            var uri = GetPostApiUrl(cgi, api, version, method);
-
-            var allParameters = new[] {
-                //new FormParameter("_sid", Sid),
-                new FormParameter("api", api),
-                new FormParameter("version", version),
-                new FormParameter("method", method)
-            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
-
-            using (var content = new FormParameterManager(allParameters))
-            {
-                var formContentTask = content.ToByteArrayAsync();
-                formContentTask.Wait();
-
-                var formContent = formContentTask.Result;
-
-                _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
-
-                var result = _client.UploadData(uri, formContent);
-
-                _client.Headers[HttpRequestHeader.ContentType] = null;
-
-                return JsonConvert.DeserializeObject<ResultData>(Encoding.Default.GetString(result));
-            }
-        }
+        internal ResultData PostDataFromApi(string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync(cgi, api, version, method, additionalParams).Result;
 
         /// <summary>
         /// Performs a post request to the Synology API
@@ -279,33 +238,7 @@ namespace Synology
         /// <param name="method">Method of the API</param>
         /// <param name="additionalParams">Parameters of the request</param>
         /// <returns>Result of the request and the specific API/Method response</returns>
-        internal ResultData<T> PostDataFromApi<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null)
-        {
-            var uri = GetPostApiUrl(cgi, api, version, method);
-
-            var allParameters = new[] {
-                //new FormParameter("_sid", Sid),
-                new FormParameter("api", api),
-                new FormParameter("version", version),
-                new FormParameter("method", method)
-            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
-
-            using (var content = new FormParameterManager(allParameters))
-            {
-                var formContentTask = content.ToByteArrayAsync();
-                formContentTask.Wait();
-
-                var formContent = formContentTask.Result;
-
-                _client.Headers[HttpRequestHeader.ContentType] = content.MultipartContent.Headers.ContentType.ToString().Replace("\"", string.Empty);
-
-                var result = _client.UploadData(uri, formContent);
-
-                _client.Headers[HttpRequestHeader.ContentType] = null;
-
-                return JsonConvert.DeserializeObject<ResultData<T>>(Encoding.Default.GetString(result));
-            }
-        }
+        internal ResultData<T> PostDataFromApi<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync<T>(cgi, api, version, method, additionalParams).Result;
 
         public void Dispose()
         {
