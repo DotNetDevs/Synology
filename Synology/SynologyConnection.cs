@@ -13,7 +13,7 @@ using NLog;
 
 namespace Synology
 {
-    public class SynologyConnection : IDisposable
+    public sealed class SynologyConnection : IDisposable
     {
         private readonly HttpClient _client;
         public readonly Logger Logger = LogManager.GetCurrentClassLogger();
