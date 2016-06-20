@@ -1,22 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-    <metadata>
-        <id>$id$</id>
-        <version>$version$</version>
-        <title>Synology</title>
-        <authors>$author$</authors>
-        <owners>Matteo Bruni</owners>
-        <description>$description$</description>
-        <releaseNotes></releaseNotes>
-        <summary>$description$</summary>
-        <language>en-US</language>
-        <projectUrl>http://ar3sdevelopment.github.io/Synology</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <dependencies>
-            <group targetFramework=".NETFramework4.5">
-                <dependency id="Newtonsoft.Json" version="7.0.1" />
-                <dependency id="Autofac" version="3.5.2" />
-            </group>
-        </dependencies>
-    </metadata>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Synology</title>
+    <authors>$author$</authors>
+    <owners>Matteo Bruni</owners>
+    <description>$description$</description>
+    <releaseNotes></releaseNotes>
+    <summary>$description$</summary>
+    <language>en-US</language>
+    <projectUrl>http://ar3sdevelopment.github.io/Synology</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Newtonsoft.Json" version="7.0.1" />
+        <dependency id="Autofac" version="3.5.2" />
+        <dependency id="NLog.Config" version="4.3.5" />
+      </group>
+    </dependencies>
+  </metadata>
 </package>

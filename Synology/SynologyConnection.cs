@@ -9,12 +9,14 @@ using Autofac;
 using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using NLog;
 
 namespace Synology
 {
     public class SynologyConnection : IDisposable
     {
         private readonly HttpClient _client;
+        public readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         public string Sid { private get; set; }
 
@@ -28,6 +30,8 @@ namespace Synology
 
             var sslPostfix = ssl ? "s" : string.Empty;
             var usedPort = ssl ? sslPort : port;
+
+            Logger.Debug($"Creating new connection to {baseHost} with{(ssl ? "" : "out")} SSL to port {usedPort}");
 
             _client = new HttpClient
             {
@@ -45,6 +49,8 @@ namespace Synology
 
         private void RegisterApi<T>() where T : SynologyApi
         {
+            Logger.Debug($"Registering API {typeof(T).Name}");
+
             var builder = new ContainerBuilder();
 
             builder.RegisterType<T>().AsSelf().As<SynologyApi>();
@@ -53,8 +59,12 @@ namespace Synology
 
         private void RegisterRequest<T>() where T : SynologyRequest
         {
+            Logger.Debug($"Registering Request {typeof(T).Name}");
+
             var builder = new ContainerBuilder();
+
             string apiName;
+
             try
             {
                 var request = Activator.CreateInstance<T>();
@@ -136,7 +146,11 @@ namespace Synology
                 new QueryStringParameter("method", method)
             }));
 
-            return url.ToString();
+            var res = url.ToString();
+
+            Logger.Debug($"Created API Url for GET: {res}");
+
+            return res;
         }
 
         /// <summary>
@@ -147,7 +161,7 @@ namespace Synology
         /// <param name="version">Version of the api</param>
         /// <param name="method">Method of the API</param>
         /// <returns>The Uri object where the request has to be sent</returns>
-        private Uri GetPostApiUrl(string cgi, string api, int version, string method)
+        private Uri PostApiUrl(string cgi, string api, int version, string method)
         {
             var url = new QueryStringManager(cgi);
 
@@ -155,7 +169,11 @@ namespace Synology
                 new QueryStringParameter("_sid", Sid),
             });
 
-            return new Uri(_client.BaseAddress, url.ToString());
+            var res = url.ToString();
+
+            Logger.Debug($"Created API Url for POST: {res}");
+
+            return new Uri(_client.BaseAddress, res);
         }
 
         private async Task<T> GenericGetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) where T : ResultData => JsonConvert.DeserializeObject<T>(await _client.GetStringAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
@@ -170,7 +188,7 @@ namespace Synology
 
         private async Task<T> GenericPostDataFromApiAsync<T>(string cgi, string api, int version, string method, FormParameter[] additionalParams = null) where T : ResultData
         {
-            var uri = GetPostApiUrl(cgi, api, version, method);
+            var uri = PostApiUrl(cgi, api, version, method);
 
             var allParameters = new[] {
                 new FormParameter("api", api),
@@ -242,6 +260,7 @@ namespace Synology
 
         public void Dispose()
         {
+            Logger.Debug("Closing connection");
             _client?.Dispose();
             _containerScope?.Dispose();
         }

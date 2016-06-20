@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Synology.Attributes;
 using System.Collections.Generic;
 using Synology.Parameters;
+using NLog;
 
 namespace Synology.Classes
 {
@@ -12,26 +13,30 @@ namespace Synology.Classes
         public string CgiPath { get; private set; }
         public readonly string ApiName;
 
-        protected SynologyRequest(SynologyApi parentApi, string cgiPath, string api)
+        protected SynologyRequest(SynologyApi api, string cgiPath, string apiName)
         {
-            Api = parentApi;
+            Api = api;
             CgiPath = cgiPath;
-            ApiName = $"SYNO.{api}";
+            ApiName = $"SYNO.{apiName}";
+
+            Api.Connection.Logger.Debug($"Created request {ApiName} to path {cgiPath}");
 
             LoadInfo();
+
+            Api.Connection.Logger.Debug($"Updated request {ApiName} to path {cgiPath} with LoadInfo");
         }
 
         protected void LoadInfo()
         {
+            //Fixed possible loop for LoadInfo
+            if (ApiName == "SYNO.API.Info") return;
+
             //Request and Method returns null if the API or the Method is not found.
             var data = Api.Connection.Request("SYNO.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", ApiName);
 
             //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
             if (data != null && data.Data.ContainsKey(ApiName))
-            {
-                var info = data.Data[ApiName];
-                CgiPath = info.Path;
-            }
+                CgiPath = data.Data[ApiName].Path;
         }
 
         protected ResultData<T> GetData<T>(SynologyRequestParameters parameters) => Api.GetData<T>(CgiPath, ApiName, parameters);
