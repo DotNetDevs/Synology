@@ -4,6 +4,8 @@
 
 [![Stories in Progress](https://badge.waffle.io/DotNetDevs/Synology.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/DotNetDevs/Synology)
 
+[Kanban Board](https://zube.io/boards/46553751/kanban)
+
 This is an implementation of Synology Built-In APIs for .NET projects.
 You can use it for access your Synology information, upload/download files from disk, use the built-in torrent client and all other services available.
 
