@@ -13,7 +13,7 @@ namespace Synology.FileStation.CopyMove
     [Request("CopyMove")]
     public class CopyMoveRequest : FileStationRequest
     {
-        public CopyMoveRequest(SynologyApi parentApi) : base(parentApi, "CopyMove")
+        public CopyMoveRequest(SynologyApi parentApi) : base(parentApi)
         {
         }
 
@@ -27,7 +27,6 @@ namespace Synology.FileStation.CopyMove
             return GetData<StartResult>(new SynologyRequestParameters
             {
                 Version = 3,
-                Method = "start",
                 Additional = parameters
             });
         }
@@ -41,7 +40,6 @@ namespace Synology.FileStation.CopyMove
             return GetData<StatusResult>(new SynologyRequestParameters
             {
                 Version = 3,
-                Method = "status",
                 Additional = parameters
             });
         }
@@ -55,7 +53,6 @@ namespace Synology.FileStation.CopyMove
             return GetData(new SynologyRequestParameters
             {
                 Version = 3,
-                Method = "stop",
                 Additional = parameters
             });
         }

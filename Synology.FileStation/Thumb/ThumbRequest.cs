@@ -11,7 +11,7 @@ namespace Synology.FileStation.Thumb
     [Request("Thumb")]
     public class ThumbRequest : FileStationRequest
     {
-        public ThumbRequest(SynologyApi api) : base(api, "Thumb")
+        public ThumbRequest(SynologyApi api) : base(api)
         {
         }
 

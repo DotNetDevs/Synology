@@ -13,7 +13,7 @@ namespace Synology.FileStation.Info
     [Request("Info")]
     public class InfoRequest : FileStationRequest
     {
-        public InfoRequest(SynologyApi api) : base(api, "Info")
+        public InfoRequest(SynologyApi api) : base(api)
         {
         }
 

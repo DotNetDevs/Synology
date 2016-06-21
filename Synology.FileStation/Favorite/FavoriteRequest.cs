@@ -12,7 +12,7 @@ namespace Synology.FileStation.Favorite
     [Request("Favorite")]
     public class FavoriteRequest : FileStationRequest
     {
-        public FavoriteRequest(SynologyApi api) : base(api, "Favorite")
+        public FavoriteRequest(SynologyApi api) : base(api)
         {
         }
 

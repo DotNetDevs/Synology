@@ -9,7 +9,7 @@ namespace Synology.FileStation.MD5
     [Request("MD5")]
     public class MD5Request : FileStationRequest
     {
-        public MD5Request(SynologyApi api) : base(api, "MD5")
+        public MD5Request(SynologyApi api) : base(api)
         {
         }
 

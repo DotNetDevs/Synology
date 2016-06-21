@@ -11,7 +11,7 @@ namespace Synology.FileStation
     [Request("FileStation")]
     public abstract class FileStationRequest : SynologyRequest
     {
-        protected FileStationRequest(SynologyApi parentApi, string api) : base(parentApi, "entry.cgi", $"FileStation.{api}")
+        protected FileStationRequest(SynologyApi parentApi) : base(parentApi)
         {
         }
     }

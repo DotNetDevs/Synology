@@ -3,24 +3,13 @@ using System.Linq;
 using System.Reflection;
 using Synology.Attributes;
 using Synology.Utilities;
+using System;
 
 namespace Synology.Parameters
 {
     public class SynologyParameters<T> where T : IParameter
     {
-        private string _method;
-
-        public string Method
-        {
-            get
-            {
-                return _method;
-            }
-            set
-            {
-                _method = _method ?? value;
-            }
-        }
+        public string Method { get; }
         public int Version { get; set; }
         public T[] Additional { get; set; }
 
@@ -34,6 +23,10 @@ namespace Synology.Parameters
                 var attr = method.GetCustomAttribute(typeof(RequestMethodAttribute)) as RequestMethodAttribute;
 
                 Method = attr?.Name;
+            }
+            else
+            {
+                throw new Exception("MethodAttribute missing in the invoking method.");
             }
 
             Version = 1;

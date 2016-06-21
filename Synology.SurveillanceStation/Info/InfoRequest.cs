@@ -13,7 +13,7 @@ namespace Synology.SurveillanceStation.Info
     [Request("Info")]
     public class InfoRequest : SurveillanceStationRequest
     {
-        public InfoRequest(SynologyApi api) : base(api, "info.cgi", "Info")
+        public InfoRequest(SynologyApi api) : base(api)
         {
         }
 
