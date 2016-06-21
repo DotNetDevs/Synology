@@ -9,6 +9,7 @@ using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using NLog;
+using System.IO;
 
 namespace Synology
 {
@@ -174,7 +175,17 @@ namespace Synology
             return new Uri(_client.BaseAddress, res);
         }
 
-        private async Task<T> GenericGetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) where T : ResultData => JsonConvert.DeserializeObject<T>(await _client.GetStringAsync(GetApiUrl(cgi, api, version, method, additionalParams)));
+        private async Task<T> GenericGetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) where T : ResultData
+        {
+            using (var reader = new StreamReader(await _client.GetStreamAsync(GetApiUrl(cgi, api, version, method, additionalParams))))
+            {
+                var json = await reader.ReadToEndAsync();
+
+                Logger.Debug($"Response JSON for {api} v.{version} with method {method} [cgi: {cgi}]: {json}");
+
+                return JsonConvert.DeserializeObject<T>(json);
+            }
+        }
 
         internal ResultData GetDataFromApi(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => GetDataFromApiAsync(cgi, api, version, method, additionalParams).Result;
 
@@ -205,7 +216,7 @@ namespace Synology
                     var result = await _client.PostAsync(uri, requestContent);
                     var data = await result.Content.ReadAsByteArrayAsync();
 
-                    return JsonConvert.DeserializeObject<T>(Encoding.Default.GetString(data));
+                    return JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(data));
                 }
             }
         }
