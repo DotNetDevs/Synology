@@ -180,6 +180,9 @@ namespace Synology
             using (var reader = new StreamReader(await _client.GetStreamAsync(GetApiUrl(cgi, api, version, method, additionalParams))))
             {
                 var json = await reader.ReadToEndAsync();
+
+                Logger.Debug($"Response JSON for {api} v.{version} with method {method} [cgi: {cgi}]: {json}");
+
                 return JsonConvert.DeserializeObject<T>(json);
             }
         }
