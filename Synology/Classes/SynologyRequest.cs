@@ -4,78 +4,59 @@ using System.Threading.Tasks;
 using Synology.Attributes;
 using System.Collections.Generic;
 using Synology.Parameters;
+using System;
 
 namespace Synology.Classes
 {
     [Request("SYNO")]
     public abstract class SynologyRequest
     {
-        public readonly SynologyApi Api;
-        public string CgiPath { get; private set; }
-        public string ApiName { get; private set; }
+        public SynologyApi Api { get; }
+        public string CgiPath { get; }
+        public string ApiName { get; }
 
-        protected SynologyRequest(SynologyApi api, string cgiPath, string apiName)
+        protected SynologyRequest(SynologyApi api)
         {
             Api = api;
-            CgiPath = cgiPath;
-            ApiName = $"SYNO.{apiName}";
 
-            Api.Connection.Logger.Debug($"Created request {ApiName} to path {cgiPath}");
+            var ty = GetType();
+            var res = new List<string>();
 
-            LoadInfo();
-
-            Api.Connection.Logger.Debug($"Updated request {ApiName} to path {cgiPath} with LoadInfo");
-        }
-
-        private string AttributesApiName
-        {
-            get
+            while (ty != null)
             {
-                var ty = GetType();
-                var res = new List<string>();
+                var ta = ty.GetCustomAttribute(typeof(RequestAttribute)) as RequestAttribute;
 
-                while (ty != null)
-                {
-                    var ta = ty.GetCustomAttribute(typeof(RequestAttribute)) as RequestAttribute;
+                if (ta != null)
+                    res.Insert(0, ta.Name);
 
-                    if (ta != null)
-                        res.Insert(0, ta.Name);
-
-                    ty = ty.BaseType;
-                }
-
-                if (res.Count > 2)
-                {
-                    return string.Join(".", res);
-                }
-
-                return ApiName;
+                ty = ty.BaseType;
             }
-        }
 
-        private void LoadInfo()
-        {
+            ApiName = string.Join(".", res);
+
             //Fixed possible loop for LoadInfo
-            if (AttributesApiName == "SYNO.API.Info" || ApiName == "SYNO.API.Info") return;
-
-            //Request and Method returns null if the API or the Method is not found.
-            var data = Api.Connection.Request("SYNO.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", AttributesApiName, ApiName);
-
-            //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
-            if (data != null && data.Data.ContainsKey(AttributesApiName))
+            if (ApiName == "SYNO.API.Info")
             {
-                ApiName = AttributesApiName;
-                CgiPath = data.Data[AttributesApiName].Path;
+                CgiPath = "query.cgi";
             }
             else
             {
+                //Request and Method returns null if the API or the Method is not found.
+                var data = Api.Connection.Request("SYNO.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", ApiName);
+
                 //Request and Method returns null if the API or the Method is not found.
                 //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
                 if (data != null && data.Data.ContainsKey(ApiName))
                 {
                     CgiPath = data.Data[ApiName].Path;
                 }
+                else
+                {
+                    throw new Exception("The API cannot be found on this Synology. Check if RequestAttribute exists on the relative SynologyRequest subclass or the SYNO.API.Info result.");
+                }
             }
+
+            Api.Connection.Logger.Debug($"Created request {ApiName} to path {CgiPath}");
         }
 
         protected ResultData<T> GetData<T>(SynologyRequestParameters parameters) => Api.GetData<T>(CgiPath, ApiName, parameters);

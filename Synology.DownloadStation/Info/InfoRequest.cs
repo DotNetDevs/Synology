@@ -9,7 +9,7 @@ namespace Synology.DownloadStation.Info
     [Request("Info")]
     public class InfoRequest : DownloadStationRequest
     {
-        public InfoRequest(SynologyApi api) : base(api, "info.cgi", "Info")
+        public InfoRequest(SynologyApi api) : base(api)
         {
         }
 

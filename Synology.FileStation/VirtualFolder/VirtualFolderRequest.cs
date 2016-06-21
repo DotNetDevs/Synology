@@ -12,7 +12,7 @@ namespace Synology.FileStation.VirtualFolder
     [Request("VirtualFolder")]
     public class VirtualFolderRequest : FileStationRequest
     {
-        public VirtualFolderRequest(SynologyApi api) : base(api, "VirtualFolder")
+        public VirtualFolderRequest(SynologyApi api) : base(api)
         {
         }
 
