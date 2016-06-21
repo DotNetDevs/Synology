@@ -9,7 +9,7 @@ namespace Synology.FileStation.List
     [Request("List")]
     public class ListRequest : FileStationRequest
     {
-        public ListRequest(SynologyApi api) : base(api, "List")
+        public ListRequest(SynologyApi api) : base(api)
         {
         }
 
