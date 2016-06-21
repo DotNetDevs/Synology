@@ -8,7 +8,7 @@ namespace Synology.FileStation.Upload
     [Request("Upload")]
     public class UploadRequest : FileStationRequest
     {
-        public UploadRequest(SynologyApi api) : base(api, "Upload")
+        public UploadRequest(SynologyApi api) : base(api)
         {
         }
 
@@ -18,7 +18,6 @@ namespace Synology.FileStation.Upload
             return PostData(new SynologyPostParameters
             {
                 Version = 2,
-                Method = "upload",
                 Additional = parameters
             });
         }

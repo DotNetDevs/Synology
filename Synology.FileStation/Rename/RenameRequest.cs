@@ -1,5 +1,5 @@
 using Synology.Attributes;
-﻿using Synology.Classes;
+using Synology.Classes;
 using Synology.FileStation.FileShare.Results;
 using Synology.FileStation.Rename.Parameters;
 using Synology.Parameters;
@@ -9,7 +9,7 @@ namespace Synology.FileStation.Rename
     [Request("Rename")]
     public class RenameRequest : FileStationRequest
     {
-        public RenameRequest(SynologyApi api) : base(api, "Rename")
+        public RenameRequest(SynologyApi api) : base(api)
         {
         }
 
@@ -24,7 +24,6 @@ namespace Synology.FileStation.Rename
             return GetData<FileResult>(new SynologyRequestParameters
             {
                 Version = 2,
-                Method = "rename",
                 Additional = parameters
             });
         }

@@ -12,7 +12,7 @@ namespace Synology.Api.Auth
     {
         private string _sessionNumber;
 
-        public AuthRequest(SynologyApi api) : base(api, "auth.cgi", "Auth")
+        public AuthRequest(SynologyApi api) : base(api)
         {
         }
 

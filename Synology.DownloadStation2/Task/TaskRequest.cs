@@ -20,7 +20,7 @@ namespace Synology.DownloadStation2.Task
     [Request("Task")]
     public class TaskRequest : DownloadStation2Request
     {
-        public TaskRequest(SynologyApi parentApi) : base(parentApi, "Task")
+        public TaskRequest(SynologyApi parentApi) : base(parentApi)
         {
         }
 
@@ -34,7 +34,6 @@ namespace Synology.DownloadStation2.Task
         {
             return PostData<TaskCreateResult>(new SynologyPostParameters
             {
-                Method = "create",
                 Additional = parameters
             });
         }
