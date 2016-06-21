@@ -30,14 +30,27 @@ namespace Synology.FileStation.List
         /// Enumerate files in a given folder
         /// </summary>
         [RequestMethod("list")]
-        public ResultData ListFiles()
+        public ResultData<ListResult> ListFiles(ListParameters parameters)
         {
-            throw new NotImplementedException();
+            return GetData<ListResult>(new Synology.Parameters.SynologyRequestParameters
+            {
+                Version = 2,
+                Additional = parameters,
+            });
         }
+
+        /// <summary>
+        /// Get information of file(s)
+        /// </summary>
+        /// <returns></returns>
         [RequestMethod("getinfo")]
-        public ResultData GetFileInfo()
+        public ResultData<GetFileInfoResult> GetFileInfo(GetFileInfoParameters parameters)
         {
-            throw new NotImplementedException();
+            return GetData<GetFileInfoResult>(new Synology.Parameters.SynologyRequestParameters
+            {
+                Version = 2,
+                Additional = parameters,
+            });
         }
     }
 }

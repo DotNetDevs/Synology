@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Synology.FileStation.List.Parameters
 {
-    public enum ListSharesSortType
+    public enum ListSortType
     {
         [Description("name")]
         Name,

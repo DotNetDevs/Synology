@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Synology.FileStation.List.Results
 {
-    public class ListSharesResult
+    public class ListResult
     {
         /// <summary>
-        /// Total number of shared folders.
+        /// Total number of shared files.
         /// </summary>
         public int Total { get; set; }
 
@@ -19,8 +19,8 @@ namespace Synology.FileStation.List.Results
         public int Offset { get; set; }
 
         /// <summary>
-        /// List of <see cref="ShareResult"/> objects. 
+        /// List of <see cref="FileResult"/> objects. 
         /// </summary>
-        public IEnumerable<ShareResult> Shares { get; set; }
+        public IEnumerable<FileResult> Files { get; set; }
     }
 }

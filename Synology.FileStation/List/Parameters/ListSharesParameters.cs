@@ -34,7 +34,7 @@ namespace Synology.FileStation.List.Parameters
         /// type: file extension
         /// </summary>
         [JsonProperty("sort_by")]
-        public ListSharesSortType SortBy { get; set; }
+        public ListSortType SortBy { get; set; }
 
         /// <summary>
         /// Optional. Specify to sort ascending or to sort descending

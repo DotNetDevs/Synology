@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Synology.Utilities;
+using System.ComponentModel;
 
 namespace Synology.FileStation.List.Parameters
 {
@@ -17,19 +18,19 @@ namespace Synology.FileStation.List.Parameters
         /// </summary>
         [Required]
         [JsonProperty("folder_path")]
-        public string folder_path { get; set; }
+        public string FolderPath { get; set; }
 
         /// <summary>
         /// Optional. Specify how many files are skipped before beginning to return listed files
         /// </summary>
         [JsonProperty("offset")]
-        public string offset { get; set; }
+        public string Offset { get; set; }
 
         /// <summary>
         /// Optional. Number of files requested. 0 indicates to list all files with a given folder.
         /// </summary>
         [JsonProperty("limit")]
-        public string limit { get; set; }
+        public string Limit { get; set; }
 
         /// <summary>
         /// Optional. Specify which file information to sort on.
@@ -46,13 +47,13 @@ namespace Synology.FileStation.List.Parameters
         /// type: file extension
         /// </summary>
         [JsonProperty("sort_by")]
-        public string sort_by { get; set; }
+        public ListSortType SortBy { get; set; }
 
         /// <summary>
         /// Optional. Specify to sort ascending or to sort descending
         /// </summary>
         [JsonProperty("sort_direction")]
-        public string sort_direction { get; set; }
+        public ListSortDirection SortDirection { get; set; }
 
         /// <summary>
         /// Optional. Given glob pattern(s) to find files whose names and extensions match a case insensitive glob pattern.
@@ -61,19 +62,19 @@ namespace Synology.FileStation.List.Parameters
         /// 2. You can use "," to separate multiple glob patterns
         /// </summary>
         [JsonProperty("pattern")]
-        public string pattern { get; set; }
+        public string Pattern { get; set; }
 
         /// <summary>
         /// Optional. "file": only enumerate regular files; "dir": only enumerate folders; "all" enumerate regular files and folders
         /// </summary>
         [JsonProperty("filetype")]
-        public string filetype { get; set; }
+        public FileType Filetype { get; set; }
 
         /// <summary>
         /// Optional. Folder path started with a shared folder. Return all files and sub-folders within folder_path path until goto_path path recursively.
         /// </summary>
         [JsonProperty("goto_path")]
-        public string goto_path { get; set; }
+        public string GotoPath { get; set; }
 
         /// <summary>
         /// Optional. Additional requested file information separated by a comma “, “and around the brackets.When an additional option is requested, responded objects will be provided in the specified additional option.
@@ -87,21 +88,21 @@ namespace Synology.FileStation.List.Parameters
         /// -  type: return a file extension
         /// </summary>
         [JsonProperty("additional")]
-        public string additional { get; set; }
+        public FileDetailsType Additional { get; set; }
 
         public override QueryStringParameter[] Parameters()
         {
             return new[]
             {
-                new QueryStringParameter("folder_path", folder_path),
-                new QueryStringParameter("offset", offset),
-                new QueryStringParameter("limit", limit),
-                new QueryStringParameter("sort_by", sort_by),
-                new QueryStringParameter("sort_direction", sort_direction),
-                new QueryStringParameter("pattern", pattern),
-                new QueryStringParameter("filetype", filetype),
-                new QueryStringParameter("goto_path", goto_path),
-                new QueryStringParameter("additional", additional),
+                new QueryStringParameter("folder_path", FolderPath),
+                new QueryStringParameter("offset", Offset),
+                new QueryStringParameter("limit", Limit),
+                new QueryStringParameter("sort_by", SortBy),
+                new QueryStringParameter("sort_direction", SortDirection),
+                new QueryStringParameter("pattern", Pattern),
+                new QueryStringParameter("filetype", Filetype),
+                new QueryStringParameter("goto_path", GotoPath),
+                new QueryStringParameter("additional", Additional),
             };
         }
     }
