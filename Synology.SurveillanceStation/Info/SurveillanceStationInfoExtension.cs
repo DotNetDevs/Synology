@@ -6,7 +6,7 @@ namespace Synology
 {
 	public static class SurveillanceStationInfoExtension
 	{
-		public static SurveillanceStationRequest Info(this SurveillanceStationApi api)
+		public static InfoRequest Info(this SurveillanceStationApi api)
 		{
 			return RequestExtension<InfoRequest>.Request(api);
 		}
