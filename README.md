@@ -6,6 +6,24 @@
 
 [Kanban Board](https://zube.io/boards/46553751/kanban)
 
+Project on AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy?svg=true)](https://ci.appveyor.com/project/matteobruni/synology-c1jb9)
+
+Branch `master` Status: [![Build status](https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/master?svg=true)](https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/master)
+
+Branch `dev` Status: [![Build status](https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/dev?svg=true)](https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/dev)
+
+Synology [![NuGet version](https://badge.fury.io/nu/Synology.svg)](https://badge.fury.io/nu/Synology)
+
+Synology.Api [![NuGet version](https://badge.fury.io/nu/Synology.Api.svg)](https://badge.fury.io/nu/Synology.Api)
+
+Synology.DownloadStation [![NuGet version](https://badge.fury.io/nu/Synology.DownloadStation.svg)](https://badge.fury.io/nu/Synology.DownloadStation)
+
+Synology.DownloadStation2 [![NuGet version](https://badge.fury.io/nu/Synology.DownloadStation2.svg)](https://badge.fury.io/nu/Synology.DownloadStation2)
+
+Synology.FileStation [![NuGet version](https://badge.fury.io/nu/Synology.FileStation.svg)](https://badge.fury.io/nu/Synology.FileStation)
+
+Synology.SurveillanceStation [![NuGet version](https://badge.fury.io/nu/Synology.SurveillanceStation.svg)](https://badge.fury.io/nu/Synology.SurveillanceStation)
+
 This is an implementation of Synology Built-In APIs for .NET projects.
 You can use it for access your Synology information, upload/download files from disk, use the built-in torrent client and all other services available.
 
