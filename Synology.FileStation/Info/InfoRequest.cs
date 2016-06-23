@@ -10,17 +10,17 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.Info
 {
-    [Request("Info")]
-    public class InfoRequest : FileStationRequest
-    {
-        public InfoRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("Info")]
+	public class InfoRequest : FileStationRequest
+	{
+		public InfoRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("getinfo")]
-        public ResultData<InfoResult> GetInfo()
-        {
-            return GetData<InfoResult>(new SynologyRequestParameters());
-        }
-    }
+		[RequestMethod("getinfo")]
+		public ResultData<InfoResult> GetInfo()
+		{
+			return GetData<InfoResult>(new SynologyRequestParameters(this));
+		}
+	}
 }
