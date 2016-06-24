@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Linq;
 using System.ComponentModel;
 using System.Reflection;
+using Synology.Enums;
+using Synology.Attributes;
 
 namespace Synology.Utilities
 {
@@ -14,62 +16,61 @@ namespace Synology.Utilities
         {
         }
 
-        //TODO: Fix for PCL
-        //public static string GetEnumDescription(Enum value)
-        //{
-        //    if (value == null) return null;
+        public static string GetEnumDescription(Enum value)
+        {
+            if (value == null) return null;
 
-        //    var type = value.GetType();
-        //    var res = value.ToString();
+            var type = value.GetType().GetTypeInfo();
+            var res = value.ToString();
 
-        //    if (type.CustomAttributes.Any(t => t.AttributeType == typeof(FlagsAttribute)))
-        //    {
-        //        var members = type.GetMembers();
-        //        var conversion = members.SelectMany(t => t.GetCustomAttributes(typeof(DescriptionAttribute), false).Select(a => new KeyValuePair<string, string>(t.Name, ((DescriptionAttribute)a).Description))).ToDictionary(t => t.Key, t => t.Value);
+            if (type.CustomAttributes.Any(t => t.AttributeType == typeof(FlagsAttribute)))
+            {
+                var members = type.AsType().GetMembers();
+                var conversion = members.SelectMany(t => t.GetCustomAttributes(typeof(DescriptionAttribute), false).Select(a => new KeyValuePair<string, string>(t.Name, ((DescriptionAttribute)a).Description))).ToDictionary(t => t.Key, t => t.Value);
 
-        //        res = string.Join(",", res.Split(',').Select(t => t.Trim()).Select(t => conversion.ContainsKey(t) ? conversion[t] : t));
-        //    }
-        //    else
-        //    {
-        //        var memInfo = type.GetMember(value.ToString());
+                res = string.Join(",", res.Split(',').Select(t => t.Trim()).Select(t => conversion.ContainsKey(t) ? conversion[t] : t));
+            }
+            else
+            {
+                var memInfo = type.AsType().GetMember(value.ToString());
 
-        //        if (memInfo.Length > 0)
-        //        {
-        //            var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                if (memInfo.Length > 0)
+                {
+                    var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-        //            if (attrs.Count() > 0)
-        //                res = ((DescriptionAttribute)attrs.First()).Description;
-        //        }
-        //    }
+                    if (attrs.Count() > 0)
+                        res = ((DescriptionAttribute)attrs.First()).Description;
+                }
+            }
 
-        //    return res;
-        //}
+            return res;
+        }
 
-        //public static string GetSortDirectionDescription(ListSortDirection? value)
-        //{
-        //    if (value == null)
-        //        return null;
+        public static string GetSortDirectionDescription(ListSortDirection? value)
+        {
+            if (value == null)
+                return null;
 
-        //    if (value == ListSortDirection.Ascending)
-        //        return "asc";
+            if (value == ListSortDirection.Ascending)
+                return "asc";
 
-        //    if (value == ListSortDirection.Descending)
-        //        return "desc";
+            if (value == ListSortDirection.Descending)
+                return "desc";
 
-        //    return null;
-        //}
+            return null;
+        }
 
-        //public QueryStringParameter(string name, ListSortDirection? value) : this(name, GetSortDirectionDescription(value))
-        //{
-        //}
+        public QueryStringParameter(string name, ListSortDirection? value) : this(name, GetSortDirectionDescription(value))
+        {
+        }
 
-        //public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
-        //{
-        //}
+        public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
+        {
+        }
 
-        //public QueryStringParameter(string name, Enum value, bool surroundBrackets) : this(name, GetEnumDescription(value), surroundBrackets)
-        //{
-        //}
+        public QueryStringParameter(string name, Enum value, bool surroundBrackets) : this(name, GetEnumDescription(value), surroundBrackets)
+        {
+        }
 
         public QueryStringParameter(string name, int? value) : base(name, value)
         {
