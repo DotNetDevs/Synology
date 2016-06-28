@@ -8,20 +8,20 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.CheckPermission
 {
-    [Request("CheckPermission")]
-    public class CheckPermissionRequest : FileStationRequest
-    {
-        public CheckPermissionRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("CheckPermission")]
+	public class CheckPermissionRequest : FileStationRequest
+	{
+		public CheckPermissionRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("write")]
-        public ResultData Write(CheckPermissionWriteParameters parameters)
-        {
-            return GetData(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
-    }
+		[RequestMethod("write")]
+		public ResultData Write(CheckPermissionWriteParameters parameters)
+		{
+			return GetData(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
+	}
 }

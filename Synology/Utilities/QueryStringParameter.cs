@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.ComponentModel;
+using System.Reflection;
+using Synology.Enums;
+using Synology.Attributes;
 
 namespace Synology.Utilities
 {
@@ -17,26 +20,26 @@ namespace Synology.Utilities
         {
             if (value == null) return null;
 
-            var type = value.GetType();
+            var type = value.GetType().GetTypeInfo();
             var res = value.ToString();
 
             if (type.CustomAttributes.Any(t => t.AttributeType == typeof(FlagsAttribute)))
             {
-                var members = type.GetMembers();
+                var members = type.AsType().GetMembers();
                 var conversion = members.SelectMany(t => t.GetCustomAttributes(typeof(DescriptionAttribute), false).Select(a => new KeyValuePair<string, string>(t.Name, ((DescriptionAttribute)a).Description))).ToDictionary(t => t.Key, t => t.Value);
 
                 res = string.Join(",", res.Split(',').Select(t => t.Trim()).Select(t => conversion.ContainsKey(t) ? conversion[t] : t));
             }
             else
             {
-                var memInfo = type.GetMember(value.ToString());
+                var memInfo = type.AsType().GetMember(value.ToString());
 
                 if (memInfo.Length > 0)
                 {
                     var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-                    if (attrs.Length > 0)
-                        res = ((DescriptionAttribute)attrs[0]).Description;
+                    if (attrs.Count() > 0)
+                        res = ((DescriptionAttribute)attrs.First()).Description;
                 }
             }
 

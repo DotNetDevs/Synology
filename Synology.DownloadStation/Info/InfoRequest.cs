@@ -6,33 +6,33 @@ using Synology.Parameters;
 
 namespace Synology.DownloadStation.Info
 {
-    [Request("Info")]
-    public class InfoRequest : DownloadStationRequest
-    {
-        public InfoRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("Info")]
+	public class InfoRequest : DownloadStationRequest
+	{
+		public InfoRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("getinfo")]
-        public ResultData<InfoResult> GetInfo()
-        {
-            return GetData<InfoResult>(new SynologyRequestParameters());
-        }
+		[RequestMethod("getinfo")]
+		public ResultData<InfoResult> GetInfo()
+		{
+			return GetData<InfoResult>(new SynologyRequestParameters(this));
+		}
 
-        [RequestMethod("getconfig")]
-        public ResultData<ConfigResult> Config()
-        {
-            return GetData<ConfigResult>(new SynologyRequestParameters { Version = 2 });
-        }
+		[RequestMethod("getconfig")]
+		public ResultData<ConfigResult> Config()
+		{
+			return GetData<ConfigResult>(new SynologyRequestParameters(this) { Version = 2 });
+		}
 
-        [RequestMethod("setserverconfig")]
-        public ResultData SetConfig(SetConfigParameters parameters)
-        {
-            return GetData(new SynologyRequestParameters
-            {
-                Version = 2,
-                Additional = parameters
-            });
-        }
-    }
+		[RequestMethod("setserverconfig")]
+		public ResultData SetConfig(SetConfigParameters parameters)
+		{
+			return GetData(new SynologyRequestParameters(this)
+			{
+				Version = 2,
+				Additional = parameters
+			});
+		}
+	}
 }

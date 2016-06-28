@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Synology.Enums;
 using Synology.Parameters;
 using Synology.Utilities;
 using System.ComponentModel;

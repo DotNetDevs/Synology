@@ -10,17 +10,17 @@ using Synology.Parameters;
 
 namespace Synology.SurveillanceStation.Info
 {
-    [Request("Info")]
-    public class InfoRequest : SurveillanceStationRequest
-    {
-        public InfoRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("Info")]
+	public class InfoRequest : SurveillanceStationRequest
+	{
+		public InfoRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("getinfo")]
-        public ResultData<InfoResult> GetInfo()
-        {
-            return GetData<InfoResult>(new SynologyRequestParameters());
-        }
-    }
+		[RequestMethod("getinfo")]
+		public ResultData<InfoResult> GetInfo()
+		{
+			return GetData<InfoResult>(new SynologyRequestParameters(this));
+		}
+	}
 }
