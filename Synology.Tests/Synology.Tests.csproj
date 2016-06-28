@@ -72,24 +72,6 @@
     <Compile Include="QueryStringParameterTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Synology.Api\Synology.Api.csproj">
-      <Project>{12426522-8068-47c7-a704-a9a6726c3c9e}</Project>
-      <Name>Synology.Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Synology.DownloadStation\Synology.DownloadStation.csproj">
-      <Project>{41273533-319e-49bc-a4dc-9b838df0af37}</Project>
-      <Name>Synology.DownloadStation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Synology.FileStation\Synology.FileStation.csproj">
-      <Project>{bfcc3c3d-4d75-4c45-a007-d1f8388fbcce}</Project>
-      <Name>Synology.FileStation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Synology\Synology.csproj">
-      <Project>{defd33fe-74da-4938-ad97-5d559b9f0cca}</Project>
-      <Name>Synology</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
