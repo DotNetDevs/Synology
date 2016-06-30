@@ -13,10 +13,60 @@
     <projectUrl>http://ar3sdevelopment.github.io/Synology</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
-      <group targetFramework=".NETFramework4.5">
-        <dependency id="Newtonsoft.Json" version="7.0.1" />
-        <dependency id="Autofac" version="3.5.2" />
-        <dependency id="NLog.Config" version="4.3.5" />
+      <group targetFramework="netstandard13">
+        <dependency id="Autofac" version="4.0.0-rc3-286" />
+        <dependency id="Microsoft.CSharp" version="4.0.1" />
+        <dependency id="Microsoft.Extensions.PlatformAbstractions" version="1.0.0" />
+        <dependency id="Microsoft.NETCore.Portable.Compatibility" version="1.0.1" />
+        <dependency id="NETStandard.Library" version="1.6.0" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="NLog" version="4.4.0-beta12" />
+        <dependency id="System.Collections" version="4.0.11" />
+        <dependency id="System.Collections.NonGeneric" version="4.0.1" />
+        <dependency id="System.ComponentModel" version="4.0.1" />
+        <dependency id="System.ComponentModel.Annotations" version="4.1.0" />
+        <dependency id="System.ComponentModel.Primitives" version="4.1.0" />
+        <dependency id="System.ComponentModel.TypeConverter" version="4.1.0" />
+        <dependency id="System.Data.Common" version="4.1.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
+        <dependency id="System.Dynamic.Runtime" version="4.0.11" />
+        <dependency id="System.IO" version="4.1.0" />
+        <dependency id="System.Linq" version="4.1.0" />
+        <dependency id="System.Linq.Expressions" version="4.1.0" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+        <dependency id="System.ObjectModel" version="4.0.12" />
+        <dependency id="System.Reflection" version="4.1.0" />
+        <dependency id="System.Reflection.Emit" version="4.0.1" />
+        <dependency id="System.Reflection.Extensions" version="4.0.1" />
+        <dependency id="System.Reflection.Primitives" version="4.0.1" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
+        <dependency id="System.Runtime" version="4.1.0" />
+        <dependency id="System.Runtime.Extensions" version="4.1.0" />
+        <dependency id="System.Text.Encoding" version="4.0.11" />
+        <dependency id="System.Threading" version="4.0.11" />
+        <dependency id="System.Threading.Tasks" version="4.0.11" />
+      </group>
+      <group targetFramework="netstandard1.0">
+        <dependency id="Autofac" version="4.0.0-rc3-286" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="NLog" version="4.4.0-beta12" />
+        <dependency id="System.Collections" version="4.0.11" />
+        <dependency id="System.ComponentModel" version="4.0.1" />
+        <dependency id="System.ComponentModel.Annotations" version="4.1.0" />
+        <dependency id="System.ComponentModel.Primitives" version="4.1.0" />
+        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
+        <dependency id="System.Globalization" version="4.0.11" />
+        <dependency id="System.IO" version="4.1.0" />
+        <dependency id="System.Linq" version="4.1.0" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+        <dependency id="System.Reflection" version="4.1.0" />
+        <dependency id="System.Reflection.Extensions" version="4.0.1" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
+        <dependency id="System.Runtime" version="4.1.0" />
+        <dependency id="System.Runtime.Extensions" version="4.1.0" />
+        <dependency id="System.Text.Encoding" version="4.0.11" />
+        <dependency id="System.Threading.Tasks" version="4.0.11" />
       </group>
     </dependencies>
   </metadata>
