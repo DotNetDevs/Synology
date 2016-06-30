@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
-    <metadata>
-        <id>$id$</id>
-        <version>$version$-beta</version>
-        <title>Synology.DownloadStation</title>
-        <authors>$author$</authors>
-        <owners>Matteo Bruni</owners>
-        <description>$description$</description>
-        <releaseNotes></releaseNotes>
-        <summary>$description$</summary>
-        <language>en-US</language>
-        <projectUrl>http://ar3sdevelopment.github.io/Synology</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <dependencies>
-            <group targetFramework=".NETFramework4.5">
-                <dependency id="Synology" version="$version$-beta" />
-            </group>
-        </dependencies>
-    </metadata>
+  <metadata>
+    <id>$id$</id>
+    <version>$version$-beta</version>
+    <title>Synology.DownloadStation</title>
+    <authors>$author$</authors>
+    <owners>Matteo Bruni</owners>
+    <description>$description$</description>
+    <releaseNotes></releaseNotes>
+    <summary>$description$</summary>
+    <language>en-US</language>
+    <projectUrl>http://dotnetdevs.github.io/Synology</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <dependencies>
+      <group targetFramework="netstandard1.3">
+        <dependency id="Synology" version="$version$-beta" />
+      </group>
+    </dependencies>
+  </metadata>
 </package>
