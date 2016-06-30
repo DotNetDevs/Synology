@@ -6,26 +6,26 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.Rename
 {
-    [Request("Rename")]
-    public class RenameRequest : FileStationRequest
-    {
-        public RenameRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("Rename")]
+	public class RenameRequest : FileStationRequest
+	{
+		public RenameRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        /// <summary>
-        /// Rename a file/folder
-        /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        [RequestMethod("rename")]
-        public ResultData<FileResult> Rename(RenameParameters parameters)
-        {
-            return GetData<FileResult>(new SynologyRequestParameters
-            {
-                Version = 2,
-                Additional = parameters
-            });
-        }
-    }
+		/// <summary>
+		/// Rename a file/folder
+		/// </summary>
+		/// <param name="parameters"></param>
+		/// <returns></returns>
+		[RequestMethod("rename")]
+		public ResultData<FileResult> Rename(RenameParameters parameters)
+		{
+			return GetData<FileResult>(new SynologyRequestParameters(this)
+			{
+				Version = 2,
+				Additional = parameters
+			});
+		}
+	}
 }

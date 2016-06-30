@@ -9,84 +9,84 @@ using Synology.Parameters;
 
 namespace Synology.DownloadStation.Task
 {
-    [Request("Task")]
-    public class TaskRequest : DownloadStationRequest
-    {
-        public TaskRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("Task")]
+	public class TaskRequest : DownloadStationRequest
+	{
+		public TaskRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("list")]
-        public ResultData<TaskListResult> List(TaskListParameters parameters)
-        {
-            return GetData<TaskListResult>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
+		[RequestMethod("list")]
+		public ResultData<TaskListResult> List(TaskListParameters parameters)
+		{
+			return GetData<TaskListResult>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
 
-        [RequestMethod("getinfo")]
-        public ResultData<IEnumerable<TaskResult>> Info(TaskInfoParameters parameters)
-        {
-            return GetData<IEnumerable<TaskResult>>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
+		[RequestMethod("getinfo")]
+		public ResultData<IEnumerable<TaskResult>> Info(TaskInfoParameters parameters)
+		{
+			return GetData<IEnumerable<TaskResult>>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
 
-        [RequestMethod("create")]
-        public ResultData Create(TaskCreateParameters parameters)
-        {
-            return GetData(new SynologyRequestParameters
-            {
-                Version = 3,
-                Additional = parameters
-            });
-        }
+		[RequestMethod("create")]
+		public ResultData Create(TaskCreateParameters parameters)
+		{
+			return GetData(new SynologyRequestParameters(this)
+			{
+				Version = 3,
+				Additional = parameters
+			});
+		}
 
-        [RequestMethod("delete")]
-        public ResultData<IEnumerable<TaskMinimalResult>> Delete(TaskDeleteParameters parameters)
-        {
-            return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
+		[RequestMethod("delete")]
+		public ResultData<IEnumerable<TaskMinimalResult>> Delete(TaskDeleteParameters parameters)
+		{
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
 
-        [RequestMethod("pause")]
-        public ResultData<IEnumerable<TaskMinimalResult>> Pause(params string[] ids)
-        {
-            var additionalParams = new[] {
-                new QueryStringParameter("id", ids)
-            };
+		[RequestMethod("pause")]
+		public ResultData<IEnumerable<TaskMinimalResult>> Pause(params string[] ids)
+		{
+			var additionalParams = new[] {
+				new QueryStringParameter("id", ids)
+			};
 
-            return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
-            {
-                Additional = additionalParams
-            });
-        }
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+			{
+				Additional = additionalParams
+			});
+		}
 
-        [RequestMethod("resume")]
-        public ResultData<IEnumerable<TaskMinimalResult>> Resume(params string[] ids)
-        {
-            var additionalParams = new[] {
-                new QueryStringParameter("id", ids),
-            };
+		[RequestMethod("resume")]
+		public ResultData<IEnumerable<TaskMinimalResult>> Resume(params string[] ids)
+		{
+			var additionalParams = new[] {
+				new QueryStringParameter("id", ids),
+			};
 
-            return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
-            {
-                Additional = additionalParams
-            });
-        }
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+			{
+				Additional = additionalParams
+			});
+		}
 
-        [RequestMethod("edit")]
-        public ResultData<IEnumerable<TaskMinimalResult>> Edit(TaskEditParameters parameters)
-        {
-            return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
-    }
+		[RequestMethod("edit")]
+		public ResultData<IEnumerable<TaskMinimalResult>> Edit(TaskEditParameters parameters)
+		{
+			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
+	}
 }
 

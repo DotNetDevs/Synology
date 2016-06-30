@@ -9,53 +9,53 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.Favorite
 {
-    [Request("Favorite")]
-    public class FavoriteRequest : FileStationRequest
-    {
-        public FavoriteRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("Favorite")]
+	public class FavoriteRequest : FileStationRequest
+	{
+		public FavoriteRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("list")]
-        public ResultData<FavoriteListResult> List(FavoriteListParameters parameters)
-        {
-            return GetData<FavoriteListResult>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
+		[RequestMethod("list")]
+		public ResultData<FavoriteListResult> List(FavoriteListParameters parameters)
+		{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
 
-        [RequestMethod("add")]
-        public ResultData Add(FavoriteAddParameters parameters)
-        {
-            return GetData<FavoriteListResult>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
+		[RequestMethod("add")]
+		public ResultData Add(FavoriteAddParameters parameters)
+		{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
 
-        [RequestMethod("delete")]
-        public ResultData Delete(FavoriteDeleteParameters parameters)
-        {
-            return GetData<FavoriteListResult>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
+		[RequestMethod("delete")]
+		public ResultData Delete(FavoriteDeleteParameters parameters)
+		{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
 
-        [RequestMethod("clear_broken")]
-        public ResultData ClearBroken()
-        {
-            return GetData<FavoriteListResult>(new SynologyRequestParameters());
-        }
+		[RequestMethod("clear_broken")]
+		public ResultData ClearBroken()
+		{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters(this));
+		}
 
-        [RequestMethod("edit")]
-        public ResultData Edit(FavoriteEditParameters parameters)
-        {
-            return GetData<FavoriteListResult>(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
-        }
-    }
+		[RequestMethod("edit")]
+		public ResultData Edit(FavoriteEditParameters parameters)
+		{
+			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
+		}
+	}
 }

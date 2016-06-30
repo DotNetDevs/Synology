@@ -7,48 +7,48 @@ using Synology.Parameters;
 
 namespace Synology.Api.Auth
 {
-    [Request("Auth")]
-    public class AuthRequest : MainApiRequest
-    {
-        private string _sessionNumber;
+	[Request("Auth")]
+	public class AuthRequest : MainApiRequest
+	{
+		private string _sessionNumber;
 
-        public AuthRequest(SynologyApi api) : base(api)
-        {
-        }
+		public AuthRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("login")]
-        public ResultData<AuthResult> Login(LoginParameters parameters)
-        {
-            _sessionNumber = parameters.SessionName;
+		[RequestMethod("login")]
+		public ResultData<AuthResult> Login(LoginParameters parameters)
+		{
+			_sessionNumber = parameters.SessionName;
 
-            var result = GetData<AuthResult>(new SynologyRequestParameters
-            {
-                Version = 4,
-                Additional = parameters
-            });
+			var result = GetData<AuthResult>(new SynologyRequestParameters(this)
+			{
+				Version = 4,
+				Additional = parameters
+			});
 
-            if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
-                Api.Connection.Sid = result.Data.Sid;
+			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
+				Api.Connection.Sid = result.Data.Sid;
 
-            return result;
-        }
+			return result;
+		}
 
-        [RequestMethod("logout")]
-        public ResultData Logout()
-        {
-            var parameters = new[] {
-                new QueryStringParameter("session", _sessionNumber),
-            };
+		[RequestMethod("logout")]
+		public ResultData Logout()
+		{
+			var parameters = new[] {
+				new QueryStringParameter("session", _sessionNumber),
+			};
 
-            var result = GetData(new SynologyRequestParameters
-            {
-                Additional = parameters
-            });
+			var result = GetData(new SynologyRequestParameters(this)
+			{
+				Additional = parameters
+			});
 
-            if (result.Success)
-                Api.Connection.Sid = null;
+			if (result.Success)
+				Api.Connection.Sid = null;
 
-            return result;
-        }
-    }
+			return result;
+		}
+	}
 }

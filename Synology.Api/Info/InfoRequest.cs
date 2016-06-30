@@ -6,26 +6,26 @@ using Synology.Parameters;
 
 namespace Synology.Api.Info
 {
-    [Request("Info")]
-    public class InfoRequest : MainApiRequest
-    {
-        public InfoRequest(SynologyApi api) : base(api)
-        {
-        }
+	[Request("Info")]
+	public class InfoRequest : MainApiRequest
+	{
+		public InfoRequest(SynologyApi api) : base(api)
+		{
+		}
 
-        [RequestMethod("query")]
-        public ResultData<Dictionary<string, ApiInfo>> Query(params string[] apis)
-        {
-            this.Api.Connection.Logger.Debug($"Requesting Info for {(apis.Length > 0 ? string.Join(";", apis) : "all")} APIs");
+		[RequestMethod("query")]
+		public ResultData<Dictionary<string, ApiInfo>> Query(params string[] apis)
+		{
+			this.Api.Connection.Logger.Debug($"Requesting Info for {(apis.Length > 0 ? string.Join(";", apis) : "all")} APIs");
 
-            var additionalParams = new[] {
-                apis?.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
-            };
+			var additionalParams = new[] {
+				apis?.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
+			};
 
-            return GetData<Dictionary<string, ApiInfo>>(new SynologyRequestParameters
-            {
-                Additional = additionalParams
-            });
-        }
-    }
+			return GetData<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
+			{
+				Additional = additionalParams
+			});
+		}
+	}
 }
