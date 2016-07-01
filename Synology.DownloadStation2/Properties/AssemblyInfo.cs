@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -9,18 +10,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Synology DownloadStation2 API for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Caelan")]
-[assembly: AssemblyProduct("Synology")]
-[assembly: AssemblyCopyright("Caelan ©  2016")]
+[assembly: AssemblyProduct("Synology.DownloadStation2")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ae8b626d-b128-4780-b9d2-41b1f626ea57")]
+[assembly: NeutralResourcesLanguage("en")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,3 +27,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyInformationalVersion("1.0.0-beta")]

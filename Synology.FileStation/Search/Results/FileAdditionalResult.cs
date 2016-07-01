@@ -1,8 +1,6 @@
 using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Configuration;
 
 namespace Synology.FileStation.Search.Results
 {

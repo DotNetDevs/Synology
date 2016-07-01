@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Synology.Utilities;
 using System.ComponentModel;
+using Synology.Enums;
 
 namespace Synology.FileStation.List.Parameters
 {
