@@ -22,15 +22,150 @@
       <h1>
 <a id="synology" class="anchor" href="#synology" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Synology</h1>
 
+<p><a href="https://trello.com/b/2R0m3FiP">Trello Board</a></p>
+
 <p><a href="http://waffle.io/DotNetDevs/Synology"><img src="https://badge.waffle.io/DotNetDevs/Synology.png?label=ready&amp;title=Ready" alt="Stories in Ready"></a></p>
 
 <p><a href="http://waffle.io/DotNetDevs/Synology"><img src="https://badge.waffle.io/DotNetDevs/Synology.svg?label=in%20progress&amp;title=In%20Progress" alt="Stories in Progress"></a></p>
+
+<p><a href="https://zube.io/boards/46553751/kanban">Kanban Board</a></p>
+
+<p>Project on AppVeyor: <a href="https://ci.appveyor.com/project/matteobruni/synology-c1jb9"><img src="https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy?svg=true" alt="Build status"></a></p>
+
+<p>Branch <code>master</code> Status: <a href="https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/master"><img src="https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/master?svg=true" alt="Build status"></a></p>
+
+<p>Branch <code>dev</code> Status: <a href="https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/dev"><img src="https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/dev?svg=true" alt="Build status"></a></p>
+
+<p>Synology <a href="https://badge.fury.io/nu/Synology"><img src="https://badge.fury.io/nu/Synology.svg" alt="NuGet version"></a></p>
+
+<p>Synology.Api <a href="https://badge.fury.io/nu/Synology.Api"><img src="https://badge.fury.io/nu/Synology.Api.svg" alt="NuGet version"></a></p>
+
+<p>Synology.DownloadStation <a href="https://badge.fury.io/nu/Synology.DownloadStation"><img src="https://badge.fury.io/nu/Synology.DownloadStation.svg" alt="NuGet version"></a></p>
+
+<p>Synology.DownloadStation2 <a href="https://badge.fury.io/nu/Synology.DownloadStation2"><img src="https://badge.fury.io/nu/Synology.DownloadStation2.svg" alt="NuGet version"></a></p>
+
+<p>Synology.FileStation <a href="https://badge.fury.io/nu/Synology.FileStation"><img src="https://badge.fury.io/nu/Synology.FileStation.svg" alt="NuGet version"></a></p>
+
+<p>Synology.SurveillanceStation <a href="https://badge.fury.io/nu/Synology.SurveillanceStation"><img src="https://badge.fury.io/nu/Synology.SurveillanceStation.svg" alt="NuGet version"></a></p>
 
 <p>This is an implementation of Synology Built-In APIs for .NET projects.
 You can use it for access your Synology information, upload/download files from disk, use the built-in torrent client and all other services available.</p>
 
 <h2>
 <a id="pull-request-will-be-accepted-only-if-targeting-dev-branch" class="anchor" href="#pull-request-will-be-accepted-only-if-targeting-dev-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pull request will be accepted only if targeting <code>dev</code> branch.</h2>
+
+<p>API Progress:</p>
+
+<table>
+    <tr>
+        <th>API</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <th colspan="2">SYNO.API</th>
+    </tr>
+    <tr>
+        <td>Auth</td>
+        <td>
+            <table>
+                <tr>
+                    <td>login</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>logout</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>Info</td>
+        <td>
+            <table>
+                <tr>
+                    <td>query</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2">SYNO.DownloadStation</th>
+    </tr>
+    <tr>
+        <td>Info</td>
+        <td>
+            <table>
+                <tr>
+                    <td>getinfo</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>getconfig</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>setserverconfig</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>Schedule</td>
+        <td>
+            <table>
+                <tr>
+                    <td>getconfig</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>setserverconfig</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>Task</td>
+        <td>
+            <table>
+                <tr>
+                    <td>list</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>getinfo</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>create</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>delete</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>pause</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>resume</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+                <tr>
+                    <td>edit</td>
+                    <td><strong>OK</strong></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="2">Other APIs are mapped, but will be added ASAP</th>
+    </tr>
+</table>
 
 <p>The following code is my test project, you can use it as a guide for now. I will write the documentation, I promise.</p>
 
