@@ -151,7 +151,7 @@
     <Compile Include="Search\Results\SearchListResult.cs" />
     <Compile Include="Search\Results\StartSearchResult.cs" />
     <Compile Include="Search\SearchRequest.cs" />
-    <Compile Include="SynologyConnectionExtension.cs" />
+    <Compile Include="SynologyConnectionFileStationExtension.cs" />
     <Compile Include="Thumb\FileStationThumbExtension.cs" />
     <Compile Include="Thumb\Parameters\ThumbGetParameters.cs" />
     <Compile Include="Thumb\Parameters\ThumbRotation.cs" />

@@ -15,7 +15,7 @@ namespace Synology.Parameters
 		public int Version { get; set; }
 		public T[] Additional { get; set; }
 
-		protected SynologyParameters(SynologyRequest request, [CallerMemberNameAttribute] string methodName = null)
+		protected SynologyParameters(SynologyRequest request, [CallerMemberName] string methodName = null)
 		{
 			var method = request.GetType().GetMethod(methodName);
 

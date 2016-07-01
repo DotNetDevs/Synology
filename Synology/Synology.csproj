@@ -37,6 +37,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attributes\MinVersionAttribute.cs" />
     <Compile Include="Attributes\RequestAttribute.cs" />
     <Compile Include="Attributes\RequestMethodAttribute.cs" />
     <Compile Include="Classes\ApiInfo.cs" />

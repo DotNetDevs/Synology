@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SynologyConnectionAudioStationExtension.cs" />
+    <Compile Include="SynologyConnectionVideoStationExtension.cs" />
     <Compile Include="VideoStationApi.cs" />
     <Compile Include="VideoStationRequest.cs" />
   </ItemGroup>
