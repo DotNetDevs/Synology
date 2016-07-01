@@ -3,23 +3,23 @@
   "version": 2,
   "targets": {
     ".NETStandard,Version=v1.3": {
-      "Autofac/4.0.0-rc2-240": {
+      "Autofac/4.0.0-rc3-286": {
         "type": "package",
         "dependencies": {
-          "System.Collections.Concurrent": "4.0.12-rc2-24027",
-          "System.ComponentModel": "4.0.1-rc2-24027",
-          "System.Diagnostics.Debug": "4.0.11-rc2-24027",
-          "System.Diagnostics.Tools": "4.0.1-rc2-24027",
-          "System.Globalization": "4.0.11-rc2-24027",
-          "System.Linq": "4.1.0-rc2-24027",
-          "System.Linq.Expressions": "4.0.11-rc2-24027",
-          "System.Reflection": "4.1.0-rc2-24027",
-          "System.Reflection.Extensions": "4.0.1-rc2-24027",
-          "System.Reflection.Primitives": "4.0.1-rc2-24027",
-          "System.Resources.ResourceManager": "4.0.1-rc2-24027",
-          "System.Runtime": "4.1.0-rc2-24027",
-          "System.Runtime.Extensions": "4.1.0-rc2-24027",
-          "System.Threading": "4.0.11-rc2-24027"
+          "System.Collections.Concurrent": "4.0.12",
+          "System.ComponentModel": "4.0.1",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tools": "4.0.1",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11"
         },
         "compile": {
           "lib/netstandard1.1/Autofac.dll": {}
@@ -1486,14 +1486,19 @@
     }
   },
   "libraries": {
-    "Autofac/4.0.0-rc2-240": {
-      "sha512": "SBXozd5kNsCAs6LgsEhvX54ntF5OqhCo0ZL0afcutqh8XRq5q8gmFZN89I3NkCtCypsRAqKQPgWlg29GrpVs9Q==",
+    "Autofac/4.0.0-rc3-286": {
+      "sha512": "9SVHhFBT/L65KW3hhZ4skVYZvt3oHPMou6tChY74E4A8ujGFZvSJhZHNqDOWdo1T/qy5/xRI29gYXUhC5JHVmg==",
       "type": "package",
+      "path": "Autofac/4.0.0-rc3-286",
       "files": [
-        "Autofac.4.0.0-rc2-240.nupkg.sha512",
+        "Autofac.4.0.0-rc3-286.nupkg.sha512",
         "Autofac.nuspec",
+        "lib/net451/Autofac.dll",
+        "lib/net451/Autofac.xml",
         "lib/netstandard1.1/Autofac.dll",
-        "lib/netstandard1.1/Autofac.xml"
+        "lib/netstandard1.1/Autofac.xml",
+        "lib/uap10.0/Autofac.dll",
+        "lib/uap10.0/Autofac.xml"
       ]
     },
     "Microsoft.CSharp/4.0.1": {
@@ -5592,7 +5597,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Autofac >= 4.0.0-rc2-240",
+      "Autofac >= 4.0.0-rc3-286",
       "Microsoft.CSharp >= 4.0.1",
       "Microsoft.Extensions.PlatformAbstractions >= 1.0.0",
       "Microsoft.NETCore.Portable.Compatibility >= 1.0.1",

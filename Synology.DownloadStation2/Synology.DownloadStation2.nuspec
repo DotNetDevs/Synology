@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>$id$</id>
-    <version>$version$-beta</version>
+    <version>$version$</version>
     <title>Synology.DownloadStation2</title>
     <authors>$author$</authors>
     <owners>Matteo Bruni</owners>
@@ -14,7 +14,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
       <group targetFramework="netstandard1.3">
-        <dependency id="Synology" version="$version$-beta" />
+        <dependency id="Synology" version="$version$" />
       </group>
     </dependencies>
   </metadata>
