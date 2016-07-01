@@ -13,7 +13,6 @@ Progress
 <tr>
 <td>
 <a href="http://waffle.io/DotNetDevs/Synology"><img src="https://badge.waffle.io/DotNetDevs/Synology.png?label=ready&title=Ready" alt="Stories in Ready" /></a>
-[![Stories in Ready]()]()
 </td>
 <td>
 <a href="http://waffle.io/DotNetDevs/Synology"><img src="https://badge.waffle.io/DotNetDevs/Synology.svg?label=in%20progress&title=In%20Progress)" alt="Stories in Progress" /></a>
