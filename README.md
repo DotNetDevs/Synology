@@ -43,26 +43,101 @@ API Progress:
 	</tr>
 	<tr>
 		<td>Auth</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>login</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>logout</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<td>Info</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>query</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<th colspan="2">SYNO.DownloadStation</th>
 	</tr>
 	<tr>
 		<td>Info</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>getconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>setserverconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<td>Schedule</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>getconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>setserverconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<td>Task</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>list</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>create</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>delete</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>pause</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>resume</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>edit</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<th colspan="2">Other APIs are mapped, but will be added ASAP</th>
