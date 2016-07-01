@@ -10,79 +10,79 @@ namespace Synology.Utilities
     /// </summary>
     public class FormParameter : GenericParameter
     {
-        public FormParameter(string name, string value) : base(name, value)
+        public FormParameter(string name, string value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, int? value) : base(name, value)
+        public FormParameter(string name, int? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, double? value) : base(name, value)
+        public FormParameter(string name, double? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, float? value) : base(name, value)
+        public FormParameter(string name, float? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, decimal? value) : base(name, value)
+        public FormParameter(string name, decimal? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, long? value) : base(name, value)
+        public FormParameter(string name, long? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, short? value) : base(name, value)
+        public FormParameter(string name, short? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, bool value) : base(name, value)
+        public FormParameter(string name, bool value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, char value) : base(name, value)
+        public FormParameter(string name, char value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, uint? value) : base(name, value)
+        public FormParameter(string name, uint? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, ulong? value) : base(name, value)
+        public FormParameter(string name, ulong? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, ushort? value) : base(name, value)
+        public FormParameter(string name, ushort? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, IEnumerable value) : base(name, value)
+        public FormParameter(string name, IEnumerable value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, IEnumerable value, string separator) : base(name, value, separator)
+        public FormParameter(string name, IEnumerable value, string separator, int minVersion = 1) : base(name, value, separator, minVersion)
         {
         }
 
-        public FormParameter(string name, IEnumerable<string> value) : base(name, value)
+        public FormParameter(string name, IEnumerable<string> value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string name, IEnumerable<string> value, string separator) : base(name, value, separator)
+        public FormParameter(string name, IEnumerable<string> value, string separator, int minVersion = 1) : base(name, value, separator, minVersion)
         {
         }
 
-        public FormParameter(string name, object value) : base(name, value)
+        public FormParameter(string name, object value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public FormParameter(string parameterName, bool? parameterValue) : this(parameterName, parameterValue?.ToString().ToLowerInvariant() ?? "(None)")
+        public FormParameter(string parameterName, bool? parameterValue, int minVersion = 1) : this(parameterName, parameterValue?.ToString().ToLowerInvariant() ?? "(None)", minVersion)
         {
         }
 
-        public FormParameter(string parameterName, DateTime parameterValue) : this(parameterName, parameterValue.ToUnixTimeStamp())
+        public FormParameter(string parameterName, DateTime parameterValue, int minVersion = 1) : this(parameterName, parameterValue.ToUnixTimeStamp(), minVersion)
         {
         }
     }

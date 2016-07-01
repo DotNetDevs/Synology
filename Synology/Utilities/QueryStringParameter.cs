@@ -12,11 +12,11 @@ namespace Synology.Utilities
 {
     public sealed class QueryStringParameter : GenericParameter
     {
-        public QueryStringParameter(string name, string value, bool surroundBrackets = false) : base(name, value, surroundBrackets)
+        public QueryStringParameter(string name, string value, int minVersion = 1, bool surroundBrackets = false) : base(name, value, minVersion, surroundBrackets)
         {
         }
 
-        public static string GetEnumDescription(Enum value)
+        private static string GetEnumDescription(Enum value)
         {
             if (value == null) return null;
 
@@ -46,7 +46,7 @@ namespace Synology.Utilities
             return res;
         }
 
-        public static string GetSortDirectionDescription(ListSortDirection? value)
+        private static string GetSortDirectionDescription(ListSortDirection? value)
         {
             if (value == null)
                 return null;
@@ -60,83 +60,83 @@ namespace Synology.Utilities
             return null;
         }
 
-        public QueryStringParameter(string name, ListSortDirection? value) : this(name, GetSortDirectionDescription(value))
+        public QueryStringParameter(string name, ListSortDirection? value, int minVersion = 1) : this(name, GetSortDirectionDescription(value), minVersion)
         {
         }
 
-        public QueryStringParameter(string name, Enum value) : this(name, GetEnumDescription(value))
+        public QueryStringParameter(string name, Enum value, int minVersion = 1) : this(name, GetEnumDescription(value), minVersion)
         {
         }
 
-        public QueryStringParameter(string name, Enum value, bool surroundBrackets) : this(name, GetEnumDescription(value), surroundBrackets)
+        public QueryStringParameter(string name, Enum value, bool surroundBrackets, int minVersion = 1) : this(name, GetEnumDescription(value), minVersion, surroundBrackets)
         {
         }
 
-        public QueryStringParameter(string name, int? value) : base(name, value)
+        public QueryStringParameter(string name, int? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, double? value) : base(name, value)
+        public QueryStringParameter(string name, double? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, float? value) : base(name, value)
+        public QueryStringParameter(string name, float? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, decimal? value) : base(name, value)
+        public QueryStringParameter(string name, decimal? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, long? value) : base(name, value)
+        public QueryStringParameter(string name, long? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, short? value) : base(name, value)
+        public QueryStringParameter(string name, short? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, bool value) : base(name, value)
+        public QueryStringParameter(string name, bool value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, char value) : base(name, value)
+        public QueryStringParameter(string name, char value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, uint? value) : base(name, value)
+        public QueryStringParameter(string name, uint? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, ulong? value) : base(name, value)
+        public QueryStringParameter(string name, ulong? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, ushort? value) : base(name, value)
+        public QueryStringParameter(string name, ushort? value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable value) : base(name, value)
+        public QueryStringParameter(string name, IEnumerable value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable value, string separator) : base(name, value, separator)
+        public QueryStringParameter(string name, IEnumerable value, string separator, int minVersion = 1) : base(name, value, separator, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable<string> value) : base(name, value)
+        public QueryStringParameter(string name, IEnumerable<string> value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable<string> value, bool surroundBrackets) : base(name, value, surroundBrackets)
+        public QueryStringParameter(string name, IEnumerable<string> value, bool surroundBrackets, int minVersion = 1) : base(name, value, surroundBrackets, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, IEnumerable<string> value, string separator) : base(name, value, separator)
+        public QueryStringParameter(string name, IEnumerable<string> value, string separator, int minVersion = 1) : base(name, value, separator, minVersion)
         {
         }
 
-        public QueryStringParameter(string name, object value) : base(name, value)
+        public QueryStringParameter(string name, object value, int minVersion = 1) : base(name, value, minVersion)
         {
         }
 

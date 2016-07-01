@@ -143,7 +143,7 @@ namespace Synology
                 new QueryStringParameter("api", api),
                 new QueryStringParameter("version", version),
                 new QueryStringParameter("method", method)
-            }));
+            }).Where(t => t.MinVersion <= version));
 
             var res = url.ToString();
 
@@ -203,7 +203,7 @@ namespace Synology
                 new FormParameter("api", api),
                 new FormParameter("version", version),
                 new FormParameter("method", method)
-            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
+            }.Concat(additionalParams ?? new FormParameter[] { }).Where(t => t.MinVersion <= version).ToArray();
 
             using (var content = new FormParameterManager(allParameters))
             {

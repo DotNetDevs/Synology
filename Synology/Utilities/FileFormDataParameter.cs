@@ -8,7 +8,7 @@
         /// <summary>
         /// The file data to send
         /// </summary>
-        public byte[] FileData { get; private set; }
+        public byte[] FileData { get; }
 
         /// <summary>
         /// Constructs a <seealso cref="FileFormDataParameter"/>
@@ -16,7 +16,7 @@
         /// <param name="parameterName">Name of the parameter</param>
         /// <param name="parameterValue">Name of the file</param>
         /// <param name="fileData">Byte array containing the data of the file</param>
-        public FileFormDataParameter(string parameterName, string parameterValue, byte[] fileData) : base(parameterName, parameterValue)
+        public FileFormDataParameter(string parameterName, string parameterValue, byte[] fileData, int minVersion = 1) : base(parameterName, parameterValue, minVersion)
         {
             FileData = fileData;
         }
