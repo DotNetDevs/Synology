@@ -1,50 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BFCC3C3D-4D75-4C45-A007-D1F8388FBCCE}</ProjectGuid>
+    <ProjectGuid>{88F67F4F-63DB-4427-A473-CE5AA4A75F2E}</ProjectGuid>
     <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Synology.FileStation</RootNamespace>
     <AssemblyName>Synology.FileStation</AssemblyName>
-    <Description>Synology FileStation Api Library</Description>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="project.json" />
+    <None Include="Synology.FileStation.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckPermission\CheckPermissionRequest.cs" />
+    <Compile Include="CheckPermission\FileStationCheckPermissionExtension.cs" />
+    <Compile Include="CheckPermission\Parameters\CheckPermissionWriteParameters.cs" />
     <Compile Include="CopyMove\CopyMoveRequest.cs" />
     <Compile Include="CopyMove\FileStationCopyMoveExtension.cs" />
     <Compile Include="CopyMove\Parameters\StartParameters.cs" />
@@ -52,7 +50,55 @@
     <Compile Include="CopyMove\Parameters\StopParameters.cs" />
     <Compile Include="CopyMove\Results\StartResult.cs" />
     <Compile Include="CopyMove\Results\StatusResult.cs" />
+    <Compile Include="DirSize\DirSizeRequest.cs" />
+    <Compile Include="DirSize\FileStationDirSizeExtension.cs" />
+    <Compile Include="DirSize\Parameters\DirSizeStartParameters.cs" />
+    <Compile Include="DirSize\Parameters\DirSizeStatusParameters.cs" />
+    <Compile Include="DirSize\Parameters\DirSizeStopParameters.cs" />
+    <Compile Include="DirSize\Results\DirSizeStartResult.cs" />
+    <Compile Include="DirSize\Results\DirSizeStatusResult.cs" />
+    <Compile Include="Favorite\FavoriteRequest.cs" />
+    <Compile Include="Favorite\FileStationFavoriteExtension.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteAddParameters.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteDeleteParameters.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteDetailsType.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteEditParameters.cs" />
+    <Compile Include="Favorite\Parameters\FavoriteListParameters.cs" />
+    <Compile Include="Favorite\Parameters\StatusFilterType.cs" />
+    <Compile Include="Favorite\Results\FavoriteAdditionalResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteListResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteOwnerResult.cs" />
+    <Compile Include="Favorite\Results\FavoritePermAclResult.cs" />
+    <Compile Include="Favorite\Results\FavoritePermResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteResult.cs" />
+    <Compile Include="Favorite\Results\FavoriteTimeResult.cs" />
+    <Compile Include="FileShare\FileShareRequest.cs" />
+    <Compile Include="FileShare\FileStationFileShareExtension.cs" />
+    <Compile Include="FileShare\Parameters\FileDetailsType.cs" />
+    <Compile Include="FileShare\Parameters\FileShareDetailsType.cs" />
+    <Compile Include="FileShare\Parameters\FileSortType.cs" />
+    <Compile Include="FileShare\Parameters\FileType.cs" />
+    <Compile Include="FileShare\Results\FileAdditionalResult.cs" />
+    <Compile Include="FileShare\Results\FileListResult.cs" />
+    <Compile Include="FileShare\Results\FileOwnerResult.cs" />
+    <Compile Include="FileShare\Results\FilePermAclResult.cs" />
+    <Compile Include="FileShare\Results\FilePermResult.cs" />
+    <Compile Include="FileShare\Results\FileResult.cs" />
+    <Compile Include="FileShare\Results\FileTimeResult.cs" />
+    <Compile Include="FileShare\Results\ShareAdditionalResult.cs" />
+    <Compile Include="FileShare\Results\ShareListResult.cs" />
+    <Compile Include="FileShare\Results\ShareOwnerResult.cs" />
+    <Compile Include="FileShare\Results\SharePermAclResult.cs" />
+    <Compile Include="FileShare\Results\SharePermAdvRightResult.cs" />
+    <Compile Include="FileShare\Results\SharePermResult.cs" />
+    <Compile Include="FileShare\Results\ShareResult.cs" />
+    <Compile Include="FileShare\Results\ShareTimeResult.cs" />
+    <Compile Include="FileShare\Results\ShareVolumeStatusResult.cs" />
+    <Compile Include="FileStationApi.cs" />
     <Compile Include="FileStationRequest.cs" />
+    <Compile Include="Info\FileStationInfoExtension.cs" />
+    <Compile Include="Info\InfoRequest.cs" />
+    <Compile Include="Info\Results\InfoResult.cs" />
     <Compile Include="List\ListRequest.cs" />
     <Compile Include="List\Parameters\FileDetailsType.cs" />
     <Compile Include="List\Parameters\FileType.cs" />
@@ -70,47 +116,31 @@
     <Compile Include="List\Results\FileTimeResult.cs" />
     <Compile Include="List\Results\GetFileInfoResult.cs" />
     <Compile Include="List\Results\ListResult.cs" />
-    <Compile Include="List\Results\ShareAclResult.cs" />
     <Compile Include="List\Results\ListSharesResult.cs" />
+    <Compile Include="List\Results\ShareAclResult.cs" />
+    <Compile Include="List\Results\ShareAdditional.cs" />
     <Compile Include="List\Results\ShareOwnerResult.cs" />
     <Compile Include="List\Results\SharePermissionResult.cs" />
-    <Compile Include="List\Results\ShareAdditional.cs" />
     <Compile Include="List\Results\ShareResult.cs" />
     <Compile Include="List\Results\ShareSpecialPrivilegeResult.cs" />
     <Compile Include="List\Results\ShareTimeResult.cs" />
     <Compile Include="List\Results\ShareVolumeStatusResult.cs" />
+    <Compile Include="MD5\FileStationMD5Extension.cs" />
+    <Compile Include="MD5\MD5Request.cs" />
+    <Compile Include="MD5\Parameters\MD5StartParameters.cs" />
+    <Compile Include="MD5\Parameters\MD5StatusParameters.cs" />
+    <Compile Include="MD5\Parameters\MD5StopParameters.cs" />
+    <Compile Include="MD5\Results\MD5StartResult.cs" />
+    <Compile Include="MD5\Results\MD5StatusResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FileShare\Results\FileAdditionalResult.cs" />
-    <Compile Include="FileShare\Results\FileListResult.cs" />
-    <Compile Include="FileShare\Results\FileOwnerResult.cs" />
-    <Compile Include="FileShare\Results\FilePermAclResult.cs" />
-    <Compile Include="FileShare\Results\FilePermResult.cs" />
-    <Compile Include="FileShare\Results\FileResult.cs" />
-    <Compile Include="FileShare\FileShareRequest.cs" />
-    <Compile Include="FileShare\FileStationFileShareExtension.cs" />
-    <Compile Include="FileShare\Results\FileTimeResult.cs" />
-    <Compile Include="FileShare\Results\ShareAdditionalResult.cs" />
-    <Compile Include="FileShare\Results\ShareListResult.cs" />
-    <Compile Include="FileShare\Results\ShareOwnerResult.cs" />
-    <Compile Include="FileShare\Results\SharePermAclResult.cs" />
-    <Compile Include="FileShare\Results\SharePermAdvRightResult.cs" />
-    <Compile Include="FileShare\Results\SharePermResult.cs" />
-    <Compile Include="FileShare\Results\ShareResult.cs" />
-    <Compile Include="FileShare\Results\ShareTimeResult.cs" />
-    <Compile Include="FileShare\Results\ShareVolumeStatusResult.cs" />
-    <Compile Include="Info\FileStationInfoExtension.cs" />
-    <Compile Include="Info\InfoRequest.cs" />
-    <Compile Include="Info\Results\InfoResult.cs" />
     <Compile Include="Rename\FileStationRenameExtension.cs" />
     <Compile Include="Rename\Parameters\RenameAdditional.cs" />
     <Compile Include="Rename\Parameters\RenameParameters.cs" />
     <Compile Include="Rename\RenameRequest.cs" />
     <Compile Include="Search\FileStationSearchExtension.cs" />
-    <Compile Include="Search\Results\SearchListResult.cs" />
-    <Compile Include="Search\SearchRequest.cs" />
-    <Compile Include="Search\Results\StartSearchResult.cs" />
-    <Compile Include="FileStationApi.cs" />
-    <Compile Include="SynologyConnectionExtension.cs" />
+    <Compile Include="Search\Parameters\FileDetailsType.cs" />
+    <Compile Include="Search\Parameters\FileSortType.cs" />
+    <Compile Include="Search\Parameters\FileType.cs" />
     <Compile Include="Search\Results\FileAdditionalResult.cs" />
     <Compile Include="Search\Results\FileListResult.cs" />
     <Compile Include="Search\Results\FileOwnerResult.cs" />
@@ -118,78 +148,44 @@
     <Compile Include="Search\Results\FilePermResult.cs" />
     <Compile Include="Search\Results\FileResult.cs" />
     <Compile Include="Search\Results\FileTimeResult.cs" />
-    <Compile Include="FileShare\Parameters\FileType.cs" />
-    <Compile Include="FileShare\Parameters\FileSortType.cs" />
-    <Compile Include="FileShare\Parameters\FileDetailsType.cs" />
-    <Compile Include="FileShare\Parameters\FileShareDetailsType.cs" />
-    <Compile Include="Search\Parameters\FileDetailsType.cs" />
-    <Compile Include="Search\Parameters\FileSortType.cs" />
-    <Compile Include="Search\Parameters\FileType.cs" />
+    <Compile Include="Search\Results\SearchListResult.cs" />
+    <Compile Include="Search\Results\StartSearchResult.cs" />
+    <Compile Include="Search\SearchRequest.cs" />
+    <Compile Include="SynologyConnectionExtension.cs" />
+    <Compile Include="Thumb\FileStationThumbExtension.cs" />
+    <Compile Include="Thumb\Parameters\ThumbGetParameters.cs" />
+    <Compile Include="Thumb\Parameters\ThumbRotation.cs" />
+    <Compile Include="Thumb\Parameters\ThumbSize.cs" />
+    <Compile Include="Thumb\ThumbRequest.cs" />
     <Compile Include="Upload\FileStationUploadExtension.cs" />
     <Compile Include="Upload\Parameters\UploadParameters.cs" />
     <Compile Include="Upload\UploadRequest.cs" />
-    <Compile Include="VirtualFolder\VirtualFolderRequest.cs" />
-    <Compile Include="VirtualFolder\Parameters\VirtualFolderType.cs" />
-    <Compile Include="VirtualFolder\Parameters\VirtualFolderSortType.cs" />
+    <Compile Include="VirtualFolder\FileStationVirtualFolderExtension.cs" />
     <Compile Include="VirtualFolder\Parameters\VirtualFolderDetailsType.cs" />
+    <Compile Include="VirtualFolder\Parameters\VirtualFolderSortType.cs" />
+    <Compile Include="VirtualFolder\Parameters\VirtualFolderType.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderAdditionalResult.cs" />
     <Compile Include="VirtualFolder\Results\VirtualFolderListResult.cs" />
     <Compile Include="VirtualFolder\Results\VirtualFolderOwnerResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderPermAclResult.cs" />
+    <Compile Include="VirtualFolder\Results\VirtualFolderPermResult.cs" />
     <Compile Include="VirtualFolder\Results\VirtualFolderResult.cs" />
     <Compile Include="VirtualFolder\Results\VirtualFolderTimeResult.cs" />
-    <Compile Include="VirtualFolder\Results\VirtualFolderPermResult.cs" />
-    <Compile Include="VirtualFolder\Results\VirtualFolderPermAclResult.cs" />
-    <Compile Include="VirtualFolder\Results\VirtualFolderAdditionalResult.cs" />
     <Compile Include="VirtualFolder\Results\VirtualFolderVolumeStatusResult.cs" />
-    <Compile Include="VirtualFolder\FileStationVirtualFolderExtension.cs" />
-    <Compile Include="Favorite\FileStationFavoriteExtension.cs" />
-    <Compile Include="Favorite\FavoriteRequest.cs" />
-    <Compile Include="Favorite\Results\FavoriteListResult.cs" />
-    <Compile Include="Favorite\Results\FavoriteResult.cs" />
-    <Compile Include="Favorite\Results\FavoriteAdditionalResult.cs" />
-    <Compile Include="Favorite\Results\FavoriteOwnerResult.cs" />
-    <Compile Include="Favorite\Parameters\FavoriteDetailsType.cs" />
-    <Compile Include="Favorite\Results\FavoritePermAclResult.cs" />
-    <Compile Include="Favorite\Results\FavoritePermResult.cs" />
-    <Compile Include="Favorite\Results\FavoriteTimeResult.cs" />
-    <Compile Include="Favorite\Parameters\StatusFilterType.cs" />
-    <Compile Include="Thumb\FileStationThumbExtension.cs" />
-    <Compile Include="Thumb\ThumbRequest.cs" />
-    <Compile Include="Thumb\Parameters\ThumbSize.cs" />
-    <Compile Include="Thumb\Parameters\ThumbRotation.cs" />
-    <Compile Include="Favorite\Parameters\FavoriteListParameters.cs" />
-    <Compile Include="Favorite\Parameters\FavoriteAddParameters.cs" />
-    <Compile Include="Favorite\Parameters\FavoriteEditParameters.cs" />
-    <Compile Include="Favorite\Parameters\FavoriteDeleteParameters.cs" />
-    <Compile Include="Thumb\Parameters\ThumbGetParameters.cs" />
-    <Compile Include="DirSize\FileStationDirSizeExtension.cs" />
-    <Compile Include="DirSize\DirSizeRequest.cs" />
-    <Compile Include="DirSize\Parameters\DirSizeStartParameters.cs" />
-    <Compile Include="DirSize\Results\DirSizeStartResult.cs" />
-    <Compile Include="DirSize\Results\DirSizeStatusResult.cs" />
-    <Compile Include="DirSize\Parameters\DirSizeStatusParameters.cs" />
-    <Compile Include="DirSize\Parameters\DirSizeStopParameters.cs" />
-    <Compile Include="MD5\MD5Request.cs" />
-    <Compile Include="MD5\FileStationMD5Extension.cs" />
-    <Compile Include="MD5\Parameters\MD5StartParameters.cs" />
-    <Compile Include="MD5\Parameters\MD5StatusParameters.cs" />
-    <Compile Include="MD5\Parameters\MD5StopParameters.cs" />
-    <Compile Include="MD5\Results\MD5StartResult.cs" />
-    <Compile Include="MD5\Results\MD5StatusResult.cs" />
-    <Compile Include="CheckPermission\FileStationCheckPermissionExtension.cs" />
-    <Compile Include="CheckPermission\Parameters\CheckPermissionWriteParameters.cs" />
-    <Compile Include="CheckPermission\CheckPermissionRequest.cs" />
+    <Compile Include="VirtualFolder\VirtualFolderRequest.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Synology\Synology.csproj">
-      <Project>{DEFD33FE-74DA-4938-AD97-5D559B9F0CCA}</Project>
+      <Project>{ba9cc12f-0589-4002-ac66-bf28c9a854b2}</Project>
       <Name>Synology</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Synology.FileStation.nuspec" />
-  </ItemGroup>
-  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

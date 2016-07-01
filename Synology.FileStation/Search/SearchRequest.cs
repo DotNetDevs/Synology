@@ -6,6 +6,7 @@ using Synology.Attributes;
 using Synology.FileStation.FileShare.Parameters;
 using Synology.FileStation.Search.Results;
 using Synology.Parameters;
+using Synology.Enums;
 
 namespace Synology.FileStation.Search
 {
