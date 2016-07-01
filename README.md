@@ -31,6 +31,44 @@ You can use it for access your Synology information, upload/download files from 
 
 ## Pull request will be accepted only if targeting `dev` branch. ##
 
+API Progress:
+
+<table>
+	<tr>
+		<th>API</th>
+		<th>Status</th>
+	</tr>
+	<tr>
+		<th colspan="2">SYNO.API</th>
+	</tr>
+	<tr>
+		<td>Auth</td>
+		<td><strong>OK</strong></td>
+	</tr>
+	<tr>
+		<td>Info</td>
+		<td><strong>OK</strong></td>
+	</tr>
+	<tr>
+		<th colspan="2">SYNO.DownloadStation</th>
+	</tr>
+	<tr>
+		<td>Info</td>
+		<td><strong>OK</strong></td>
+	</tr>
+	<tr>
+		<td>Schedule</td>
+		<td><strong>OK</strong></td>
+	</tr>
+	<tr>
+		<td>Task</td>
+		<td><strong>OK</strong></td>
+	</tr>
+	<tr>
+		<th colspan="2">Other APIs are mapped, but will be added ASAP</th>
+	</tr>
+</table>
+
 The following code is my test project, you can use it as a guide for now. I will write the documentation, I promise.
 
 ```csharp
