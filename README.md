@@ -1,30 +1,90 @@
 # Synology #
 
-[Trello Board](https://trello.com/b/2R0m3FiP)
+### Waffle.io ###
+<table>
+<tr>
+<th>
+Ready
+</th>
+<th>
+Progress
+</th>
+</tr>
+<tr>
+<td>
+<a href="http://waffle.io/DotNetDevs/Synology"><img src="https://badge.waffle.io/DotNetDevs/Synology.png?label=ready&title=Ready" alt="Stories in Ready" /></a>
+</td>
+<td>
+<a href="http://waffle.io/DotNetDevs/Synology"><img src="https://badge.waffle.io/DotNetDevs/Synology.svg?label=in%20progress&title=In%20Progress)" alt="Stories in Progress" /></a>
+</td>
+</tr>
+</table>
 
-[![Stories in Ready](https://badge.waffle.io/DotNetDevs/Synology.png?label=ready&title=Ready)](http://waffle.io/DotNetDevs/Synology)
+### AppVeyor ###
+<table>
+<tr>
+<th>Status</th>
+<th>Master</th>
+<th>Dev</th>
+</tr>
+<tr>
+<td>
+<a href="https://ci.appveyor.com/project/matteobruni/synology-c1jb9">
+	<img src="https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy?svg=true" alt="Build status"/>
+</a>
+</td>
+<td>
+<a href="https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/master">
+	<img src="https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/master?svg=true" alt="Build status"/>
+</a>
+</td>
+<td>
+<a href="https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/dev">
+	<img src="https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/dev?svg=true" alt="Build status"/>
+</a>
+</td>
+</tr>
+</table>
 
-[![Stories in Progress](https://badge.waffle.io/DotNetDevs/Synology.svg?label=in%20progress&title=In%20Progress)](http://waffle.io/DotNetDevs/Synology)
+### NuGet ###
 
-[Kanban Board](https://zube.io/boards/46553751/kanban)
-
-Project on AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy?svg=true)](https://ci.appveyor.com/project/matteobruni/synology-c1jb9)
-
-Branch `master` Status: [![Build status](https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/master?svg=true)](https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/master)
-
-Branch `dev` Status: [![Build status](https://ci.appveyor.com/api/projects/status/extxot8qp13pf4jy/branch/dev?svg=true)](https://ci.appveyor.com/project/matteobruni/synology-c1jb9/branch/dev)
-
-Synology [![NuGet version](https://badge.fury.io/nu/Synology.svg)](https://badge.fury.io/nu/Synology)
-
-Synology.Api [![NuGet version](https://badge.fury.io/nu/Synology.Api.svg)](https://badge.fury.io/nu/Synology.Api)
-
-Synology.DownloadStation [![NuGet version](https://badge.fury.io/nu/Synology.DownloadStation.svg)](https://badge.fury.io/nu/Synology.DownloadStation)
-
-Synology.DownloadStation2 [![NuGet version](https://badge.fury.io/nu/Synology.DownloadStation2.svg)](https://badge.fury.io/nu/Synology.DownloadStation2)
-
-Synology.FileStation [![NuGet version](https://badge.fury.io/nu/Synology.FileStation.svg)](https://badge.fury.io/nu/Synology.FileStation)
-
-Synology.SurveillanceStation [![NuGet version](https://badge.fury.io/nu/Synology.SurveillanceStation.svg)](https://badge.fury.io/nu/Synology.SurveillanceStation)
+<table>
+<tr>
+<th>
+Synology
+</th>
+<th>
+Api
+</th>
+<th>
+DownloadStation
+</th>
+<th>
+DownloadStation2
+</th>
+<th>
+FileStation
+</th>
+<th>
+SurveillanceStation
+</th>
+</tr>
+<tr>
+<td>
+<a href="https://badge.fury.io/nu/Synology"><img src="https://badge.fury.io/nu/Synology.svg" alt="NuGet version"></a>
+</td><td>
+<a href="https://badge.fury.io/nu/Synology.Api"><img src="https://badge.fury.io/nu/Synology.Api.svg" alt="NuGet version"></a>
+</td><td>
+<a href="https://badge.fury.io/nu/Synology.DownloadStation"><img src="https://badge.fury.io/nu/Synology.DownloadStation.svg" alt="NuGet version"></a>
+</td><td>
+<a href="https://badge.fury.io/nu/Synology.DownloadStation2"><img src="https://badge.fury.io/nu/Synology.DownloadStation2.svg" alt="NuGet version"></a>
+</td><td>
+<a href="https://badge.fury.io/nu/Synology.FileStation"><img src="https://badge.fury.io/nu/Synology.FileStation.svg" alt="NuGet version"></a>
+</td><td>
+<a href="https://badge.fury.io/nu/Synology.SurveillanceStation"><img src="https://badge.fury.io/nu/Synology.SurveillanceStation.svg" alt="NuGet version"></a>
+</td>
+</tr>
+</table>
 
 This is an implementation of Synology Built-In APIs for .NET projects.
 You can use it for access your Synology information, upload/download files from disk, use the built-in torrent client and all other services available.
@@ -43,31 +103,349 @@ API Progress:
 	</tr>
 	<tr>
 		<td>Auth</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>login</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>logout</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<td>Info</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>query</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<th colspan="2">SYNO.DownloadStation</th>
 	</tr>
 	<tr>
 		<td>Info</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>getconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>setserverconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<td>Schedule</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>getconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>setserverconfig</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
 		<td>Task</td>
-		<td><strong>OK</strong></td>
+		<td>
+			<table>
+				<tr>
+					<td>list</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>create</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>delete</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>pause</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>resume</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>edit</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 	<tr>
-		<th colspan="2">Other APIs are mapped, but will be added ASAP</th>
+		<th colspan="2">SYNO.DownloadStation2</th>
+	</tr>
+	<tr>
+		<td>Task</td>
+		<td>
+			<table>
+				<tr>
+					<td>create</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2">SYNO.FileStation</th>
+	</tr>
+	<tr>
+		<td>CheckPermission</td>
+		<td>
+			<table>
+				<tr>
+					<td>write</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>CopyMove</td>
+		<td>
+			<table>
+				<tr>
+					<td>start</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>status</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>stop</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>DirSize</td>
+		<td>
+			<table>
+				<tr>
+					<td>start</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>status</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>stop</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>Favorite</td>
+		<td>
+			<table>
+				<tr>
+					<td>list</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>add</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>delete</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>clear_broken</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>edit</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>FileShare</td>
+		<td>
+			<table>
+				<tr>
+					<td>list_share</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>list</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>Info</td>
+		<td>
+			<table>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>List</td>
+		<td>
+			<table>
+				<tr>
+					<td>list_share</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>list</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>MD5</td>
+		<td>
+			<table>
+				<tr>
+					<td>start</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>status</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>stop</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>Rename</td>
+		<td>
+			<table>
+				<tr>
+					<td>rename</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>Search</td>
+		<td>
+			<table>
+				<tr>
+					<td>start</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>list</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>stop</td>
+					<td><strong>OK</strong></td>
+				</tr>
+				<tr>
+					<td>clear</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>Thumb</td>
+		<td>
+			<table>
+				<tr>
+					<td>get</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>Upload</td>
+		<td>
+			<table>
+				<tr>
+					<td>upload</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>VirtualFolder</td>
+		<td>
+			<table>
+				<tr>
+					<td>list</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<th colspan="2">SYNO.SurveillanceStation</th>
+	</tr>
+	<tr>
+		<td>Info</td>
+		<td>
+			<table>
+				<tr>
+					<td>getinfo</td>
+					<td><strong>OK</strong></td>
+				</tr>
+			</table>
+		</td>
 	</tr>
 </table>
+
+[Trello Board](https://trello.com/b/2R0m3FiP)
+
+[Kanban Board](https://zube.io/boards/46553751/kanban)
 
 The following code is my test project, you can use it as a guide for now. I will write the documentation, I promise.
 
