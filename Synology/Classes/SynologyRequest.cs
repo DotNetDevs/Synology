@@ -5,6 +5,7 @@ using Synology.Attributes;
 using System.Collections.Generic;
 using Synology.Parameters;
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace Synology.Classes
 {
@@ -56,7 +57,7 @@ namespace Synology.Classes
                 }
             }
 
-            Api.Connection.Logger.Debug($"Created request {ApiName} to path {CgiPath}");
+            Api.Connection.Logger.LogDebug($"Created request {ApiName} to path {CgiPath}");
         }
 
         protected ResultData<T> GetData<T>(SynologyRequestParameters parameters) => Api.GetData<T>(CgiPath, ApiName, parameters);

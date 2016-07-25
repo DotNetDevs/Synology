@@ -1,12 +1,13 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "Autofac": "4.0.0-rc3-286",
+    "Autofac": "4.0.0-rc3-316",
     "Microsoft.CSharp": "4.0.1",
+    "Microsoft.Extensions.Logging": "1.0.0",
     "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
     "NETStandard.Library": "1.6.0",
     "Newtonsoft.Json": "9.0.1",
-    "NLog": "4.4.0-beta12",
     "System.Collections": "4.0.11",
     "System.Collections.NonGeneric": "4.0.1",
     "System.ComponentModel": "4.0.1",

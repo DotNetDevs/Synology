@@ -3,6 +3,7 @@ using Synology.Utilities;
 using System.Collections.Generic;
 using Synology.Attributes;
 using Synology.Parameters;
+using Microsoft.Extensions.Logging;
 
 namespace Synology.Api.Info
 {
@@ -16,7 +17,7 @@ namespace Synology.Api.Info
 		[RequestMethod("query")]
 		public ResultData<Dictionary<string, ApiInfo>> Query(params string[] apis)
 		{
-			this.Api.Connection.Logger.Debug($"Requesting Info for {(apis.Length > 0 ? string.Join(";", apis) : "all")} APIs");
+			this.Api.Connection.Logger.LogDebug($"Requesting Info for {(apis.Length > 0 ? string.Join(";", apis) : "all")} APIs");
 
 			var additionalParams = new[] {
 				apis?.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
