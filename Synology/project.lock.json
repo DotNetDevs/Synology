@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     ".NETStandard,Version=v1.3": {
-      "Autofac/4.0.0-rc3-316": {
+      "Autofac/4.0.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
@@ -1152,19 +1152,17 @@
     }
   },
   "libraries": {
-    "Autofac/4.0.0-rc3-316": {
-      "sha512": "Fx4lqVHUVHLU/F+JiZSFarRz1+9KuS452JkKWwWSPBGxtxlitqxFmxuXPFlOyj/SfLO2lDNhPVyOCyyCwNdfnA==",
+    "Autofac/4.0.1": {
+      "sha512": "+rtXNNghd8unT+q9EJdQOFOY8FGAcVBE139bNpkxgo+l7qoV/hMXxNHezPT2vMN40kYjF6wTmHzob8rgIoj2bw==",
       "type": "package",
-      "path": "Autofac/4.0.0-rc3-316",
+      "path": "Autofac/4.0.1",
       "files": [
-        "Autofac.4.0.0-rc3-316.nupkg.sha512",
+        "Autofac.4.0.1.nupkg.sha512",
         "Autofac.nuspec",
-        "lib/net451/Autofac.dll",
-        "lib/net451/Autofac.xml",
+        "lib/net45/Autofac.dll",
+        "lib/net45/Autofac.xml",
         "lib/netstandard1.1/Autofac.dll",
-        "lib/netstandard1.1/Autofac.xml",
-        "lib/uap10.0/Autofac.dll",
-        "lib/uap10.0/Autofac.xml"
+        "lib/netstandard1.1/Autofac.xml"
       ]
     },
     "Microsoft.CSharp/4.0.1": {
@@ -4654,7 +4652,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Autofac >= 4.0.0-rc3-316",
+      "Autofac >= 4.0.1",
       "Microsoft.CSharp >= 4.0.1",
       "Microsoft.Extensions.Logging >= 1.0.0",
       "Microsoft.Extensions.PlatformAbstractions >= 1.0.0",
