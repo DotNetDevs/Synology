@@ -5,23 +5,32 @@ using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
 using Synology.Parameters;
+using System.ComponentModel;
+using Synology.Attributes;
 
 namespace Synology.Api.Auth.Parameters
 {
 	public class LoginParameters : RequestParameters
 	{
 		[Required]
+		[Description("account")]
+		[MinVersion(1)]
 		public string Username { get; set; }
 
 		[Required]
+		[Description("passwd")]
+		[MinVersion(1)]
 		public string Password { get; set; }
 
+		[Description("otp_code")]
 		public string OtpCode  { get; set; }
 
 		[Required]
+		[Description("session")]
 		public string SessionName  { get; set; }
 
 		[Required]
+		[Description("format")]
 		public AuthFormat Format { get; set; }
 
 		public LoginParameters()

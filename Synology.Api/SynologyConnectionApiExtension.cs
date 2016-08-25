@@ -2,11 +2,8 @@
 
 namespace Synology
 {
-	public static class SynologyConnectionApiExtension
-	{
-		public static Api.Api Api(this SynologyConnection connection)
-		{
-			return ApiExtension<Api.Api>.Api(connection);
-		}
-	}
+    public static class SynologyConnectionApiExtension
+    {
+        public static Api.Api Api(this SynologyConnection connection) => ApiExtension<Api.Api>.Api(connection);
+    }
 }

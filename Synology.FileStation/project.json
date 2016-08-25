@@ -1,0 +1,37 @@
+﻿{
+  "supports": {},
+  "dependencies": {
+    "Autofac": "4.0.1",
+    "Microsoft.CSharp": "4.0.1",
+    "Microsoft.Extensions.Logging": "1.0.0",
+    "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
+    "Newtonsoft.Json": "9.0.1",
+    "System.Collections": "4.0.11",
+    "System.Collections.NonGeneric": "4.0.1",
+    "System.ComponentModel": "4.0.1",
+    "System.ComponentModel.Annotations": "4.1.0",
+    "System.ComponentModel.Primitives": "4.1.0",
+    "System.ComponentModel.TypeConverter": "4.1.0",
+    "System.Data.Common": "4.1.0",
+    "System.Diagnostics.Debug": "4.0.11",
+    "System.Dynamic.Runtime": "4.0.11",
+    "System.IO": "4.1.0",
+    "System.Linq": "4.1.0",
+    "System.Linq.Expressions": "4.1.0",
+    "System.Net.Http": "4.1.0",
+    "System.ObjectModel": "4.0.12",
+    "System.Reflection": "4.1.0",
+    "System.Reflection.Emit": "4.0.1",
+    "System.Reflection.Extensions": "4.0.1",
+    "System.Reflection.Primitives": "4.0.1",
+    "System.Reflection.TypeExtensions": "4.1.0",
+    "System.Runtime": "4.1.0",
+    "System.Runtime.Extensions": "4.1.0",
+    "System.Text.Encoding": "4.0.11",
+    "System.Threading": "4.0.11",
+    "System.Threading.Tasks": "4.0.11"
+  },
+  "frameworks": {
+    "netstandard1.3": {}
+  }
+}

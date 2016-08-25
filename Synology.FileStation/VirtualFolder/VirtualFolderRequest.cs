@@ -6,6 +6,7 @@ using Synology.Attributes;
 using Synology.FileStation.VirtualFolder.Parameters;
 using Synology.FileStation.VirtualFolder.Results;
 using Synology.Parameters;
+using Synology.Enums;
 
 namespace Synology.FileStation.VirtualFolder
 {

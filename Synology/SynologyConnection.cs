@@ -8,15 +8,15 @@ using Autofac;
 using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using NLog;
 using System.IO;
+using Microsoft.Extensions.Logging;
 
 namespace Synology
 {
     public sealed class SynologyConnection : IDisposable
     {
         private readonly HttpClient _client;
-        public readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        public readonly ILogger Logger;
 
         public string Sid { private get; set; }
 
@@ -28,7 +28,10 @@ namespace Synology
             var sslPostfix = ssl ? "s" : string.Empty;
             var usedPort = ssl ? sslPort : port;
 
-            Logger.Debug($"Creating new connection to {baseHost} with{(ssl ? "" : "out")} SSL to port {usedPort}");
+            var factory = new LoggerFactory();
+            Logger = factory.CreateLogger<SynologyConnection>();
+
+            Logger.LogDebug($"Creating new connection to {baseHost} with{(ssl ? "" : "out")} SSL to port {usedPort}");
 
             _client = new HttpClient
             {
@@ -48,7 +51,7 @@ namespace Synology
 
         private void RegisterApi<T>() where T : SynologyApi
         {
-            Logger.Debug($"Registering API {typeof(T).Name}");
+            Logger.LogDebug($"Registering API {typeof(T).Name}");
 
             var builder = new ContainerBuilder();
 
@@ -58,7 +61,7 @@ namespace Synology
 
         private void RegisterRequest<T>() where T : SynologyRequest
         {
-            Logger.Debug($"Registering Request {typeof(T).Name}");
+            Logger.LogDebug($"Registering Request {typeof(T).Name}");
 
             var builder = new ContainerBuilder();
 
@@ -143,11 +146,11 @@ namespace Synology
                 new QueryStringParameter("api", api),
                 new QueryStringParameter("version", version),
                 new QueryStringParameter("method", method)
-            }));
+            }).Where(t => t.MinVersion <= version));
 
             var res = url.ToString();
 
-            Logger.Debug($"Created API Url for GET: {res}");
+            Logger.LogDebug($"Created API Url for GET: {res}");
 
             return res;
         }
@@ -170,7 +173,7 @@ namespace Synology
 
             var res = url.ToString();
 
-            Logger.Debug($"Created API Url for POST: {res}");
+            Logger.LogDebug($"Created API Url for POST: {res}");
 
             return new Uri(_client.BaseAddress, res);
         }
@@ -181,7 +184,7 @@ namespace Synology
             {
                 var json = await reader.ReadToEndAsync();
 
-                Logger.Debug($"Response JSON for {api} v.{version} with method {method} [cgi: {cgi}]: {json}");
+                Logger.LogDebug($"Response JSON for {api} v.{version} with method {method} [cgi: {cgi}]: {json}");
 
                 return JsonConvert.DeserializeObject<T>(json);
             }
@@ -203,7 +206,7 @@ namespace Synology
                 new FormParameter("api", api),
                 new FormParameter("version", version),
                 new FormParameter("method", method)
-            }.Concat(additionalParams ?? new FormParameter[] { }).ToArray();
+            }.Concat(additionalParams ?? new FormParameter[] { }).Where(t => t.MinVersion <= version).ToArray();
 
             using (var content = new FormParameterManager(allParameters))
             {
@@ -269,7 +272,7 @@ namespace Synology
 
         public void Dispose()
         {
-            Logger.Debug("Closing connection");
+            Logger.LogDebug("Closing connection");
             _client?.Dispose();
             _containerScope?.Dispose();
         }

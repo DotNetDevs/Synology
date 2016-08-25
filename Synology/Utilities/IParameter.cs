@@ -10,6 +10,7 @@ namespace Synology.Utilities
     {
         string Name { get; }
         string Value { get; }
+        int MinVersion { get; }
         bool Empty { get; }
     }
 }

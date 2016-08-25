@@ -16,87 +16,90 @@ namespace Synology.Utilities
         /// </summary>
         public string Value { get; }
 
+        public int MinVersion { get; }
+
         /// <summary>
         /// Constructs a FormParameter
         /// </summary>
         /// <param name="name">Name of the parameter</param>
         /// <param name="value">Value of the parameter</param>
         /// <param name="surroundBrackets">Surround parameter value(s) by brackets</param>
-        protected GenericParameter(string name, string value, bool surroundBrackets = false)
+        protected GenericParameter(string name, string value, int minVersion = 1, bool surroundBrackets = false)
         {
             Name = name;
             Value = surroundBrackets ? $"[{value}]" : value;
+            MinVersion = minVersion;
         }
 
-        protected GenericParameter(string name, int? value) : this(name, value?.ToString())
+        protected GenericParameter(string name, int? value, int minVersion = 1) : this(name, value?.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, double? value) : this(name, value?.ToString(CultureInfo.InvariantCulture))
+        protected GenericParameter(string name, double? value, int minVersion = 1) : this(name, value?.ToString(CultureInfo.InvariantCulture), minVersion)
         {
         }
 
-        protected GenericParameter(string name, float? value) : this(name, value?.ToString(CultureInfo.InvariantCulture))
+        protected GenericParameter(string name, float? value, int minVersion = 1) : this(name, value?.ToString(CultureInfo.InvariantCulture), minVersion)
         {
         }
 
-        protected GenericParameter(string name, decimal? value) : this(name, value?.ToString(CultureInfo.InvariantCulture))
+        protected GenericParameter(string name, decimal? value, int minVersion = 1) : this(name, value?.ToString(CultureInfo.InvariantCulture), minVersion)
         {
         }
 
-        protected GenericParameter(string name, long? value) : this(name, value?.ToString())
+        protected GenericParameter(string name, long? value, int minVersion = 1) : this(name, value?.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, short? value) : this(name, value?.ToString())
+        protected GenericParameter(string name, short? value, int minVersion = 1) : this(name, value?.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, bool value) : this(name, value.ToString())
+        protected GenericParameter(string name, bool value, int minVersion = 1) : this(name, value.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, char value) : this(name, value.ToString())
+        protected GenericParameter(string name, char value, int minVersion = 1) : this(name, value.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, uint? value) : this(name, value?.ToString())
+        protected GenericParameter(string name, uint? value, int minVersion = 1) : this(name, value?.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, ulong? value) : this(name, value?.ToString())
+        protected GenericParameter(string name, ulong? value, int minVersion = 1) : this(name, value?.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, ushort? value) : this(name, value?.ToString())
+        protected GenericParameter(string name, ushort? value, int minVersion = 1) : this(name, value?.ToString(), minVersion)
         {
         }
 
-        protected GenericParameter(string name, IEnumerable value) : this(name, value, ",")
+        protected GenericParameter(string name, IEnumerable value, int minVersion = 1) : this(name, value, ",", minVersion)
         {
         }
 
-        protected GenericParameter(string name, IEnumerable value, string separator) : this(name, string.Join(separator, value.Cast<object>().Select(t => t.ToString())))
+        protected GenericParameter(string name, IEnumerable value, string separator, int minVersion = 1) : this(name, string.Join(separator, value.Cast<object>().Select(t => t.ToString())), minVersion)
         {
         }
 
-        protected GenericParameter(string name, IEnumerable<string> value) : this(name, value, ",")
+        protected GenericParameter(string name, IEnumerable<string> value, int minVersion = 1) : this(name, value, ",", minVersion)
         {
         }
 
-        protected GenericParameter(string name, IEnumerable<string> value, bool surroundBrackets) : this(name, value, ",", surroundBrackets)
+        protected GenericParameter(string name, IEnumerable<string> value, bool surroundBrackets, int minVersion = 1) : this(name, value, ",", surroundBrackets, minVersion)
         {
         }
 
-        protected GenericParameter(string name, IEnumerable<string> value, string separator) : this(name, string.Join(separator, value))
+        protected GenericParameter(string name, IEnumerable<string> value, string separator, int minVersion = 1) : this(name, string.Join(separator, value), minVersion)
         {
         }
 
-        protected GenericParameter(string name, IEnumerable<string> value, string separator, bool surroundBrackets) : this(name, string.Join(separator, value), surroundBrackets)
+        protected GenericParameter(string name, IEnumerable<string> value, string separator, bool surroundBrackets, int minVersion = 1) : this(name, string.Join(separator, value), minVersion, surroundBrackets)
         {
         }
 
-        protected GenericParameter(string name, object value) : this(name, value?.ToString())
+        protected GenericParameter(string name, object value, int minVersion = 1) : this(name, value?.ToString(), minVersion)
         {
         }
 
