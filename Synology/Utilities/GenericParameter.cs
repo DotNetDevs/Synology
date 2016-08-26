@@ -24,6 +24,7 @@ namespace Synology.Utilities
         /// <param name="name">Name of the parameter</param>
         /// <param name="value">Value of the parameter</param>
         /// <param name="surroundBrackets">Surround parameter value(s) by brackets</param>
+        /// <param name="minVersion">The minimum version of the parameter</param>
         protected GenericParameter(string name, string value, int minVersion = 1, bool surroundBrackets = false)
         {
             Name = name;

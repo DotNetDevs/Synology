@@ -16,6 +16,7 @@
         /// <param name="parameterName">Name of the parameter</param>
         /// <param name="parameterValue">Name of the file</param>
         /// <param name="fileData">Byte array containing the data of the file</param>
+        /// <param name="minVersion">The minimum version for this parameter</param>
         public FileFormDataParameter(string parameterName, string parameterValue, byte[] fileData, int minVersion = 1) : base(parameterName, parameterValue, minVersion)
         {
             FileData = fileData;

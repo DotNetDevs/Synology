@@ -18,11 +18,12 @@ namespace Synology.Utilities
 
             foreach (var parameter in parameters)
             {
-                if (parameter is FileFormDataParameter)
+                var dataParameter = parameter as FileFormDataParameter;
+                if (dataParameter != null)
                 {
                     /// Convert a <seealso cref="FileFormDataParameter"/> into <seealso cref="ByteArrayContent"/>
-                    var fileParameter = (FileFormDataParameter)parameter;
-                    HttpContent contentData = new ByteArrayContent(fileParameter.FileData);
+                    var fileParameter = dataParameter;
+                    var contentData = new ByteArrayContent(fileParameter.FileData);
 
                     // To conform to Synology API documentation, remove Content-Disposition header
                     contentData.Headers.Remove("Content-Disposition");
@@ -39,7 +40,7 @@ namespace Synology.Utilities
                 else
                 {
                     /// Convert a <seealso cref="FormParameter"/> into <seealso cref="StringContent"/>
-                    HttpContent contentData = new StringContent(parameter.Value);
+                    var contentData = new StringContent(parameter.Value);
                     // To conform to Synology API documentation, remove the Content-Type header
                     contentData.Headers.Remove("Content-Type");
                     // To conform to Synology API documentation, remove Content-Disposition header
@@ -59,14 +60,8 @@ namespace Synology.Utilities
         /// Returns the MultipartFormDataContent object as byte array
         /// </summary>
         /// <returns></returns>
-        public async Task<byte[]> ToByteArrayAsync()
-        {
-            return await MultipartContent.ReadAsByteArrayAsync();
-        }
+        public async Task<byte[]> ToByteArrayAsync() => await MultipartContent.ReadAsByteArrayAsync();
 
-        public void Dispose()
-        {
-            MultipartContent.Dispose();
-        }
+        public void Dispose() => MultipartContent.Dispose();
     }
 }
