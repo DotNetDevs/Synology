@@ -19,9 +19,7 @@ namespace Synology.Parameters
 
             if (isValid) return parameters.Parameters();
 
-            var message = $"Errors:{Environment.NewLine}{string.Join(Environment.NewLine, results.Select(t => $"{string.Join(",", t.MemberNames)}: {t.ErrorMessage}"))}";
-
-            throw new ValidationException(message);
+            throw new ValidationException($"Errors:{Environment.NewLine}{string.Join(Environment.NewLine, results.Select(t => $"{string.Join(",", t.MemberNames)}: {t.ErrorMessage}"))}");
         }
     }
 }

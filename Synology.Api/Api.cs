@@ -1,6 +1,4 @@
 using Synology.Classes;
-using Synology.Api.Auth;
-using Synology.Api.Info;
 
 namespace Synology.Api
 {

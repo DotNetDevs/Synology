@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.ComponentModel;
 using System.Reflection;
 using Synology.Enums;
-using Synology.Attributes;
 
 namespace Synology.Utilities
 {
@@ -36,9 +34,9 @@ namespace Synology.Utilities
 
                 if (memInfo.Length > 0)
                 {
-                    var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+                    var attrs = memInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false).ToList();
 
-                    if (attrs.Count() > 0)
+                    if (attrs.Any())
                         res = ((DescriptionAttribute)attrs.First()).Description;
                 }
             }
@@ -48,16 +46,17 @@ namespace Synology.Utilities
 
         private static string GetSortDirectionDescription(ListSortDirection? value)
         {
-            if (value == null)
+            switch (value)
+            {
+            case null:
                 return null;
-
-            if (value == ListSortDirection.Ascending)
+            case ListSortDirection.Ascending:
                 return "asc";
-
-            if (value == ListSortDirection.Descending)
+            case ListSortDirection.Descending:
                 return "desc";
-
-            return null;
+            default:
+                return null;
+            }
         }
 
         public QueryStringParameter(string name, ListSortDirection? value, int minVersion = 1) : this(name, GetSortDirectionDescription(value), minVersion)
@@ -140,9 +139,6 @@ namespace Synology.Utilities
         {
         }
 
-        public override string ToString()
-        {
-            return Empty ? string.Empty : $"{Name}={Value}";
-        }
+        public override string ToString() => Empty ? string.Empty : $"{Name}={Value}";
     }
 }

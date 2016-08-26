@@ -1,6 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Synology.Api.Auth.Parameters
 {

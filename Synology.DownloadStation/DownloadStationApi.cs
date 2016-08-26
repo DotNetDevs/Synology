@@ -1,7 +1,4 @@
 ﻿using Synology.Classes;
-using Synology.DownloadStation.Info;
-using Synology.DownloadStation.Schedule;
-using Synology.DownloadStation.Task;
 
 namespace Synology.DownloadStation
 {

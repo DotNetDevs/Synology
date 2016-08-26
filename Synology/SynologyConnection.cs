@@ -87,16 +87,14 @@ namespace Synology
 
         private T ResolveRequest<T>() where T : SynologyRequest
         {
-            T res;
-
-            if (!_container.TryResolve(out res))
+            while (true)
             {
+                T res;
+
+                if (_container.TryResolve(out res)) return res;
+
                 RegisterRequest<T>();
-
-                return ResolveRequest<T>();
             }
-
-            return res;
         }
 
         private SynologyRequest ResolveRequest(string name) => ResolveRequest<SynologyRequest>(name);
