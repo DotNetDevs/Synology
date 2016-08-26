@@ -1,7 +1,7 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "Autofac": "4.0.1",
+    "Autofac": "4.1.0",
     "Microsoft.CSharp": "4.0.1",
     "Microsoft.Extensions.Logging": "1.0.0",
     "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
