@@ -10,6 +10,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.IO;
 using Microsoft.Extensions.Logging;
+using Synology.Interfaces;
+using Synology.Settings;
 
 namespace Synology
 {
@@ -23,19 +25,30 @@ namespace Synology
         private readonly IContainer _container;
         private readonly ILifetimeScope _containerScope;
 
-        public SynologyConnection(string baseHost, bool ssl = false, int port = 5000, int sslPort = 5001)
+        public ISynologyConnectionSettings Settings { get; }
+
+        public static SynologyConnection Create(ISynologyConnectionSettings settings)
         {
-            var sslPostfix = ssl ? "s" : string.Empty;
-            var usedPort = ssl ? sslPort : port;
+            return new SynologyConnection(settings);
+        }
+
+        [Obsolete("Use the new SynologyConnectionSettings class instead.")]
+        public SynologyConnection(string baseHost, bool ssl = false, int port = 5000, int sslPort = 5001) : this(new SynologyConnectionSettings(baseHost, null, null, ssl, port, sslPort))
+        {
+        }
+
+        public SynologyConnection(ISynologyConnectionSettings settings)
+        {
+            Settings = settings;
 
             var factory = new LoggerFactory();
             Logger = factory.CreateLogger<SynologyConnection>();
 
-            Logger.LogDebug($"Creating new connection to {baseHost} with{(ssl ? "" : "out")} SSL to port {usedPort}");
+            Logger.LogDebug($"Creating new connection to {Settings.BaseHost} with{(Settings.SslEnabled ? "" : "out")} SSL to port {Settings.Port}");
 
             _client = new HttpClient
             {
-                BaseAddress = new Uri($"http{sslPostfix}://{baseHost}:{usedPort}/webapi/"),
+                BaseAddress = new Uri(Settings.WebApiUrl),
             };
 
             _client.DefaultRequestHeaders.ExpectContinue = false;
@@ -64,24 +77,13 @@ namespace Synology
             Logger.LogDebug($"Registering Request {typeof(T).Name}");
 
             var builder = new ContainerBuilder();
-
-            string apiName;
-
-            try
-            {
-                var request = Activator.CreateInstance<T>();
-
-                apiName = request.ApiName;
-            }
-            catch (Exception)
-            {
-                apiName = null;
-            }
+            var apiName = SynologyRequest.GetApiName<T>();
 
             if (!string.IsNullOrEmpty(apiName))
                 builder.RegisterType<T>().Named<SynologyRequest>(apiName).Named<T>(apiName).AsSelf().As<SynologyRequest>();
             else
                 builder.RegisterType<T>().AsSelf().As<SynologyRequest>();
+
             builder.Update(_container);
         }
 
@@ -104,25 +106,21 @@ namespace Synology
             object req;
 
             if (!_container.TryResolveNamed(name, typeof(T), out req))
-            {
                 req = null;
-            }
 
             return req as T;
         }
 
         private T ResolveApi<T>() where T : SynologyApi
         {
-            T res;
-
-            if (!_container.TryResolve(out res))
+            while (true)
             {
+                T res;
+
+                if (_container.TryResolve(out res)) return res;
+
                 RegisterApi<T>();
-
-                return ResolveApi<T>();
             }
-
-            return res;
         }
 
         internal SynologyRequest Request(string name) => ResolveRequest(name);

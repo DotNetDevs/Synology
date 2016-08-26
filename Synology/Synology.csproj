@@ -49,6 +49,7 @@
     <Compile Include="Extensions\ApiExtension.cs" />
     <Compile Include="Extensions\RequestExtension.cs" />
     <Compile Include="Extensions\SystemExtensions.cs" />
+    <Compile Include="Interfaces\ISynologyConnectionSettings.cs" />
     <Compile Include="Parameters\GenericParameters.cs" />
     <Compile Include="Parameters\PostParameters.cs" />
     <Compile Include="Parameters\RequestParameters.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Parameters\SynologyPostParameters.cs" />
     <Compile Include="Parameters\SynologyRequestParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\SynologyConnectionSettings.cs" />
     <Compile Include="SynologyConnection.cs" />
     <Compile Include="Utilities\FileFormDataParameter.cs" />
     <Compile Include="Utilities\FormParameter.cs" />

@@ -14,13 +14,12 @@ namespace Synology.Classes
     {
         public SynologyApi Api { get; }
         public string CgiPath { get; }
-        public string ApiName { get; }
 
-        protected SynologyRequest(SynologyApi api)
+        public static string GetApiName<T>() => GetApiName(typeof(T));
+
+        public static string GetApiName(Type t)
         {
-            Api = api;
-
-            var ty = GetType().GetTypeInfo();
+            var ty = t.GetTypeInfo();
             var res = new List<string>();
 
             while (ty != null)
@@ -33,7 +32,14 @@ namespace Synology.Classes
                 ty = ty.BaseType.GetTypeInfo();
             }
 
-            ApiName = string.Join(".", res);
+            return string.Join(".", res);
+        }
+
+        public string ApiName => GetApiName(GetType());
+
+        protected SynologyRequest(SynologyApi api)
+        {
+            Api = api;
 
             //Fixed possible loop for LoadInfo
             if (ApiName == "SYNO.API.Info")

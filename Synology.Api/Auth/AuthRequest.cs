@@ -17,8 +17,14 @@ namespace Synology.Api.Auth
         }
 
         [RequestMethod("login")]
-        public ResultData<AuthResult> Login(LoginParameters parameters)
+        public ResultData<AuthResult> Login(LoginParameters parameters = null)
         {
+            parameters = parameters ?? new LoginParameters
+            {
+                Username = Api.Connection.Settings.Username,
+                Password = Api.Connection.Settings.Password
+            };
+
             _sessionNumber = parameters.SessionName;
 
             var result = GetData<AuthResult>(new SynologyRequestParameters(this)
