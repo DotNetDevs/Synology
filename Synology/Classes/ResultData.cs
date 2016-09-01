@@ -7,7 +7,7 @@
 		public ResultError Error { get; set; }
 	}
 
-	public class ResultData<T> : ResultData
+	public sealed class ResultData<T> : ResultData
 	{
 		public T Data { get; set; }
 	}

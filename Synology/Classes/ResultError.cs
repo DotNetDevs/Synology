@@ -1,6 +1,6 @@
 ﻿namespace Synology.Classes
 {
-	public class ResultError
+	public sealed class ResultError
 	{
 		public int Code { get; set; }
 	}

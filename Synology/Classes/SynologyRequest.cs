@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Synology.Parameters;
 using System;
 using Microsoft.Extensions.Logging;
+using Synology.Interfaces;
 
 namespace Synology.Classes
 {
@@ -49,7 +50,7 @@ namespace Synology.Classes
             else
             {
                 //Request and Method returns null if the API or the Method is not found.
-                var data = Api.Connection.Request("SYNO.API.Info")?.Method<Dictionary<string, ApiInfo>>("query", ApiName);
+                var data = Api.Connection.Request("SYNO.API.Info")?.Method<Dictionary<string, IApiInfo>>("query", ApiName);
 
                 //Request and Method returns null if the API or the Method is not found.
                 //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
