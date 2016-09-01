@@ -40,7 +40,6 @@
     <Compile Include="Attributes\MinVersionAttribute.cs" />
     <Compile Include="Attributes\RequestAttribute.cs" />
     <Compile Include="Attributes\RequestMethodAttribute.cs" />
-    <Compile Include="Classes\ApiInfo.cs" />
     <Compile Include="Classes\ResultData.cs" />
     <Compile Include="Classes\ResultError.cs" />
     <Compile Include="Classes\SynologyApi.cs" />
@@ -49,6 +48,7 @@
     <Compile Include="Extensions\ApiExtension.cs" />
     <Compile Include="Extensions\RequestExtension.cs" />
     <Compile Include="Extensions\SystemExtensions.cs" />
+    <Compile Include="Interfaces\IApiInfo.cs" />
     <Compile Include="Interfaces\ISynologyConnectionSettings.cs" />
     <Compile Include="Parameters\GenericParameters.cs" />
     <Compile Include="Parameters\PostParameters.cs" />

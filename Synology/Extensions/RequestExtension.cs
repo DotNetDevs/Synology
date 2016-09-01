@@ -1,5 +1,4 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 
 namespace Synology.Extensions
 {
