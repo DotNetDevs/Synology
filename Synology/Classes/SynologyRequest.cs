@@ -30,7 +30,7 @@ namespace Synology.Classes
                 if (ta != null)
                     res.Insert(0, ta.Name);
 
-                ty = ty.BaseType.GetTypeInfo();
+                ty = ty.BaseType?.GetTypeInfo();
             }
 
             return string.Join(".", res);
