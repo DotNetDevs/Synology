@@ -16,7 +16,7 @@ namespace Synology.Settings
             var usedPort = ssl ? sslPort : port;
 
             Username = username;
-            Password = Password;
+            Password = password;
             WebApiUrl = $"http{(ssl ? "s" : string.Empty)}://{baseHost}:{usedPort}/webapi/";
             BaseHost = baseHost;
             SslEnabled = ssl;
