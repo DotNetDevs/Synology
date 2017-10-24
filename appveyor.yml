@@ -16,10 +16,13 @@ dotnet_csproj:
   file_version: '{version}'
   informational_version: '{version}'
 before_build:
-- cmd: nuget restore
+- ps: .\Build.ps1
 build:
-  publish_nuget: false
+  publish_nuget: true
   verbosity: minimal
+artifacts:
+- path: .\artifacts\**\*.nupkg
+  name: NuGet
 deploy:
 - provider: NuGet
   api_key:

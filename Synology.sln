@@ -10,6 +10,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Yml", "Yml", "{7546B616-931
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Synology", "Synology\Synology.csproj", "{B58EED95-5FC2-48B0-B1AA-6A164EBF11ED}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9CA695F4-6922-404B-A4A9-59B23FFBB00B}"
+	ProjectSection(SolutionItems) = preProject
+		Build.ps1 = Build.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
