@@ -4690,10 +4690,10 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "/Users/matteo/Library/Mobile Documents/com~apple~CloudDocs/Projects/GitHub Projects/DotNetDevs/Synology/Synology/Synology.csproj",
+      "projectUniqueName": "/Users/matteo/Library/Mobile Documents/com~apple~CloudDocs/Projects/GitHub Projects/DotNetDevs/Synology/Synology.old/Synology.csproj",
       "projectName": "Synology",
-      "projectPath": "/Users/matteo/Library/Mobile Documents/com~apple~CloudDocs/Projects/GitHub Projects/DotNetDevs/Synology/Synology/Synology.csproj",
-      "projectJsonPath": "/Users/matteo/Library/Mobile Documents/com~apple~CloudDocs/Projects/GitHub Projects/DotNetDevs/Synology/Synology/project.json",
+      "projectPath": "/Users/matteo/Library/Mobile Documents/com~apple~CloudDocs/Projects/GitHub Projects/DotNetDevs/Synology/Synology.old/Synology.csproj",
+      "projectJsonPath": "/Users/matteo/Library/Mobile Documents/com~apple~CloudDocs/Projects/GitHub Projects/DotNetDevs/Synology/Synology.old/project.json",
       "packagesPath": "/Users/matteo/.nuget/packages/",
       "projectStyle": "ProjectJson",
       "configFilePaths": [

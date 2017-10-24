@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA9CC12F-0589-4002-AC66-BF28C9A854B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Synology</RootNamespace>
+    <AssemblyName>Synology</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\MinVersionAttribute.cs" />
+    <Compile Include="Attributes\RequestAttribute.cs" />
+    <Compile Include="Attributes\RequestMethodAttribute.cs" />
+    <Compile Include="Classes\ResultData.cs" />
+    <Compile Include="Classes\ResultError.cs" />
+    <Compile Include="Classes\SynologyApi.cs" />
+    <Compile Include="Classes\SynologyRequest.cs" />
+    <Compile Include="Enums\ListSortDirection.cs" />
+    <Compile Include="Extensions\ApiExtension.cs" />
+    <Compile Include="Extensions\RequestExtension.cs" />
+    <Compile Include="Extensions\SystemExtensions.cs" />
+    <Compile Include="Interfaces\IApiInfo.cs" />
+    <Compile Include="Interfaces\ISynologyConnectionSettings.cs" />
+    <Compile Include="Parameters\GenericParameters.cs" />
+    <Compile Include="Parameters\PostParameters.cs" />
+    <Compile Include="Parameters\RequestParameters.cs" />
+    <Compile Include="Parameters\SynologyParameters.cs" />
+    <Compile Include="Parameters\SynologyPostParameters.cs" />
+    <Compile Include="Parameters\SynologyRequestParameters.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\SynologyConnectionSettings.cs" />
+    <Compile Include="SynologyConnection.cs" />
+    <Compile Include="Utilities\FileFormDataParameter.cs" />
+    <Compile Include="Utilities\FormParameter.cs" />
+    <Compile Include="Utilities\FormParameterManager.cs" />
+    <Compile Include="Utilities\GenericParameter.cs" />
+    <Compile Include="Utilities\IParameter.cs" />
+    <Compile Include="Utilities\QueryStringManager.cs" />
+    <Compile Include="Utilities\QueryStringParameter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
+    <None Include="Synology.nuspec" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
