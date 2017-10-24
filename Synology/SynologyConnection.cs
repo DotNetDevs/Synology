@@ -56,72 +56,21 @@ namespace Synology
             var builder = new ContainerBuilder();
 
             builder.RegisterInstance(this).As<SynologyConnection>();
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).Where(a => a.Assembly.GetTypes().Any(t => t.IsAssignableTo<SynologyApi>())).AsSelf().As<SynologyApi>();
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).Where(a => a.Assembly.GetTypes().Any(t => t.IsAssignableTo<SynologyRequest>())).AsSelf().As<SynologyRequest>();
 
             _container = builder.Build();
 
             _containerScope = _container.BeginLifetimeScope();
         }
 
-        private void RegisterApi<T>() where T : SynologyApi
-        {
-            Logger.LogDebug($"Registering API {typeof(T).Name}");
-
-            var builder = new ContainerBuilder();
-
-            builder.RegisterType<T>().AsSelf().As<SynologyApi>();
-            builder.Update(_container);
-        }
-
-        private void RegisterRequest<T>() where T : SynologyRequest
-        {
-            Logger.LogDebug($"Registering Request {typeof(T).Name}");
-
-            var builder = new ContainerBuilder();
-            var apiName = SynologyRequest.GetApiName<T>();
-
-            if (!string.IsNullOrEmpty(apiName))
-                builder.RegisterType<T>().Named<SynologyRequest>(apiName).Named<T>(apiName).AsSelf().As<SynologyRequest>();
-            else
-                builder.RegisterType<T>().AsSelf().As<SynologyRequest>();
-
-            builder.Update(_container);
-        }
-
-        private T ResolveRequest<T>() where T : SynologyRequest
-        {
-            while (true)
-            {
-                T res;
-
-                if (_container.TryResolve(out res)) return res;
-
-                RegisterRequest<T>();
-            }
-        }
+        private T ResolveRequest<T>() where T : SynologyRequest => _container.TryResolve(out T res) ? res : default(T);
 
         private SynologyRequest ResolveRequest(string name) => ResolveRequest<SynologyRequest>(name);
 
-        private T ResolveRequest<T>(string name) where T : SynologyRequest
-        {
-            object req;
+        private T ResolveRequest<T>(string name) where T : SynologyRequest => _container.TryResolveNamed(name, typeof(T), out object req) ? req as T : default(T);
 
-            if (!_container.TryResolveNamed(name, typeof(T), out req))
-                req = null;
-
-            return req as T;
-        }
-
-        private T ResolveApi<T>() where T : SynologyApi
-        {
-            while (true)
-            {
-                T res;
-
-                if (_container.TryResolve(out res)) return res;
-
-                RegisterApi<T>();
-            }
-        }
+        private T ResolveApi<T>() where T : SynologyApi => _container.TryResolve(out T res) ? res : default(T);
 
         internal SynologyRequest Request(string name) => ResolveRequest(name);
 
@@ -270,6 +219,7 @@ namespace Synology
         {
             Logger.LogDebug("Closing connection");
             _client?.Dispose();
+            _container?.Dispose();
             _containerScope?.Dispose();
         }
     }
