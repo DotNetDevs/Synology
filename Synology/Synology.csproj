@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageVersion>0.4.0</PackageVersion>
+    <Authors>Caelan</Authors>
+    <Owners>Matteo Bruni</Owners>
+    <PackageProjectUrl>http://dotnetdevs.github.io/Synology</PackageProjectUrl>
+    <Summary>Synology Core API for .NET</Summary>
+    <Title>Synology</Title>
+    <Description>Synology Core API for .NET</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,5 +25,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.1.276" />
   </ItemGroup>
 </Project>
