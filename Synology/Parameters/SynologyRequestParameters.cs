@@ -1,4 +1,5 @@
-﻿using Synology.Classes;
+﻿using System.Runtime.CompilerServices;
+using Synology.Classes;
 using Synology.Utilities;
 
 namespace Synology.Parameters
