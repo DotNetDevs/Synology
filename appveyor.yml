@@ -20,8 +20,6 @@ before_build:
 build:
   publish_nuget: true
   verbosity: minimal
-after_test:
-- cmd: dotnet pack .\src\MediatR -c Release -o .\artifacts --version-suffix=$env:APPVEYOR_BUILD_NUMBER
 artifacts:
 - path: .\artifacts\**\*.nupkg
   name: NuGet
