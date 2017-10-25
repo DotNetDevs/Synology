@@ -1,5 +1,6 @@
 ﻿using Synology.Utilities;
 using Synology.Classes;
+using System.Runtime.CompilerServices;
 
 namespace Synology.Parameters
 {
@@ -8,7 +9,7 @@ namespace Synology.Parameters
 	/// </summary>
 	public class SynologyPostParameters : SynologyParameters<FormParameter>
 	{
-		public SynologyPostParameters(SynologyRequest request) : base(request)
+        public SynologyPostParameters(SynologyRequest request, [CallerMemberName] string methodName = null) : base(request, methodName)
 		{
 		}
 	}
