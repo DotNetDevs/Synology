@@ -20,7 +20,7 @@ before_build:
 build:
   verbosity: minimal
 artifacts:
-- path: .\bin\{configuration}\*.nupkg
+- path: .\bin\Release\*.nupkg
   name: NuGet
 deploy:
 - provider: NuGet
