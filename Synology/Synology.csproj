@@ -9,6 +9,8 @@
     <Summary>Synology Core API for .NET</Summary>
     <Title>Synology</Title>
     <Description>Synology Core API for .NET</Description>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageId>Synology</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +27,6 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="NuGet.Build.Packaging" Version="0.1.276" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.1" />
   </ItemGroup>
 </Project>

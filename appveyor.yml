@@ -18,7 +18,6 @@ dotnet_csproj:
 before_build:
 - cmd: nuget restore
 build:
-  publish_nuget: false
   verbosity: minimal
 deploy:
 - provider: NuGet
