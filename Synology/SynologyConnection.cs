@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.Extensions.Logging;
 using Synology.Interfaces;
 using Synology.Settings;
+using System.Reflection;
 
 namespace Synology
 {
@@ -56,6 +57,19 @@ namespace Synology
             var builder = new ContainerBuilder();
 
             builder.RegisterInstance(this).As<SynologyConnection>();
+
+            var fi = new FileInfo(Assembly.GetCallingAssembly().Location);
+
+            var assemblies = fi.Directory.GetFiles("*.dll");
+            var loaded = AppDomain.CurrentDomain.GetAssemblies();
+
+            foreach (var assembly in assemblies.Where(t => !loaded.Any(l => l.Location == t.FullName)))
+            {
+                Assembly.LoadFrom(assembly.FullName);
+
+                //AppDomain.CurrentDomain.ReflectionOnlyGetAssemblies();
+            }
+
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).Where(a => a.Assembly.GetTypes().Any(t => t.IsAssignableTo<SynologyApi>())).AsSelf().As<SynologyApi>();
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).Where(a => a.Assembly.GetTypes().Any(t => t.IsAssignableTo<SynologyRequest>())).AsSelf().As<SynologyRequest>();
 
