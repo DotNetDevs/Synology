@@ -19,9 +19,6 @@ before_build:
 - cmd: nuget restore
 build:
   verbosity: minimal
-artifacts:
-- path: .\bin\Release\*.nupkg
-  name: NuGet
 deploy:
 - provider: NuGet
   api_key:
