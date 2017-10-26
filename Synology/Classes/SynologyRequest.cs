@@ -50,7 +50,8 @@ namespace Synology.Classes
             else
             {
                 //Request and Method returns null if the API or the Method is not found.
-                var data = Api.Connection.Request("SYNO.API.Info")?.Method<Dictionary<string, IApiInfo>>("query", ApiName);
+                var request = Api.Connection.Request("SYNO.API.Info");
+                var data = request?.Method<Dictionary<string, IApiInfo>>("query", new object[] { new[] { ApiName } });
 
                 //Request and Method returns null if the API or the Method is not found.
                 //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
@@ -105,7 +106,16 @@ namespace Synology.Classes
         /// <returns>Generic result data</returns>
         protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters) => await Api.PostDataAsync(CgiPath, ApiName, parameters);
 
-        private T MethodResult<T>(string name, params object[] parameters) where T : ResultData => GetType().GetMethods().Where(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(RequestMethodAttribute))).FirstOrDefault(t => t.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().FirstOrDefault()?.Name == name)?.Invoke(this, parameters) as T;
+        private T MethodResult<T>(string name, params object[] parameters) where T : ResultData
+        {
+            var type = GetType();
+            var methods = type.GetMethods();
+            var filteredMethods = methods.Where(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(RequestMethodAttribute)));
+            var method = filteredMethods.FirstOrDefault(t => t.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().FirstOrDefault()?.Name == name);
+            var response = method?.Invoke(this, parameters);
+            var tType = typeof(T);
+            return response as T;
+        }
 
         internal ResultData Method(string name, params object[] parameters) => MethodResult<ResultData>(name, parameters);
 
