@@ -71,7 +71,7 @@ namespace Synology
             }
 
             builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).Where(a => a.Assembly.GetTypes().Any(t => t.IsAssignableTo<SynologyApi>())).AsSelf().As<SynologyApi>();
-            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).Where(a => a.Assembly.GetTypes().Any(t => t.IsAssignableTo<SynologyRequest>())).AsSelf().As<SynologyRequest>();
+            builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).Where(a => a.Assembly.GetTypes().Any(t => t.IsAssignableTo<SynologyRequest>())).Named<SynologyRequest>(t => SynologyRequest.GetApiName(t)).AsSelf().As<SynologyRequest>();
 
             _container = builder.Build();
 
