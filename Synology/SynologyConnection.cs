@@ -139,7 +139,10 @@ namespace Synology
 
         private async Task<T> GenericGetDataFromApiAsync<T>(string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) where T : ResultData
         {
-            using (var reader = new StreamReader(await _client.GetStreamAsync(GetApiUrl(cgi, api, version, method, additionalParams))))
+            var url = GetApiUrl(cgi, api, version, method, additionalParams);
+            var response = await _client.GetStreamAsync(url);
+
+            using (var reader = new StreamReader(response))
             {
                 var json = await reader.ReadToEndAsync();
 
