@@ -34,33 +34,41 @@ namespace Synology.Classes
 
         public IServiceCollection Services { get; }
         
-        public void AddApi()
+        public ISynologyBuilder AddApi()
         {
             Services.AddTransient<IApi, Api.Api>();
             Services.AddTransient<Api.Info.IInfoRequest, Api.Info.InfoRequest>();
             Services.AddTransient<IAuthRequest, AuthRequest>();
+
+            return this;
         }
 
-        public void AddAudioStation()
+        public ISynologyBuilder AddAudioStation()
         {
             Services.AddTransient<IAudioStationApi, AudioStationApi>();
+
+            return this;
         }
 
-        public void AddDownloadStation()
+        public ISynologyBuilder AddDownloadStation()
         {
             Services.AddTransient<IDownloadStationApi, DownloadStationApi>();
             Services.AddTransient<DownloadStation.Info.IInfoRequest, DownloadStation.Info.InfoRequest>();
             Services.AddTransient<IScheduleRequest, ScheduleRequest>();
             Services.AddTransient<DownloadStation.Task.ITaskRequest, DownloadStation.Task.TaskRequest>();
+
+            return this;
         }
 
-        public void AddDownloadStation2()
+        public ISynologyBuilder AddDownloadStation2()
         {
             Services.AddTransient<IDownloadStation2Api, DownloadStation2Api>();
             Services.AddTransient<DownloadStation2.Task.ITaskRequest, DownloadStation2.Task.TaskRequest>();
+
+            return this;
         }
 
-        public void AddFileStation()
+        public ISynologyBuilder AddFileStation()
         {
             Services.AddTransient<IFileStationApi, FileStationApi>();
             Services.AddTransient<FileStation.Info.IInfoRequest, FileStation.Info.InfoRequest>();
@@ -76,17 +84,23 @@ namespace Synology.Classes
             Services.AddTransient<IThumbRequest, ThumbRequest>();
             Services.AddTransient<IUploadRequest, UploadRequest>();
             Services.AddTransient<IVirtualFolderRequest, VirtualFolderRequest>();
+
+            return this;
         }
 
-        public void AddSurveillanceStation()
+        public ISynologyBuilder AddSurveillanceStation()
         {
             Services.AddTransient<ISurveillanceStationApi, SurveillanceStationApi>();
             Services.AddTransient<SurveillanceStation.Info.IInfoRequest, SurveillanceStation.Info.InfoRequest>();
+
+            return this;
         }
 
-        public void AddVideoStation()
+        public ISynologyBuilder AddVideoStation()
         {
             Services.AddTransient<IVideoStationApi, VideoStationApi>();
+
+            return this;
         }
     }
 }

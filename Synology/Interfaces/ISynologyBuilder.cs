@@ -3,12 +3,12 @@ namespace Synology.Interfaces
 {
     public interface ISynologyBuilder
     {
-        void AddApi();
-        void AddAudioStation();
-        void AddDownloadStation();
-        void AddDownloadStation2();
-        void AddFileStation();
-        void AddSurveillanceStation();
-        void AddVideoStation();
+        ISynologyBuilder AddApi();
+        ISynologyBuilder AddAudioStation();
+        ISynologyBuilder AddDownloadStation();
+        ISynologyBuilder AddDownloadStation2();
+        ISynologyBuilder AddFileStation();
+        ISynologyBuilder AddSurveillanceStation();
+        ISynologyBuilder AddVideoStation();
     }
 }

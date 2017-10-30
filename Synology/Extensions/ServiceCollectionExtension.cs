@@ -13,7 +13,7 @@ namespace Synology
         //
         public static IServiceCollection AddSynology(this IServiceCollection services)
         {
-            return AddSynology(services, t => { });   
+            return AddSynology(services, b => b.AddApi().AddAudioStation().AddDownloadStation().AddDownloadStation2().AddFileStation().AddSurveillanceStation().AddVideoStation());
         }
 
         public static IServiceCollection AddSynology(this IServiceCollection services, Action<ISynologyBuilder> configure)
