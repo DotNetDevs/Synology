@@ -53,35 +53,10 @@ Progress
 <th>
 Synology
 </th>
-<th>
-Api
-</th>
-<th>
-DownloadStation
-</th>
-<th>
-DownloadStation2
-</th>
-<th>
-FileStation
-</th>
-<th>
-SurveillanceStation
-</th>
 </tr>
 <tr>
 <td>
 <a href="https://badge.fury.io/nu/Synology"><img src="https://badge.fury.io/nu/Synology.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.Api"><img src="https://badge.fury.io/nu/Synology.Api.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.DownloadStation"><img src="https://badge.fury.io/nu/Synology.DownloadStation.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.DownloadStation2"><img src="https://badge.fury.io/nu/Synology.DownloadStation2.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.FileStation"><img src="https://badge.fury.io/nu/Synology.FileStation.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.SurveillanceStation"><img src="https://badge.fury.io/nu/Synology.SurveillanceStation.svg" alt="NuGet version"></a>
 </td>
 </tr>
 </table>
