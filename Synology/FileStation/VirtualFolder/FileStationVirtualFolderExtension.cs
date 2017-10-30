@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IVirtualFolderRequest VirtualFolder(this IFileStationApi api)
 		{
-			return RequestExtension<IVirtualFolderRequest>.Request(api);
+			return api.Request<IVirtualFolderRequest>();
 		}
 	}
 }

@@ -8,34 +8,55 @@ using Newtonsoft.Json;
 
 namespace Synology.Api.Auth.Parameters
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class LoginParameters : RequestParameters
 	{
+		/// <summary>
+		/// 
+		/// </summary>
 		[Required]
 		[Description("account")]
-        [JsonProperty("account")]
+		[JsonProperty("account")]
 		[MinVersion(1)]
 		public string Username { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		[Required]
 		[Description("passwd")]
-        [JsonProperty("passwd")]
+		[JsonProperty("passwd")]
 		[MinVersion(1)]
 		public string Password { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		[Description("otp_code")]
-        [JsonProperty("otp_code")]
-		public string OtpCode  { get; set; }
+		[JsonProperty("otp_code")]
+		public string OtpCode { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		[Required]
 		[Description("session")]
-        [JsonProperty("session")]
-		public string SessionName  { get; set; }
+		[JsonProperty("session")]
+		public string SessionName { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		[Required]
 		[Description("format")]
-        [JsonProperty("format")]
+		[JsonProperty("format")]
 		public AuthFormat Format { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public LoginParameters()
 		{
 			var rand = new Random((int)DateTime.Now.Ticks);
@@ -45,6 +66,10 @@ namespace Synology.Api.Auth.Parameters
 			Format = AuthFormat.Sid;
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public override QueryStringParameter[] Parameters()
 		{
 			return new[] {

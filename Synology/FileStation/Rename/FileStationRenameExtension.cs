@@ -8,7 +8,7 @@ namespace Synology
     {
         public static IRenameRequest Rename(this IFileStationApi api)
         {
-            return RequestExtension<IRenameRequest>.Request(api);
+            return api.Request<IRenameRequest>();
         }
     }
 }

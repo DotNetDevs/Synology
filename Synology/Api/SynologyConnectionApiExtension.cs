@@ -4,8 +4,16 @@ using Synology.Interfaces;
 
 namespace Synology
 {
-    public static class SynologyConnectionApiExtension
-    {
-        public static IApi Api(this ISynologyConnection connection) => ApiExtension<IApi>.Api(connection);
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public static class SynologyConnectionApiExtension
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="connection"></param>
+		/// <returns></returns>
+		public static IApi Api(this ISynologyConnection connection) => connection.Api<IApi>();
+	}
 }

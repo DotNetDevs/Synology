@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static ICheckPermissionRequest CheckPermission(this IFileStationApi api)
 		{
-			return RequestExtension<ICheckPermissionRequest>.Request(api);
+			return api.Request<ICheckPermissionRequest>();
 		}
 	}
 }

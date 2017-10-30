@@ -9,7 +9,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.FileShare
 {
 	[Request("List")]
-	class FileShareRequest : FileStationRequest, IFileShareRequest
+	internal class FileShareRequest : FileStationRequest, IFileShareRequest
 	{
         public FileShareRequest(IFileStationApi api) : base(api)
 		{

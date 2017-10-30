@@ -2,13 +2,23 @@ using Synology.Interfaces;
 
 namespace Synology.Classes
 {
-    public abstract class SynologyApi : ISynologyApi
-    {
-        public ISynologyConnection Connection { get; }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public abstract class SynologyApi : ISynologyApi
+	{
+		/// <inheritdoc />
+		/// <summary>
+		/// </summary>
+		public ISynologyConnection Connection { get; }
 
-        protected SynologyApi(ISynologyConnection connection)
-        {
-            Connection = connection;
-        }
-    }
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="connection"></param>
+		protected SynologyApi(ISynologyConnection connection)
+		{
+			Connection = connection;
+		}
+	}
 }

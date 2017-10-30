@@ -6,7 +6,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.Upload
 {
 	[Request("Upload")]
-	class UploadRequest : FileStationRequest, IUploadRequest
+	internal class UploadRequest : FileStationRequest, IUploadRequest
 	{
         public UploadRequest(IFileStationApi api) : base(api)
 		{

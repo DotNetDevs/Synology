@@ -2,7 +2,10 @@
 
 namespace Synology.DownloadStation2
 {
-    public interface IDownloadStation2Api : ISynologyApi
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface IDownloadStation2Api : ISynologyApi
+	{
+	}
 }

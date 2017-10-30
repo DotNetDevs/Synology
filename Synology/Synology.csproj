@@ -10,6 +10,14 @@
     <Description>Synology API Wrapper for .NET</Description>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Synology</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>Matteo Bruni</Company>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\Synology.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\Synology.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Attributes\" />

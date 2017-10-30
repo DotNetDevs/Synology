@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IDirSizeRequest Thumb(this IFileStationApi api)
 		{
-			return RequestExtension<IDirSizeRequest>.Request(api);
+			return api.Request<IDirSizeRequest>();
 		}
 	}
 }

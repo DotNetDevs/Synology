@@ -7,7 +7,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.Favorite
 {
 	[Request("Favorite")]
-    class FavoriteRequest : FileStationRequest, IFavoriteRequest
+	internal class FavoriteRequest : FileStationRequest, IFavoriteRequest
 	{
         public FavoriteRequest(IFileStationApi api) : base(api)
 		{

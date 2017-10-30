@@ -6,6 +6,6 @@ namespace Synology
 {
     public static class SynologyConnectionSurveillanceStationExtension
     {
-        public static ISurveillanceStationApi SurveillanceStation(this ISynologyConnection connection) => ApiExtension<ISurveillanceStationApi>.Api(connection);
+        public static ISurveillanceStationApi SurveillanceStation(this ISynologyConnection connection) => connection.Api<ISurveillanceStationApi>();
     }
 }

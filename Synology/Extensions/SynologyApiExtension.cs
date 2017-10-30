@@ -5,7 +5,7 @@ using Synology.Parameters;
 
 namespace Synology.Extensions
 {
-    static class SynologyApiExtension
+	internal static class SynologyApiExtension
     {
         internal static T Request<T>(this ISynologyApi api) where T : class, ISynologyRequest => api.Connection.Request<T>();
 

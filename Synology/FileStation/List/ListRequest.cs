@@ -6,7 +6,7 @@ using Synology.FileStation.List.Results;
 namespace Synology.FileStation.List
 {
 	[Request("List")]
-	class ListRequest : FileStationRequest, IListRequest
+	internal class ListRequest : FileStationRequest, IListRequest
 	{
         public ListRequest(IFileStationApi api) : base(api)
 		{

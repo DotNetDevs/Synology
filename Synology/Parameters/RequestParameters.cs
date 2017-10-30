@@ -2,7 +2,11 @@
 
 namespace Synology.Parameters
 {
-    public abstract class RequestParameters : GenericParameters<QueryStringParameter>
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// 
+	/// </summary>
+	public abstract class RequestParameters : GenericParameters<QueryStringParameter>
+	{
+	}
 }

@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IFavoriteRequest Favorite(this IFileStationApi api)
 		{
-			return RequestExtension<IFavoriteRequest>.Request(api);
+			return api.Request<IFavoriteRequest>();
 		}
 	}
 }

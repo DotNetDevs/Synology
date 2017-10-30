@@ -5,7 +5,7 @@ using Synology.Interfaces;
 
 namespace Synology.Extensions
 {
-    public static class SynologyRequestExtension
+    internal static class SynologyRequestExtension
     {
         private static T MethodResult<T>(this ISynologyRequest request, string name, params object[] parameters) where T : ResultData
         {

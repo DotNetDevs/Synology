@@ -9,7 +9,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.Search
 {
 	[Request("Search")]
-    class SearchRequest : FileStationRequest, ISearchRequest
+	internal class SearchRequest : FileStationRequest, ISearchRequest
 	{
         public SearchRequest(IFileStationApi api) : base(api)
 		{

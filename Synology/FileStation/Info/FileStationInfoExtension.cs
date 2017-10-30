@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IInfoRequest Info(this IFileStationApi api)
 		{
-			return RequestExtension<IInfoRequest>.Request(api);
+			return api.Request<IInfoRequest>();
 		}
 	}
 }

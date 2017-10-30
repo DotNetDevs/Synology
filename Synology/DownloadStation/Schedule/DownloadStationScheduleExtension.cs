@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IScheduleRequest Schedule(this IDownloadStationApi api)
 		{
-			return RequestExtension<IScheduleRequest>.Request(api);
+			return api.Request<IScheduleRequest>();
 		}
 	}
 }

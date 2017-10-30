@@ -7,7 +7,7 @@ using Synology.Parameters;
 namespace Synology.DownloadStation.Info
 {
 	[Request("Info")]
-    class InfoRequest : DownloadStationRequest, IInfoRequest
+	internal class InfoRequest : DownloadStationRequest, IInfoRequest
 	{
 		public InfoRequest(IDownloadStationApi api) : base(api)
 		{

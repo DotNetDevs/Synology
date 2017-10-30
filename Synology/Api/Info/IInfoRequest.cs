@@ -4,8 +4,16 @@ using Synology.Interfaces;
 
 namespace Synology.Api.Info
 {
-    public interface IInfoRequest : ISynologyRequest
-    {
-        ResultData<Dictionary<string, IApiInfo>> Query(params string[] apis);
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public interface IInfoRequest : ISynologyRequest
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="apis"></param>
+		/// <returns></returns>
+		ResultData<Dictionary<string, IApiInfo>> Query(params string[] apis);
+	}
 }

@@ -24,7 +24,7 @@ using Synology.VideoStation;
 
 namespace Synology.Classes
 {
-    class SynologyBuilder : ISynologyBuilder
+	internal class SynologyBuilder : ISynologyBuilder
     {
         public SynologyBuilder(IServiceCollection services)
         {

@@ -6,7 +6,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.CheckPermission
 {
 	[Request("CheckPermission")]
-	class CheckPermissionRequest : FileStationRequest, ICheckPermissionRequest
+	internal class CheckPermissionRequest : FileStationRequest, ICheckPermissionRequest
 	{
         public CheckPermissionRequest(IFileStationApi api) : base(api)
 		{

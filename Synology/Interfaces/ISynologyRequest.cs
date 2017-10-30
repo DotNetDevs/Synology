@@ -1,9 +1,21 @@
 ﻿namespace Synology.Interfaces
 {
-    public interface ISynologyRequest
-    {
-        ISynologyApi Api { get; }
-        string CgiPath { get; }
-        string ApiName { get;  }
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public interface ISynologyRequest
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		ISynologyApi Api { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		string CgiPath { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		string ApiName { get; }
+	}
 }

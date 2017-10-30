@@ -7,31 +7,47 @@ using Synology.Interfaces;
 
 namespace Synology.Parameters
 {
-    public abstract class SynologyParameters<T> where T : IParameter
-    {
-        public string Method { get; }
-        public int Version { get; set; }
-        public T[] Additional { get; set; }
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	public abstract class SynologyParameters<T> where T : IParameter
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Method { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int Version { get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public T[] Additional { get; set; }
 
-        protected SynologyParameters(ISynologyRequest request, [CallerMemberName] string methodName = null)
-        {
-            var method = request.GetType().GetMethod(methodName);
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="request"></param>
+		/// <param name="methodName"></param>
+		protected SynologyParameters(ISynologyRequest request, [CallerMemberName] string methodName = null)
+		{
+			var method = request.GetType().GetMethod(methodName);
 
-            if (method != null)
-            {
-                var attr = method.GetCustomAttribute(typeof(RequestMethodAttribute)) as RequestMethodAttribute;
+			if (method != null)
+			{
+				if (method.GetCustomAttribute(typeof(RequestMethodAttribute)) is RequestMethodAttribute attr)
+					Method = attr.Name;
+				else
+					throw new Exception("RequestMethodAttribute not found on caller method.");
+			}
+			else
+			{
+				throw new Exception("Caller Method not found.");
+			}
 
-                if (attr != null)
-                    Method = attr.Name;
-                else
-                    throw new Exception("RequestMethodAttribute not found on caller method.");
-            }
-            else
-            {
-                throw new Exception("Caller Method not found.");
-            }
-
-            Version = 1;
-        }
-    }
+			Version = 1;
+		}
+	}
 }

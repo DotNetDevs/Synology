@@ -2,14 +2,24 @@
 
 namespace Synology.Attributes
 {
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    public class MinVersionAttribute : Attribute
-    {
-        public int MinVersion { get; }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+	public class MinVersionAttribute : Attribute
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		public int MinVersion { get; }
 
-        public MinVersionAttribute(int minVersion)
-        {
-            MinVersion = minVersion;
-        }
-    }
+		/// <inheritdoc />
+		/// <summary>
+		/// </summary>
+		/// <param name="minVersion"></param>
+		public MinVersionAttribute(int minVersion)
+		{
+			MinVersion = minVersion;
+		}
+	}
 }

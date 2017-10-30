@@ -1,7 +1,13 @@
 ﻿namespace Synology.Interfaces
 {
-    public interface ISynologyApi
-    {
-        ISynologyConnection Connection { get; }
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public interface ISynologyApi
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		ISynologyConnection Connection { get; }
+	}
 }

@@ -2,7 +2,10 @@
 
 namespace Synology.AudioStation
 {
-    public interface IAudioStationApi : ISynologyApi
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface IAudioStationApi : ISynologyApi
+	{
+	}
 }

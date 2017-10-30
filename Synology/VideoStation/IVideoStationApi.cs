@@ -2,7 +2,10 @@
 
 namespace Synology.VideoStation
 {
-    public interface IVideoStationApi : ISynologyApi
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface IVideoStationApi : ISynologyApi
+	{
+	}
 }

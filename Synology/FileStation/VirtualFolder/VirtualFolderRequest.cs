@@ -9,7 +9,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.VirtualFolder
 {
 	[Request("VirtualFolder")]
-    class VirtualFolderRequest : FileStationRequest, IVirtualFolderRequest
+	internal class VirtualFolderRequest : FileStationRequest, IVirtualFolderRequest
 	{
         public VirtualFolderRequest(IFileStationApi api) : base(api)
 		{

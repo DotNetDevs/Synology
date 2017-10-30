@@ -1,6 +1,6 @@
 ﻿namespace Synology.Utilities
 {
-    class SidContainer
+	internal class SidContainer
     {
         public string Sid { get; set; }
     }

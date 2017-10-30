@@ -2,9 +2,15 @@
 
 namespace Synology.Api.Auth.Results
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class AuthResult
 	{
-        [JsonProperty("sid")]
+		/// <summary>
+		/// 
+		/// </summary>
+		[JsonProperty("sid")]
 		public string Sid { get; set; }
 	}
 }

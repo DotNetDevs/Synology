@@ -4,8 +4,16 @@ using Synology.Interfaces;
 
 namespace Synology
 {
-    public static class SynologyConnectionVideoStationExtension
-    {
-        public static IVideoStationApi VideoStation(this ISynologyConnection connection) => ApiExtension<IVideoStationApi>.Api(connection);
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public static class SynologyConnectionVideoStationExtension
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="connection"></param>
+		/// <returns></returns>
+		public static IVideoStationApi VideoStation(this ISynologyConnection connection) => connection.Api<IVideoStationApi>();
+	}
 }

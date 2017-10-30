@@ -10,13 +10,25 @@ using System.Linq;
 
 namespace Synology.Api.Info
 {
+	/// <inheritdoc cref="MainApiRequest" />
+	/// <summary>
+	/// </summary>
 	[Request("Info")]
-	class InfoRequest : MainApiRequest, IInfoRequest
+	internal class InfoRequest : MainApiRequest, IInfoRequest
 	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="api"></param>
 		public InfoRequest(IApi api) : base(api)
 		{
 		}
 
+		/// <inheritdoc />
+		/// <summary>
+		/// </summary>
+		/// <param name="apis"></param>
+		/// <returns></returns>
 		[RequestMethod("query")]
 		public ResultData<Dictionary<string, IApiInfo>> Query(params string[] apis)
 		{
@@ -26,18 +38,18 @@ namespace Synology.Api.Info
 				apis.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
 			};
 
-            var res = GetData<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
-            {
-                Additional = additionalParams
-            });
+			var res = GetData<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
+			{
+				Additional = additionalParams
+			});
 
-            var resInterface = new ResultData<Dictionary<string, IApiInfo>>
-            {
-                Error = res.Error,
-                Success = res.Success,
-                Data = res.Data.ToDictionary(t => t.Key, t => (IApiInfo)t.Value)
-            };
-            return resInterface;
+			var resInterface = new ResultData<Dictionary<string, IApiInfo>>
+			{
+				Error = res.Error,
+				Success = res.Success,
+				Data = res.Data.ToDictionary(t => t.Key, t => (IApiInfo)t.Value)
+			};
+			return resInterface;
 		}
 	}
 }

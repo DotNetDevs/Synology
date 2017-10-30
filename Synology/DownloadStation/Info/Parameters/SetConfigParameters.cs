@@ -3,30 +3,72 @@ using Synology.Parameters;
 
 namespace Synology.DownloadStation.Info.Parameters
 {
+	/// <inheritdoc />
+	/// <summary>
+	/// 
+	/// </summary>
 	public class SetConfigParameters : RequestParameters
 	{
-		public int? KbpsTorrentMaxDownload{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? KbpsTorrentMaxDownload { get; set; }
 
-		public int? KbpsTorrentMaxUpload{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? KbpsTorrentMaxUpload { get; set; }
 
-		public int? KbpsEmuleMaxDownload{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? KbpsEmuleMaxDownload { get; set; }
 
-		public int? KbpsEmuleMaxUpload{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? KbpsEmuleMaxUpload { get; set; }
 
-		public int? KbpsNzbMaxDownload{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? KbpsNzbMaxDownload { get; set; }
 
-		public int? KbpsHttpMaxDownload{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? KbpsHttpMaxDownload { get; set; }
 
-		public int? KbpsFtpMaxDownload{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? KbpsFtpMaxDownload { get; set; }
 
-		public bool? EmuleEnabled{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool? EmuleEnabled { get; set; }
 
-		public bool? UnzipEnabled{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public bool? UnzipEnabled { get; set; }
 
-		public string DefaultDestination{ get; set; }
+		/// <summary>
+		/// 
+		/// </summary>
+		public string DefaultDestination { get; set; }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		public string EmuleDefaultDestination { get; set; }
 
+		/// <inheritdoc />
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
 		public override QueryStringParameter[] Parameters()
 		{
 			return new[] {

@@ -2,18 +2,34 @@
 
 namespace Synology.Classes
 {
+	/// <summary>
+	/// 
+	/// </summary>
 	public class ResultData
 	{
-        [JsonProperty("success")]
+		/// <summary>
+		/// 
+		/// </summary>
+		[JsonProperty("success")]
 		public bool Success { get; set; }
 
-        [JsonProperty("error")]
+		/// <summary>
+		/// 
+		/// </summary>
+		[JsonProperty("error")]
 		public ResultError Error { get; set; }
 	}
 
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	public sealed class ResultData<T> : ResultData
 	{
-        [JsonProperty("data")]
+		/// <summary>
+		/// 
+		/// </summary>
+		[JsonProperty("data")]
 		public T Data { get; set; }
 	}
 }
