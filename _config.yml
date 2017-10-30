@@ -2,7 +2,7 @@ title: Synology
 description: Synology .NET Built-In API Wrapper
 google_analytics: UA-57981518-1
 show_downloads: true
-theme: jekyll-theme-cayman
+theme: jekyll-theme-slate
 
 gems:
   - jekyll-mentions
