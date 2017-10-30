@@ -1,4 +1,4 @@
-using Synology.Attributes;
+﻿using Synology.Attributes;
 using Synology.Classes;
 using Synology.FileStation.Rename.Results;
 using Synology.FileStation.Rename.Parameters;
@@ -8,7 +8,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.Rename
 {
 	[Request("Rename")]
-    internal class RenameRequest : FileStationRequest, IRenameRequest
+    class RenameRequest : FileStationRequest, IRenameRequest
 	{
         public RenameRequest(IFileStationApi api) : base(api)
 		{

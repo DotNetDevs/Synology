@@ -11,7 +11,7 @@ using System.Linq;
 namespace Synology.Api.Info
 {
 	[Request("Info")]
-	internal class InfoRequest : MainApiRequest, IInfoRequest
+	class InfoRequest : MainApiRequest, IInfoRequest
 	{
 		public InfoRequest(IApi api) : base(api)
 		{

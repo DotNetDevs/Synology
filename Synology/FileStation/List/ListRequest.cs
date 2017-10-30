@@ -8,7 +8,7 @@ using Synology.Interfaces;
 namespace Synology.FileStation.List
 {
 	[Request("List")]
-	internal class ListRequest : FileStationRequest, IListRequest
+	class ListRequest : FileStationRequest, IListRequest
 	{
         public ListRequest(IFileStationApi api) : base(api)
 		{

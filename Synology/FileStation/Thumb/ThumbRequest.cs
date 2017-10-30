@@ -10,7 +10,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.Thumb
 {
 	[Request("Thumb")]
-    internal class ThumbRequest : FileStationRequest, IThumbRequest
+    class ThumbRequest : FileStationRequest, IThumbRequest
 	{
         public ThumbRequest(IFileStationApi api) : base(api)
 		{
