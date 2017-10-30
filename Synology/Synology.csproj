@@ -5,9 +5,9 @@
     <Authors>Caelan</Authors>
     <Owners>Matteo Bruni</Owners>
     <PackageProjectUrl>http://dotnetdevs.github.io/Synology</PackageProjectUrl>
-    <Summary>Synology Core API for .NET</Summary>
+    <Summary>Synology API Wrapper for .NET</Summary>
     <Title>Synology</Title>
-    <Description>Synology API for .NET Core</Description>
+    <Description>Synology API Wrapper for .NET</Description>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Synology</PackageId>
   </PropertyGroup>
