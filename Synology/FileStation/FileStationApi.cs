@@ -6,7 +6,7 @@ using Synology.Interfaces;
 
 namespace Synology.FileStation
 {
-	public class FileStationApi : SynologyApi, IFileStationApi
+    internal class FileStationApi : SynologyApi, IFileStationApi
 	{
 		public FileStationApi(ISynologyConnection connection) : base(connection)
 		{
