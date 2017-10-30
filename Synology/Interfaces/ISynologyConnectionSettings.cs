@@ -3,10 +3,11 @@
     public interface ISynologyConnectionSettings
     {
         string WebApiUrl { get; }
-        string Username { get; }
-        string Password { get; }
-        string BaseHost { get; }
-        bool SslEnabled { get; }
-        int Port { get; }
+        string Username { get; set; }
+        string Password { get; set; }
+        string BaseHost { get; set; }
+        bool Ssl { get; set; }
+        int Port { get; set; }
+        int SslPort { get; set; }
     }
 }
