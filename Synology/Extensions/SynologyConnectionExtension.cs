@@ -13,7 +13,7 @@ using Synology.Utilities;
 
 namespace Synology.Extensions
 {
-    internal static class SynologyConnectionExtension
+    static class SynologyConnectionExtension
     {
         private static ISynologyRequest ResolveRequest(this ISynologyConnection connection, Type t) => connection.ServiceProvider.GetService(t) as ISynologyRequest;
 
@@ -30,7 +30,7 @@ namespace Synology.Extensions
             additionalParams = additionalParams ?? new QueryStringParameter[] { };
 
             url.AddParameters(additionalParams.Concat(new[] {
-                new QueryStringParameter("_sid", connection.Sid),
+                new QueryStringParameter("_sid", connection.GetSid()),
                 new QueryStringParameter("api", api),
                 new QueryStringParameter("version", version),
                 new QueryStringParameter("method", method)
@@ -56,7 +56,7 @@ namespace Synology.Extensions
             var url = new QueryStringManager(cgi);
 
             url.AddParameters(new[] {
-                new QueryStringParameter("_sid", connection.Sid),
+                new QueryStringParameter("_sid", connection.GetSid()),
             });
 
             var res = url.ToString();
@@ -167,5 +167,18 @@ namespace Synology.Extensions
         internal static async Task<ResultData<T>> GetDataFromApiAsync<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => await GenericGetDataFromApiAsync<ResultData<T>>(connection, cgi, api, version, method, additionalParams);
 
         internal static async Task<ResultData> GetDataFromApiAsync(this ISynologyConnection connection, string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => await GenericGetDataFromApiAsync<ResultData>(connection, cgi, api, version, method, additionalParams);
+
+        internal static string GetSid(this ISynologyConnection connection)
+        {
+            var sidContainer = connection.ServiceProvider.GetService(typeof(SidContainer)) as SidContainer;
+
+            return sidContainer?.Sid;
+        }
+
+        internal static void SetSid(this ISynologyConnection connection, string value)
+        {
+            if (connection.ServiceProvider.GetService(typeof(SidContainer)) is SidContainer sidContainer)
+                sidContainer.Sid = value;
+        }
     }
 }

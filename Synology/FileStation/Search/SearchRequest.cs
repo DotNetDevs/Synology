@@ -11,7 +11,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.Search
 {
 	[Request("Search")]
-    internal class SearchRequest : FileStationRequest, ISearchRequest
+    class SearchRequest : FileStationRequest, ISearchRequest
 	{
         public SearchRequest(IFileStationApi api) : base(api)
 		{

@@ -11,7 +11,7 @@ using Synology.Parameters;
 namespace Synology.SurveillanceStation.Info
 {
 	[Request("Info")]
-    internal class InfoRequest : SurveillanceStationRequest, IInfoRequest
+    class InfoRequest : SurveillanceStationRequest, IInfoRequest
 	{
         public InfoRequest(ISurveillanceStationApi api) : base(api)
 		{

@@ -12,7 +12,7 @@ using Synology.Parameters;
 namespace Synology.FileStation.Info
 {
 	[Request("Info")]
-    internal class InfoRequest : FileStationRequest, IInfoRequest
+    class InfoRequest : FileStationRequest, IInfoRequest
 	{
         public InfoRequest(IFileStationApi api) : base(api)
 		{

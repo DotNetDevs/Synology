@@ -5,6 +5,7 @@ using Synology.Api.Auth.Results;
 using Synology.Attributes;
 using Synology.Interfaces;
 using Synology.Parameters;
+using Synology.Extensions;
 
 namespace Synology.Api.Auth
 {
@@ -35,7 +36,7 @@ namespace Synology.Api.Auth
             });
 
             if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
-                Api.Connection.Sid = result.Data.Sid;
+                Api.Connection.SetSid(result.Data.Sid);
 
             return result;
         }
@@ -53,7 +54,7 @@ namespace Synology.Api.Auth
             });
 
             if (result.Success)
-                Api.Connection.Sid = null;
+                Api.Connection.SetSid(null);
 
             return result;
         }

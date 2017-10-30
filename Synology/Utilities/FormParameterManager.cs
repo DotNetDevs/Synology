@@ -8,7 +8,7 @@ namespace Synology.Utilities
     /// <summary>
     /// FormParameter manager used to generate a <seealso cref="MultipartFormDataContent"/> instance with formatted parameters
     /// </summary>
-    internal class FormParameterManager : IDisposable
+    class FormParameterManager : IDisposable
     {
         internal MultipartFormDataContent MultipartContent { get; }
 

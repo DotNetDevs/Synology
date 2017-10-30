@@ -10,7 +10,7 @@ using Synology.Parameters;
 namespace Synology.DownloadStation.Task
 {
 	[Request("Task")]
-    internal class TaskRequest : DownloadStationRequest, ITaskRequest
+    class TaskRequest : DownloadStationRequest, ITaskRequest
 	{
 		public TaskRequest(IDownloadStationApi api) : base(api)
 		{

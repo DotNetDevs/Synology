@@ -8,7 +8,7 @@ using Synology.Parameters;
 namespace Synology.DownloadStation.Schedule
 {
 	[Request("Schedule")]
-    internal class ScheduleRequest : DownloadStationRequest, IScheduleRequest
+    class ScheduleRequest : DownloadStationRequest, IScheduleRequest
 	{
 		public ScheduleRequest(IDownloadStationApi api) : base(api)
 		{

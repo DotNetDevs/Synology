@@ -21,7 +21,6 @@ namespace Synology
         public ISynologyConnectionSettings Settings { get; }
         public HttpClient Client { get; }
         public IServiceProvider ServiceProvider { get; }
-        public string Sid { get; set; }
 
         public SynologyConnection(ISynologyConnectionSettings settings, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {

@@ -8,8 +8,6 @@ namespace Synology.Interfaces
     {
         ILogger<SynologyConnection> Logger { get; }
 
-        string Sid { get; set; }
-
         ISynologyConnectionSettings Settings { get; }
 
         HttpClient Client { get; }
