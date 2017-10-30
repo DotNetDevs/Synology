@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Synology.Api.Info;
 using Synology.Interfaces;
 using Synology.Extensions;
+using Synology.Utilities;
 
 namespace Synology.Classes
 {
@@ -18,26 +19,7 @@ namespace Synology.Classes
     {
         public ISynologyApi Api { get; }
         public string CgiPath { get; }
-
-        public static string GetApiName<T>() => GetApiName(typeof(T));
-
-        public static string GetApiName(Type t)
-        {
-            var ty = t.GetTypeInfo();
-            var res = new List<string>();
-
-            while (ty != null)
-            {
-                if (ty.GetCustomAttribute(typeof(RequestAttribute)) is RequestAttribute ta)
-                    res.Insert(0, ta.Name);
-
-                ty = ty.BaseType?.GetTypeInfo();
-            }
-
-            return string.Join(".", res);
-        }
-
-        public string ApiName => GetApiName(GetType());
+        public string ApiName => ApiNameHelper.GetApiName(GetType());
 
         protected SynologyRequest(ISynologyApi api)
         {

@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Synology.Classes;
 using Synology.Interfaces;
 using Synology.Settings;
+using Synology.Utilities;
 
 namespace Synology
 {
@@ -22,7 +23,8 @@ namespace Synology
 
             services.AddOptions();
             services.AddSingleton<ISynologyConnectionSettings, SynologyConnectionSettings>();
-            services.AddSingleton<ISynologyConnection, SynologyConnection>();
+            services.AddSingleton<SidContainer, SidContainer>();
+            services.AddTransient<ISynologyConnection, SynologyConnection>();
 
             configure(new SynologyBuilder(services));
 
