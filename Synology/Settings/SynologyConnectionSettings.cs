@@ -1,26 +1,29 @@
-﻿using Synology.Interfaces;
+﻿using System;
+using Synology.Interfaces;
 
 namespace Synology.Settings
 {
     public class SynologyConnectionSettings : ISynologyConnectionSettings
     {
-        public string WebApiUrl { get; }
-        public string Username { get; }
-        public string Password { get; }
-        public string BaseHost { get; }
-        public bool SslEnabled { get; }
-        public int Port { get; }
-
-        public SynologyConnectionSettings(string baseHost, string username, string password, bool ssl = false, int port = 5000, int sslPort = 5001)
+        public string WebApiUrl
         {
-            var usedPort = ssl ? sslPort : port;
+            get
+            {
+                if (BaseHost == null) throw new ArgumentNullException(nameof(BaseHost));
 
-            Username = username;
-            Password = password;
-            WebApiUrl = $"http{(ssl ? "s" : string.Empty)}://{baseHost}:{usedPort}/webapi/";
-            BaseHost = baseHost;
-            SslEnabled = ssl;
-            Port = usedPort;
+                var usedPort = Ssl ? SslPort : Port;
+                var protocolSuffix = Ssl ? "s" : string.Empty;
+                var protocol = $"http{protocolSuffix}";
+
+                return $"{protocol}://{BaseHost}:{usedPort}/webapi/";
+            }
         }
+
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string BaseHost { get; set; }
+        public bool Ssl { get; set; }
+        public int Port { get; set; }
+        public int SslPort { get; set; }
     }
 }

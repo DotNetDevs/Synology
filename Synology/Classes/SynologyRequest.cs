@@ -5,15 +5,18 @@ using Synology.Attributes;
 using System.Collections.Generic;
 using Synology.Parameters;
 using System;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Synology.Api.Info;
 using Synology.Interfaces;
+using Synology.Extensions;
 
 namespace Synology.Classes
 {
     [Request("SYNO")]
-    public abstract class SynologyRequest
+    internal abstract class SynologyRequest : ISynologyRequest
     {
-        public SynologyApi Api { get; }
+        public ISynologyApi Api { get; }
         public string CgiPath { get; }
 
         public static string GetApiName<T>() => GetApiName(typeof(T));
@@ -25,9 +28,7 @@ namespace Synology.Classes
 
             while (ty != null)
             {
-                var ta = ty.GetCustomAttribute(typeof(RequestAttribute)) as RequestAttribute;
-
-                if (ta != null)
+                if (ty.GetCustomAttribute(typeof(RequestAttribute)) is RequestAttribute ta)
                     res.Insert(0, ta.Name);
 
                 ty = ty.BaseType?.GetTypeInfo();
@@ -38,7 +39,7 @@ namespace Synology.Classes
 
         public string ApiName => GetApiName(GetType());
 
-        protected SynologyRequest(SynologyApi api)
+        protected SynologyRequest(ISynologyApi api)
         {
             Api = api;
 
@@ -50,7 +51,7 @@ namespace Synology.Classes
             else
             {
                 //Request and Method returns null if the API or the Method is not found.
-                var request = Api.Connection.Request("SYNO.API.Info");
+                var request = api.Connection.ServiceProvider.GetService<IInfoRequest>() as ISynologyRequest;
                 var data = request?.Method<Dictionary<string, IApiInfo>>("query", new object[] { new[] { ApiName } });
 
                 //Request and Method returns null if the API or the Method is not found.
@@ -105,20 +106,5 @@ namespace Synology.Classes
         /// <param name="parameters">Parameters used for the request</param>
         /// <returns>Generic result data</returns>
         protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters) => await Api.PostDataAsync(CgiPath, ApiName, parameters);
-
-        private T MethodResult<T>(string name, params object[] parameters) where T : ResultData
-        {
-            var type = GetType();
-            var methods = type.GetMethods();
-            var filteredMethods = methods.Where(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(RequestMethodAttribute)));
-            var method = filteredMethods.FirstOrDefault(t => t.GetCustomAttributes(typeof(RequestMethodAttribute), true).Cast<RequestMethodAttribute>().FirstOrDefault()?.Name == name);
-            var response = method?.Invoke(this, parameters);
-            var tType = typeof(T);
-            return response as T;
-        }
-
-        internal ResultData Method(string name, params object[] parameters) => MethodResult<ResultData>(name, parameters);
-
-        internal ResultData<T> Method<T>(string name, params object[] parameters) => MethodResult<ResultData<T>>(name, parameters);
     }
 }

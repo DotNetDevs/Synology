@@ -1,10 +1,11 @@
 ﻿using Synology.Classes;
+using Synology.Interfaces;
 
 namespace Synology.Extensions
 {
-    public static class RequestExtension<T> where T : SynologyRequest
+    public static class RequestExtension<T> where T : class, ISynologyRequest
     {
-        public static T Request(SynologyApi api) => api.Request<T>();
+        public static T Request(ISynologyApi api) => api.Request<T>();
     }
 }
 
