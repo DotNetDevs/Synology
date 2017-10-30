@@ -72,16 +72,6 @@ SurveillanceStation
 <tr>
 <td>
 <a href="https://badge.fury.io/nu/Synology"><img src="https://badge.fury.io/nu/Synology.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.Api"><img src="https://badge.fury.io/nu/Synology.Api.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.DownloadStation"><img src="https://badge.fury.io/nu/Synology.DownloadStation.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.DownloadStation2"><img src="https://badge.fury.io/nu/Synology.DownloadStation2.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.FileStation"><img src="https://badge.fury.io/nu/Synology.FileStation.svg" alt="NuGet version"></a>
-</td><td>
-<a href="https://badge.fury.io/nu/Synology.SurveillanceStation"><img src="https://badge.fury.io/nu/Synology.SurveillanceStation.svg" alt="NuGet version"></a>
 </td>
 </tr>
 </table>
@@ -450,116 +440,171 @@ API Progress:
 The following code is my test project, you can use it as a guide for now. I will write the documentation, I promise.
 
 ```csharp
-public static void Main(string[] args)
+class MainClass
 {
-	using (var syno = new SynologyConnection(LoginData.Url, true))
-	{
-		DoConnection(syno);
-	}
-}
-public static void DownloadStationTests(SynologyConnection syno)
-{
-	Console.WriteLine("DS Info");
-	var dsResInfo = syno.DownloadStation().Info().GetInfo();
-	Console.WriteLine(JsonConvert.SerializeObject(dsResInfo));
+    public static void Main(string[] args)
+    {
+        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+        Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
 
-	Console.WriteLine("DS Config");
-	var dsResConfig = syno.DownloadStation().Info().Config();
-	Console.WriteLine(JsonConvert.SerializeObject(dsResConfig));
+        Log.Logger = new LoggerConfiguration().WriteTo.Console().MinimumLevel.Verbose().CreateLogger();
 
-	Console.WriteLine("DS Schedule Config");
-	var dsResSchedule = syno.DownloadStation().Schedule().Config();
-	Console.WriteLine(JsonConvert.SerializeObject(dsResSchedule));
+        var serviceCollection = new ServiceCollection();
 
-	Console.WriteLine("DS Task List");
-	var dsResTasks = syno.DownloadStation().Task().List(new TaskListParameters {
-		Additional = TaskDetailsType.Detail | TaskDetailsType.Transfer | TaskDetailsType.File | TaskDetailsType.Tracker | TaskDetailsType.Peer	
-	});
-	Console.WriteLine(JsonConvert.SerializeObject(dsResTasks));
-}
+        serviceCollection.AddLogging(b => b.AddSerilog());
+        serviceCollection.AddSynology(b =>
+        {
+            b.AddApi();
+            b.AddAudioStation();
+            b.AddDownloadStation();
+            b.AddDownloadStation2();
+            b.AddFileStation();
+            b.AddSurveillanceStation();
+            b.AddVideoStation();
+        });
+        
+        var serviceProvider = serviceCollection.BuildServiceProvider();
 
-public static void FileStationTests(SynologyConnection syno)
-{
-	Console.WriteLine("FS Info");
-	var fsResInfo = syno.FileStation().Info().GetInfo();
-	Console.WriteLine(JsonConvert.SerializeObject(fsResInfo));
+        try
+        {
+            var settings = serviceProvider.GetService<ISynologyConnectionSettings>();
 
-	Console.WriteLine("FS List Share");
-	var fsResShares = syno.FileStation().FileShare().ListShare(FileShareDetailsType.RealPath | FileShareDetailsType.Size | FileShareDetailsType.Owner | FileShareDetailsType.Time | FileShareDetailsType.Perm | FileShareDetailsType.VolumeStatus | FileShareDetailsType.MountPointType);
-	Console.WriteLine(JsonConvert.SerializeObject(fsResShares));
+            settings.BaseHost = LoginData.Url;
+            settings.Password = LoginData.Password;
+            settings.Port = LoginData.Port;
+            settings.Ssl = LoginData.Ssl;
+            settings.SslPort = LoginData.SslPort;
+            settings.Username = LoginData.Username;
 
-	Console.WriteLine("FS List");
-	var fsResList = syno.FileStation().FileShare().List("/downloads", null, FileType.All, null, FileDetailsType.RealPath | FileDetailsType.Size | FileDetailsType.Owner | FileDetailsType.Time | FileDetailsType.Perm | FileDetailsType.Type | FileDetailsType.MountPointType);
-	Console.WriteLine(JsonConvert.SerializeObject(fsResList));
+            using (var syno = serviceProvider.GetService<ISynologyConnection>())
+            {
+                DoConnection(syno);
+            }
+        }
+        catch (Exception ex)
+        {
+            var logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<MainClass>();
 
-	Console.WriteLine("FS Info");
-	var fsResFileInfo = syno.FileStation().FileShare().Info("/downloads/.apdisk", FileDetailsType.RealPath | FileDetailsType.Size | FileDetailsType.Owner | FileDetailsType.Time | FileDetailsType.Perm | FileDetailsType.Type | FileDetailsType.MountPointType);
-	Console.WriteLine(JsonConvert.SerializeObject(fsResFileInfo));
+            logger.LogError(ex, "Error during execution");
+        }
+    }
 
-	Console.WriteLine("FS VF List");
-	var fsVfResList = syno.FileStation().VirtualFolder().List(VirtualFolderDetailsType.RealPath | VirtualFolderDetailsType.Owner | VirtualFolderDetailsType.Time | VirtualFolderDetailsType.Perm | VirtualFolderDetailsType.MountPointType | VirtualFolderDetailsType.VolumeStatus);
-	Console.WriteLine(JsonConvert.SerializeObject(fsVfResList));
-}
+    private static void DownloadStationTests(ISynologyConnection syno)
+    {
+        Console.WriteLine("DS Info");
+        var dsResInfo = syno.DownloadStation().Info().GetInfo();
+        Console.WriteLine(JsonConvert.SerializeObject(dsResInfo));
 
-public static void GetOtp(SynologyConnection syno, ref ResultData<AuthResult> resLogin)
-{
-	do
-	{
-		Console.Write("Otp Code: ");
+        Console.WriteLine("DS Config");
+        var dsResConfig = syno.DownloadStation().Info().Config();
+        Console.WriteLine(JsonConvert.SerializeObject(dsResConfig));
 
-		var otp = Console.ReadLine();
+        Console.WriteLine("DS Schedule Config");
+        var dsResSchedule = syno.DownloadStation().Schedule().Config();
+        Console.WriteLine(JsonConvert.SerializeObject(dsResSchedule));
 
-		if (string.IsNullOrWhiteSpace(otp))
-		{
-			resLogin.Error = new ResultError { Code = 404 };
-			continue;
-		}
+        Console.WriteLine("DS Task List");
+        var dsResTasks = syno.DownloadStation().Task().List(new TaskListParameters
+        {
+            Additional = TaskDetailsType.Detail | TaskDetailsType.Transfer | TaskDetailsType.File | TaskDetailsType.Tracker | TaskDetailsType.Peer
+        });
+        Console.WriteLine(JsonConvert.SerializeObject(dsResTasks));
+    }
 
-		resLogin = syno.Api().Auth().Login(new LoginParameters {
-			Username = LoginData.Username,
-			Password = LoginData.Password,
-			OtpCode = otp
-		});
+    private static void FileStationTests(ISynologyConnection syno)
+    {
+        Console.WriteLine("FS GetInfo");
+        var fsResInfo = syno.FileStation().Info().Get();
+        Console.WriteLine(JsonConvert.SerializeObject(fsResInfo));
 
-		Console.WriteLine(JsonConvert.SerializeObject(resLogin));
-	}
-	while (resLogin.Error != null && resLogin.Error.Code == 404);
-}
+        Console.WriteLine("FS File Share List Share");
+        var fsResShares = syno.FileStation().FileShare().ListShare(
+            FileShareDetailsType.RealPath | FileShareDetailsType.Size | FileShareDetailsType.Owner |
+            FileShareDetailsType.Time | FileShareDetailsType.Perm | FileShareDetailsType.VolumeStatus |
+            FileShareDetailsType.MountPointType);
+        Console.WriteLine(JsonConvert.SerializeObject(fsResShares));
 
-public static void DoConnection(SynologyConnection syno)
-{
-	Console.WriteLine("Info");
-	var resInfo = syno.Api().Info().GetInfo();
+        Console.WriteLine("FS File Share List");
+        var fsResList = syno.FileStation().FileShare().List("/downloads", null, FileType.All, null,
+            FileDetailsType.RealPath | FileDetailsType.Size | FileDetailsType.Owner | FileDetailsType.Time |
+            FileDetailsType.Perm | FileDetailsType.Type | FileDetailsType.MountPointType);
+        Console.WriteLine(JsonConvert.SerializeObject(fsResList));
 
-	Console.WriteLine(JsonConvert.SerializeObject(resInfo));
+        Console.WriteLine("FS File Share Info");
+        var fsResFileInfo = syno.FileStation().FileShare().Info("/downloads/.apdisk",
+            FileDetailsType.RealPath | FileDetailsType.Size | FileDetailsType.Owner | FileDetailsType.Time |
+            FileDetailsType.Perm | FileDetailsType.Type | FileDetailsType.MountPointType);
+        Console.WriteLine(JsonConvert.SerializeObject(fsResFileInfo));
 
-	Console.WriteLine("Auth Login");
-	var resLogin = syno.Api().Auth().Login(new LoginParameters {
-		Username = LoginData.Username,
-		Password = LoginData.Password
-	});
+        Console.WriteLine("FS Virtual Folder List");
+        var fsVfResList = syno.FileStation().VirtualFolder().List(
+            VirtualFolderDetailsType.RealPath | VirtualFolderDetailsType.Owner | VirtualFolderDetailsType.Time |
+            VirtualFolderDetailsType.Perm | VirtualFolderDetailsType.MountPointType |
+            VirtualFolderDetailsType.VolumeStatus);
+        Console.WriteLine(JsonConvert.SerializeObject(fsVfResList));
+    }
 
-	Console.WriteLine(JsonConvert.SerializeObject(resLogin));
+    private static void GetOtp(ISynologyConnection syno, ref ResultData<AuthResult> resLogin)
+    {
+        do
+        {
+            Console.Write("Otp Code: ");
 
-	if (resLogin.Error == null || (resLogin.Error != null && resLogin.Error.Code == 403))
-	{
-		if (resLogin.Error != null && resLogin.Error.Code == 403)
-		{
-			GetOtp(syno, ref resLogin);
-		}
+            var otp = Console.ReadLine();
 
-		if (resLogin.Error == null)
-		{
-			DownloadStationTests(syno);
+            if (string.IsNullOrWhiteSpace(otp))
+            {
+                resLogin.Error = new ResultError {Code = 404};
+                continue;
+            }
 
-			FileStationTests(syno);
+            resLogin = syno.Api().Auth().Login(new LoginParameters
+            {
+                Username = LoginData.Username,
+                Password = LoginData.Password,
+                OtpCode = otp
+            });
 
-			Console.WriteLine("Auth Logout");
-			var resLogout = syno.Api().Auth().Logout();
-			Console.WriteLine(JsonConvert.SerializeObject(resLogout));
-		}
-	}
+            Console.WriteLine(JsonConvert.SerializeObject(resLogin));
+        } while (resLogin.Error != null && resLogin.Error.Code == 404);
+    }
 
-	Console.ReadLine();
+    private static void DoConnection(ISynologyConnection syno)
+    {
+        Console.WriteLine("Info");
+        var resInfo = syno.Api().Info().Query();
+
+        Console.WriteLine(JsonConvert.SerializeObject(resInfo));
+
+        Console.WriteLine("Auth Login");
+        var resLogin = syno.Api().Auth().Login(new LoginParameters
+        {
+            Username = LoginData.Username,
+            Password = LoginData.Password
+        });
+
+        Console.WriteLine(JsonConvert.SerializeObject(resLogin));
+
+        if (resLogin.Error == null || (resLogin.Error != null && resLogin.Error.Code == 403))
+        {
+            if (resLogin.Error != null && resLogin.Error.Code == 403)
+            {
+                GetOtp(syno, ref resLogin);
+            }
+
+            if (resLogin.Error == null)
+            {
+                DownloadStationTests(syno);
+
+                FileStationTests(syno);
+
+                Console.WriteLine("Auth Logout");
+                var resLogout = syno.Api().Auth().Logout();
+                Console.WriteLine(JsonConvert.SerializeObject(resLogout));
+            }
+        }
+
+        Console.ReadLine();
+    }
 }
 ```
