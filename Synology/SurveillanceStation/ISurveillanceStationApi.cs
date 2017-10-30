@@ -2,7 +2,10 @@
 
 namespace Synology.SurveillanceStation
 {
-    public interface ISurveillanceStationApi : ISynologyApi
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface ISurveillanceStationApi : ISynologyApi
+	{
+	}
 }

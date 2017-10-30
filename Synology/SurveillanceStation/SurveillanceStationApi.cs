@@ -3,8 +3,15 @@ using Synology.Interfaces;
 
 namespace Synology.SurveillanceStation
 {
-	public class SurveillanceStationApi : SynologyApi, ISurveillanceStationApi
+	/// <inheritdoc cref="SynologyApi" />
+	/// <summary>
+	/// </summary>
+	internal class SurveillanceStationApi : SynologyApi, ISurveillanceStationApi
 	{
+		/// <inheritdoc />
+		/// <summary>
+		/// </summary>
+		/// <param name="connection"></param>
 		public SurveillanceStationApi(ISynologyConnection connection) : base(connection)
 		{
 		}

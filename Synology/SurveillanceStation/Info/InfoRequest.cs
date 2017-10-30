@@ -5,13 +5,24 @@ using Synology.Parameters;
 
 namespace Synology.SurveillanceStation.Info
 {
+	/// <inheritdoc cref="SurveillanceStationRequest" />
+	/// <summary>
+	/// </summary>
 	[Request("Info")]
 	internal class InfoRequest : SurveillanceStationRequest, IInfoRequest
 	{
-        public InfoRequest(ISurveillanceStationApi api) : base(api)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="api"></param>
+		public InfoRequest(ISurveillanceStationApi api) : base(api)
 		{
 		}
 
+		/// <inheritdoc />
+		/// <summary>
+		/// </summary>
+		/// <returns></returns>
 		[RequestMethod("getinfo")]
 		public ResultData<InfoResult> GetInfo()
 		{
