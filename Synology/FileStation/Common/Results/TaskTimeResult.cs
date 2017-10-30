@@ -6,43 +6,43 @@ namespace Synology.FileStation.Common.Results
 {
     public abstract class TaskTimeResult
     {
-        private DateTime aDateTime;
-        private DateTime mDateTime;
-        private DateTime cDateTime;
-        private DateTime crtDateTime;
+        private DateTime _aDateTime;
+        private DateTime _mDateTime;
+        private DateTime _cDateTime;
+        private DateTime _crtDateTime;
 
         [JsonProperty("atime")]
         public long ATime
         {
-            set => aDateTime = value.ToDateTime();
+            set => _aDateTime = value.ToDateTime();
         }
 
         [JsonProperty("mtime")]
         public long MTime
         {
-            set => mDateTime = value.ToDateTime();
+            set => _mDateTime = value.ToDateTime();
         }
 
         [JsonProperty("ctime")]
         public long CTime
         {
-            set => cDateTime = value.ToDateTime();
+            set => _cDateTime = value.ToDateTime();
         }
 
         [JsonProperty("crtime")]
         public long CrTime
         {
-            set => crtDateTime = value.ToDateTime();
+            set => _crtDateTime = value.ToDateTime();
         }
 
         [JsonIgnore]
-        public DateTime LastAccessedTime => aDateTime;
+        public DateTime LastAccessedTime => _aDateTime;
         [JsonIgnore]
-        public DateTime LastModifiedTime => mDateTime;
+        public DateTime LastModifiedTime => _mDateTime;
         [JsonIgnore]
-        public DateTime LastChangeTime => cDateTime;
+        public DateTime LastChangeTime => _cDateTime;
         [JsonIgnore]
-        public DateTime CreatedTime => crtDateTime;
+        public DateTime CreatedTime => _crtDateTime;
     }
 
     public abstract class TaskFileTimeResult : TaskTimeResult

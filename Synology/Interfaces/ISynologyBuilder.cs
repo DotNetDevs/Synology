@@ -1,5 +1,4 @@
-﻿using System;
-namespace Synology.Interfaces
+﻿namespace Synology.Interfaces
 {
     public interface ISynologyBuilder
     {

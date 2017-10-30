@@ -2,7 +2,6 @@
 using Synology.Classes;
 using Synology.FileStation.MD5.Parameters;
 using Synology.FileStation.MD5.Results;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.MD5

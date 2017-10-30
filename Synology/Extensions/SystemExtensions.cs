@@ -11,11 +11,11 @@ namespace Synology.Extensions
         /// <returns>Unix timestamp</returns>
         public static long ToUnixTimeStamp(this DateTime dateTime) => (long)dateTime.ToUniversalTime().Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
 
-        /// <summary>
-        /// Performs conversion from a Unix timestamp to a DateTime
-        /// </summary>
-        /// <param name="dateTime">The timstamp to convert</param>
-        /// <returns>DateTime</returns>
-        public static DateTime ToDateTime(this long timestamp) => new DateTime(1970,1,1,0,0,0,0, System.DateTimeKind.Utc).AddSeconds(timestamp).ToLocalTime();
+		/// <summary>
+		/// Performs conversion from a Unix timestamp to a DateTime
+		/// </summary>
+		/// <param name="timestamp">The timstamp to convert</param>
+		/// <returns>DateTime</returns>
+		public static DateTime ToDateTime(this long timestamp) => new DateTime(1970,1,1,0,0,0,0, DateTimeKind.Utc).AddSeconds(timestamp).ToLocalTime();
     }
 }

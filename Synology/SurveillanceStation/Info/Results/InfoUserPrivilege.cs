@@ -1,6 +1,3 @@
-using System;
-using Newtonsoft.Json;
-
 namespace Synology.SurveillanceStation.Info.Results
 {
     public enum InfoUserPrivilege

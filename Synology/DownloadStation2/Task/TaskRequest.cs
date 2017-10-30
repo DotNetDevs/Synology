@@ -1,13 +1,7 @@
 ﻿using Synology.Classes;
 using Synology.DownloadStation2.Task.Parameters;
 using Synology.DownloadStation2.Task.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Synology.Attributes;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.DownloadStation2.Task

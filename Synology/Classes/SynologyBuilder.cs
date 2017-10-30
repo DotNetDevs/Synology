@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Synology.Api;
 using Synology.Api.Auth;
 using Synology.AudioStation;

@@ -78,7 +78,7 @@ namespace Synology.FileStation.Upload.Parameters
                 parameters.Add(new FormParameter("crtime", CreatedTime.Value));
             }
 
-            if (CreatedTime.HasValue)
+            if (LastAccessTime.HasValue)
             {
                 parameters.Add(new FormParameter("atime", LastAccessTime.Value));
             }

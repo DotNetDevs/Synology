@@ -2,7 +2,6 @@
 using Synology.Classes;
 using Synology.FileStation.DirSize.Parameters;
 using Synology.FileStation.DirSize.Results;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.DirSize

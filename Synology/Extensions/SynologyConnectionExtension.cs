@@ -43,15 +43,16 @@ namespace Synology.Extensions
             return res;
         }
 
-        /// <summary>
-        /// Get Uri for post operations
-        /// </summary>
-        /// <param name="cgi">CGI path handling the request</param>
-        /// <param name="api">API name handling the request</param>
-        /// <param name="version">Version of the api</param>
-        /// <param name="method">Method of the API</param>
-        /// <returns>The Uri object where the request has to be sent</returns>
-        private static Uri PostApiUrl(this ISynologyConnection connection, string cgi, string api, int version, string method)
+	    /// <summary>
+	    /// Get Uri for post operations
+	    /// </summary>
+	    /// <param name="connection"></param>
+	    /// <param name="cgi">CGI path handling the request</param>
+	    /// <param name="api">API name handling the request</param>
+	    /// <param name="version">Version of the api</param>
+	    /// <param name="method">Method of the API</param>
+	    /// <returns>The Uri object where the request has to be sent</returns>
+	    private static Uri PostApiUrl(this ISynologyConnection connection, string cgi, string api, int version, string method)
         {
             var url = new QueryStringManager(cgi);
 
@@ -110,51 +111,55 @@ namespace Synology.Extensions
             }
         }
 
-        /// <summary>
-        /// Performs an asynchronous post request to the Synology API
-        /// </summary>
-        /// <param name="cgi">CGI path handling the request</param>
-        /// <param name="api">API name handling the request</param>
-        /// <param name="version">Version of the api</param>
-        /// <param name="method">Method of the API</param>
-        /// <param name="additionalParams">Parameters of the request</param>
-        /// <returns>Result of the request</returns>
-        internal static async Task<ResultData> PostDataFromApiAsync(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => await GenericPostDataFromApiAsync<ResultData>(connection, cgi, api, version, method, additionalParams);
+	    /// <summary>
+	    /// Performs an asynchronous post request to the Synology API
+	    /// </summary>
+	    /// <param name="connection"></param>
+	    /// <param name="cgi">CGI path handling the request</param>
+	    /// <param name="api">API name handling the request</param>
+	    /// <param name="version">Version of the api</param>
+	    /// <param name="method">Method of the API</param>
+	    /// <param name="additionalParams">Parameters of the request</param>
+	    /// <returns>Result of the request</returns>
+	    internal static async Task<ResultData> PostDataFromApiAsync(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => await GenericPostDataFromApiAsync<ResultData>(connection, cgi, api, version, method, additionalParams);
 
-        /// <summary>
-        /// Performs an asynchronous post request to the Synology API
-        /// </summary>
-        /// <typeparam name="T">Type of result</typeparam>
-        /// <param name="cgi">CGI path handling the request</param>
-        /// <param name="api">API name handling the request</param>
-        /// <param name="version">Version of the api</param>
-        /// <param name="method">Method of the API</param>
-        /// <param name="additionalParams">Parameters of the request</param>
-        /// <returns>Result of the request and the specific API/Method response</returns>
-        internal static async Task<ResultData<T>> PostDataFromApiAsync<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => await GenericPostDataFromApiAsync<ResultData<T>>(connection, cgi, api, version, method, additionalParams);
+	    /// <summary>
+	    /// Performs an asynchronous post request to the Synology API
+	    /// </summary>
+	    /// <typeparam name="T">Type of result</typeparam>
+	    /// <param name="connection"></param>
+	    /// <param name="cgi">CGI path handling the request</param>
+	    /// <param name="api">API name handling the request</param>
+	    /// <param name="version">Version of the api</param>
+	    /// <param name="method">Method of the API</param>
+	    /// <param name="additionalParams">Parameters of the request</param>
+	    /// <returns>Result of the request and the specific API/Method response</returns>
+	    internal static async Task<ResultData<T>> PostDataFromApiAsync<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => await GenericPostDataFromApiAsync<ResultData<T>>(connection, cgi, api, version, method, additionalParams);
 
-        /// <summary>
-        /// Performs a post request to the Synology API
-        /// </summary>
-        /// <param name="cgi">CGI path handling the request</param>
-        /// <param name="api">API name handling the request</param>
-        /// <param name="version">Version of the api</param>
-        /// <param name="method">Method of the API</param>
-        /// <param name="additionalParams">Parameters of the request</param>
-        /// <returns>Result of the request</returns>
-        internal static ResultData PostDataFromApi(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync(connection, cgi, api, version, method, additionalParams).Result;
+	    /// <summary>
+	    /// Performs a post request to the Synology API
+	    /// </summary>
+	    /// <param name="connection"></param>
+	    /// <param name="cgi">CGI path handling the request</param>
+	    /// <param name="api">API name handling the request</param>
+	    /// <param name="version">Version of the api</param>
+	    /// <param name="method">Method of the API</param>
+	    /// <param name="additionalParams">Parameters of the request</param>
+	    /// <returns>Result of the request</returns>
+	    internal static ResultData PostDataFromApi(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync(connection, cgi, api, version, method, additionalParams).Result;
 
-        /// <summary>
-        /// Performs a post request to the Synology API
-        /// </summary>
-        /// <typeparam name="T">Type of result</typeparam>
-        /// <param name="cgi">CGI path handling the request</param>
-        /// <param name="api">API name handling the request</param>
-        /// <param name="version">Version of the api</param>
-        /// <param name="method">Method of the API</param>
-        /// <param name="additionalParams">Parameters of the request</param>
-        /// <returns>Result of the request and the specific API/Method response</returns>
-        internal static ResultData<T> PostDataFromApi<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync<T>(connection, cgi, api, version, method, additionalParams).Result;
+	    /// <summary>
+	    /// Performs a post request to the Synology API
+	    /// </summary>
+	    /// <typeparam name="T">Type of result</typeparam>
+	    /// <param name="connection"></param>
+	    /// <param name="cgi">CGI path handling the request</param>
+	    /// <param name="api">API name handling the request</param>
+	    /// <param name="version">Version of the api</param>
+	    /// <param name="method">Method of the API</param>
+	    /// <param name="additionalParams">Parameters of the request</param>
+	    /// <returns>Result of the request and the specific API/Method response</returns>
+	    internal static ResultData<T> PostDataFromApi<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync<T>(connection, cgi, api, version, method, additionalParams).Result;
 
         internal static T Request<T>(this ISynologyConnection connection) where T : ISynologyRequest => ResolveRequest<T>(connection);
 

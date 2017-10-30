@@ -2,7 +2,6 @@
 using Synology.Classes;
 using Synology.FileStation.Rename.Results;
 using Synology.FileStation.Rename.Parameters;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.Rename

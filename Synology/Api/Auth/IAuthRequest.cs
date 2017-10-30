@@ -1,7 +1,5 @@
-﻿using System;
-using Synology.Api.Auth.Parameters;
+﻿using Synology.Api.Auth.Parameters;
 using Synology.Api.Auth.Results;
-using Synology.Attributes;
 using Synology.Classes;
 using Synology.Interfaces;
 

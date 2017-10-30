@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Linq;
-using Newtonsoft.Json;
-using Synology.Classes;
-using System.Threading.Tasks;
-using Synology.Utilities;
-using System.Text;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.IO;
 using Microsoft.Extensions.Logging;
 using Synology.Interfaces;
-using Synology.Settings;
-using System.Reflection;
 
 namespace Synology
 {

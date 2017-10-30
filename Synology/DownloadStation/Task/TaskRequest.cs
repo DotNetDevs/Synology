@@ -4,7 +4,6 @@ using Synology.DownloadStation.Task.Results;
 using Synology.Utilities;
 using System.Collections.Generic;
 using Synology.Attributes;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.DownloadStation.Task

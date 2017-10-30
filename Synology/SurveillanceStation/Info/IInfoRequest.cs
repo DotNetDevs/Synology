@@ -1,5 +1,4 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.Interfaces;
 using Synology.SurveillanceStation.Info.Results;
 

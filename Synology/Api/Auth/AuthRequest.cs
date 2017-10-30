@@ -3,7 +3,6 @@ using Synology.Utilities;
 using Synology.Api.Auth.Parameters;
 using Synology.Api.Auth.Results;
 using Synology.Attributes;
-using Synology.Interfaces;
 using Synology.Parameters;
 using Synology.Extensions;
 
@@ -36,7 +35,7 @@ namespace Synology.Api.Auth
             });
 
             if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
-                Api.Connection.SetSid(result.Data.Sid);
+                Api.Connection.SetSid(result.Data?.Sid);
 
             return result;
         }

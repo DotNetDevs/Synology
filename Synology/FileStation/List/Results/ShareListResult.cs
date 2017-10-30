@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.List.Results
 {

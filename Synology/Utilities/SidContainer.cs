@@ -1,5 +1,4 @@
-﻿using System;
-namespace Synology.Utilities
+﻿namespace Synology.Utilities
 {
     class SidContainer
     {

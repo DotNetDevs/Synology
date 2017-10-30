@@ -1,7 +1,6 @@
 ﻿using Synology.Attributes;
 using Synology.Classes;
 using Synology.FileStation.Upload.Parameters;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.Upload

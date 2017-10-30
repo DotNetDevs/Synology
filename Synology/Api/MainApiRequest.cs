@@ -1,6 +1,5 @@
 ﻿using Synology.Attributes;
 using Synology.Classes;
-using Synology.Interfaces;
 
 namespace Synology.Api
 {

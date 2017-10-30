@@ -1,10 +1,6 @@
-﻿using System;
-using Synology.Classes;
-using Synology.Utilities;
-using System.ComponentModel;
+﻿using Synology.Classes;
 using Synology.Attributes;
 using Synology.FileStation.Thumb.Parameters;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.Thumb
