@@ -2,13 +2,12 @@
 using Synology.Classes;
 using Synology.DownloadStation.Info.Results;
 using Synology.DownloadStation.Info.Parameters;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.DownloadStation.Info
 {
 	[Request("Info")]
-    class InfoRequest : DownloadStationRequest, IInfoRequest
+	internal class InfoRequest : DownloadStationRequest, IInfoRequest
 	{
 		public InfoRequest(IDownloadStationApi api) : base(api)
 		{

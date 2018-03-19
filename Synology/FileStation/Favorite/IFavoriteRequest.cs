@@ -1,5 +1,4 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.FileStation.Favorite.Parameters;
 using Synology.FileStation.Favorite.Results;
 using Synology.Interfaces;

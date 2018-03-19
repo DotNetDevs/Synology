@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IMD5Request MD5(this IFileStationApi api)
 		{
-			return RequestExtension<IMD5Request>.Request(api);
+			return api.Request<IMD5Request>();
 		}
 	}
 }

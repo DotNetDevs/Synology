@@ -13,7 +13,7 @@ namespace Synology
         /// <returns></returns>
         public static ICopyMoveRequest CopyMove(this IFileStationApi api)
         {
-            return RequestExtension<ICopyMoveRequest>.Request(api);
+            return api.Request<ICopyMoveRequest>();
         }
     }
 }

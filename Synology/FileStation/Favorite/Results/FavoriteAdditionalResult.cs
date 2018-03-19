@@ -1,6 +1,4 @@
-using System;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Synology.FileStation.Favorite.Results
 {

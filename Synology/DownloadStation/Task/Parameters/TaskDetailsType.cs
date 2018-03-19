@@ -1,8 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Collections.Generic;
-using Synology.Utilities;
-using Synology.Attributes;
 
 namespace Synology.DownloadStation.Task.Parameters
 {

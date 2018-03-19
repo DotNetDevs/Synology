@@ -2,13 +2,12 @@
 using Synology.Classes;
 using Synology.FileStation.DirSize.Parameters;
 using Synology.FileStation.DirSize.Results;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.DirSize
 {
 	[Request("DirSize")]
-    class DirSizeRequest : FileStationRequest, IDirSizeRequest
+	internal class DirSizeRequest : FileStationRequest, IDirSizeRequest
 	{
         public DirSizeRequest(IFileStationApi api) : base(api)
 		{

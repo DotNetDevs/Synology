@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Synology.Attributes;
+﻿using Synology.Attributes;
 using Synology.Classes;
 using Synology.SurveillanceStation.Info.Results;
 using Synology.Parameters;
 
 namespace Synology.SurveillanceStation.Info
 {
+	/// <inheritdoc cref="SurveillanceStationRequest" />
+	/// <summary>
+	/// </summary>
 	[Request("Info")]
-    class InfoRequest : SurveillanceStationRequest, IInfoRequest
+	internal class InfoRequest : SurveillanceStationRequest, IInfoRequest
 	{
-        public InfoRequest(ISurveillanceStationApi api) : base(api)
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="api"></param>
+		public InfoRequest(ISurveillanceStationApi api) : base(api)
 		{
 		}
 
+		/// <inheritdoc />
+		/// <summary>
+		/// </summary>
+		/// <returns></returns>
 		[RequestMethod("getinfo")]
 		public ResultData<InfoResult> GetInfo()
 		{

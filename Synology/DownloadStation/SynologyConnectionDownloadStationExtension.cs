@@ -6,6 +6,6 @@ namespace Synology
 {
     public static class SynologyConnectionDownloadStationExtension
     {
-        public static IDownloadStationApi DownloadStation(this ISynologyConnection connection) => ApiExtension<IDownloadStationApi>.Api(connection);
+        public static IDownloadStationApi DownloadStation(this ISynologyConnection connection) => connection.Api<IDownloadStationApi>();
     }
 }

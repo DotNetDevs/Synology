@@ -2,7 +2,6 @@
 using Synology.Classes;
 using Synology.FileStation.CopyMove.Parameters;
 using Synology.FileStation.CopyMove.Results;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.CopyMove
@@ -12,7 +11,7 @@ namespace Synology.FileStation.CopyMove
 	/// This is a non-blocking API. You need to start to copy/move files with start method. Then, you should poll requests with status method to get the progress status, or make a request with stop method to cancel the operation.
 	/// </summary>
 	[Request("CopyMove")]
-	class CopyMoveRequest : FileStationRequest, ICopyMoveRequest
+	internal class CopyMoveRequest : FileStationRequest, ICopyMoveRequest
 	{
         public CopyMoveRequest(IFileStationApi parentApi) : base(parentApi)
 		{

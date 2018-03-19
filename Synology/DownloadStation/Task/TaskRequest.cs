@@ -4,13 +4,12 @@ using Synology.DownloadStation.Task.Results;
 using Synology.Utilities;
 using System.Collections.Generic;
 using Synology.Attributes;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.DownloadStation.Task
 {
 	[Request("Task")]
-    class TaskRequest : DownloadStationRequest, ITaskRequest
+	internal class TaskRequest : DownloadStationRequest, ITaskRequest
 	{
 		public TaskRequest(IDownloadStationApi api) : base(api)
 		{

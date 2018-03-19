@@ -1,17 +1,15 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.Utilities;
 using System.ComponentModel;
 using Synology.Attributes;
 using Synology.FileStation.FileShare.Parameters;
 using Synology.FileStation.Search.Results;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.Search
 {
 	[Request("Search")]
-    class SearchRequest : FileStationRequest, ISearchRequest
+	internal class SearchRequest : FileStationRequest, ISearchRequest
 	{
         public SearchRequest(IFileStationApi api) : base(api)
 		{

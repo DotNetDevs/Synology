@@ -1,9 +1,11 @@
-﻿using System;
-using Synology.Interfaces;
+﻿using Synology.Interfaces;
 
 namespace Synology.AudioStation
 {
-    public interface IAudioStationApi : ISynologyApi
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface IAudioStationApi : ISynologyApi
+	{
+	}
 }

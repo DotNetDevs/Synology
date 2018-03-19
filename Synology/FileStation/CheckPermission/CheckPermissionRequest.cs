@@ -1,16 +1,12 @@
-﻿using System;
-using Synology.Classes;
-using Synology.Utilities;
-using System.ComponentModel;
+﻿using Synology.Classes;
 using Synology.Attributes;
 using Synology.FileStation.CheckPermission.Parameters;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.CheckPermission
 {
 	[Request("CheckPermission")]
-	class CheckPermissionRequest : FileStationRequest, ICheckPermissionRequest
+	internal class CheckPermissionRequest : FileStationRequest, ICheckPermissionRequest
 	{
         public CheckPermissionRequest(IFileStationApi api) : base(api)
 		{

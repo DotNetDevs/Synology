@@ -1,17 +1,32 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.DownloadStation.Info.Parameters;
 using Synology.DownloadStation.Info.Results;
 using Synology.Interfaces;
 
 namespace Synology.DownloadStation.Info
 {
-    public interface IInfoRequest : ISynologyRequest
-    {
-        ResultData<InfoResult> GetInfo();
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface IInfoRequest : ISynologyRequest
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		ResultData<InfoResult> GetInfo();
 
-        ResultData<ConfigResult> Config();
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		ResultData<ConfigResult> Config();
 
-        ResultData SetConfig(SetConfigParameters parameters);
-    }
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="parameters"></param>
+		/// <returns></returns>
+		ResultData SetConfig(SetConfigParameters parameters);
+	}
 }

@@ -5,24 +5,37 @@ using Synology.Attributes;
 
 namespace Synology.Utilities
 {
-    public static class ApiNameHelper
-    {
-        public static string GetApiName<T>() => GetApiName(typeof(T));
+	/// <summary>
+	/// 
+	/// </summary>
+	internal static class ApiNameHelper
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		public static string GetApiName<T>() => GetApiName(typeof(T));
 
-        public static string GetApiName(Type t)
-        {
-            var ty = t.GetTypeInfo();
-            var res = new List<string>();
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="t"></param>
+		/// <returns></returns>
+		public static string GetApiName(Type t)
+		{
+			var ty = t.GetTypeInfo();
+			var res = new List<string>();
 
-            while (ty != null)
-            {
-                if (ty.GetCustomAttribute(typeof(RequestAttribute)) is RequestAttribute ta)
-                    res.Insert(0, ta.Name);
+			while (ty != null)
+			{
+				if (ty.GetCustomAttribute(typeof(RequestAttribute)) is RequestAttribute ta)
+					res.Insert(0, ta.Name);
 
-                ty = ty.BaseType?.GetTypeInfo();
-            }
+				ty = ty.BaseType?.GetTypeInfo();
+			}
 
-            return string.Join(".", res);
-        }
-    }
+			return string.Join(".", res);
+		}
+	}
 }

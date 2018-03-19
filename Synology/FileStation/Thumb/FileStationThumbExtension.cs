@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IThumbRequest Thumb(this IFileStationApi api)
 		{
-			return RequestExtension<IThumbRequest>.Request(api);
+			return api.Request<IThumbRequest>();
 		}
 	}
 }

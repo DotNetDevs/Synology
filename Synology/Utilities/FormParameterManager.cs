@@ -8,7 +8,7 @@ namespace Synology.Utilities
     /// <summary>
     /// FormParameter manager used to generate a <seealso cref="MultipartFormDataContent"/> instance with formatted parameters
     /// </summary>
-    class FormParameterManager : IDisposable
+    internal class FormParameterManager : IDisposable
     {
         internal MultipartFormDataContent MultipartContent { get; }
 
@@ -18,11 +18,9 @@ namespace Synology.Utilities
 
             foreach (var parameter in parameters)
             {
-                var dataParameter = parameter as FileFormDataParameter;
-                if (dataParameter != null)
+	            if (parameter is FileFormDataParameter dataParameter)
                 {
-                    /// Convert a <seealso cref="FileFormDataParameter"/> into <seealso cref="ByteArrayContent"/>
-                    var fileParameter = dataParameter;
+	                var fileParameter = dataParameter;
                     var contentData = new ByteArrayContent(fileParameter.FileData);
 
                     // To conform to Synology API documentation, remove Content-Disposition header
@@ -39,7 +37,6 @@ namespace Synology.Utilities
                 }
                 else
                 {
-                    /// Convert a <seealso cref="FormParameter"/> into <seealso cref="StringContent"/>
                     var contentData = new StringContent(parameter.Value);
                     // To conform to Synology API documentation, remove the Content-Type header
                     contentData.Headers.Remove("Content-Type");

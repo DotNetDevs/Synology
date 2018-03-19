@@ -2,7 +2,10 @@
 
 namespace Synology.Parameters
 {
-    public abstract class PostParameters : GenericParameters<FormParameter>
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public abstract class PostParameters : GenericParameters<FormParameter>
+	{
+	}
 }

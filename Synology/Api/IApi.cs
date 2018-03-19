@@ -1,8 +1,10 @@
-﻿using System;
-using Synology.Interfaces;
+﻿using Synology.Interfaces;
 
 namespace Synology.Api
 {
+/// <inheritdoc />
+/// <summary>
+/// </summary>
     public interface IApi : ISynologyApi
     {
     }

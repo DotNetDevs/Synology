@@ -1,5 +1,4 @@
-﻿using Synology.Classes;
-using Synology.Parameters;
+﻿using Synology.Parameters;
 using Synology.Utilities;
 using System.ComponentModel.DataAnnotations;
 namespace Synology.FileStation.DirSize.Parameters

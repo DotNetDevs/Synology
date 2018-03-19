@@ -13,7 +13,7 @@ namespace Synology
         /// <returns></returns>
         public static IUploadRequest Upload(this IFileStationApi api)
         {
-            return RequestExtension<IUploadRequest>.Request(api);
+            return api.Request<IUploadRequest>();
         }
     }
 }

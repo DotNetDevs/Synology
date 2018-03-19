@@ -4,14 +4,29 @@ using Microsoft.Extensions.Logging;
 
 namespace Synology.Interfaces
 {
-    public interface ISynologyConnection : IDisposable
-    {
-        ILogger<SynologyConnection> Logger { get; }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface ISynologyConnection : IDisposable
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		ILogger Logger { get; }
 
-        ISynologyConnectionSettings Settings { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		ISynologyConnectionSettings Settings { get; }
 
-        HttpClient Client { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		HttpClient Client { get; }
 
-        IServiceProvider ServiceProvider { get; }
-    }
+		/// <summary>
+		/// 
+		/// </summary>
+		IServiceProvider ServiceProvider { get; }
+	}
 }

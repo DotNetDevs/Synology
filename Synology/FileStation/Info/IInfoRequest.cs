@@ -1,5 +1,4 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.FileStation.Info.Results;
 using Synology.Interfaces;
 

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Synology.Utilities
 {
-    class QueryStringManager
+	internal class QueryStringManager
     {
         private readonly string _basePath;
         private readonly List<QueryStringParameter> _params;

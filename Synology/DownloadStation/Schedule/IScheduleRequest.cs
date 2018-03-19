@@ -1,5 +1,4 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.DownloadStation.Schedule.Parameters;
 using Synology.DownloadStation.Schedule.Results;
 using Synology.Interfaces;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Synology.FileStation.Thumb.Parameters
+﻿namespace Synology.FileStation.Thumb.Parameters
 {
 	public enum ThumbRotation
 	{

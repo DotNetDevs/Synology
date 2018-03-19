@@ -1,5 +1,4 @@
-﻿using Synology.Attributes;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Synology.FileStation.Search.Parameters
 {

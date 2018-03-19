@@ -1,9 +1,11 @@
-﻿using System;
-using Synology.Interfaces;
+﻿using Synology.Interfaces;
 
 namespace Synology.DownloadStation
 {
-    public interface IDownloadStationApi : ISynologyApi
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface IDownloadStationApi : ISynologyApi
+	{
+	}
 }

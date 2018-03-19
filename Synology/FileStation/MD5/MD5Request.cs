@@ -2,13 +2,12 @@
 using Synology.Classes;
 using Synology.FileStation.MD5.Parameters;
 using Synology.FileStation.MD5.Results;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.MD5
 {
 	[Request("MD5")]
-    class MD5Request : FileStationRequest, IMD5Request
+	internal class MD5Request : FileStationRequest, IMD5Request
 	{
         public MD5Request(IFileStationApi api) : base(api)
 		{

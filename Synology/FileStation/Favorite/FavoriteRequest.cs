@@ -1,17 +1,13 @@
-﻿using System;
-using Synology.Classes;
-using Synology.Utilities;
-using System.ComponentModel;
+﻿using Synology.Classes;
 using Synology.Attributes;
 using Synology.FileStation.Favorite.Results;
 using Synology.FileStation.Favorite.Parameters;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.FileStation.Favorite
 {
 	[Request("Favorite")]
-    class FavoriteRequest : FileStationRequest, IFavoriteRequest
+	internal class FavoriteRequest : FileStationRequest, IFavoriteRequest
 	{
         public FavoriteRequest(IFileStationApi api) : base(api)
 		{

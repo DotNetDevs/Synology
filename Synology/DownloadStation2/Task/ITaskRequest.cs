@@ -1,13 +1,20 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.DownloadStation2.Task.Parameters;
 using Synology.DownloadStation2.Task.Results;
 using Synology.Interfaces;
 
 namespace Synology.DownloadStation2.Task
 {
-    public interface ITaskRequest : ISynologyRequest
-    {
-        ResultData<TaskCreateResult> Create(TaskCreateParameters parameters);
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public interface ITaskRequest : ISynologyRequest
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="parameters"></param>
+		/// <returns></returns>
+		ResultData<TaskCreateResult> Create(TaskCreateParameters parameters);
+	}
 }

@@ -2,13 +2,12 @@
 using Synology.Classes;
 using Synology.DownloadStation.Schedule.Parameters;
 using Synology.DownloadStation.Schedule.Results;
-using Synology.Interfaces;
 using Synology.Parameters;
 
 namespace Synology.DownloadStation.Schedule
 {
 	[Request("Schedule")]
-    class ScheduleRequest : DownloadStationRequest, IScheduleRequest
+	internal class ScheduleRequest : DownloadStationRequest, IScheduleRequest
 	{
 		public ScheduleRequest(IDownloadStationApi api) : base(api)
 		{

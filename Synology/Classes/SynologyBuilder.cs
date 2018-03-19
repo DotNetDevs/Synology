@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Synology.Api;
 using Synology.Api.Auth;
 using Synology.AudioStation;
@@ -25,7 +24,7 @@ using Synology.VideoStation;
 
 namespace Synology.Classes
 {
-    class SynologyBuilder : ISynologyBuilder
+	internal class SynologyBuilder : ISynologyBuilder
     {
         public SynologyBuilder(IServiceCollection services)
         {

@@ -1,10 +1,25 @@
 ﻿namespace Synology.Utilities
 {
-    public interface IParameter
-    {
-        string Name { get; }
-        string Value { get; }
-        int MinVersion { get; }
-        bool Empty { get; }
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public interface IParameter
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		string Name { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		string Value { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		int MinVersion { get; }
+		/// <summary>
+		/// 
+		/// </summary>
+		bool Empty { get; }
+	}
 }

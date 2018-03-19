@@ -1,9 +1,11 @@
-﻿using System;
-using Synology.Interfaces;
+﻿using Synology.Interfaces;
 
 namespace Synology.SurveillanceStation
 {
-    public interface ISurveillanceStationApi : ISynologyApi
-    {
-    }
+	/// <inheritdoc />
+	/// <summary>
+	/// </summary>
+	public interface ISurveillanceStationApi : ISynologyApi
+	{
+	}
 }

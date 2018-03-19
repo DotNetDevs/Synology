@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static IFileShareRequest FileShare(this IFileStationApi api)
 		{
-			return RequestExtension<IFileShareRequest>.Request(api);
+			return api.Request<IFileShareRequest>();
 		}
 	}
 }

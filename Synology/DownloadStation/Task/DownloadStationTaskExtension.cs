@@ -8,7 +8,7 @@ namespace Synology
 	{
 		public static ITaskRequest Task(this IDownloadStationApi api)
 		{
-			return RequestExtension<ITaskRequest>.Request(api);
+			return api.Request<ITaskRequest>();
 		}
 	}
 }

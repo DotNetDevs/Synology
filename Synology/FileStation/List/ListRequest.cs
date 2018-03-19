@@ -1,14 +1,12 @@
-﻿using System;
-using Synology.Classes;
+﻿using Synology.Classes;
 using Synology.Attributes;
 using Synology.FileStation.List.Parameters;
 using Synology.FileStation.List.Results;
-using Synology.Interfaces;
 
 namespace Synology.FileStation.List
 {
 	[Request("List")]
-	class ListRequest : FileStationRequest, IListRequest
+	internal class ListRequest : FileStationRequest, IListRequest
 	{
         public ListRequest(IFileStationApi api) : base(api)
 		{

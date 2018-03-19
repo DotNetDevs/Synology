@@ -1,5 +1,4 @@
-﻿using Synology.Attributes;
-using System;
+﻿using System;
 using System.ComponentModel;
 
 namespace Synology.FileStation.FileShare.Parameters

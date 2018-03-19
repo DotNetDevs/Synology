@@ -4,9 +4,17 @@ using Synology.Extensions;
 
 namespace Synology
 {
-    public static class ApiInfoExtension
-    {
-        public static IInfoRequest Info(this IApi api) => RequestExtension<IInfoRequest>.Request(api);
-    }
+	/// <summary>
+	/// 
+	/// </summary>
+	public static class ApiInfoExtension
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="api"></param>
+		/// <returns></returns>
+		public static IInfoRequest Info(this IApi api) => api.Request<IInfoRequest>();
+	}
 }
 
