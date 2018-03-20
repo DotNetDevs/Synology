@@ -27,7 +27,7 @@ namespace Synology.DownloadStation2.Task
 		[RequestMethod("create")]
 		public ResultData<TaskCreateResult> Create(TaskCreateParameters parameters)
 		{
-			return PostData<TaskCreateResult>(new SynologyPostParameters(this)
+            return this.PostData<TaskCreateResult>(new SynologyPostParameters(this)
 			{
 				Additional = parameters
 			});

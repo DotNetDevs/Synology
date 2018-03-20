@@ -15,7 +15,7 @@ namespace Synology.FileStation.CheckPermission
 		[RequestMethod("write")]
 		public ResultData Write(CheckPermissionWriteParameters parameters)
 		{
-			return GetData(new SynologyRequestParameters(this)
+            return this.GetData(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});

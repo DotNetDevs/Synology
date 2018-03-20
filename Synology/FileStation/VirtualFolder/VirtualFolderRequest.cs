@@ -27,7 +27,7 @@ namespace Synology.FileStation.VirtualFolder
 				new QueryStringParameter("additional", additional)
 			};
 
-			return GetData<VirtualFolderListResult>(new SynologyRequestParameters(this)
+            return this.GetData<VirtualFolderListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});

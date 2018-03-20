@@ -21,7 +21,7 @@ namespace Synology.FileStation.Rename
 		[RequestMethod("rename")]
 		public ResultData<FileResult> Rename(RenameParameters parameters)
 		{
-			return GetData<FileResult>(new SynologyRequestParameters(this)
+            return this.GetData<FileResult>(new SynologyRequestParameters(this)
 			{
 				Version = 2,
 				Additional = parameters

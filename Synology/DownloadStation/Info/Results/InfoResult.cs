@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Info.Results
 	/// <summary>
 	/// 
 	/// </summary>
-	public class InfoResult
+	internal class InfoResult : IInfoResult
 	{
 		/// <summary>
 		/// 

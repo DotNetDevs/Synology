@@ -15,7 +15,7 @@ namespace Synology.FileStation.Upload
 		[RequestMethod("upload")]
 		public ResultData Upload(UploadParameters parameters)
 		{
-			return PostData(new SynologyPostParameters(this)
+            return this.PostData(new SynologyPostParameters(this)
 			{
 				Version = 2,
 				Additional = parameters

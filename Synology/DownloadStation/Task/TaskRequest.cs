@@ -21,7 +21,7 @@ namespace Synology.DownloadStation.Task
         [Obsolete("It uses Result, migrate to Async methods")]
 		public ResultData<TaskListResult> List(TaskListParameters parameters)
 		{
-			return GetData<TaskListResult>(new SynologyRequestParameters(this)
+			return this.GetData<TaskListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -31,7 +31,7 @@ namespace Synology.DownloadStation.Task
         [Obsolete("It uses Result, migrate to Async methods")]
 		public ResultData<IEnumerable<TaskResult>> Info(TaskInfoParameters parameters)
 		{
-			return GetData<IEnumerable<TaskResult>>(new SynologyRequestParameters(this)
+            return this.GetData<IEnumerable<TaskResult>>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -41,7 +41,7 @@ namespace Synology.DownloadStation.Task
         [Obsolete("It uses Result, migrate to Async methods")]
 		public ResultData Create(TaskCreateParameters parameters)
 		{
-			return GetData(new SynologyRequestParameters(this)
+            return this.GetData(new SynologyRequestParameters(this)
 			{
 				Version = 3,
 				Additional = parameters
@@ -52,7 +52,7 @@ namespace Synology.DownloadStation.Task
         [Obsolete("It uses Result, migrate to Async methods")]
 		public ResultData<IEnumerable<TaskMinimalResult>> Delete(TaskDeleteParameters parameters)
 		{
-			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return this.GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -66,7 +66,7 @@ namespace Synology.DownloadStation.Task
 				new QueryStringParameter("id", ids)
 			};
 
-			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return this.GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});
@@ -80,7 +80,7 @@ namespace Synology.DownloadStation.Task
 				new QueryStringParameter("id", ids),
 			};
 
-			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return this.GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});
@@ -90,7 +90,7 @@ namespace Synology.DownloadStation.Task
         [Obsolete("It uses Result, migrate to Async methods")]
 		public ResultData<IEnumerable<TaskMinimalResult>> Edit(TaskEditParameters parameters)
 		{
-			return GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return this.GetData<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -99,7 +99,7 @@ namespace Synology.DownloadStation.Task
         [RequestMethod("list")]
         public async Task<ResultData<TaskListResult>> ListAsync(TaskListParameters parameters)
         {
-            return await GetDataAsync<TaskListResult>(new SynologyRequestParameters(this)
+            return await this.GetDataAsync<TaskListResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });
@@ -108,7 +108,7 @@ namespace Synology.DownloadStation.Task
         [RequestMethod("getinfo")]
         public async Task<ResultData<IEnumerable<TaskResult>>> InfoAsync(TaskInfoParameters parameters)
         {
-            return await GetDataAsync<IEnumerable<TaskResult>>(new SynologyRequestParameters(this)
+            return await this.GetDataAsync<IEnumerable<TaskResult>>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });
@@ -117,7 +117,7 @@ namespace Synology.DownloadStation.Task
         [RequestMethod("create")]
         public async Task<ResultData> CreateAsync(TaskCreateParameters parameters)
         {
-            return await GetDataAsync(new SynologyRequestParameters(this)
+            return await this.GetDataAsync(new SynologyRequestParameters(this)
             {
                 Version = 3,
                 Additional = parameters
@@ -127,7 +127,7 @@ namespace Synology.DownloadStation.Task
         [RequestMethod("delete")]
         public async Task<ResultData<IEnumerable<TaskMinimalResult>>> DeleteAsync(TaskDeleteParameters parameters)
         {
-            return await GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });
@@ -140,7 +140,7 @@ namespace Synology.DownloadStation.Task
                 new QueryStringParameter("id", ids)
             };
 
-            return await GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
             });
@@ -153,7 +153,7 @@ namespace Synology.DownloadStation.Task
                 new QueryStringParameter("id", ids),
             };
 
-            return await GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
             });
@@ -162,7 +162,7 @@ namespace Synology.DownloadStation.Task
         [RequestMethod("edit")]
         public async Task<ResultData<IEnumerable<TaskMinimalResult>>> EditAsync(TaskEditParameters parameters)
         {
-            return await GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });

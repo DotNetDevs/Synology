@@ -24,7 +24,7 @@ namespace Synology.FileStation.CopyMove
 		[RequestMethod("start")]
 		public ResultData<StartResult> Start(StartParameters parameters)
 		{
-			return GetData<StartResult>(new SynologyRequestParameters(this)
+            return this.GetData<StartResult>(new SynologyRequestParameters(this)
 			{
 				Version = 3,
 				Additional = parameters
@@ -37,7 +37,7 @@ namespace Synology.FileStation.CopyMove
 		[RequestMethod("status")]
 		public ResultData<StatusResult> Status(StatusParameters parameters)
 		{
-			return GetData<StatusResult>(new SynologyRequestParameters(this)
+            return this.GetData<StatusResult>(new SynologyRequestParameters(this)
 			{
 				Version = 3,
 				Additional = parameters
@@ -50,7 +50,7 @@ namespace Synology.FileStation.CopyMove
 		[RequestMethod("stop")]
 		public ResultData Stop(StopParameters parameters)
 		{
-			return GetData(new SynologyRequestParameters(this)
+            return this.GetData(new SynologyRequestParameters(this)
 			{
 				Version = 3,
 				Additional = parameters

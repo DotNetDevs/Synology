@@ -28,7 +28,7 @@ namespace Synology.FileStation.DirSize
 		[RequestMethod("start")]
 		public ResultData<DirSizeStartResult> Start(DirSizeStartParameters parameters)
 		{
-			return GetData<DirSizeStartResult>(new SynologyRequestParameters(this)
+            return this.GetData<DirSizeStartResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -42,7 +42,7 @@ namespace Synology.FileStation.DirSize
 		[RequestMethod("status")]
 		public ResultData<DirSizeStatusResult> Status(DirSizeStatusParameters parameters)
 		{
-			return GetData<DirSizeStatusResult>(new SynologyRequestParameters(this)
+            return this.GetData<DirSizeStatusResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -56,7 +56,7 @@ namespace Synology.FileStation.DirSize
 		[RequestMethod("stop")]
 		public ResultData Stop(DirSizeStatusParameters parameters)
 		{
-			return GetData(new SynologyRequestParameters(this)
+            return this.GetData(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});

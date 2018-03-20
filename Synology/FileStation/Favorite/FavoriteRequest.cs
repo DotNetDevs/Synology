@@ -16,7 +16,7 @@ namespace Synology.FileStation.Favorite
 		[RequestMethod("list")]
 		public ResultData<FavoriteListResult> List(FavoriteListParameters parameters)
 		{
-			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -25,7 +25,7 @@ namespace Synology.FileStation.Favorite
 		[RequestMethod("add")]
 		public ResultData Add(FavoriteAddParameters parameters)
 		{
-			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -34,7 +34,7 @@ namespace Synology.FileStation.Favorite
 		[RequestMethod("delete")]
 		public ResultData Delete(FavoriteDeleteParameters parameters)
 		{
-			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -43,13 +43,13 @@ namespace Synology.FileStation.Favorite
 		[RequestMethod("clear_broken")]
 		public ResultData ClearBroken()
 		{
-			return GetData<FavoriteListResult>(new SynologyRequestParameters(this));
+            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this));
 		}
 
 		[RequestMethod("edit")]
 		public ResultData Edit(FavoriteEditParameters parameters)
 		{
-			return GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});

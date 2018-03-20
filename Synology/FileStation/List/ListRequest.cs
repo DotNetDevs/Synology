@@ -18,7 +18,7 @@ namespace Synology.FileStation.List
 		[RequestMethod("list_share")]
 		public ResultData<ShareListResult> ListShares(ListSharesParameters parameters)
 		{
-			return GetData<ShareListResult>(new Synology.Parameters.SynologyRequestParameters(this)
+            return this.GetData<ShareListResult>(new Synology.Parameters.SynologyRequestParameters(this)
 			{
 				Version = 2,
 				Additional = parameters,
@@ -31,7 +31,7 @@ namespace Synology.FileStation.List
 		[RequestMethod("list")]
 		public ResultData<FileListResult> ListFiles(ListParameters parameters)
 		{
-			return GetData<FileListResult>(new Synology.Parameters.SynologyRequestParameters(this)
+            return this.GetData<FileListResult>(new Synology.Parameters.SynologyRequestParameters(this)
 			{
 				Version = 2,
 				Additional = parameters,
@@ -45,7 +45,7 @@ namespace Synology.FileStation.List
 		[RequestMethod("getinfo")]
 		public ResultData<FileInfoResult> GetFileInfo(GetFileInfoParameters parameters)
 		{
-			return GetData<FileInfoResult>(new Synology.Parameters.SynologyRequestParameters(this)
+            return this.GetData<FileInfoResult>(new Synology.Parameters.SynologyRequestParameters(this)
 			{
 				Version = 2,
 				Additional = parameters,

@@ -36,7 +36,7 @@ namespace Synology.FileStation.Search
 				new QueryStringParameter("group", group)
 			};
 
-			return GetData<StartSearchResult>(new SynologyRequestParameters(this)
+            return this.GetData<StartSearchResult>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});
@@ -56,7 +56,7 @@ namespace Synology.FileStation.Search
 				new QueryStringParameter("sort_direction", sortDirection)
 			};
 
-			return GetData<SearchListResult>(new SynologyRequestParameters(this)
+            return this.GetData<SearchListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});
@@ -69,7 +69,7 @@ namespace Synology.FileStation.Search
 				new QueryStringParameter("taskid", taskId)
 			};
 
-			return GetData(new SynologyRequestParameters(this)
+            return this.GetData(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});
@@ -82,7 +82,7 @@ namespace Synology.FileStation.Search
 				new QueryStringParameter("taskid", taskId)
 			};
 
-			return GetData(new SynologyRequestParameters(this)
+            return this.GetData(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});

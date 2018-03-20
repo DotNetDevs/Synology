@@ -42,7 +42,7 @@ namespace Synology.Api.Info
                 apis.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
             };
 
-            var res = GetData<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
+            var res = this.GetData<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
             });
@@ -70,7 +70,7 @@ namespace Synology.Api.Info
                 apis.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
             };
 
-            var res = await GetDataAsync<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
+            var res = await this.GetDataAsync<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
             });

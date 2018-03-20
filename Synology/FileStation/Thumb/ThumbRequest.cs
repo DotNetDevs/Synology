@@ -15,7 +15,7 @@ namespace Synology.FileStation.Thumb
 		[RequestMethod("get")]
 		public ResultData<byte[]> Get(ThumbGetParameters parameters)
 		{
-			return GetData<byte[]>(new SynologyRequestParameters(this)
+            return this.GetData<byte[]>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});

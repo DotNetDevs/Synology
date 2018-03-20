@@ -26,7 +26,7 @@ namespace Synology.SurveillanceStation.Info
 		[RequestMethod("getinfo")]
 		public ResultData<InfoResult> GetInfo()
 		{
-			return GetData<InfoResult>(new SynologyRequestParameters(this));
+            return this.GetData<InfoResult>(new SynologyRequestParameters(this));
 		}
 	}
 }

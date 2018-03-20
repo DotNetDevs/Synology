@@ -27,7 +27,7 @@ namespace Synology.FileStation.FileShare
 				new QueryStringParameter("onlywritable", onlyWritable)
 			};
 
-			return GetData<ShareListResult>(new SynologyRequestParameters(this)
+            return this.GetData<ShareListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});
@@ -48,7 +48,7 @@ namespace Synology.FileStation.FileShare
 				new QueryStringParameter("sort_direction", sortDirection)
 			};
 
-			return GetData<FileListResult>(new SynologyRequestParameters(this)
+            return this.GetData<FileListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});
@@ -62,7 +62,7 @@ namespace Synology.FileStation.FileShare
 				new QueryStringParameter("additional", additional)
 			};
 
-			return GetData<FileListResult>(new SynologyRequestParameters(this)
+            return this.GetData<FileListResult>(new SynologyRequestParameters(this)
 			{
 				Additional = additionalParams
 			});

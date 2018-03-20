@@ -37,7 +37,7 @@ namespace Synology.Api.Auth
 
             Api.Connection.Logger.LogDebug($"Logging in as {parameters.Username} for session {_sessionNumber}");
 
-            var result = GetData<AuthResult>(new SynologyRequestParameters(this)
+            var result = this.GetData<AuthResult>(new SynologyRequestParameters(this)
             {
                 Version = 4,
                 Additional = parameters
@@ -67,7 +67,7 @@ namespace Synology.Api.Auth
 
             Api.Connection.Logger.LogDebug($"Logging in as {parameters.Username} for session {_sessionNumber}");
 
-            var result = await GetDataAsync<AuthResult>(new SynologyRequestParameters(this)
+            var result = await this.GetDataAsync<AuthResult>(new SynologyRequestParameters(this)
             {
                 Version = 4,
                 Additional = parameters
@@ -95,7 +95,7 @@ namespace Synology.Api.Auth
 
             Api.Connection.Logger.LogDebug($"Logging out for session {_sessionNumber}");
 
-            var result = GetData(new SynologyRequestParameters(this)
+            var result = this.GetData(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });
@@ -116,7 +116,7 @@ namespace Synology.Api.Auth
 
             Api.Connection.Logger.LogDebug($"Logging out for session {_sessionNumber}");
 
-            var result = await GetDataAsync(new SynologyRequestParameters(this)
+            var result = await this.GetDataAsync(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });

@@ -16,7 +16,7 @@ namespace Synology.FileStation.MD5
 		[RequestMethod("start")]
 		public ResultData<MD5StartResult> Start(MD5StartParameters parameters)
 		{
-			return GetData<MD5StartResult>(new SynologyRequestParameters(this)
+            return this.GetData<MD5StartResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -25,7 +25,7 @@ namespace Synology.FileStation.MD5
 		[RequestMethod("status")]
 		public ResultData<MD5StatusResult> Status(MD5StatusParameters parameters)
 		{
-			return GetData<MD5StatusResult>(new SynologyRequestParameters(this)
+            return this.GetData<MD5StatusResult>(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});
@@ -34,7 +34,7 @@ namespace Synology.FileStation.MD5
 		[RequestMethod("stop")]
 		public ResultData Stop(MD5StatusParameters parameters)
 		{
-			return GetData(new SynologyRequestParameters(this)
+            return this.GetData(new SynologyRequestParameters(this)
 			{
 				Additional = parameters
 			});

@@ -48,47 +48,5 @@ namespace Synology.Classes
 
             Api.Connection.Logger.LogDebug($"Created request {ApiName} to path {CgiPath}");
         }
-
-        [Obsolete("It uses Result, migrate to Async methods")]
-        protected ResultData<T> GetData<T>(SynologyRequestParameters parameters) => Api.GetData<T>(CgiPath, ApiName, parameters);
-
-        [Obsolete("It uses Result, migrate to Async methods")]
-        protected ResultData GetData(SynologyRequestParameters parameters) => Api.GetData(CgiPath, ApiName, parameters);
-
-        protected async Task<ResultData<T>> GetDataAsync<T>(SynologyRequestParameters parameters) => await Api.GetDataAsync<T>(CgiPath, ApiName, parameters);
-
-        protected async Task<ResultData> GetDataAsync(SynologyRequestParameters parameters) => await Api.GetDataAsync(CgiPath, ApiName, parameters);
-
-        /// <summary>
-        /// Performs synchronous post request with specific response
-        /// </summary>
-        /// <typeparam name="T">Type of the result data</typeparam>
-        /// <param name="parameters">Parameters used for the request</param>
-        /// <returns>Specific result data</returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        protected ResultData<T> PostData<T>(SynologyPostParameters parameters) => Api.PostData<T>(CgiPath, ApiName, parameters);
-
-        /// <summary>
-        /// Performs synchronous post request
-        /// </summary>
-        /// <param name="parameters">Parameters used for the request</param>
-        /// <returns>Generic result data</returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        protected ResultData PostData(SynologyPostParameters parameters) => Api.PostData(CgiPath, ApiName, parameters);
-
-        /// <summary>
-        /// Performs asynchronous post request with specific response
-        /// </summary>
-        /// <typeparam name="T">Type of the result data</typeparam>
-        /// <param name="parameters">Parameters used for the request</param>
-        /// <returns>Specific result data</returns>
-        protected async Task<ResultData<T>> PostDataAsync<T>(SynologyPostParameters parameters) => await Api.PostDataAsync<T>(CgiPath, ApiName, parameters);
-
-        /// <summary>
-        /// Performs asynchronous post request
-        /// </summary>
-        /// <param name="parameters">Parameters used for the request</param>
-        /// <returns>Generic result data</returns>
-        protected async Task<ResultData> PostDataAsync(SynologyPostParameters parameters) => await Api.PostDataAsync(CgiPath, ApiName, parameters);
     }
 }
