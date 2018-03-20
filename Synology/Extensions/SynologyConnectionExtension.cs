@@ -183,6 +183,7 @@ namespace Synology
 		/// <param name="method">Method of the API</param>
 		/// <param name="additionalParams">Parameters of the request</param>
 		/// <returns>Result of the request</returns>
+        [Obsolete("It uses Result, migrate to Async methods")]
 		internal static ResultData PostDataFromApi(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync(connection, cgi, api, version, method, additionalParams).Result;
 
 		/// <summary>
@@ -196,14 +197,17 @@ namespace Synology
 		/// <param name="method">Method of the API</param>
 		/// <param name="additionalParams">Parameters of the request</param>
 		/// <returns>Result of the request and the specific API/Method response</returns>
+        [Obsolete("It uses Result, migrate to Async methods")]
 		internal static ResultData<T> PostDataFromApi<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, FormParameter[] additionalParams = null) => PostDataFromApiAsync<T>(connection, cgi, api, version, method, additionalParams).Result;
 
 		internal static T Request<T>(this ISynologyConnection connection) where T : ISynologyRequest => ResolveRequest<T>(connection);
 
 		internal static T Api<T>(this ISynologyConnection connection) where T : ISynologyApi => ResolveApi<T>(connection);
 
+        [Obsolete("It uses Result, migrate to Async methods")]
 		internal static ResultData GetDataFromApi(this ISynologyConnection connection, string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => GetDataFromApiAsync(connection, cgi, api, version, method, additionalParams).Result;
 
+        [Obsolete("It uses Result, migrate to Async methods")]
 		internal static ResultData<T> GetDataFromApi<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => GetDataFromApiAsync<T>(connection, cgi, api, version, method, additionalParams).Result;
 
 		internal static async Task<ResultData<T>> GetDataFromApiAsync<T>(this ISynologyConnection connection, string cgi, string api, int version, string method, QueryStringParameter[] additionalParams = null) => await GenericGetDataFromApiAsync<ResultData<T>>(connection, cgi, api, version, method, additionalParams);

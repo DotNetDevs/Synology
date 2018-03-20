@@ -1,4 +1,6 @@
-﻿using Synology.Api.Auth.Parameters;
+﻿using System;
+using System.Threading.Tasks;
+using Synology.Api.Auth.Parameters;
 using Synology.Api.Auth.Results;
 using Synology.Classes;
 using Synology.Interfaces;
@@ -6,21 +8,36 @@ using Synology.Interfaces;
 namespace Synology.Api.Auth
 {
 	/// <summary>
-	/// 
-	/// </summary>
+    /// Auth request.
+    /// </summary>
 	public interface IAuthRequest : ISynologyRequest
 	{
 		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		ResultData<AuthResult> Login(LoginParameters parameters = null);
+        /// Login the specified parameters.
+        /// </summary>
+        /// <returns>The login.</returns>
+        /// <param name="parameters">Parameters.</param>
+        [Obsolete("It uses Result, migrate to Async methods")]
+		ResultData<IAuthResult> Login(LoginParameters parameters = null);
+
+        /// <summary>
+        /// Logins the async.
+        /// </summary>
+        /// <returns>The async.</returns>
+        /// <param name="parameters">Parameters.</param>
+        Task<ResultData<IAuthResult>> LoginAsync(LoginParameters parameters = null);
 
 		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
+        /// Logout this instance.
+        /// </summary>
+        /// <returns>The logout.</returns>
+        [Obsolete("It uses Result, migrate to Async methods")]
 		ResultData Logout();
+
+        /// <summary>
+        /// Logouts the async.
+        /// </summary>
+        /// <returns>The async.</returns>
+        Task<ResultData> LogoutAsync();
 	}
 }
