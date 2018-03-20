@@ -5,6 +5,9 @@ using Synology.Interfaces;
 
 namespace Synology.FileStation.CopyMove
 {
+    /// <summary>
+    /// Copy move request.
+    /// </summary>
     public interface ICopyMoveRequest : ISynologyRequest
     {
         /// <summary>

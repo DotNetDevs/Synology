@@ -5,6 +5,9 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.Rename.Parameters
 {
+    /// <summary>
+    /// Rename parameters.
+    /// </summary>
     public class RenameParameters : RequestParameters
     {
         /// <summary>
@@ -41,6 +44,10 @@ namespace Synology.FileStation.Rename.Parameters
         /// </remarks>
         public string SearchTaskId { get; set; }
 
+        /// <summary>
+        /// Parameters this instance.
+        /// </summary>
+        /// <returns>The parameters.</returns>
         public override QueryStringParameter[] Parameters()
         {
             return new[]

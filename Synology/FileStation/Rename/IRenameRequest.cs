@@ -5,6 +5,9 @@ using Synology.Interfaces;
 
 namespace Synology.FileStation.Rename
 {
+    /// <summary>
+    /// Rename request.
+    /// </summary>
     public interface IRenameRequest : ISynologyRequest
     {
         /// <summary>

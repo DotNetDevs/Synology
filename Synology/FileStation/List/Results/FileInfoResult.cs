@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Synology.FileStation.List.Results
 {
+    /// <summary>
+    /// File info result.
+    /// </summary>
     public class FileInfoResult
     {
         /// <summary>

@@ -3,6 +3,9 @@ using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.CopyMove.Results
 {
+    /// <summary>
+    /// Status result.
+    /// </summary>
     public class StatusResult : TaskStatusResult
     {
         /// <summary>

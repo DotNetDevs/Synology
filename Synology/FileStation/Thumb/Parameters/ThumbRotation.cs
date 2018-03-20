@@ -1,16 +1,29 @@
 ﻿namespace Synology.FileStation.Thumb.Parameters
 {
+    /// <summary>
+    /// Thumb rotation.
+    /// </summary>
 	public enum ThumbRotation
 	{
-		//0°
+        /// <summary>
+        /// 0°
+        /// </summary>
 		Original = 0,
-		//90°
+        /// <summary>
+        /// 90°
+        /// </summary>
 		RotateRight = 1,
-		//180°
+        /// <summary>
+        /// 180°
+        /// </summary>
 		FlipHorizontal = 2,
-		//270°
+        /// <summary>
+        /// 270°
+        /// </summary>
 		RotateLeft = 3,
-		//360°
+        /// <summary>
+        /// 360°
+        /// </summary>
 		RotateFull = 4
 	}
 }

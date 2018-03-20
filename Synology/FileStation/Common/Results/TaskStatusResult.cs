@@ -2,6 +2,9 @@
 
 namespace Synology.FileStation.Common.Results
 {
+    /// <summary>
+    /// Task status result.
+    /// </summary>
     public abstract class TaskStatusResult
     {
         /// <summary>

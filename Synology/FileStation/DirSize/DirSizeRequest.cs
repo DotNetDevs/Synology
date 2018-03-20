@@ -6,13 +6,25 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.DirSize
 {
+    /// <summary>
+    /// Dir size request.
+    /// </summary>
 	[Request("DirSize")]
 	internal class DirSizeRequest : FileStationRequest, IDirSizeRequest
 	{
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Synology.FileStation.DirSize.DirSizeRequest"/> class.
+        /// </summary>
+        /// <param name="api">API.</param>
         public DirSizeRequest(IFileStationApi api) : base(api)
 		{
 		}
 
+        /// <summary>
+        /// Start the specified parameters.
+        /// </summary>
+        /// <returns>The start.</returns>
+        /// <param name="parameters">Parameters.</param>
 		[RequestMethod("start")]
 		public ResultData<DirSizeStartResult> Start(DirSizeStartParameters parameters)
 		{
@@ -22,6 +34,11 @@ namespace Synology.FileStation.DirSize
 			});
 		}
 
+        /// <summary>
+        /// Status the specified parameters.
+        /// </summary>
+        /// <returns>The status.</returns>
+        /// <param name="parameters">Parameters.</param>
 		[RequestMethod("status")]
 		public ResultData<DirSizeStatusResult> Status(DirSizeStatusParameters parameters)
 		{
@@ -31,6 +48,11 @@ namespace Synology.FileStation.DirSize
 			});
 		}
 
+        /// <summary>
+        /// Stop the specified parameters.
+        /// </summary>
+        /// <returns>The stop.</returns>
+        /// <param name="parameters">Parameters.</param>
 		[RequestMethod("stop")]
 		public ResultData Stop(DirSizeStatusParameters parameters)
 		{

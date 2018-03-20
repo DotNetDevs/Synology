@@ -5,6 +5,9 @@ using Synology.Interfaces;
 
 namespace Synology.FileStation.List
 {
+    /// <summary>
+    /// List request.
+    /// </summary>
     public interface IListRequest : ISynologyRequest
     {
         /// <summary>

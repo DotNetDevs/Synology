@@ -7,6 +7,9 @@ using Synology.Utilities;
 
 namespace Synology
 {
+    /// <summary>
+    /// Logging service collection extensions.
+    /// </summary>
     public static class LoggingServiceCollectionExtensions
     {
         //

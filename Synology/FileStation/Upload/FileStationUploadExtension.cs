@@ -4,6 +4,9 @@ using Synology.FileStation.Upload;
 
 namespace Synology
 {
+    /// <summary>
+    /// File station upload extension.
+    /// </summary>
     public static class FileStationUploadExtension
     {
         /// <summary>

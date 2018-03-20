@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 namespace Synology.FileStation.Rename.Parameters
 {
+    /// <summary>
+    /// Rename additional.
+    /// </summary>
     [Flags]
     public enum RenameAdditional
     {
