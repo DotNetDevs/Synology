@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Synology.Utilities
 {
-	internal class QueryStringManager
+    internal class QueryStringManager
     {
         private readonly string _basePath;
         private readonly List<QueryStringParameter> _params;
@@ -16,8 +16,9 @@ namespace Synology.Utilities
 
         public void AddParameter(QueryStringParameter parameter)
         {
-            if (!(parameter?.Empty ?? true))
-                _params.Add(parameter);
+            if (parameter?.Empty ?? true) return;
+
+            _params.Add(parameter);
         }
 
         public void AddParameters(IEnumerable<QueryStringParameter> parameters)

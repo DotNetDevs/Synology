@@ -34,7 +34,8 @@ namespace Synology.Api.Info
 		{
 			Api.Connection.Logger.LogDebug($"Requesting Info for {(apis.Length > 0 ? string.Join(";", apis) : "all")} APIs");
 
-			var additionalParams = new[] {
+			var additionalParams = new[]
+            {
 				apis.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
 			};
 
