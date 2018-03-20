@@ -5,6 +5,7 @@ using Synology.Api.Auth.Results;
 using Synology.Attributes;
 using Synology.Parameters;
 using Synology.Extensions;
+using Microsoft.Extensions.Logging;
 
 namespace Synology.Api.Auth
 {
@@ -31,6 +32,8 @@ namespace Synology.Api.Auth
 
             _sessionNumber = parameters.SessionName;
 
+            Api.Connection.Logger.LogDebug($"Logging in as {parameters.Username} for session {_sessionNumber}");
+
             var result = GetData<AuthResult>(new SynologyRequestParameters(this)
             {
                 Version = 4,
@@ -50,6 +53,8 @@ namespace Synology.Api.Auth
             {
                 new QueryStringParameter("session", _sessionNumber),
             };
+
+            Api.Connection.Logger.LogDebug($"Logging out for session {_sessionNumber}");
 
             var result = GetData(new SynologyRequestParameters(this)
             {
