@@ -3,7 +3,7 @@ using Synology.Classes;
 using Synology.Interfaces;
 using Synology.Parameters;
 
-namespace Synology.Extensions
+namespace Synology
 {
 	internal static class SynologyApiExtension
     {

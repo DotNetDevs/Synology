@@ -1,4 +1,4 @@
-﻿using Synology.Extensions;
+﻿using Synology;
 using System;
 using System.Collections;
 using System.Collections.Generic;

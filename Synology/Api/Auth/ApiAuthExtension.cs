@@ -1,6 +1,5 @@
 ﻿using Synology.Api;
 using Synology.Api.Auth;
-using Synology.Extensions;
 
 namespace Synology
 {

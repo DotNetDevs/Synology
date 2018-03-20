@@ -1,6 +1,6 @@
 ﻿using Synology.SurveillanceStation;
 using Synology.SurveillanceStation.Info;
-using Synology.Extensions;
+using Synology;
 
 namespace Synology
 {

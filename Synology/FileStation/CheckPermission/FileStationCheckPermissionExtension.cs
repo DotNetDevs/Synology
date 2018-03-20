@@ -1,6 +1,6 @@
-﻿using Synology.FileStation;
+﻿using Synology;
+using Synology.FileStation;
 using Synology.FileStation.CheckPermission;
-using Synology.Extensions;
 
 namespace Synology
 {

@@ -1,6 +1,6 @@
 ﻿using Synology.FileStation;
 using Synology.FileStation.FileShare;
-using Synology.Extensions;
+using Synology;
 
 namespace Synology
 {

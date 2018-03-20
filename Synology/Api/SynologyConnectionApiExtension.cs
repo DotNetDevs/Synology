@@ -1,5 +1,5 @@
-﻿using Synology.Api;
-using Synology.Extensions;
+﻿using Synology;
+using Synology.Api;
 using Synology.Interfaces;
 
 namespace Synology

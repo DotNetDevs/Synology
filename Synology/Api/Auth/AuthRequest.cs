@@ -1,10 +1,10 @@
-﻿using Synology.Classes;
+﻿using Synology;
+using Synology.Classes;
 using Synology.Utilities;
 using Synology.Api.Auth.Parameters;
 using Synology.Api.Auth.Results;
 using Synology.Attributes;
 using Synology.Parameters;
-using Synology.Extensions;
 using Microsoft.Extensions.Logging;
 
 namespace Synology.Api.Auth

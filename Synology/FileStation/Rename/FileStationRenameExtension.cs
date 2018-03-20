@@ -1,4 +1,4 @@
-﻿using Synology.Extensions;
+﻿using Synology;
 using Synology.FileStation;
 using Synology.FileStation.Rename;
 

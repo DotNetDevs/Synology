@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
-using Synology.Extensions;
+using Synology;
 
 namespace Synology.FileStation.Common.Results
 {

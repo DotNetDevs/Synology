@@ -11,7 +11,7 @@ using Synology.Classes;
 using Synology.Interfaces;
 using Synology.Utilities;
 
-namespace Synology.Extensions
+namespace Synology
 {
 	/// <summary>
 	/// 

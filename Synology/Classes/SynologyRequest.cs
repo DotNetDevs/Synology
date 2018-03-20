@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Synology;
+using System.Threading.Tasks;
 using Synology.Attributes;
 using System.Collections.Generic;
 using Synology.Parameters;
@@ -7,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Synology.Api.Info;
 using Synology.Interfaces;
-using Synology.Extensions;
 using Synology.Utilities;
 
 namespace Synology.Classes

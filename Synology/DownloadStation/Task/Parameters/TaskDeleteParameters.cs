@@ -6,12 +6,29 @@ using Synology.Parameters;
 
 namespace Synology.DownloadStation.Task.Parameters
 {
+    /// <summary>
+    /// Task delete parameters.
+    /// </summary>
 	public class TaskDeleteParameters : RequestParameters
 	{
+        /// <summary>
+        /// Gets or sets the identifiers.
+        /// </summary>
+        /// <value>The identifiers.</value>
 		[Required]
 		public string[] Ids { get; set; }
-		public bool ForceComplete { get; set; }
+		/// <summary>
+        /// Gets or sets a value indicating whether this
+        /// <see cref="T:Synology.DownloadStation.Task.Parameters.TaskDeleteParameters"/> force complete.
+        /// </summary>
+        /// <value><c>true</c> if force complete; otherwise, <c>false</c>.</value>
+        public bool ForceComplete { get; set; }
 
+        /// <summary>
+        /// Validate the specified validationContext.
+        /// </summary>
+        /// <returns>The validate.</returns>
+        /// <param name="validationContext">Validation context.</param>
 		public override IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
 		{
 			var result = base.Validate(validationContext).ToList();
@@ -22,6 +39,10 @@ namespace Synology.DownloadStation.Task.Parameters
 			return result;
 		}
 
+        /// <summary>
+        /// Parameters this instance.
+        /// </summary>
+        /// <returns>The parameters.</returns>
 		public override QueryStringParameter[] Parameters()
 		{
 			return new[] {

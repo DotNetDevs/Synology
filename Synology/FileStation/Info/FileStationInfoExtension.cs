@@ -1,6 +1,6 @@
 ﻿using Synology.FileStation;
 using Synology.FileStation.Info;
-using Synology.Extensions;
+using Synology;
 
 namespace Synology
 {

@@ -1,5 +1,5 @@
-﻿using Synology.DownloadStation2;
-using Synology.Extensions;
+﻿using Synology;
+using Synology.DownloadStation2;
 using Synology.Interfaces;
 
 namespace Synology

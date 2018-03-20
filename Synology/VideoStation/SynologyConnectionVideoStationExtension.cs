@@ -1,5 +1,5 @@
 ﻿using Synology.VideoStation;
-using Synology.Extensions;
+using Synology;
 using Synology.Interfaces;
 
 namespace Synology

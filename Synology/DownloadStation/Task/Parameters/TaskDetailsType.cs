@@ -3,18 +3,36 @@ using System.ComponentModel;
 
 namespace Synology.DownloadStation.Task.Parameters
 {
+    /// <summary>
+    /// Task details type.
+    /// </summary>
 	[Flags]
 	public enum TaskDetailsType
 	{
+        /// <summary>
+        /// The detail.
+        /// </summary>
 		[Description("detail")]
 		Detail = 1 << 0,
-		[Description("transfer")]
+		/// <summary>
+        /// The transfer.
+        /// </summary>
+        [Description("transfer")]
 		Transfer = 1 << 1,
-		[Description("file")]
+		/// <summary>
+        /// The file.
+        /// </summary>
+        [Description("file")]
 		File = 1 << 2,
-		[Description("tracker")]
+		/// <summary>
+        /// The tracker.
+        /// </summary>
+        [Description("tracker")]
 		Tracker = 1 << 3,
-		[Description("peer")]
+		/// <summary>
+        /// The peer.
+        /// </summary>
+        [Description("peer")]
 		Peer = 1 << 4
 	}
 }
