@@ -23,6 +23,7 @@ namespace Synology.Api.Auth
         {
         }
 
+        #region Obsolete
         [RequestMethod("login")]
         [Obsolete("It uses Result, migrate to Async methods")]
         public ResultData<IAuthResult> Login(LoginParameters parameters = null)
@@ -46,13 +47,31 @@ namespace Synology.Api.Auth
             if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
                 Api.Connection.SetSid(result.Data?.Sid);
 
-            return new ResultData<IAuthResult>
-            {
-                Data = result.Data,
-                Error = result.Error,
-                Success = result.Success
-            };
+            return ResultData<IAuthResult>.From(result);
         }
+
+        [RequestMethod("logout")]
+        [Obsolete("It uses Result, migrate to Async methods")]
+        public ResultData Logout()
+        {
+            var parameters = new[]
+            {
+                new QueryStringParameter("session", _sessionNumber),
+            };
+
+            Api.Connection.Logger.LogDebug($"Logging out for session {_sessionNumber}");
+
+            var result = this.GetData(new SynologyRequestParameters(this)
+            {
+                Additional = parameters
+            });
+
+            if (result.Success)
+                Api.Connection.SetSid(null);
+
+            return result;
+        }
+        #endregion
 
         [RequestMethod("login")]
         public async Task<ResultData<IAuthResult>> LoginAsync(LoginParameters parameters = null)
@@ -76,34 +95,7 @@ namespace Synology.Api.Auth
             if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
                 Api.Connection.SetSid(result.Data?.Sid);
 
-            return new ResultData<IAuthResult>
-            {
-                Data = result.Data,
-                Error = result.Error,
-                Success = result.Success
-            };
-        }
-
-        [RequestMethod("logout")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData Logout()
-        {
-            var parameters = new[]
-            {
-                new QueryStringParameter("session", _sessionNumber),
-            };
-
-            Api.Connection.Logger.LogDebug($"Logging out for session {_sessionNumber}");
-
-            var result = this.GetData(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            });
-
-            if (result.Success)
-                Api.Connection.SetSid(null);
-
-            return result;
+            return ResultData<IAuthResult>.From(result);
         }
 
         [RequestMethod("logout")]

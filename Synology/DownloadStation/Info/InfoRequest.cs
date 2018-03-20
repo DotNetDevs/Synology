@@ -21,12 +21,7 @@ namespace Synology.DownloadStation.Info
         {
             var res = this.GetData<InfoResult>(new SynologyRequestParameters(this));
 
-            return new ResultData<IInfoResult>
-            {
-                Data = res.Data,
-                Error = res.Error,
-                Success = res.Success
-            };
+            return ResultData<IInfoResult>.From(res);
         }
 
         [RequestMethod("getconfig")]
@@ -35,12 +30,7 @@ namespace Synology.DownloadStation.Info
         {
             var res = this.GetData<ConfigResult>(new SynologyRequestParameters(this) { Version = 2 });
 
-            return new ResultData<IConfigResult>
-            {
-                Data = res.Data,
-                Error = res.Error,
-                Success = res.Success
-            };
+            return ResultData<IConfigResult>.From(res);
         }
 
         [RequestMethod("setserverconfig")]
@@ -59,12 +49,7 @@ namespace Synology.DownloadStation.Info
         {
             var res = await this.GetDataAsync<InfoResult>(new SynologyRequestParameters(this));
 
-            return new ResultData<IInfoResult>
-            {
-                Data = res.Data,
-                Error = res.Error,
-                Success = res.Success
-            };
+            return ResultData<IInfoResult>.From(res);
         }
 
         [RequestMethod("getconfig")]
@@ -72,12 +57,7 @@ namespace Synology.DownloadStation.Info
         {
             var res = await this.GetDataAsync<ConfigResult>(new SynologyRequestParameters(this) { Version = 2 });
 
-            return new ResultData<IConfigResult>
-            {
-                Data = res.Data,
-                Error = res.Error,
-                Success = res.Success
-            };
+            return ResultData<IConfigResult>.From(res);
         }
 
         [RequestMethod("setserverconfig")]
