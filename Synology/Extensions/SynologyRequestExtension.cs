@@ -47,9 +47,9 @@ namespace Synology
         [Obsolete("It uses Result, migrate to Async methods")]
         internal static  ResultData GetData(this ISynologyRequest request, SynologyRequestParameters parameters) => request.Api.GetData(request.CgiPath, request.ApiName, parameters);
 
-        internal static  async Task<ResultData<T>> GetDataAsync<T>(this ISynologyRequest request, SynologyRequestParameters parameters) => await request.Api.GetDataAsync<T>(request.CgiPath, request.ApiName, parameters);
+        internal static  async Task<ResultData<T>> GetDataAsync<T>(this ISynologyRequest request, SynologyRequestParameters parameters) => await request.Api.GetDataAsync<T>(await request.CgiPathAsync(), request.ApiName, parameters);
 
-        internal static  async Task<ResultData> GetDataAsync(this ISynologyRequest request, SynologyRequestParameters parameters) => await request.Api.GetDataAsync(request.CgiPath, request.ApiName, parameters);
+        internal static  async Task<ResultData> GetDataAsync(this ISynologyRequest request, SynologyRequestParameters parameters) => await request.Api.GetDataAsync(await request.CgiPathAsync(), request.ApiName, parameters);
 
         /// <summary>
         /// Posts the data.
@@ -77,7 +77,7 @@ namespace Synology
         /// <param name="request">Request.</param>
         /// <param name="parameters">Parameters.</param>
         /// <typeparam name="T">The 1st type parameter.</typeparam>
-        internal static  async Task<ResultData<T>> PostDataAsync<T>(this ISynologyRequest request, SynologyPostParameters parameters) => await request.Api.PostDataAsync<T>(request.CgiPath, request.ApiName, parameters);
+        internal static  async Task<ResultData<T>> PostDataAsync<T>(this ISynologyRequest request, SynologyPostParameters parameters) => await request.Api.PostDataAsync<T>(await request.CgiPathAsync(), request.ApiName, parameters);
 
         /// <summary>
         /// Posts the data async.
@@ -85,6 +85,6 @@ namespace Synology
         /// <returns>The data async.</returns>
         /// <param name="request">Request.</param>
         /// <param name="parameters">Parameters.</param>
-        internal static  async Task<ResultData> PostDataAsync(this ISynologyRequest request, SynologyPostParameters parameters) => await request.Api.PostDataAsync(request.CgiPath, request.ApiName, parameters);
+        internal static  async Task<ResultData> PostDataAsync(this ISynologyRequest request, SynologyPostParameters parameters) => await request.Api.PostDataAsync(await request.CgiPathAsync(), request.ApiName, parameters);
     }
 }
