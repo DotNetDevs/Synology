@@ -7,32 +7,34 @@ using Synology.Interfaces;
 
 namespace Synology.DownloadStation.Info
 {
-	/// <inheritdoc />
-	/// <summary>
-	/// </summary>
-	public interface IInfoRequest : ISynologyRequest
-	{
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
+    public interface IInfoRequest : ISynologyRequest
+    {
+        #region Obsolete
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IInfoResult> GetInfo();
+        ResultData<IInfoResult> GetInfo();
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IConfigResult> Config();
+        ResultData<IConfigResult> Config();
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData SetConfig(SetConfigParameters parameters);
+        ResultData SetConfig(SetConfigParameters parameters);
+        #endregion
 
         /// <summary>
         /// 
@@ -44,7 +46,6 @@ namespace Synology.DownloadStation.Info
         /// 
         /// </summary>
         /// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
         Task<ResultData<IConfigResult>> ConfigAsync();
 
         /// <summary>
@@ -52,7 +53,6 @@ namespace Synology.DownloadStation.Info
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
         Task<ResultData> SetConfigAsync(SetConfigParameters parameters);
-	}
+    }
 }
