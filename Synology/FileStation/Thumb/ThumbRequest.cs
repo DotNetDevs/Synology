@@ -2,6 +2,8 @@
 using Synology.Attributes;
 using Synology.FileStation.Thumb.Parameters;
 using Synology.Parameters;
+using System;
+using System.Threading.Tasks;
 
 namespace Synology.FileStation.Thumb
 {
@@ -13,6 +15,7 @@ namespace Synology.FileStation.Thumb
 		}
 
 		[RequestMethod("get")]
+        [Obsolete("It uses Result, migrate to Async methods")]
 		public ResultData<byte[]> Get(ThumbGetParameters parameters)
 		{
             return this.GetData<byte[]>(new SynologyRequestParameters(this)
@@ -20,5 +23,14 @@ namespace Synology.FileStation.Thumb
 				Additional = parameters
 			});
 		}
+
+        [RequestMethod("get")]
+        public async Task<ResultData<byte[]>> GetAsync(ThumbGetParameters parameters)
+        {
+            return await this.GetDataAsync<byte[]>(new SynologyRequestParameters(this)
+            {
+                Additional = parameters
+            });
+        }
 	}
 }

@@ -16,7 +16,7 @@ namespace Synology.Classes
     internal abstract class SynologyRequest : ISynologyRequest
     {
         public ISynologyApi Api { get; }
-        public string CgiPath { get; }
+        public string CgiPath { get; private set; }
         public string ApiName => ApiNameHelper.GetApiName(GetType());
 
         protected SynologyRequest(ISynologyApi api)
@@ -32,18 +32,20 @@ namespace Synology.Classes
             {
                 //Request and Method returns null if the API or the Method is not found.
                 var request = api.Connection.ServiceProvider.GetService<IInfoRequest>() as ISynologyRequest;
-                var data = request?.Method<Dictionary<string, IApiInfo>>("query", new object[] { new[] { ApiName } });
-
-                //Request and Method returns null if the API or the Method is not found.
-                //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
-                if (data != null && data.Data.ContainsKey(ApiName))
+                request?.MethodAsync<Dictionary<string, IApiInfo>>("query", new object[] { new[] { ApiName } }).ContinueWith(res => 
                 {
-                    CgiPath = data.Data[ApiName].Path;
-                }
-                else
-                {
-                    throw new Exception("The API cannot be found on this Synology. Check if RequestAttribute exists on the relative SynologyRequest subclass or the SYNO.API.Info result.");
-                }
+                    var data = res.Result;
+                    //Request and Method returns null if the API or the Method is not found.
+                    //If the Info API has returned a value and contains the current API Info, this update the associated cgi.
+                    if (data != null && data.Data.ContainsKey(ApiName))
+                    {
+                        CgiPath = data.Data[ApiName].Path;
+                    }
+                    else
+                    {
+                        throw new Exception("The API cannot be found on this Synology. Check if RequestAttribute exists on the relative SynologyRequest subclass or the SYNO.API.Info result.");
+                    } 
+                });
             }
 
             Api.Connection.Logger.LogDebug($"Created request {ApiName} to path {CgiPath}");
