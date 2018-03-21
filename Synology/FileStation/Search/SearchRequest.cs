@@ -48,7 +48,7 @@ namespace Synology.FileStation.Search
 
         [RequestMethod("list")]
         [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<SearchListResult> List(string taskId, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, string pattern = null, FileType fileType = FileType.All, FileDetailsType? additional = null)
+        public ResultData<ISearchListResult> List(string taskId, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, string pattern = null, FileType fileType = FileType.All, FileDetailsType? additional = null)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("additional", additional),
@@ -61,10 +61,10 @@ namespace Synology.FileStation.Search
                 new QueryStringParameter("sort_direction", sortDirection)
             };
 
-            return this.GetData<SearchListResult>(new SynologyRequestParameters(this)
+            return ResultData<ISearchListResult>.From(this.GetData<SearchListResult>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
-            });
+            }));
         }
 
         [RequestMethod("stop")]

@@ -6,7 +6,7 @@ namespace Synology.FileStation.CopyMove.Results
     /// <summary>
     /// Status result.
     /// </summary>
-    public class StatusResult : TaskStatusResult
+    internal class StatusResult : TaskStatusResult, IStatusResult
     {
         /// <summary>
         /// If accurate_progress parameter is "true," byte sizes of all copied/moved files will be accumulated.If "false," only byte sizes of the file you give in path parameter is accumulated.

@@ -5,7 +5,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task status result.
     /// </summary>
-    public abstract class TaskStatusResult
+    internal abstract class TaskStatusResult : ITaskStatusResult
     {
         /// <summary>
         /// If the task is finished or not

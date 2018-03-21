@@ -40,13 +40,13 @@ namespace Synology.FileStation.CopyMove
         /// </summary>
         [RequestMethod("status")]
         [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<StatusResult> Status(StatusParameters parameters)
+        public ResultData<IStatusResult> Status(StatusParameters parameters)
         {
-            return this.GetData<StatusResult>(new SynologyRequestParameters(this)
+            return ResultData<IStatusResult>.From(this.GetData<StatusResult>(new SynologyRequestParameters(this)
             {
                 Version = 3,
                 Additional = parameters
-            });
+            }));
         }
 
         /// <summary>
@@ -82,13 +82,13 @@ namespace Synology.FileStation.CopyMove
         /// Get the copying/moving status.
         /// </summary>
         [RequestMethod("status")]
-        public async Task<ResultData<StatusResult>> StatusAsync(StatusParameters parameters)
+        public async Task<ResultData<IStatusResult>> StatusAsync(StatusParameters parameters)
         {
-            return await this.GetDataAsync<StatusResult>(new SynologyRequestParameters(this)
+            return ResultData<IStatusResult>.From(await this.GetDataAsync<StatusResult>(new SynologyRequestParameters(this)
             {
                 Version = 3,
                 Additional = parameters
-            });
+            }));
         }
 
         /// <summary>

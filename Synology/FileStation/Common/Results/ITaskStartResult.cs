@@ -9,6 +9,6 @@
         /// Gets or sets the task identifier.
         /// </summary>
         /// <value>The task identifier.</value>
-        string TaskId { get; set; }
+        string TaskId { get; }
     }
 }

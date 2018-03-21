@@ -22,7 +22,7 @@ namespace Synology.FileStation.MD5
         /// </summary>
         /// <returns>The status.</returns>
         /// <param name="parameters">Parameters.</param>
-        ResultData<MD5StatusResult> Status(MD5StatusParameters parameters);
+        ResultData<IMD5StatusResult> Status(MD5StatusParameters parameters);
 
         /// <summary>
         /// Stop the specified parameters.

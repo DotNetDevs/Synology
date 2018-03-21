@@ -28,12 +28,12 @@ namespace Synology.FileStation.MD5
 
         [RequestMethod("status")]
         [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<MD5StatusResult> Status(MD5StatusParameters parameters)
+        public ResultData<IMD5StatusResult> Status(MD5StatusParameters parameters)
         {
-            return this.GetData<MD5StatusResult>(new SynologyRequestParameters(this)
+            return ResultData<IMD5StatusResult>.From(this.GetData<MD5StatusResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         [RequestMethod("stop")]

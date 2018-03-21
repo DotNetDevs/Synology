@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
 using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.Search.Results
@@ -7,28 +6,22 @@ namespace Synology.FileStation.Search.Results
     /// <summary>
     /// Search list result.
     /// </summary>
-    internal class SearchListResult : TaskStatusResult, ISearchListResult
-	{
+    public interface ISearchListResult : ITaskStatusResult
+    {
         /// <summary>
         /// Gets or sets the total.
         /// </summary>
         /// <value>The total.</value>
-        [JsonProperty("total")]
-		public int Total { get; set; }
-
+        int Total { get; }
         /// <summary>
         /// Gets or sets the offset.
         /// </summary>
         /// <value>The offset.</value>
-        [JsonProperty("offset")]
-		public int Offset { get; set; }
-
+        int Offset { get; }
         /// <summary>
         /// Gets or sets the files.
         /// </summary>
         /// <value>The files.</value>
-        [JsonProperty("files")]
-		public IEnumerable<FileResult> Files { get; set; }
-	}
+        IEnumerable<FileResult> Files { get; }
+    }
 }
-

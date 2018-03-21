@@ -30,12 +30,12 @@ namespace Synology.FileStation.DirSize
         /// <param name="parameters">Parameters.</param>
         [RequestMethod("start")]
         [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<DirSizeStartResult> Start(DirSizeStartParameters parameters)
+        public ResultData<IDirSizeStartResult> Start(DirSizeStartParameters parameters)
         {
-            return this.GetData<DirSizeStartResult>(new SynologyRequestParameters(this)
+            return ResultData<IDirSizeStartResult>.From(this.GetData<DirSizeStartResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         /// <summary>
@@ -45,12 +45,12 @@ namespace Synology.FileStation.DirSize
         /// <param name="parameters">Parameters.</param>
 		[RequestMethod("status")]
         [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<DirSizeStatusResult> Status(DirSizeStatusParameters parameters)
+        public ResultData<IDirSizeStatusResult> Status(DirSizeStatusParameters parameters)
         {
-            return this.GetData<DirSizeStatusResult>(new SynologyRequestParameters(this)
+            return ResultData<IDirSizeStatusResult>.From(this.GetData<DirSizeStatusResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         /// <summary>
@@ -75,12 +75,12 @@ namespace Synology.FileStation.DirSize
         /// <returns>The start.</returns>
         /// <param name="parameters">Parameters.</param>
         [RequestMethod("start")]
-        public async Task<ResultData<DirSizeStartResult>> StartAsync(DirSizeStartParameters parameters)
+        public async Task<ResultData<IDirSizeStartResult>> StartAsync(DirSizeStartParameters parameters)
         {
-            return await this.GetDataAsync<DirSizeStartResult>(new SynologyRequestParameters(this)
+            return ResultData<IDirSizeStartResult>.From(await this.GetDataAsync<DirSizeStartResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         /// <summary>
@@ -89,12 +89,12 @@ namespace Synology.FileStation.DirSize
         /// <returns>The status.</returns>
         /// <param name="parameters">Parameters.</param>
         [RequestMethod("status")]
-        public async Task<ResultData<DirSizeStatusResult>> StatusAsync(DirSizeStatusParameters parameters)
+        public async Task<ResultData<IDirSizeStatusResult>> StatusAsync(DirSizeStatusParameters parameters)
         {
-            return await this.GetDataAsync<DirSizeStatusResult>(new SynologyRequestParameters(this)
+            return ResultData<IDirSizeStatusResult>.From(await this.GetDataAsync<DirSizeStatusResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         /// <summary>

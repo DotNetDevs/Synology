@@ -21,18 +21,18 @@ namespace Synology.Api.Auth
 		ResultData<IAuthResult> Login(LoginParameters parameters = null);
 
         /// <summary>
+        /// Logout this instance.
+        /// </summary>
+        /// <returns>The logout.</returns>
+        [Obsolete("It uses Result, migrate to Async methods")]
+        ResultData Logout();
+
+        /// <summary>
         /// Logins the async.
         /// </summary>
         /// <returns>The async.</returns>
         /// <param name="parameters">Parameters.</param>
         Task<ResultData<IAuthResult>> LoginAsync(LoginParameters parameters = null);
-
-		/// <summary>
-        /// Logout this instance.
-        /// </summary>
-        /// <returns>The logout.</returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData Logout();
 
         /// <summary>
         /// Logouts the async.

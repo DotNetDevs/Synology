@@ -2,12 +2,11 @@
 
 namespace Synology.FileStation.DirSize.Results
 {
-
     /// <summary>
     /// Dir size start result.
     /// </summary>
-    internal class DirSizeStartResult : TaskStartResult, IDirSizeStartResult
-	{
-	}
+    public interface IDirSizeStartResult : ITaskStartResult
+    {
+    }
 }
 

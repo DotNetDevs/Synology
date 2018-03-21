@@ -45,7 +45,7 @@ namespace Synology.FileStation.Search
         /// <param name="pattern">Pattern.</param>
         /// <param name="fileType">File type.</param>
         /// <param name="additional">Additional.</param>
-        ResultData<SearchListResult> List(string taskId, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, string pattern = null, FileType fileType = FileType.All, FileDetailsType? additional = null);
+        ResultData<ISearchListResult> List(string taskId, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, string pattern = null, FileType fileType = FileType.All, FileDetailsType? additional = null);
 
         /// <summary>
         /// Stop the specified taskId.

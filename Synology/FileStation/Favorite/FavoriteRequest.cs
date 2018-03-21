@@ -18,12 +18,12 @@ namespace Synology.FileStation.Favorite
         #region Obsolete
         [RequestMethod("list")]
         [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<FavoriteListResult> List(FavoriteListParameters parameters)
+        public ResultData<IFavoriteListResult> List(FavoriteListParameters parameters)
         {
-            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
+            return ResultData<IFavoriteListResult>.From(this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         [RequestMethod("add")]
@@ -65,12 +65,12 @@ namespace Synology.FileStation.Favorite
         #endregion
 
         [RequestMethod("list")]
-        public async Task<ResultData<FavoriteListResult>> ListAsync(FavoriteListParameters parameters)
+        public async Task<ResultData<IFavoriteListResult>> ListAsync(FavoriteListParameters parameters)
         {
-            return await this.GetDataAsync<FavoriteListResult>(new SynologyRequestParameters(this)
+            return ResultData<IFavoriteListResult>.From(await this.GetDataAsync<FavoriteListResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         [RequestMethod("add")]

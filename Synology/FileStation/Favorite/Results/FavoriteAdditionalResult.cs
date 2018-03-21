@@ -5,7 +5,7 @@ namespace Synology.FileStation.Favorite.Results
     /// <summary>
     /// Favorite additional result.
     /// </summary>
-	public class FavoriteAdditionalResult
+	internal class FavoriteAdditionalResult : IFavoriteAdditionalResult
 	{
         /// <summary>
         /// Gets or sets the real path.

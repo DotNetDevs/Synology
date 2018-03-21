@@ -1,40 +1,29 @@
-using Newtonsoft.Json;
-
-namespace Synology.FileStation.Favorite.Results
+﻿namespace Synology.FileStation.Favorite.Results
 {
     /// <summary>
     /// Favorite result.
     /// </summary>
-    internal class FavoriteResult : IFavoriteResult
+    public interface IFavoriteResult
     {
         /// <summary>
         /// Gets or sets the path.
         /// </summary>
         /// <value>The path.</value>
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
+        string Path { get; }
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
+        string Name { get; }
         /// <summary>
         /// Gets or sets the status.
         /// </summary>
         /// <value>The status.</value>
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
+        string Status { get; }
         /// <summary>
         /// Gets or sets the additional.
         /// </summary>
         /// <value>The additional.</value>
-        [JsonProperty("additional")]
-        public IFavoriteAdditionalResult Additional { get; set; }
+        IFavoriteAdditionalResult Additional { get; }
     }
-
 }
-

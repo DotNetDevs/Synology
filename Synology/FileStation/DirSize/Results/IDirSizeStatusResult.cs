@@ -1,33 +1,26 @@
-﻿using Newtonsoft.Json;
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.DirSize.Results
 {
     /// <summary>
     /// Dir size status result.
     /// </summary>
-    internal class DirSizeStatusResult : TaskStatusResult, IDirSizeStatusResult
-	{
+    public interface IDirSizeStatusResult : ITaskStatusResult
+    {
         /// <summary>
         /// Gets or sets the number dir.
         /// </summary>
         /// <value>The number dir.</value>
-		[JsonProperty("num_dir")]
-		public int NumDir { get; set; }
-
+        int NumDir { get; }
         /// <summary>
         /// Gets or sets the number file.
         /// </summary>
         /// <value>The number file.</value>
-		[JsonProperty("num_file")]
-		public int NumFile { get; set; }
-
+        int NumFile { get; }
         /// <summary>
         /// Gets or sets the total size.
         /// </summary>
         /// <value>The total size.</value>
-		[JsonProperty("total_size")]
-		public int TotalSize { get; set; }
-	}
+        int TotalSize { get; }
+    }
 }
-
