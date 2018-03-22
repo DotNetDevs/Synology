@@ -14,16 +14,6 @@ namespace Synology.FileStation.CheckPermission
 		{
 		}
 
-		[RequestMethod("write")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData Write(CheckPermissionWriteParameters parameters)
-		{
-            return this.GetData(new SynologyRequestParameters(this)
-			{
-				Additional = parameters
-			});
-		}
-
         [RequestMethod("write")]
         public async Task<ResultData> WriteAsync(CheckPermissionWriteParameters parameters)
         {

@@ -15,55 +15,6 @@ namespace Synology.FileStation.Favorite
         {
         }
 
-        #region Obsolete
-        [RequestMethod("list")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<IFavoriteListResult> List(FavoriteListParameters parameters)
-        {
-            return ResultData<IFavoriteListResult>.From(this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            }));
-        }
-
-        [RequestMethod("add")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData Add(FavoriteAddParameters parameters)
-        {
-            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            });
-        }
-
-        [RequestMethod("delete")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData Delete(FavoriteDeleteParameters parameters)
-        {
-            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            });
-        }
-
-        [RequestMethod("clear_broken")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData ClearBroken()
-        {
-            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this));
-        }
-
-        [RequestMethod("edit")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData Edit(FavoriteEditParameters parameters)
-        {
-            return this.GetData<FavoriteListResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            });
-        }
-        #endregion
-
         [RequestMethod("list")]
         public async Task<ResultData<IFavoriteListResult>> ListAsync(FavoriteListParameters parameters)
         {

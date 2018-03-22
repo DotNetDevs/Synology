@@ -14,16 +14,6 @@ namespace Synology.FileStation.Thumb
 		{
 		}
 
-		[RequestMethod("get")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData<byte[]> Get(ThumbGetParameters parameters)
-		{
-            return this.GetData<byte[]>(new SynologyRequestParameters(this)
-			{
-				Additional = parameters
-			});
-		}
-
         [RequestMethod("get")]
         public async Task<ResultData<byte[]>> GetAsync(ThumbGetParameters parameters)
         {

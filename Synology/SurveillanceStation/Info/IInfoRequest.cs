@@ -1,4 +1,5 @@
-﻿using Synology.Classes;
+﻿using System.Threading.Tasks;
+using Synology.Classes;
 using Synology.Interfaces;
 using Synology.SurveillanceStation.Info.Results;
 
@@ -13,6 +14,6 @@ namespace Synology.SurveillanceStation.Info
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		ResultData<InfoResult> GetInfo();
+		Task<ResultData<InfoResult>> GetInfoAsync();
 	}
 }

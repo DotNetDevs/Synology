@@ -7,26 +7,11 @@ using Synology.Interfaces;
 
 namespace Synology.Api.Auth
 {
-	/// <summary>
+    /// <summary>
     /// Auth request.
     /// </summary>
-	public interface IAuthRequest : ISynologyRequest
-	{
-		/// <summary>
-        /// Login the specified parameters.
-        /// </summary>
-        /// <returns>The login.</returns>
-        /// <param name="parameters">Parameters.</param>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IAuthResult> Login(LoginParameters parameters = null);
-
-        /// <summary>
-        /// Logout this instance.
-        /// </summary>
-        /// <returns>The logout.</returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData Logout();
-
+    public interface IAuthRequest : ISynologyRequest
+    {
         /// <summary>
         /// Logins the async.
         /// </summary>
@@ -39,5 +24,5 @@ namespace Synology.Api.Auth
         /// </summary>
         /// <returns>The async.</returns>
         Task<ResultData> LogoutAsync();
-	}
+    }
 }

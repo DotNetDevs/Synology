@@ -16,21 +16,6 @@ namespace Synology.DownloadStation.Schedule
         /// Config this instance.
         /// </summary>
         /// <returns>The config.</returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData<ScheduleResult> Config();
-
-        /// <summary>
-        /// Sets the config.
-        /// </summary>
-        /// <returns>The config.</returns>
-        /// <param name="parameters">Parameters.</param>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData SetConfig(SetConfigParameters parameters);
-
-        /// <summary>
-        /// Config this instance.
-        /// </summary>
-        /// <returns>The config.</returns>
         Task<ResultData<ScheduleResult>> ConfigAsync();
 
         /// <summary>

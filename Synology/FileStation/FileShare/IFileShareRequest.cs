@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading.Tasks;
 using Synology.Classes;
 using Synology.FileStation.FileShare.Parameters;
 using Synology.FileStation.FileShare.Results;
@@ -21,7 +22,7 @@ namespace Synology.FileStation.FileShare
         /// <param name="sortBy">Sort by.</param>
         /// <param name="sortDirection">Sort direction.</param>
         /// <param name="onlyWritable">If set to <c>true</c> only writable.</param>
-        ResultData<ShareListResult> ListShare(FileShareDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, bool onlyWritable = false);
+        Task<ResultData<ShareListResult>> ListShareAsync(FileShareDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, bool onlyWritable = false);
 
         /// <summary>
         /// List the specified folderPath, pattern, fileType, gotoPath, additional, offset, limit, sortBy and sortDirection.
@@ -36,7 +37,7 @@ namespace Synology.FileStation.FileShare
         /// <param name="limit">Limit.</param>
         /// <param name="sortBy">Sort by.</param>
         /// <param name="sortDirection">Sort direction.</param>
-        ResultData<FileListResult> List(string folderPath, string pattern = null, FileType fileType = FileType.All, string gotoPath = null, FileDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending);
+        Task<ResultData<FileListResult>> ListAsync(string folderPath, string pattern = null, FileType fileType = FileType.All, string gotoPath = null, FileDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending);
 
         /// <summary>
         /// Info the specified path and additional.
@@ -44,6 +45,6 @@ namespace Synology.FileStation.FileShare
         /// <returns>The info.</returns>
         /// <param name="path">Path.</param>
         /// <param name="additional">Additional.</param>
-        ResultData<FileListResult> Info(string path, FileDetailsType? additional = null);
+        Task<ResultData<FileListResult>> InfoAsync(string path, FileDetailsType? additional = null);
     }
 }

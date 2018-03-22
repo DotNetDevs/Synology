@@ -19,9 +19,6 @@ namespace Synology.Classes
         private string _cgiPath = null;
         public string ApiName => ApiNameHelper.GetApiName(GetType());
 
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public string CgiPath => CgiPathAsync().Result;
-
         public async Task<string> CgiPathAsync()
         {
             if (_cgiPath != null) return _cgiPath;

@@ -15,38 +15,6 @@ namespace Synology.FileStation.MD5
         {
         }
 
-        #region Obsolete
-        [RequestMethod("start")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<MD5StartResult> Start(MD5StartParameters parameters)
-        {
-            return this.GetData<MD5StartResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            });
-        }
-
-        [RequestMethod("status")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<IMD5StatusResult> Status(MD5StatusParameters parameters)
-        {
-            return ResultData<IMD5StatusResult>.From(this.GetData<MD5StatusResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            }));
-        }
-
-        [RequestMethod("stop")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData Stop(MD5StatusParameters parameters)
-        {
-            return this.GetData(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            });
-        }
-        #endregion
-
         [RequestMethod("start")]
         public async Task<ResultData<MD5StartResult>> StartAsync(MD5StartParameters parameters)
         {
@@ -57,12 +25,12 @@ namespace Synology.FileStation.MD5
         }
 
         [RequestMethod("status")]
-        public async Task<ResultData<MD5StatusResult>> StatusAsync(MD5StatusParameters parameters)
+        public async Task<ResultData<IMD5StatusResult>> StatusAsync(MD5StatusParameters parameters)
         {
-            return await this.GetDataAsync<MD5StatusResult>(new SynologyRequestParameters(this)
+            return ResultData<IMD5StatusResult>.From(await this.GetDataAsync<MD5StatusResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         [RequestMethod("stop")]

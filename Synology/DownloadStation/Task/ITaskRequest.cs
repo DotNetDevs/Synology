@@ -13,62 +13,6 @@ namespace Synology.DownloadStation.Task
 	/// </summary>
 	public interface ITaskRequest : ISynologyRequest
 	{
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<TaskListResult> List(TaskListParameters parameters);
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IEnumerable<TaskResult>> Info(TaskInfoParameters parameters);
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData Create(TaskCreateParameters parameters);
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IEnumerable<TaskMinimalResult>> Delete(TaskDeleteParameters parameters);
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="ids"></param>
-		/// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IEnumerable<TaskMinimalResult>> Pause(params string[] ids);
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="ids"></param>
-		/// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IEnumerable<TaskMinimalResult>> Resume(params string[] ids);
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-		ResultData<IEnumerable<TaskMinimalResult>> Edit(TaskEditParameters parameters);
-
         /// <summary>
         /// 
         /// </summary>

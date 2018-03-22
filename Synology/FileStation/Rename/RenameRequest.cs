@@ -15,22 +15,6 @@ namespace Synology.FileStation.Rename
 		{
 		}
 
-		/// <summary>
-		/// Rename a file/folder
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		[RequestMethod("rename")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData<FileResult> Rename(RenameParameters parameters)
-		{
-            return this.GetData<FileResult>(new SynologyRequestParameters(this)
-			{
-				Version = 2,
-				Additional = parameters
-			});
-		}
-
         /// <summary>
         /// Renames the async.
         /// </summary>

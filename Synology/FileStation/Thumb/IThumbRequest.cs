@@ -1,4 +1,5 @@
-﻿using Synology.Classes;
+﻿using System.Threading.Tasks;
+using Synology.Classes;
 using Synology.FileStation.Thumb.Parameters;
 using Synology.Interfaces;
 
@@ -14,6 +15,6 @@ namespace Synology.FileStation.Thumb
         /// </summary>
         /// <returns>The get.</returns>
         /// <param name="parameters">Parameters.</param>
-        ResultData<byte[]> Get(ThumbGetParameters parameters);
+        Task<ResultData<byte[]>> GetAsync(ThumbGetParameters parameters);
     }
 }

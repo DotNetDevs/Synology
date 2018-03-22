@@ -19,50 +19,6 @@ namespace Synology.FileStation.CopyMove
         {
         }
 
-        #region Obsolete
-        /// <summary>
-        /// Start to copy/move files.
-        /// </summary>
-        /// <param name="parameters">Parameters of the operation</param>
-        [RequestMethod("start")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<StartResult> Start(StartParameters parameters)
-        {
-            return this.GetData<StartResult>(new SynologyRequestParameters(this)
-            {
-                Version = 3,
-                Additional = parameters
-            });
-        }
-
-        /// <summary>
-        /// Get the copying/moving status.
-        /// </summary>
-        [RequestMethod("status")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<IStatusResult> Status(StatusParameters parameters)
-        {
-            return ResultData<IStatusResult>.From(this.GetData<StatusResult>(new SynologyRequestParameters(this)
-            {
-                Version = 3,
-                Additional = parameters
-            }));
-        }
-
-        /// <summary>
-        /// Stop a copy/move task.
-        /// </summary>
-        [RequestMethod("stop")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData Stop(StopParameters parameters)
-        {
-            return this.GetData(new SynologyRequestParameters(this)
-            {
-                Version = 3,
-                Additional = parameters
-            });
-        }
-        #endregion
 
         /// <summary>
         /// Start to copy/move files.

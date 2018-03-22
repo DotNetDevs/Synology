@@ -1,4 +1,5 @@
-﻿using Synology.Classes;
+﻿using System.Threading.Tasks;
+using Synology.Classes;
 using Synology.FileStation.MD5.Parameters;
 using Synology.FileStation.MD5.Results;
 using Synology.Interfaces;
@@ -15,20 +16,20 @@ namespace Synology.FileStation.MD5
         /// </summary>
         /// <returns>The start.</returns>
         /// <param name="parameters">Parameters.</param>
-        ResultData<MD5StartResult> Start(MD5StartParameters parameters);
+        Task<ResultData<MD5StartResult>> StartAsync(MD5StartParameters parameters);
 
         /// <summary>
         /// Status the specified parameters.
         /// </summary>
         /// <returns>The status.</returns>
         /// <param name="parameters">Parameters.</param>
-        ResultData<IMD5StatusResult> Status(MD5StatusParameters parameters);
+        Task<ResultData<IMD5StatusResult>> StatusAsync(MD5StatusParameters parameters);
 
         /// <summary>
         /// Stop the specified parameters.
         /// </summary>
         /// <returns>The stop.</returns>
         /// <param name="parameters">Parameters.</param>
-        ResultData Stop(MD5StatusParameters parameters);
+        Task<ResultData> StopAsync(MD5StatusParameters parameters);
     }
 }

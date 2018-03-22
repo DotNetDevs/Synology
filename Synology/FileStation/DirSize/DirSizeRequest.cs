@@ -22,53 +22,6 @@ namespace Synology.FileStation.DirSize
         {
         }
 
-        #region Obsolete
-        /// <summary>
-        /// Start the specified parameters.
-        /// </summary>
-        /// <returns>The start.</returns>
-        /// <param name="parameters">Parameters.</param>
-        [RequestMethod("start")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<IDirSizeStartResult> Start(DirSizeStartParameters parameters)
-        {
-            return ResultData<IDirSizeStartResult>.From(this.GetData<DirSizeStartResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            }));
-        }
-
-        /// <summary>
-        /// Status the specified parameters.
-        /// </summary>
-        /// <returns>The status.</returns>
-        /// <param name="parameters">Parameters.</param>
-		[RequestMethod("status")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<IDirSizeStatusResult> Status(DirSizeStatusParameters parameters)
-        {
-            return ResultData<IDirSizeStatusResult>.From(this.GetData<DirSizeStatusResult>(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            }));
-        }
-
-        /// <summary>
-        /// Stop the specified parameters.
-        /// </summary>
-        /// <returns>The stop.</returns>
-        /// <param name="parameters">Parameters.</param>
-		[RequestMethod("stop")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData Stop(DirSizeStatusParameters parameters)
-        {
-            return this.GetData(new SynologyRequestParameters(this)
-            {
-                Additional = parameters
-            });
-        }
-        #endregion
-
         /// <summary>
         /// Start the specified parameters.
         /// </summary>

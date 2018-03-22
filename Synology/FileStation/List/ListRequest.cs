@@ -14,51 +14,6 @@ namespace Synology.FileStation.List
         {
         }
 
-        #region Obsolete
-        /// <summary>
-        /// Enumerate files in a given folder
-        /// </summary>
-        [RequestMethod("list_share")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<ShareListResult> ListShares(ListSharesParameters parameters)
-        {
-            return this.GetData<ShareListResult>(new Synology.Parameters.SynologyRequestParameters(this)
-            {
-                Version = 2,
-                Additional = parameters,
-            });
-        }
-
-        /// <summary>
-        /// Enumerate files in a given folder
-        /// </summary>
-        [RequestMethod("list")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<FileListResult> ListFiles(ListParameters parameters)
-        {
-            return this.GetData<FileListResult>(new Synology.Parameters.SynologyRequestParameters(this)
-            {
-                Version = 2,
-                Additional = parameters,
-            });
-        }
-
-        /// <summary>
-        /// Get information of file(s)
-        /// </summary>
-        /// <returns></returns>
-        [RequestMethod("getinfo")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<FileInfoResult> GetFileInfo(GetFileInfoParameters parameters)
-        {
-            return this.GetData<FileInfoResult>(new Synology.Parameters.SynologyRequestParameters(this)
-            {
-                Version = 2,
-                Additional = parameters,
-            });
-        }
-        #endregion
-
         /// <summary>
         /// Enumerate files in a given folder
         /// </summary>

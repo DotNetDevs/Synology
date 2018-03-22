@@ -14,13 +14,6 @@ namespace Synology.FileStation.Info
 		{
 		}
 
-		[RequestMethod("get")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData<InfoResult> Get()
-		{
-            return this.GetData<InfoResult>(new SynologyRequestParameters(this));
-		}
-
         [RequestMethod("get")]
         public async Task<ResultData<InfoResult>> GetAsync()
         {

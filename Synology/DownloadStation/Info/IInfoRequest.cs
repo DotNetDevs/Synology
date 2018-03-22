@@ -12,30 +12,6 @@ namespace Synology.DownloadStation.Info
     /// </summary>
     public interface IInfoRequest : ISynologyRequest
     {
-        #region Obsolete
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData<IInfoResult> GetInfo();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData<IConfigResult> Config();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData SetConfig(SetConfigParameters parameters);
-        #endregion
-
         /// <summary>
         /// 
         /// </summary>

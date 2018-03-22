@@ -17,25 +17,6 @@ namespace Synology.FileStation.VirtualFolder
 		{
 		}
 
-		[RequestMethod("list")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData<VirtualFolderListResult> List(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
-		{
-			var additionalParams = new[] {
-				new QueryStringParameter("type", type),
-				new QueryStringParameter("offset", offset),
-				new QueryStringParameter("limit", limit),
-				new QueryStringParameter("sort_by", sortBy),
-				new QueryStringParameter("sort_direction", sortDirection),
-				new QueryStringParameter("additional", additional)
-			};
-
-            return this.GetData<VirtualFolderListResult>(new SynologyRequestParameters(this)
-			{
-				Additional = additionalParams
-			});
-		}
-
         [RequestMethod("list")]
         public async Task<ResultData<VirtualFolderListResult>> ListAsync(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
         {

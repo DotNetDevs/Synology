@@ -21,17 +21,6 @@ namespace Synology.SurveillanceStation.Info
 		{
 		}
 
-		/// <inheritdoc />
-		/// <summary>
-		/// </summary>
-		/// <returns></returns>
-		[RequestMethod("getinfo")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData<InfoResult> GetInfo()
-		{
-            return this.GetData<InfoResult>(new SynologyRequestParameters(this));
-		}
-
         /// <inheritdoc />
         /// <summary>
         /// </summary>

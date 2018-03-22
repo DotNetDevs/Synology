@@ -1,4 +1,5 @@
-﻿using Synology.Classes;
+﻿using System.Threading.Tasks;
+using Synology.Classes;
 using Synology.FileStation.Rename.Parameters;
 using Synology.FileStation.Rename.Results;
 using Synology.Interfaces;
@@ -15,6 +16,6 @@ namespace Synology.FileStation.Rename
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        ResultData<FileResult> Rename(RenameParameters parameters);
+        Task<ResultData<FileResult>> RenameAsync(RenameParameters parameters);
     }
 }

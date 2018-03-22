@@ -15,13 +15,6 @@ namespace Synology.FileStation.Info
         /// Get this instance.
         /// </summary>
         /// <returns>The get.</returns>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData<InfoResult> Get();
-
-        /// <summary>
-        /// Get this instance.
-        /// </summary>
-        /// <returns>The get.</returns>
         Task<ResultData<InfoResult>> GetAsync();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading.Tasks;
 using Synology.Classes;
 using Synology.FileStation.FileShare.Parameters;
 using Synology.FileStation.Search.Results;
@@ -31,7 +32,7 @@ namespace Synology.FileStation.Search
         /// <param name="aTimeTo">A time to.</param>
         /// <param name="owner">Owner.</param>
         /// <param name="group">Group.</param>
-        ResultData<StartSearchResult> Start(string folderPath, bool recursive = true, string pattern = null, string extension = null, FileType fileType = FileType.All, long? sizeFrom = null, long? sizeTo = null, long? mTimeFrom = null, long? mTimeTo = null, long? crTimeFrom = null, long? crTimeTo = null, long? aTimeFrom = null, long? aTimeTo = null, string owner = null, string group = null);
+        Task<ResultData<StartSearchResult>> StartAsync(string folderPath, bool recursive = true, string pattern = null, string extension = null, FileType fileType = FileType.All, long? sizeFrom = null, long? sizeTo = null, long? mTimeFrom = null, long? mTimeTo = null, long? crTimeFrom = null, long? crTimeTo = null, long? aTimeFrom = null, long? aTimeTo = null, string owner = null, string group = null);
 
         /// <summary>
         /// List the specified taskId, offset, limit, sortBy, sortDirection, pattern, fileType and additional.
@@ -45,20 +46,20 @@ namespace Synology.FileStation.Search
         /// <param name="pattern">Pattern.</param>
         /// <param name="fileType">File type.</param>
         /// <param name="additional">Additional.</param>
-        ResultData<ISearchListResult> List(string taskId, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, string pattern = null, FileType fileType = FileType.All, FileDetailsType? additional = null);
+        Task<ResultData<ISearchListResult>> ListAsync(string taskId, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, string pattern = null, FileType fileType = FileType.All, FileDetailsType? additional = null);
 
         /// <summary>
         /// Stop the specified taskId.
         /// </summary>
         /// <returns>The stop.</returns>
         /// <param name="taskId">Task identifier.</param>
-        ResultData Stop(string[] taskId);
+        Task<ResultData> StopAsync(string[] taskId);
 
         /// <summary>
         /// Clean the specified taskId.
         /// </summary>
         /// <returns>The clean.</returns>
         /// <param name="taskId">Task identifier.</param>
-        ResultData Clean(string[] taskId);
+        Task<ResultData> CleanAsync(string[] taskId);
     }
 }

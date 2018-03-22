@@ -15,11 +15,6 @@ namespace Synology.Interfaces
         /// <summary>
         /// 
         /// </summary>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        string CgiPath { get; }
-        /// <summary>
-        /// 
-        /// </summary>
         Task<string> CgiPathAsync();
 		/// <summary>
 		/// 

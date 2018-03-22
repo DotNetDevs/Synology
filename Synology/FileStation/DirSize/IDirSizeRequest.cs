@@ -17,30 +17,6 @@ namespace Synology.FileStation.DirSize
         /// </summary>
         /// <returns>The start.</returns>
         /// <param name="parameters">Parameters.</param>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData<IDirSizeStartResult> Start(DirSizeStartParameters parameters);
-
-        /// <summary>
-        /// Status the specified parameters.
-        /// </summary>
-        /// <returns>The status.</returns>
-        /// <param name="parameters">Parameters.</param>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData<IDirSizeStatusResult> Status(DirSizeStatusParameters parameters);
-
-        /// <summary>
-        /// Stop the specified parameters.
-        /// </summary>
-        /// <returns>The stop.</returns>
-        /// <param name="parameters">Parameters.</param>
-        [Obsolete("It uses Result, migrate to Async methods")]
-        ResultData Stop(DirSizeStatusParameters parameters);
-
-        /// <summary>
-        /// Start the specified parameters.
-        /// </summary>
-        /// <returns>The start.</returns>
-        /// <param name="parameters">Parameters.</param>
         Task<ResultData<IDirSizeStartResult>> StartAsync(DirSizeStartParameters parameters);
 
         /// <summary>

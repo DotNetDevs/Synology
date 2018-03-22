@@ -32,35 +32,6 @@ namespace Synology.Api.Info
         /// <param name="apis"></param>
         /// <returns></returns>
         [RequestMethod("query")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<Dictionary<string, IApiInfo>> Query(params string[] apis)
-        {
-            Api.Connection.Logger.LogDebug($"Requesting Info for {(apis.Length > 0 ? string.Join(";", apis) : "all")} APIs");
-
-            var additionalParams = new[]
-            {
-                apis.Length > 0 ? new QueryStringParameter("query", apis) : new QueryStringParameter("query", "all")
-            };
-
-            var res = this.GetData<Dictionary<string, ApiInfo>>(new SynologyRequestParameters(this)
-            {
-                Additional = additionalParams
-            });
-
-            return new ResultData<Dictionary<string, IApiInfo>>
-            {
-                Error = res.Error,
-                Success = res.Success,
-                Data = res.Data.ToDictionary(t => t.Key, t => (IApiInfo)t.Value)
-            };
-        }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// </summary>
-        /// <param name="apis"></param>
-        /// <returns></returns>
-        [RequestMethod("query")]
         public async Task<ResultData<Dictionary<string, IApiInfo>>> QueryAsync(params string[] apis)
         {
             Api.Connection.Logger.LogDebug($"Requesting Info for {(apis.Length > 0 ? string.Join(";", apis) : "all")} APIs");

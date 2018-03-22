@@ -15,23 +15,6 @@ namespace Synology.DownloadStation.Schedule
 		{
 		}
 
-		[RequestMethod("getconfig")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData<ScheduleResult> Config()
-		{
-            return this.GetData<ScheduleResult>(new SynologyRequestParameters(this));
-		}
-
-		[RequestMethod("setserverconfig")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData SetConfig(SetConfigParameters parameters)
-		{
-            return this.GetData(new SynologyRequestParameters(this)
-			{
-				Additional = parameters
-			});
-		}
-
         [RequestMethod("getconfig")]
         public async Task<ResultData<ScheduleResult>> ConfigAsync()
         {

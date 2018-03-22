@@ -21,21 +21,6 @@ namespace Synology.DownloadStation2.Task
 		{
 		}
 
-		/// <summary>
-		/// Create a download by sending the file to the server (usually a torrent file)
-		/// </summary>
-		/// <param name="parameters">Parameters of the request</param>
-		/// <returns>The result of the create task operation with task id and list id if requested.</returns>
-		[RequestMethod("create")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData<TaskCreateResult> Create(TaskCreateParameters parameters)
-		{
-            return this.PostData<TaskCreateResult>(new SynologyPostParameters(this)
-			{
-				Additional = parameters
-			});
-		}
-
         /// <summary>
         /// Create a download by sending the file to the server (usually a torrent file)
         /// </summary>

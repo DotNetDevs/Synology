@@ -16,35 +16,6 @@ namespace Synology.DownloadStation.Info
         }
 
         [RequestMethod("getinfo")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<IInfoResult> GetInfo()
-        {
-            var res = this.GetData<InfoResult>(new SynologyRequestParameters(this));
-
-            return ResultData<IInfoResult>.From(res);
-        }
-
-        [RequestMethod("getconfig")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData<IConfigResult> Config()
-        {
-            var res = this.GetData<ConfigResult>(new SynologyRequestParameters(this) { Version = 2 });
-
-            return ResultData<IConfigResult>.From(res);
-        }
-
-        [RequestMethod("setserverconfig")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-        public ResultData SetConfig(SetConfigParameters parameters)
-        {
-            return this.GetData(new SynologyRequestParameters(this)
-            {
-                Version = 2,
-                Additional = parameters
-            });
-        }
-
-        [RequestMethod("getinfo")]
         public async Task<ResultData<IInfoResult>> GetInfoAsync()
         {
             var res = await this.GetDataAsync<InfoResult>(new SynologyRequestParameters(this));

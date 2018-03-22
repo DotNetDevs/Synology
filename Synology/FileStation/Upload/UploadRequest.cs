@@ -14,17 +14,6 @@ namespace Synology.FileStation.Upload
 		{
 		}
 
-		[RequestMethod("upload")]
-        [Obsolete("It uses Result, migrate to Async methods")]
-		public ResultData Upload(UploadParameters parameters)
-		{
-            return this.PostData(new SynologyPostParameters(this)
-			{
-				Version = 2,
-				Additional = parameters
-			});
-		}
-
         [RequestMethod("upload")]
         public async Task<ResultData> UploadAsync(UploadParameters parameters)
         {
