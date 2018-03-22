@@ -5,7 +5,7 @@ namespace Synology.FileStation.Favorite.Results
     /// <summary>
     /// Favorite owner result.
     /// </summary>
-	public class FavoriteOwnerResult
+    internal class FavoriteOwnerResult : IFavoriteOwnerResult
 	{
         /// <summary>
         /// Gets or sets the user.

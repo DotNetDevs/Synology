@@ -16,7 +16,7 @@ namespace Synology.FileStation.CopyMove
         /// Start to copy/move files.
         /// </summary>
         /// <param name="parameters">Parameters of the operation</param>
-        Task<ResultData<StartResult>> StartAsync(StartParameters parameters);
+        Task<ResultData<IStartResult>> StartAsync(StartParameters parameters);
 
         /// <summary>
         /// Get the copying/moving status.

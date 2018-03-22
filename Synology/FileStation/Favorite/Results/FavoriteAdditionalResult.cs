@@ -19,7 +19,7 @@ namespace Synology.FileStation.Favorite.Results
         /// </summary>
         /// <value>The owner.</value>
         [JsonProperty("owner")]
-		public FavoriteOwnerResult Owner { get; set; }
+		public IFavoriteOwnerResult Owner { get; set; }
 
         /// <summary>
         /// Gets or sets the time.
@@ -33,7 +33,7 @@ namespace Synology.FileStation.Favorite.Results
         /// </summary>
         /// <value>The perm.</value>
         [JsonProperty("perm")]
-		public FavoritePermResult Perm { get; set; }
+		public IFavoritePermResult Perm { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the mount point.

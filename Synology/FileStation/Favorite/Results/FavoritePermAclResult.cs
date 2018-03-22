@@ -5,7 +5,7 @@ namespace Synology.FileStation.Favorite.Results
     /// <summary>
     /// Favorite perm acl result.
     /// </summary>
-	public class FavoritePermAclResult
+    internal class FavoritePermAclResult : IFavoritePermAclResult
 	{
         /// <summary>
         /// Gets or sets a value indicating whether this

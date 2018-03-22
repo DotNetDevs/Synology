@@ -1,32 +1,25 @@
-using Newtonsoft.Json;
-
-namespace Synology.FileStation.Favorite.Results
+﻿namespace Synology.FileStation.Favorite.Results
 {
     /// <summary>
     /// Favorite perm result.
     /// </summary>
-    internal class FavoritePermResult : IFavoritePermResult
-	{
+    public interface IFavoritePermResult
+    {
         /// <summary>
         /// Gets or sets the posix.
         /// </summary>
         /// <value>The posix.</value>
-        [JsonProperty("posix")]
-		public int Posix { get; set; }
-
+        int Posix { get; }
         /// <summary>
         /// Gets or sets a value indicating whether this
-        /// <see cref="T:Synology.FileStation.Favorite.Results.FavoritePermResult"/> is acl mode.
+        /// <see cref="T:Synology.FileStation.Favorite.Results.IFavoritePermResult"/> is acl mode.
         /// </summary>
         /// <value><c>true</c> if is acl mode; otherwise, <c>false</c>.</value>
-		[JsonProperty("is_acl_mode")]
-		public bool IsAclMode { get; set; }
-
+        bool IsAclMode { get; }
         /// <summary>
         /// Gets or sets the acl.
         /// </summary>
         /// <value>The acl.</value>
-        [JsonProperty("acl")]
-		public IFavoritePermAclResult Acl { get; set; }
-	}
+        IFavoritePermAclResult Acl { get; }
+    }
 }

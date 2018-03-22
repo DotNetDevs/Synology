@@ -14,7 +14,7 @@
         /// Gets the owner.
         /// </summary>
         /// <value>The owner.</value>
-        FavoriteOwnerResult Owner { get; }
+        IFavoriteOwnerResult Owner { get; }
         /// <summary>
         /// Gets the time.
         /// </summary>
@@ -24,7 +24,7 @@
         /// Gets the perm.
         /// </summary>
         /// <value>The perm.</value>
-        FavoritePermResult Perm { get; }
+        IFavoritePermResult Perm { get; }
         /// <summary>
         /// Gets the type of the mount point.
         /// </summary>

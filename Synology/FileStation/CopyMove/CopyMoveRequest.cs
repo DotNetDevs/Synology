@@ -25,13 +25,13 @@ namespace Synology.FileStation.CopyMove
         /// </summary>
         /// <param name="parameters">Parameters of the operation</param>
         [RequestMethod("start")]
-        public async Task<ResultData<StartResult>> StartAsync(StartParameters parameters)
+        public async Task<ResultData<IStartResult>> StartAsync(StartParameters parameters)
         {
-            return await this.GetDataAsync<StartResult>(new SynologyRequestParameters(this)
+            return ResultData<IStartResult>.From(await this.GetDataAsync<StartResult>(new SynologyRequestParameters(this)
             {
                 Version = 3,
                 Additional = parameters
-            });
+            }));
         }
 
         /// <summary>
