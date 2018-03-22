@@ -19,7 +19,7 @@ namespace Synology.FileStation.Favorite.Results
         /// </summary>
         /// <value>The owner.</value>
         [JsonProperty("owner")]
-        public IFavoriteOwnerResult Owner { get; set; }
+        public FavoriteOwnerResult Owner { get; set; }
         IFavoriteOwnerResult IFavoriteAdditionalResult.Owner => Owner;
 
         /// <summary>
