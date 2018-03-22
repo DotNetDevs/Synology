@@ -6,13 +6,13 @@ namespace Synology.FileStation.Favorite.Results
     /// Favorite perm result.
     /// </summary>
     internal class FavoritePermResult : IFavoritePermResult
-	{
+    {
         /// <summary>
         /// Gets or sets the posix.
         /// </summary>
         /// <value>The posix.</value>
         [JsonProperty("posix")]
-		public int Posix { get; set; }
+        public int Posix { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this
@@ -20,13 +20,14 @@ namespace Synology.FileStation.Favorite.Results
         /// </summary>
         /// <value><c>true</c> if is acl mode; otherwise, <c>false</c>.</value>
 		[JsonProperty("is_acl_mode")]
-		public bool IsAclMode { get; set; }
+        public bool IsAclMode { get; set; }
 
         /// <summary>
         /// Gets or sets the acl.
         /// </summary>
         /// <value>The acl.</value>
         [JsonProperty("acl")]
-		public IFavoritePermAclResult Acl { get; set; }
-	}
+        public FavoritePermAclResult Acl { get; set; }
+        IFavoritePermAclResult IFavoritePermResult.Acl => Acl;
+    }
 }

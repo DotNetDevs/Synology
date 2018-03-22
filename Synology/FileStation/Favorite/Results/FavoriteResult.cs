@@ -33,7 +33,8 @@ namespace Synology.FileStation.Favorite.Results
         /// </summary>
         /// <value>The additional.</value>
         [JsonProperty("additional")]
-        public IFavoriteAdditionalResult Additional { get; set; }
+        public FavoriteAdditionalResult Additional { get; set; }
+        IFavoriteAdditionalResult IFavoriteResult.Additional => Additional;
     }
 
 }
