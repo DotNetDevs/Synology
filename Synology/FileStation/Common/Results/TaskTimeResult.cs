@@ -7,7 +7,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task time result.
     /// </summary>
-    public abstract class TaskTimeResult
+    internal abstract class TaskTimeResult : ITaskTimeResult
     {
         private DateTime _aDateTime;
         private DateTime _mDateTime;
@@ -86,21 +86,21 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task file time result.
     /// </summary>
-    public abstract class TaskFileTimeResult : TaskTimeResult
+    internal abstract class TaskFileTimeResult : TaskTimeResult, ITaskFileTimeResult
     {
     }
 
     /// <summary>
     /// Task share time result.
     /// </summary>
-    public abstract class TaskShareTimeResult : TaskTimeResult
+    internal abstract class TaskShareTimeResult : TaskTimeResult, ITaskShareTimeResult
     {
     }
 
     /// <summary>
     /// Task virtual folder time result.
     /// </summary>
-    public abstract class TaskVirtualFolderTimeResult : TaskTimeResult
+    internal abstract class TaskVirtualFolderTimeResult : TaskTimeResult, ITaskVirtualFolderTimeResult
     {
     }
 }

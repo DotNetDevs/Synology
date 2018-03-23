@@ -6,7 +6,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task result.
     /// </summary>
-    public abstract class TaskResult<TAdditionalResult, TOwnerResult, TTimeResult, TPermResult, TPermAclResult>
+    internal abstract class TaskResult<TAdditionalResult, TOwnerResult, TTimeResult, TPermResult, TPermAclResult> : ITaskResult<TAdditionalResult, TOwnerResult, TTimeResult, TPermResult, TPermAclResult>
         where TAdditionalResult : TaskAdditionalResult<TOwnerResult, TTimeResult, TPermResult, TPermAclResult>, new()
         where TOwnerResult : TaskOwnerResult, new()
         where TTimeResult : TaskTimeResult, new()
@@ -38,7 +38,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task file result.
     /// </summary>
-    public abstract class TaskFileResult<TFileListResult, TFileAdditionalResult, TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult, TFileResult> : TaskResult<TFileAdditionalResult, TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult>
+    internal abstract class TaskFileResult<TFileListResult, TFileAdditionalResult, TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult, TFileResult> : TaskResult<TFileAdditionalResult, TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult>, ITaskFileResult<TFileListResult, TFileAdditionalResult, TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult, TFileResult>
         where TFileListResult : TaskFileListResult<TFileResult, TFileListResult, TFileAdditionalResult, TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult>, new()
         where TFileAdditionalResult : TaskFileAdditionalResult<TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult>, new()
         where TFileOwnerResult : TaskFileOwnerResult, new()
@@ -66,7 +66,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task share result.
     /// </summary>
-    public class TaskShareResult<TShareAdditionalResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult> : TaskResult<TShareAdditionalResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult>
+    internal class TaskShareResult<TShareAdditionalResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult> : TaskResult<TShareAdditionalResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult>, ITaskShareResult<TShareAdditionalResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult>
         where TShareAdditionalResult : TaskShareAdditionalResult<TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult>, new()
         where TShareOwnerResult : TaskShareOwnerResult, new()
         where TShareTimeResult : TaskShareTimeResult, new()
@@ -80,7 +80,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task virtual folder result.
     /// </summary>
-    public class TaskVirtualFolderResult<TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult> : TaskResult<TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult>
+    internal class TaskVirtualFolderResult<TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult> : TaskResult<TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult>, ITaskVirtualFolderResult<TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult>
         where TVirtualFolderAdditionalResult : TaskVirtualFolderAdditionalResult<TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult>, new()
         where TVirtualFolderOwnerResult : TaskVirtualFolderOwnerResult, new()
         where TVirtualFolderTimeResult : TaskVirtualFolderTimeResult, new()

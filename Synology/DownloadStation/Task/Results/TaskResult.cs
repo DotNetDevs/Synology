@@ -1,11 +1,11 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Synology.DownloadStation.Task.Results
 {
     /// <summary>
     /// Task result.
     /// </summary>
-	public class TaskResult
+	internal class TaskResult : ITaskResult
 	{
         /// <summary>
         /// Gets or sets the identifier.
@@ -55,6 +55,7 @@ namespace Synology.DownloadStation.Task.Results
         /// <value>The additional.</value>
         [JsonProperty("additional")]
 		public TaskAdditionalResult Additional { get; set; }
+        ITaskAdditionalResult ITaskResult.Additional => Additional;
 
         /// <summary>
         /// Gets or sets the status extra.
@@ -62,5 +63,6 @@ namespace Synology.DownloadStation.Task.Results
         /// <value>The status extra.</value>
 		[JsonProperty("status_extra")]
 		public TaskStatusExtraResult StatusExtra { get; set; }
+        ITaskStatusExtraResult ITaskResult.StatusExtra => StatusExtra;
 	}
 }

@@ -17,6 +17,6 @@ namespace Synology.DownloadStation2.Task
         /// </summary>
         /// <returns>The async.</returns>
         /// <param name="parameters">Parameters.</param>
-        Task<ResultData<TaskCreateResult>> CreateAsync(TaskCreateParameters parameters);
+        Task<ResultData<ITaskCreateResult>> CreateAsync(TaskCreateParameters parameters);
     }
 }

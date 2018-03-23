@@ -6,7 +6,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task share list result.
     /// </summary>
-    public abstract class TaskShareListResult<TShareAdditionalResult, TShareResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult> : TaskListResult
+    internal abstract class TaskShareListResult<TShareAdditionalResult, TShareResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult> : TaskListResult, ITaskShareListResult<TShareAdditionalResult, TShareResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult>
         where TShareResult : TaskShareResult<TShareAdditionalResult, TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult>, new()
         where TShareAdditionalResult : TaskShareAdditionalResult<TShareOwnerResult, TShareTimeResult, TSharePermResult, TSharePermAclResult, TShareVolumeStatusResult, TSharePermAdvRightResult>, new()
         where TShareOwnerResult : TaskShareOwnerResult, new()

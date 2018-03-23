@@ -1,11 +1,11 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Synology.FileStation.Common.Results
 {
     /// <summary>
     /// Task volume status result.
     /// </summary>
-    public abstract class TaskVolumeStatusResult
+    internal abstract class TaskVolumeStatusResult : ITaskVolumeStatusResult
     {
         /// <summary>
         /// Gets or sets the free space.
@@ -33,14 +33,14 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task share volume status result.
     /// </summary>
-    public abstract class TaskShareVolumeStatusResult : TaskVolumeStatusResult
+    internal abstract class TaskShareVolumeStatusResult : TaskVolumeStatusResult, ITaskShareVolumeStatusResult
     {
     }
 
     /// <summary>
     /// Task virtual folder volume status result.
     /// </summary>
-    public abstract class TaskVirtualFolderVolumeStatusResult : TaskVolumeStatusResult
+    internal abstract class TaskVirtualFolderVolumeStatusResult : TaskVolumeStatusResult, ITaskVirtualFolderVolumeStatusResult
     {
     }
 }

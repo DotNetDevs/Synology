@@ -1,11 +1,11 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Synology.DownloadStation.Task.Results
 {
     /// <summary>
     /// Task transfer result.
     /// </summary>
-	public class TaskTransferResult
+	internal class TaskTransferResult : ITaskTransferResult
 	{
         /// <summary>
         /// Gets or sets the size downloaded.

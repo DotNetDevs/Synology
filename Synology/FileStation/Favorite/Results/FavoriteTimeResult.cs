@@ -5,7 +5,7 @@ namespace Synology.FileStation.Favorite.Results
     /// <summary>
     /// Favorite time result.
     /// </summary>
-	public class FavoriteTimeResult
+	internal class FavoriteTimeResult : IFavoriteTimeResult
 	{
         /// <summary>
         /// Gets or sets the atime.

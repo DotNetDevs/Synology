@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace Synology.FileStation.Info.Results
@@ -6,7 +7,7 @@ namespace Synology.FileStation.Info.Results
     /// <summary>
     /// Info result.
     /// </summary>
-    public class InfoResult
+    internal class InfoResult : IInfoResult
     {
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="T:Synology.FileStation.Info.Results.InfoResult"/>
@@ -36,6 +37,7 @@ namespace Synology.FileStation.Info.Results
         /// <value>The items.</value>
         [JsonProperty("items")]
         public IEnumerable<InfoItemResult> Items { get; set; }
+        IEnumerable<IInfoItemResult> IInfoResult.Items => Items.Cast<IInfoItemResult>();
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="T:Synology.FileStation.Info.Results.InfoResult"/>
@@ -66,6 +68,7 @@ namespace Synology.FileStation.Info.Results
         /// <value>The support virtual.</value>
         [JsonProperty("support_virtual")]
         public InfoSupportVirtualResult SupportVirtual { get; set; }
+        IInfoSupportVirtualResult IInfoResult.SupportVirtual => SupportVirtual;
 
         /// <summary>
         /// Gets or sets the support virtual protocol.
@@ -92,7 +95,7 @@ namespace Synology.FileStation.Info.Results
     /// <summary>
     /// Info item result.
     /// </summary>
-    public class InfoItemResult
+    internal class InfoItemResult : IInfoItemResult
     {
         /// <summary>
         /// Gets or sets the gid.
@@ -105,7 +108,7 @@ namespace Synology.FileStation.Info.Results
     /// <summary>
     /// Info support virtual result.
     /// </summary>
-    public class InfoSupportVirtualResult
+    internal class InfoSupportVirtualResult : IInfoSupportVirtualResult
     {
         /// <summary>
         /// Gets or sets a value indicating whether this
@@ -124,4 +127,3 @@ namespace Synology.FileStation.Info.Results
         public bool EnableRemoteMount { get; set; }
     }
 }
-

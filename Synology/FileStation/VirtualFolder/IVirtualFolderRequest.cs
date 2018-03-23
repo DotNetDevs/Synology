@@ -22,6 +22,6 @@ namespace Synology.FileStation.VirtualFolder
         /// <param name="limit">Limit.</param>
         /// <param name="sortBy">Sort by.</param>
         /// <param name="sortDirection">Sort direction.</param>
-        Task<ResultData<VirtualFolderListResult>> ListAsync(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending);
+        Task<ResultData<IVirtualFolderListResult>> ListAsync(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending);
     }
 }

@@ -18,7 +18,7 @@ namespace Synology.FileStation.Search
         }
 
         [RequestMethod("start")]
-        public async Task<ResultData<StartSearchResult>> StartAsync(string folderPath, bool recursive = true, string pattern = null, string extension = null, FileType fileType = FileType.All, long? sizeFrom = null, long? sizeTo = null, long? mTimeFrom = null, long? mTimeTo = null, long? crTimeFrom = null, long? crTimeTo = null, long? aTimeFrom = null, long? aTimeTo = null, string owner = null, string group = null)
+        public async Task<ResultData<IStartSearchResult>> StartAsync(string folderPath, bool recursive = true, string pattern = null, string extension = null, FileType fileType = FileType.All, long? sizeFrom = null, long? sizeTo = null, long? mTimeFrom = null, long? mTimeTo = null, long? crTimeFrom = null, long? crTimeTo = null, long? aTimeFrom = null, long? aTimeTo = null, string owner = null, string group = null)
         {
             var additionalParams = new[]
             {
@@ -39,10 +39,10 @@ namespace Synology.FileStation.Search
                 new QueryStringParameter("group", group)
             };
 
-            return await this.GetDataAsync<StartSearchResult>(new SynologyRequestParameters(this)
+            return ResultData<IStartSearchResult>.From(await this.GetDataAsync<StartSearchResult>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
-            });
+            }));
         }
 
         [RequestMethod("list")]

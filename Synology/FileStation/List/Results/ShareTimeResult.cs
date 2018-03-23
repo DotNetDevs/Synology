@@ -5,7 +5,7 @@ namespace Synology.FileStation.List.Results
     /// <summary>
     /// Share time result.
     /// </summary>
-    public class ShareTimeResult : TaskShareTimeResult
+    internal class ShareTimeResult : TaskShareTimeResult, IShareTimeResult
     {
     }
 }

@@ -5,7 +5,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task owner result.
     /// </summary>
-    public abstract class TaskOwnerResult
+    internal abstract class TaskOwnerResult : ITaskOwnerResult
     {
         /// <summary>
         /// Gets or sets the user.
@@ -39,21 +39,21 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task file owner result.
     /// </summary>
-    public abstract class TaskFileOwnerResult : TaskOwnerResult
+    internal abstract class TaskFileOwnerResult : TaskOwnerResult, ITaskFileOwnerResult
     {
     }
 
     /// <summary>
     /// Task share owner result.
     /// </summary>
-    public abstract class TaskShareOwnerResult : TaskOwnerResult
+    internal abstract class TaskShareOwnerResult : TaskOwnerResult, ITaskShareOwnerResult
     {
     }
 
     /// <summary>
     /// Task virtual folder owner result.
     /// </summary>
-    public abstract class TaskVirtualFolderOwnerResult : TaskOwnerResult
+    internal abstract class TaskVirtualFolderOwnerResult : TaskOwnerResult, ITaskVirtualFolderOwnerResult
     {
     }
 }

@@ -27,12 +27,12 @@ namespace Synology.DownloadStation2.Task
         /// <param name="parameters">Parameters of the request</param>
         /// <returns>The result of the create task operation with task id and list id if requested.</returns>
         [RequestMethod("create")]
-        public async Task<ResultData<TaskCreateResult>> CreateAsync(TaskCreateParameters parameters)
+        public async Task<ResultData<ITaskCreateResult>> CreateAsync(TaskCreateParameters parameters)
         {
-            return await this.PostDataAsync<TaskCreateResult>(new SynologyPostParameters(this)
+            return ResultData < ITaskCreateResult >.From(await this.PostDataAsync<TaskCreateResult>(new SynologyPostParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 	}
 }

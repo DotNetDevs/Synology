@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Task.Results
     /// <summary>
     /// Task file result.
     /// </summary>
-	public class TaskFileResult
+	internal class TaskFileResult : ITaskFileResult
 	{
         /// <summary>
         /// Gets or sets the filename.

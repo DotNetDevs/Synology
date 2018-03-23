@@ -4,10 +4,10 @@
     /// Task file additional result.
     /// </summary>
     public interface ITaskFileAdditionalResult<TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult> : ITaskAdditionalResult<TFileOwnerResult, TFileTimeResult, TFilePermResult, TFilePermAclResult>
-        where TFileOwnerResult : TaskFileOwnerResult, new()
-        where TFileTimeResult : TaskFileTimeResult, new()
-        where TFilePermResult : TaskFilePermResult<TFilePermAclResult>, new()
-        where TFilePermAclResult : TaskFilePermAclResult, new()
+        where TFileOwnerResult : ITaskFileOwnerResult
+        where TFileTimeResult : ITaskFileTimeResult
+        where TFilePermResult : ITaskFilePermResult<TFilePermAclResult>
+        where TFilePermAclResult : ITaskFilePermAclResult
     {
         /// <summary>
         /// Gets the size.

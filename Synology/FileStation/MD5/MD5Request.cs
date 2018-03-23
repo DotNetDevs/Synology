@@ -16,12 +16,12 @@ namespace Synology.FileStation.MD5
         }
 
         [RequestMethod("start")]
-        public async Task<ResultData<MD5StartResult>> StartAsync(MD5StartParameters parameters)
+        public async Task<ResultData<IMD5StartResult>> StartAsync(MD5StartParameters parameters)
         {
-            return await this.GetDataAsync<MD5StartResult>(new SynologyRequestParameters(this)
+            return ResultData<IMD5StartResult>.From(await this.GetDataAsync<MD5StartResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         [RequestMethod("status")]

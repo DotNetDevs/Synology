@@ -16,7 +16,7 @@ namespace Synology.DownloadStation.Schedule
         /// Config this instance.
         /// </summary>
         /// <returns>The config.</returns>
-        Task<ResultData<ScheduleResult>> ConfigAsync();
+        Task<ResultData<IScheduleResult>> ConfigAsync();
 
         /// <summary>
         /// Sets the config.

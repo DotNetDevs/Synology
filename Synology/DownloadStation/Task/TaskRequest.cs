@@ -7,32 +7,40 @@ using Synology.Attributes;
 using Synology.Parameters;
 using System.Threading.Tasks;
 using System;
+using System.Linq;
 
 namespace Synology.DownloadStation.Task
 {
-	[Request("Task")]
-	internal class TaskRequest : DownloadStationRequest, ITaskRequest
-	{
-		public TaskRequest(IDownloadStationApi api) : base(api)
-		{
-		}
+    [Request("Task")]
+    internal class TaskRequest : DownloadStationRequest, ITaskRequest
+    {
+        public TaskRequest(IDownloadStationApi api) : base(api)
+        {
+        }
 
         [RequestMethod("list")]
-        public async Task<ResultData<TaskListResult>> ListAsync(TaskListParameters parameters)
+        public async Task<ResultData<ITaskListResult>> ListAsync(TaskListParameters parameters)
         {
-            return await this.GetDataAsync<TaskListResult>(new SynologyRequestParameters(this)
+            return ResultData<ITaskListResult>.From(await this.GetDataAsync<TaskListResult>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
-            });
+            }));
         }
 
         [RequestMethod("getinfo")]
-        public async Task<ResultData<IEnumerable<TaskResult>>> InfoAsync(TaskInfoParameters parameters)
+        public async Task<ResultData<IEnumerable<ITaskResult>>> InfoAsync(TaskInfoParameters parameters)
         {
-            return await this.GetDataAsync<IEnumerable<TaskResult>>(new SynologyRequestParameters(this)
+            var res = await this.GetDataAsync<IEnumerable<TaskResult>>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });
+
+            return new ResultData<IEnumerable<ITaskResult>>
+            {
+                Data = res.Data.Cast<ITaskResult>(),
+                Error = res.Error,
+                Success = res.Success
+            };
         }
 
         [RequestMethod("create")]
@@ -46,48 +54,76 @@ namespace Synology.DownloadStation.Task
         }
 
         [RequestMethod("delete")]
-        public async Task<ResultData<IEnumerable<TaskMinimalResult>>> DeleteAsync(TaskDeleteParameters parameters)
+        public async Task<ResultData<IEnumerable<ITaskMinimalResult>>> DeleteAsync(TaskDeleteParameters parameters)
         {
-            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            var res = await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });
+
+            return new ResultData<IEnumerable<ITaskMinimalResult>>
+            {
+                Data = res.Data.Cast<ITaskMinimalResult>(),
+                Error = res.Error,
+                Success = res.Success
+            };
         }
 
         [RequestMethod("pause")]
-        public async Task<ResultData<IEnumerable<TaskMinimalResult>>> PauseAsync(params string[] ids)
+        public async Task<ResultData<IEnumerable<ITaskMinimalResult>>> PauseAsync(params string[] ids)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("id", ids)
             };
 
-            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            var res = await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
             });
+
+            return new ResultData<IEnumerable<ITaskMinimalResult>>
+            {
+                Data = res.Data.Cast<ITaskMinimalResult>(),
+                Error = res.Error,
+                Success = res.Success
+            };
         }
 
         [RequestMethod("resume")]
-        public async Task<ResultData<IEnumerable<TaskMinimalResult>>> ResumeAsync(params string[] ids)
+        public async Task<ResultData<IEnumerable<ITaskMinimalResult>>> ResumeAsync(params string[] ids)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("id", ids),
             };
 
-            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            var res = await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
             });
+
+            return new ResultData<IEnumerable<ITaskMinimalResult>>
+            {
+                Data = res.Data.Cast<ITaskMinimalResult>(),
+                Error = res.Error,
+                Success = res.Success
+            };
         }
 
         [RequestMethod("edit")]
-        public async Task<ResultData<IEnumerable<TaskMinimalResult>>> EditAsync(TaskEditParameters parameters)
+        public async Task<ResultData<IEnumerable<ITaskMinimalResult>>> EditAsync(TaskEditParameters parameters)
         {
-            return await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
+            var res = await this.GetDataAsync<IEnumerable<TaskMinimalResult>>(new SynologyRequestParameters(this)
             {
                 Additional = parameters
             });
+
+            return new ResultData<IEnumerable<ITaskMinimalResult>>
+            {
+                Data = res.Data.Cast<ITaskMinimalResult>(),
+                Error = res.Error,
+                Success = res.Success
+            };
         }
-	}
+    }
 }
 

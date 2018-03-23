@@ -16,7 +16,7 @@ namespace Synology.FileStation.MD5
         /// </summary>
         /// <returns>The start.</returns>
         /// <param name="parameters">Parameters.</param>
-        Task<ResultData<MD5StartResult>> StartAsync(MD5StartParameters parameters);
+        Task<ResultData<IMD5StartResult>> StartAsync(MD5StartParameters parameters);
 
         /// <summary>
         /// Status the specified parameters.

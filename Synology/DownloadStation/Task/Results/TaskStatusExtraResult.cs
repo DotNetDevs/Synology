@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Task.Results
     /// <summary>
     /// Task status extra result.
     /// </summary>
-	public class TaskStatusExtraResult
+	internal class TaskStatusExtraResult : ITaskStatusExtraResult
 	{
         /// <summary>
         /// Gets or sets the error detail.

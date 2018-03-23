@@ -5,7 +5,7 @@ namespace Synology.FileStation.List.Results
     /// <summary>
     /// Share owner result.
     /// </summary>
-    public class ShareOwnerResult : TaskShareOwnerResult
+    internal class ShareOwnerResult : TaskShareOwnerResult, IShareOwnerResult
     {
     }
 }

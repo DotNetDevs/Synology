@@ -6,7 +6,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task virtual folder list result.
     /// </summary>
-    public abstract class TaskVirtualFolderListResult<TVirtualFolderResult, TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult> : TaskListResult
+    internal abstract class TaskVirtualFolderListResult<TVirtualFolderResult, TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult> : TaskListResult, ITaskVirtualFolderListResult<TVirtualFolderResult, TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult>
         where TVirtualFolderResult : TaskVirtualFolderResult<TVirtualFolderAdditionalResult, TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult>, new()
         where TVirtualFolderAdditionalResult : TaskVirtualFolderAdditionalResult<TVirtualFolderOwnerResult, TVirtualFolderTimeResult, TVirtualFolderPermResult, TVirtualFolderPermAclResult, TVirtualFolderVolumeStatusResult>, new()
         where TVirtualFolderOwnerResult : TaskVirtualFolderOwnerResult, new()

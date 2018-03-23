@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Task.Results
     /// <summary>
     /// Task detail result.
     /// </summary>
-	public class TaskDetailResult
+	internal class TaskDetailResult : ITaskDetailResult
 	{
         /// <summary>
         /// Gets or sets the destination.

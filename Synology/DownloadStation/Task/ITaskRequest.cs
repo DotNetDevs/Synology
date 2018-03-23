@@ -18,14 +18,14 @@ namespace Synology.DownloadStation.Task
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Task<ResultData<TaskListResult>> ListAsync(TaskListParameters parameters);
+        Task<ResultData<ITaskListResult>> ListAsync(TaskListParameters parameters);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Task<ResultData<IEnumerable<TaskResult>>> InfoAsync(TaskInfoParameters parameters);
+        Task<ResultData<IEnumerable<ITaskResult>>> InfoAsync(TaskInfoParameters parameters);
 
         /// <summary>
         /// 
@@ -39,27 +39,27 @@ namespace Synology.DownloadStation.Task
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Task<ResultData<IEnumerable<TaskMinimalResult>>> DeleteAsync(TaskDeleteParameters parameters);
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> DeleteAsync(TaskDeleteParameters parameters);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ids"></param>
         /// <returns></returns>
-        Task<ResultData<IEnumerable<TaskMinimalResult>>> PauseAsync(params string[] ids);
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> PauseAsync(params string[] ids);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="ids"></param>
         /// <returns></returns>
-        Task<ResultData<IEnumerable<TaskMinimalResult>>> ResumeAsync(params string[] ids);
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> ResumeAsync(params string[] ids);
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Task<ResultData<IEnumerable<TaskMinimalResult>>> EditAsync(TaskEditParameters parameters);
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> EditAsync(TaskEditParameters parameters);
 	}
 }

@@ -5,7 +5,8 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task additional result.
     /// </summary>
-    public abstract class TaskAdditionalResult<TOwnerResult, TTimeResult, TPermResult, TPermAclResult> : ITaskAdditionalResult<TOwnerResult, TTimeResult, TPermResult, TPermAclResult> where TOwnerResult : TaskOwnerResult
+    internal abstract class TaskAdditionalResult<TOwnerResult, TTimeResult, TPermResult, TPermAclResult> : ITaskAdditionalResult<TOwnerResult, TTimeResult, TPermResult, TPermAclResult>
+        where TOwnerResult : TaskOwnerResult, new()
         where TTimeResult : TaskTimeResult, new()
         where TPermResult : TaskPermResult<TPermAclResult>, new()
         where TPermAclResult : TaskPermAclResult, new()

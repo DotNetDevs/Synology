@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Schedule.Results
     /// <summary>
     /// Schedule result.
     /// </summary>
-	public class ScheduleResult
+	internal class ScheduleResult : IScheduleResult
 	{
         /// <summary>
         /// Gets or sets a value indicating whether this

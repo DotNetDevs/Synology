@@ -10,15 +10,15 @@ using System;
 
 namespace Synology.FileStation.VirtualFolder
 {
-	[Request("VirtualFolder")]
-	internal class VirtualFolderRequest : FileStationRequest, IVirtualFolderRequest
-	{
+    [Request("VirtualFolder")]
+    internal class VirtualFolderRequest : FileStationRequest, IVirtualFolderRequest
+    {
         public VirtualFolderRequest(IFileStationApi api) : base(api)
-		{
-		}
+        {
+        }
 
         [RequestMethod("list")]
-        public async Task<ResultData<VirtualFolderListResult>> ListAsync(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
+        public async Task<ResultData<IVirtualFolderListResult>> ListAsync(VirtualFolderDetailsType? additional = null, VirtualFolderType? type = null, int offset = 0, int limit = 0, VirtualFolderSortType sortBy = VirtualFolderSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("type", type),
@@ -29,11 +29,11 @@ namespace Synology.FileStation.VirtualFolder
                 new QueryStringParameter("additional", additional)
             };
 
-            return await this.GetDataAsync<VirtualFolderListResult>(new SynologyRequestParameters(this)
+            return ResultData<IVirtualFolderListResult>.From(await this.GetDataAsync<VirtualFolderListResult>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
-            });
+            }));
         }
-	}
+    }
 }
 

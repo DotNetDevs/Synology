@@ -18,26 +18,26 @@ namespace Synology.FileStation.List
         /// Enumerate files in a given folder
         /// </summary>
         [RequestMethod("list_share")]
-        public async Task<ResultData<ShareListResult>> ListSharesAsync(ListSharesParameters parameters)
+        public async Task<ResultData<IShareListResult>> ListSharesAsync(ListSharesParameters parameters)
         {
-            return await this.GetDataAsync<ShareListResult>(new Synology.Parameters.SynologyRequestParameters(this)
+            return ResultData<IShareListResult>.From(await this.GetDataAsync<ShareListResult>(new Synology.Parameters.SynologyRequestParameters(this)
             {
                 Version = 2,
                 Additional = parameters,
-            });
+            }));
         }
 
         /// <summary>
         /// Enumerate files in a given folder
         /// </summary>
         [RequestMethod("list")]
-        public async Task<ResultData<FileListResult>> ListFilesAsync(ListParameters parameters)
+        public async Task<ResultData<IFileListResult>> ListFilesAsync(ListParameters parameters)
         {
-            return await this.GetDataAsync<FileListResult>(new Synology.Parameters.SynologyRequestParameters(this)
+            return ResultData<IFileListResult>.From(await this.GetDataAsync<FileListResult>(new Synology.Parameters.SynologyRequestParameters(this)
             {
                 Version = 2,
                 Additional = parameters,
-            });
+            }));
         }
 
         /// <summary>
@@ -45,13 +45,13 @@ namespace Synology.FileStation.List
         /// </summary>
         /// <returns></returns>
         [RequestMethod("getinfo")]
-        public async Task<ResultData<FileInfoResult>> GetFileInfoAsync(GetFileInfoParameters parameters)
+        public async Task<ResultData<IFileInfoResult>> GetFileInfoAsync(GetFileInfoParameters parameters)
         {
-            return await this.GetDataAsync<FileInfoResult>(new Synology.Parameters.SynologyRequestParameters(this)
+            return ResultData<IFileInfoResult>.From(await this.GetDataAsync<FileInfoResult>(new Synology.Parameters.SynologyRequestParameters(this)
             {
                 Version = 2,
                 Additional = parameters,
-            });
+            }));
         }
     }
 }

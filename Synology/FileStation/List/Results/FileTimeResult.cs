@@ -1,11 +1,11 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.List.Results
 {
     /// <summary>
     /// File time result.
     /// </summary>
-    public class FileTimeResult : TaskFileTimeResult
+    internal class FileTimeResult : TaskFileTimeResult, IFileTimeResult
 	{
 	}
 }

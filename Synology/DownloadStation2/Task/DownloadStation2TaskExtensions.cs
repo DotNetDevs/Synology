@@ -14,7 +14,7 @@ namespace Synology
 		/// </summary>
 		/// <param name="api"></param>
 		/// <returns></returns>
-		public static ITaskRequest Task(this DownloadStation2Api api)
+		public static ITaskRequest Task(this IDownloadStation2Api api)
 		{
 			return api.Request<ITaskRequest>();
 		}

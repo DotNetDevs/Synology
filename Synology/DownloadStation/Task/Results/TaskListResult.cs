@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace Synology.DownloadStation.Task.Results
@@ -6,7 +7,7 @@ namespace Synology.DownloadStation.Task.Results
     /// <summary>
     /// Task list result.
     /// </summary>
-	public class TaskListResult
+	internal class TaskListResult : ITaskListResult
 	{
         /// <summary>
         /// Gets or sets the offset.
@@ -21,6 +22,7 @@ namespace Synology.DownloadStation.Task.Results
         /// <value>The tasks.</value>
         [JsonProperty("tasks")]
 		public IEnumerable<TaskResult> Tasks { get; set; }
+        IEnumerable<ITaskResult> ITaskListResult.Tasks => Tasks.Cast<ITaskResult>();
 
         /// <summary>
         /// Gets or sets the total.

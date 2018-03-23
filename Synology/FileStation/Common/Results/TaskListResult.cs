@@ -5,7 +5,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task list result.
     /// </summary>
-    public abstract class TaskListResult : ITaskListResult
+    internal abstract class TaskListResult : ITaskListResult
     {
         /// <summary>
         /// Gets or sets the total.

@@ -5,7 +5,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task start result.
     /// </summary>
-    public abstract class TaskStartResult : ITaskStartResult
+    internal abstract class TaskStartResult : ITaskStartResult
     {
         /// <summary>
         /// Gets or sets the task identifier.

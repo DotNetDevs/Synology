@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Task.Results
     /// <summary>
     /// Task tracker result.
     /// </summary>
-	public class TaskTrackerResult
+	internal class TaskTrackerResult : ITaskTrackerResult
 	{
         /// <summary>
         /// Gets or sets the URL.

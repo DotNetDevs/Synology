@@ -16,6 +16,6 @@ namespace Synology.FileStation.Rename
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Task<ResultData<FileResult>> RenameAsync(RenameParameters parameters);
+        Task<ResultData<IFileResult>> RenameAsync(RenameParameters parameters);
     }
 }

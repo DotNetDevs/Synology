@@ -5,15 +5,15 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task perm result.
     /// </summary>
-    public abstract class TaskPermResult<TPermAclResult>
+    internal abstract class TaskPermResult<TPermAclResult> : ITaskPermResult<TPermAclResult>
         where TPermAclResult : TaskPermAclResult, new()
-	{
+    {
         /// <summary>
         /// Gets or sets the posix.
         /// </summary>
         /// <value>The posix.</value>
         [JsonProperty("posix")]
-		public int Posix { get; set; }
+        public int Posix { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this
@@ -21,20 +21,20 @@ namespace Synology.FileStation.Common.Results
         /// </summary>
         /// <value><c>true</c> if is acl mode; otherwise, <c>false</c>.</value>
 		[JsonProperty("is_acl_mode")]
-		public bool IsAclMode { get; set; }
+        public bool IsAclMode { get; set; }
 
         /// <summary>
         /// Gets or sets the acl.
         /// </summary>
         /// <value>The acl.</value>
         [JsonProperty("acl")]
-		public TPermAclResult Acl { get; set; }
-	}
+        public TPermAclResult Acl { get; set; }
+    }
 
     /// <summary>
     /// Task file perm result.
     /// </summary>
-    public abstract class TaskFilePermResult<TFilePermAclResult> : TaskPermResult<TFilePermAclResult>
+    internal abstract class TaskFilePermResult<TFilePermAclResult> : TaskPermResult<TFilePermAclResult>, ITaskFilePermResult<TFilePermAclResult>
         where TFilePermAclResult : TaskFilePermAclResult, new()
     {
     }
@@ -42,7 +42,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task share perm result.
     /// </summary>
-    public abstract class TaskSharePermResult<TSharePermAclResult, TSharePermAdvRightResult> : TaskPermResult<TSharePermAclResult>
+    internal abstract class TaskSharePermResult<TSharePermAclResult, TSharePermAdvRightResult> : TaskPermResult<TSharePermAclResult>, ITaskSharePermResult<TSharePermAclResult, TSharePermAdvRightResult>
         where TSharePermAclResult : TaskSharePermAclResult, new()
         where TSharePermAdvRightResult : TaskSharePermAdvRightResult, new()
     {
@@ -72,7 +72,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task virtual folder perm result.
     /// </summary>
-    public class TaskVirtualFolderPermResult<TVirtualFolderPermAclResult> : TaskPermResult<TVirtualFolderPermAclResult>
+    internal class TaskVirtualFolderPermResult<TVirtualFolderPermAclResult> : TaskPermResult<TVirtualFolderPermAclResult>, ITaskVirtualFolderPermResult<TVirtualFolderPermAclResult>
         where TVirtualFolderPermAclResult : TaskVirtualFolderPermAclResult, new()
     {
     }

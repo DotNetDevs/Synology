@@ -5,7 +5,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task share perm adv right result.
     /// </summary>
-    public abstract class TaskSharePermAdvRightResult
+    internal abstract class TaskSharePermAdvRightResult : ITaskSharePermAdvRightResult
 	{
         /// <summary>
         /// Gets or sets a value indicating whether this

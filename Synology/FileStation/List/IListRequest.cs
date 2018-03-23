@@ -14,17 +14,17 @@ namespace Synology.FileStation.List
         /// <summary>
         /// Enumerate files in a given folder
         /// </summary>
-        Task<ResultData<ShareListResult>> ListSharesAsync(ListSharesParameters parameters);
+        Task<ResultData<IShareListResult>> ListSharesAsync(ListSharesParameters parameters);
 
         /// <summary>
         /// Enumerate files in a given folder
         /// </summary>
-        Task<ResultData<FileListResult>> ListFilesAsync(ListParameters parameters);
+        Task<ResultData<IFileListResult>> ListFilesAsync(ListParameters parameters);
 
         /// <summary>
         /// Get information of file(s)
         /// </summary>
         /// <returns></returns>
-        Task<ResultData<FileInfoResult>> GetFileInfoAsync(GetFileInfoParameters parameters);
+        Task<ResultData<IFileInfoResult>> GetFileInfoAsync(GetFileInfoParameters parameters);
     }
 }

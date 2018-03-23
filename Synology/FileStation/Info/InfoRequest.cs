@@ -7,17 +7,17 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.Info
 {
-	[Request("Info")]
-	internal class InfoRequest : FileStationRequest, IInfoRequest
-	{
+    [Request("Info")]
+    internal class InfoRequest : FileStationRequest, IInfoRequest
+    {
         public InfoRequest(IFileStationApi api) : base(api)
-		{
-		}
+        {
+        }
 
         [RequestMethod("get")]
-        public async Task<ResultData<InfoResult>> GetAsync()
+        public async Task<ResultData<IInfoResult>> GetAsync()
         {
-            return await this.GetDataAsync<InfoResult>(new SynologyRequestParameters(this));
+            return ResultData<IInfoResult>.From(await this.GetDataAsync<InfoResult>(new SynologyRequestParameters(this)));
         }
-	}
+    }
 }

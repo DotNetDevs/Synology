@@ -28,6 +28,7 @@ namespace Synology.FileStation.Favorite.Results
         /// <value>The time.</value>
         [JsonProperty("time")]
         public FavoriteTimeResult Time { get; set; }
+        IFavoriteTimeResult IFavoriteAdditionalResult.Time => Time;
 
         /// <summary>
         /// Gets or sets the perm.

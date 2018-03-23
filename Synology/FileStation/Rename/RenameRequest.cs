@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Synology.FileStation.Rename
 {
-	[Request("Rename")]
-	internal class RenameRequest : FileStationRequest, IRenameRequest
-	{
+    [Request("Rename")]
+    internal class RenameRequest : FileStationRequest, IRenameRequest
+    {
         public RenameRequest(IFileStationApi api) : base(api)
-		{
-		}
+        {
+        }
 
         /// <summary>
         /// Renames the async.
@@ -21,13 +21,13 @@ namespace Synology.FileStation.Rename
         /// <returns>The async.</returns>
         /// <param name="parameters">Parameters.</param>
         [RequestMethod("rename")]
-        public async Task<ResultData<FileResult>> RenameAsync(RenameParameters parameters)
+        public async Task<ResultData<IFileResult>> RenameAsync(RenameParameters parameters)
         {
-            return await this.GetDataAsync<FileResult>(new SynologyRequestParameters(this)
+            return ResultData<IFileResult>.From(await this.GetDataAsync<FileResult>(new SynologyRequestParameters(this)
             {
                 Version = 2,
                 Additional = parameters
-            });
+            }));
         }
-	}
+    }
 }

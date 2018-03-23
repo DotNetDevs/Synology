@@ -3,9 +3,9 @@
 namespace Synology.FileStation.List.Results
 {
     /// <summary>
-    /// Share perm acl result.
+    /// Share perm result.
     /// </summary>
-    public class SharePermAclResult : TaskSharePermAclResult
+    public interface ISharePermResult : ITaskSharePermResult<ISharePermAclResult, ISharePermAdvRightResult>
     {
     }
 }

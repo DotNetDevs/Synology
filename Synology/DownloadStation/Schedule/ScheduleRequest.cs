@@ -8,17 +8,17 @@ using Synology.Parameters;
 
 namespace Synology.DownloadStation.Schedule
 {
-	[Request("Schedule")]
-	internal class ScheduleRequest : DownloadStationRequest, IScheduleRequest
-	{
-		public ScheduleRequest(IDownloadStationApi api) : base(api)
-		{
-		}
+    [Request("Schedule")]
+    internal class ScheduleRequest : DownloadStationRequest, IScheduleRequest
+    {
+        public ScheduleRequest(IDownloadStationApi api) : base(api)
+        {
+        }
 
         [RequestMethod("getconfig")]
-        public async Task<ResultData<ScheduleResult>> ConfigAsync()
+        public async Task<ResultData<IScheduleResult>> ConfigAsync()
         {
-            return await this.GetDataAsync<ScheduleResult>(new SynologyRequestParameters(this));
+            return ResultData<IScheduleResult>.From(await this.GetDataAsync<ScheduleResult>(new SynologyRequestParameters(this)));
         }
 
         [RequestMethod("setserverconfig")]
@@ -29,6 +29,6 @@ namespace Synology.DownloadStation.Schedule
                 Additional = parameters
             });
         }
-	}
+    }
 }
 

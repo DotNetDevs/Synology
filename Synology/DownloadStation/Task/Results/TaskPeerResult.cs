@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Task.Results
     /// <summary>
     /// Task peer result.
     /// </summary>
-	public class TaskPeerResult
+	internal class TaskPeerResult : ITaskPeerResult
 	{
         /// <summary>
         /// Gets or sets the address.

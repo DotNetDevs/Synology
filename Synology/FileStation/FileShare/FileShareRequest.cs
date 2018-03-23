@@ -18,7 +18,7 @@ namespace Synology.FileStation.FileShare
         }
 
         [RequestMethod("list_share")]
-        public async Task<ResultData<ShareListResult>> ListShareAsync(FileShareDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, bool onlyWritable = false)
+        public async Task<ResultData<IShareListResult>> ListShareAsync(FileShareDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending, bool onlyWritable = false)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("additional", additional),
@@ -29,14 +29,14 @@ namespace Synology.FileStation.FileShare
                 new QueryStringParameter("onlywritable", onlyWritable)
             };
 
-            return await this.GetDataAsync<ShareListResult>(new SynologyRequestParameters(this)
+            return ResultData<IShareListResult>.From(await this.GetDataAsync<ShareListResult>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
-            });
+            }));
         }
 
         [RequestMethod("list")]
-        public async Task<ResultData<FileListResult>> ListAsync(string folderPath, string pattern = null, FileType fileType = FileType.All, string gotoPath = null, FileDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
+        public async Task<ResultData<IFileListResult>> ListAsync(string folderPath, string pattern = null, FileType fileType = FileType.All, string gotoPath = null, FileDetailsType? additional = null, int offset = 0, int limit = 0, FileSortType sortBy = FileSortType.Name, ListSortDirection sortDirection = ListSortDirection.Ascending)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("additional", additional),
@@ -50,24 +50,24 @@ namespace Synology.FileStation.FileShare
                 new QueryStringParameter("sort_direction", sortDirection)
             };
 
-            return await this.GetDataAsync<FileListResult>(new SynologyRequestParameters(this)
+            return ResultData<IFileListResult>.From(await this.GetDataAsync<FileListResult>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
-            });
+            }));
         }
 
         [RequestMethod("getinfo")]
-        public async Task<ResultData<FileListResult>> InfoAsync(string path, FileDetailsType? additional = null)
+        public async Task<ResultData<IFileListResult>> InfoAsync(string path, FileDetailsType? additional = null)
         {
             var additionalParams = new[] {
                 new QueryStringParameter("path", path),
                 new QueryStringParameter("additional", additional)
             };
 
-            return await this.GetDataAsync<FileListResult>(new SynologyRequestParameters(this)
+            return ResultData<IFileListResult>.From(await this.GetDataAsync<FileListResult>(new SynologyRequestParameters(this)
             {
                 Additional = additionalParams
-            });
+            }));
         }
     }
 }

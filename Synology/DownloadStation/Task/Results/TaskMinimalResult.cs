@@ -5,7 +5,7 @@ namespace Synology.DownloadStation.Task.Results
     /// <summary>
     /// Task minimal result.
     /// </summary>
-	public class TaskMinimalResult
+	internal class TaskMinimalResult : ITaskMinimalResult
 	{
         /// <summary>
         /// Gets or sets the identifier.

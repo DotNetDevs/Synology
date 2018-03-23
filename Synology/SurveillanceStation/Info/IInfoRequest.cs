@@ -14,6 +14,6 @@ namespace Synology.SurveillanceStation.Info
 		/// 
 		/// </summary>
 		/// <returns></returns>
-		Task<ResultData<InfoResult>> GetInfoAsync();
+		Task<ResultData<IInfoResult>> GetInfoAsync();
 	}
 }

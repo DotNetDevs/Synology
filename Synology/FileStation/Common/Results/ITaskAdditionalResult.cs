@@ -4,10 +4,10 @@
     /// Task additional result.
     /// </summary>
     public interface ITaskAdditionalResult<TOwnerResult, TTimeResult, TPermResult, TPermAclResult>
-        where TOwnerResult : TaskOwnerResult
-        where TTimeResult : TaskTimeResult, new()
-        where TPermResult : TaskPermResult<TPermAclResult>, new()
-        where TPermAclResult : TaskPermAclResult, new()
+        where TOwnerResult : ITaskOwnerResult
+        where TTimeResult : ITaskTimeResult
+        where TPermResult : ITaskPermResult<TPermAclResult>
+        where TPermAclResult : ITaskPermAclResult
     {
         /// <summary>
         /// Gets or sets the real path.

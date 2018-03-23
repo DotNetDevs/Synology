@@ -5,7 +5,7 @@ namespace Synology.SurveillanceStation.Info.Results
 	/// <summary>
 	/// 
 	/// </summary>
-	public class InfoVersion
+	internal class InfoVersionResult : IInfoVersionResult
 	{
 		/// <summary>
 		/// 

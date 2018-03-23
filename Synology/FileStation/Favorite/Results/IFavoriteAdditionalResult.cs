@@ -19,7 +19,7 @@
         /// Gets the time.
         /// </summary>
         /// <value>The time.</value>
-        FavoriteTimeResult Time { get; }
+        IFavoriteTimeResult Time { get; }
         /// <summary>
         /// Gets the perm.
         /// </summary>

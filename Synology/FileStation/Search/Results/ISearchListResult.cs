@@ -22,6 +22,6 @@ namespace Synology.FileStation.Search.Results
         /// Gets or sets the files.
         /// </summary>
         /// <value>The files.</value>
-        IEnumerable<FileResult> Files { get; }
+        IEnumerable<IFileResult> Files { get; }
     }
 }

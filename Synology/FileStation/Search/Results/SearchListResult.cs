@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Synology.FileStation.Common.Results;
 
@@ -29,6 +30,8 @@ namespace Synology.FileStation.Search.Results
         /// <value>The files.</value>
         [JsonProperty("files")]
 		public IEnumerable<FileResult> Files { get; set; }
+
+        IEnumerable<IFileResult> ISearchListResult.Files => Files.Cast<IFileResult>();
 	}
 }
 

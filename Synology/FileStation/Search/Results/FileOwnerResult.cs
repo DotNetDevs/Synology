@@ -1,11 +1,11 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.Search.Results
 {
     /// <summary>
     /// File owner result.
     /// </summary>
-    public class FileOwnerResult : TaskFileOwnerResult
+    internal class FileOwnerResult : TaskFileOwnerResult, IFileOwnerResult
 	{
 	}
 }

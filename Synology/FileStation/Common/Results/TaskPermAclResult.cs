@@ -5,7 +5,7 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task perm acl result.
     /// </summary>
-    public abstract class TaskPermAclResult
+    internal abstract class TaskPermAclResult : ITaskPermAclResult
 	{
         /// <summary>
         /// Gets or sets a value indicating whether this
@@ -51,21 +51,21 @@ namespace Synology.FileStation.Common.Results
     /// <summary>
     /// Task file perm acl result.
     /// </summary>
-    public abstract class TaskFilePermAclResult : TaskPermAclResult
+    internal abstract class TaskFilePermAclResult : TaskPermAclResult, ITaskFilePermAclResult
     {
     }
 
     /// <summary>
     /// Task share perm acl result.
     /// </summary>
-    public abstract class TaskSharePermAclResult : TaskPermAclResult
+    internal abstract class TaskSharePermAclResult : TaskPermAclResult, ITaskSharePermAclResult
     {
     }
 
     /// <summary>
     /// Task virtual folder perm acl result.
     /// </summary>
-    public abstract class TaskVirtualFolderPermAclResult : TaskPermAclResult
+    internal abstract class TaskVirtualFolderPermAclResult : TaskPermAclResult, ITaskVirtualFolderPermAclResult
     {
     }
 }

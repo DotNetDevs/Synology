@@ -15,6 +15,6 @@ namespace Synology.FileStation.Info
         /// Get this instance.
         /// </summary>
         /// <returns>The get.</returns>
-        Task<ResultData<InfoResult>> GetAsync();
+        Task<ResultData<IInfoResult>> GetAsync();
     }
 }

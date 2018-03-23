@@ -6,7 +6,7 @@ namespace Synology.DownloadStation2.Task.Results
 	/// <summary>
 	/// 
 	/// </summary>
-	public class TaskCreateResult
+	internal class TaskCreateResult : ITaskCreateResult
 	{
 		/// <summary>
 		/// 

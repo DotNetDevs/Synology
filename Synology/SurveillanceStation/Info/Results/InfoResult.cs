@@ -5,14 +5,14 @@ namespace Synology.SurveillanceStation.Info.Results
     /// <summary>
     /// Info result.
     /// </summary>
-    public class InfoResult
+    internal class InfoResult : IInfoResult
     {
         /// <summary>
         /// Gets or sets the version.
         /// </summary>
         /// <value>The version.</value>
         [JsonProperty("version")]
-        public InfoVersion Version { get; set; }
+        public InfoVersionResult Version { get; set; }
 
         /// <summary>
         /// Gets or sets the path.
@@ -109,6 +109,8 @@ namespace Synology.SurveillanceStation.Info.Results
         /// <value><c>true</c> if allow delete recording; otherwise, <c>false</c>.</value>
         [JsonProperty("allowDeleteRec")]
         public bool AllowDeleteRecording { get; set; }
+
+        IInfoVersionResult IInfoResult.Version => Version;
     }
 }
 
