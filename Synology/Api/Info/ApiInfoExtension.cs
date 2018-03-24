@@ -1,6 +1,6 @@
-﻿using Synology.Api;
+﻿using Synology;
+using Synology.Api;
 using Synology.Api.Info;
-using Synology.Extensions;
 
 namespace Synology
 {

@@ -1,5 +1,5 @@
 ﻿using Synology.SurveillanceStation;
-using Synology.Extensions;
+using Synology;
 using Synology.Interfaces;
 
 namespace Synology

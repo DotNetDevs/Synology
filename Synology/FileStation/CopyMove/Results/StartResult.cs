@@ -2,7 +2,11 @@
 
 namespace Synology.FileStation.CopyMove.Results
 {
-    public class StartResult : TaskStartResult
+
+    /// <summary>
+    /// Start result.
+    /// </summary>
+    internal class StartResult : TaskStartResult, IStartResult
     {
     }
 }

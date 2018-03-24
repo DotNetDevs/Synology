@@ -1,8 +1,11 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.FileShare.Results
 {
-    public class ShareOwnerResult : TaskShareOwnerResult
+    /// <summary>
+    /// Share owner result.
+    /// </summary>
+    internal class ShareOwnerResult : TaskShareOwnerResult, IShareOwnerResult
 	{
 	}
 }

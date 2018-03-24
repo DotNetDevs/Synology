@@ -1,64 +1,72 @@
-﻿using Synology.Classes;
+﻿using Synology;
+using Synology.Classes;
 using Synology.Utilities;
 using Synology.Api.Auth.Parameters;
 using Synology.Api.Auth.Results;
 using Synology.Attributes;
 using Synology.Parameters;
-using Synology.Extensions;
+using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
+using System;
 
 namespace Synology.Api.Auth
 {
-	/// <inheritdoc cref="MainApiRequest" />
-	/// <summary>
-	/// </summary>
-	[Request("Auth")]
-	internal sealed class AuthRequest : MainApiRequest, IAuthRequest
-	{
-		private string _sessionNumber;
+    /// <inheritdoc cref="MainApiRequest" />
+    /// <summary>
+    /// </summary>
+    [Request("Auth")]
+    internal sealed class AuthRequest : MainApiRequest, IAuthRequest
+    {
+        private string _sessionNumber;
 
-		public AuthRequest(IApi api) : base(api)
-		{
-		}
+        public AuthRequest(IApi api) : base(api)
+        {
+        }
 
-		[RequestMethod("login")]
-		public ResultData<AuthResult> Login(LoginParameters parameters = null)
-		{
-			parameters = parameters ?? new LoginParameters
-			{
-				Username = Api.Connection.Settings.Username,
-				Password = Api.Connection.Settings.Password
-			};
+        [RequestMethod("login")]
+        public async Task<ResultData<IAuthResult>> LoginAsync(LoginParameters parameters = null)
+        {
+            parameters = parameters ?? new LoginParameters
+            {
+                Username = Api.Connection.Settings.Username,
+                Password = Api.Connection.Settings.Password
+            };
 
-			_sessionNumber = parameters.SessionName;
+            _sessionNumber = parameters.SessionName;
 
-			var result = GetData<AuthResult>(new SynologyRequestParameters(this)
-			{
-				Version = 4,
-				Additional = parameters
-			});
+            Api.Connection.Logger.LogDebug($"Logging in as {parameters.Username} for session {_sessionNumber}");
 
-			if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
-				Api.Connection.SetSid(result.Data?.Sid);
+            var result = await this.GetDataAsync<AuthResult>(new SynologyRequestParameters(this)
+            {
+                Version = 4,
+                Additional = parameters
+            });
 
-			return result;
-		}
+            if (result.Success && !string.IsNullOrWhiteSpace(result.Data?.Sid))
+                Api.Connection.SetSid(result.Data?.Sid);
 
-		[RequestMethod("logout")]
-		public ResultData Logout()
-		{
-			var parameters = new[] {
-				new QueryStringParameter("session", _sessionNumber),
-			};
+            return ResultData<IAuthResult>.From(result);
+        }
 
-			var result = GetData(new SynologyRequestParameters(this)
-			{
-				Additional = parameters
-			});
+        [RequestMethod("logout")]
+        public async Task<ResultData> LogoutAsync()
+        {
+            var parameters = new[]
+            {
+                new QueryStringParameter("session", _sessionNumber),
+            };
 
-			if (result.Success)
-				Api.Connection.SetSid(null);
+            Api.Connection.Logger.LogDebug($"Logging out for session {_sessionNumber}");
 
-			return result;
-		}
-	}
+            var result = await this.GetDataAsync(new SynologyRequestParameters(this)
+            {
+                Additional = parameters
+            });
+
+            if (result.Success)
+                Api.Connection.SetSid(null);
+
+            return result;
+        }
+    }
 }

@@ -1,8 +1,11 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.VirtualFolder.Results
 {
-    public class VirtualFolderTimeResult : TaskVirtualFolderTimeResult
+    /// <summary>
+    /// Virtual folder time result.
+    /// </summary>
+    internal class VirtualFolderTimeResult : TaskVirtualFolderTimeResult, IVirtualFolderTimeResult
 	{
 	}
 }

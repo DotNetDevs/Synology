@@ -1,8 +1,11 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.FileShare.Results
 {
-    public class ShareTimeResult : TaskShareTimeResult
+    /// <summary>
+    /// Share time result.
+    /// </summary>
+    internal class ShareTimeResult : TaskShareTimeResult, IShareTimeResult
 	{
 	}
 }

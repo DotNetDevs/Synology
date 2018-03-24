@@ -6,7 +6,7 @@ namespace Synology.Api.Info.Results
 	/// <summary>
 	/// 
 	/// </summary>
-	public class ApiInfo : IApiInfo
+	internal class ApiInfo : IApiInfo
 	{
 		/// <summary>
 		/// 

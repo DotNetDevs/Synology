@@ -1,5 +1,5 @@
-﻿using Synology.AudioStation;
-using Synology.Extensions;
+﻿using Synology;
+using Synology.AudioStation;
 using Synology.Interfaces;
 
 namespace Synology

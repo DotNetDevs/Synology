@@ -1,8 +1,11 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.FileShare.Results
 {
-    public class ShareVolumeStatusResult : TaskShareVolumeStatusResult
+    /// <summary>
+    /// Share volume status result.
+    /// </summary>
+    internal class ShareVolumeStatusResult : TaskShareVolumeStatusResult, IShareVolumeStatusResult
 	{
 	}
 }

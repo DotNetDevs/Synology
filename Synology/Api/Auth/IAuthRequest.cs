@@ -1,26 +1,28 @@
-﻿using Synology.Api.Auth.Parameters;
+﻿using System;
+using System.Threading.Tasks;
+using Synology.Api.Auth.Parameters;
 using Synology.Api.Auth.Results;
 using Synology.Classes;
 using Synology.Interfaces;
 
 namespace Synology.Api.Auth
 {
-	/// <summary>
-	/// 
-	/// </summary>
-	public interface IAuthRequest : ISynologyRequest
-	{
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		ResultData<AuthResult> Login(LoginParameters parameters = null);
+    /// <summary>
+    /// Auth request.
+    /// </summary>
+    public interface IAuthRequest : ISynologyRequest
+    {
+        /// <summary>
+        /// Logins the async.
+        /// </summary>
+        /// <returns>The async.</returns>
+        /// <param name="parameters">Parameters.</param>
+        Task<ResultData<IAuthResult>> LoginAsync(LoginParameters parameters = null);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		ResultData Logout();
-	}
+        /// <summary>
+        /// Logouts the async.
+        /// </summary>
+        /// <returns>The async.</returns>
+        Task<ResultData> LogoutAsync();
+    }
 }

@@ -1,20 +1,49 @@
-﻿using Synology.Classes;
+﻿using System;
+using System.Threading.Tasks;
+using Synology.Classes;
 using Synology.FileStation.Favorite.Parameters;
 using Synology.FileStation.Favorite.Results;
 using Synology.Interfaces;
 
 namespace Synology.FileStation.Favorite
 {
+    /// <summary>
+    /// Favorite request.
+    /// </summary>
     public interface IFavoriteRequest : ISynologyRequest
     {
-        ResultData<FavoriteListResult> List(FavoriteListParameters parameters);
+        /// <summary>
+        /// List the specified parameters.
+        /// </summary>
+        /// <returns>The list.</returns>
+        /// <param name="parameters">Parameters.</param>
+        Task<ResultData<IFavoriteListResult>> ListAsync(FavoriteListParameters parameters);
 
-        ResultData Add(FavoriteAddParameters parameters);
+        /// <summary>
+        /// Add the specified parameters.
+        /// </summary>
+        /// <returns>The add.</returns>
+        /// <param name="parameters">Parameters.</param>
+        Task<ResultData> AddAsync(FavoriteAddParameters parameters);
 
-        ResultData Delete(FavoriteDeleteParameters parameters);
+        /// <summary>
+        /// Delete the specified parameters.
+        /// </summary>
+        /// <returns>The delete.</returns>
+        /// <param name="parameters">Parameters.</param>
+        Task<ResultData> DeleteAsync(FavoriteDeleteParameters parameters);
 
-        ResultData ClearBroken();
+        /// <summary>
+        /// Clears the broken.
+        /// </summary>
+        /// <returns>The broken.</returns>
+        Task<ResultData> ClearBrokenAsync();
 
-        ResultData Edit(FavoriteEditParameters parameters);
+        /// <summary>
+        /// Edit the specified parameters.
+        /// </summary>
+        /// <returns>The edit.</returns>
+        /// <param name="parameters">Parameters.</param>
+        Task<ResultData> EditAsync(FavoriteEditParameters parameters);
     }
 }

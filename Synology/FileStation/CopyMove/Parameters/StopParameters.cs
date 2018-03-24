@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Synology.FileStation.CopyMove.Parameters
 {
+    /// <summary>
+    /// Stop parameters.
+    /// </summary>
     public class StopParameters : RequestParameters
     {
         /// <summary>
@@ -15,6 +18,10 @@ namespace Synology.FileStation.CopyMove.Parameters
         [Required]
         public string TaskId { get; set; }
 
+        /// <summary>
+        /// Parameters this instance.
+        /// </summary>
+        /// <returns>The parameters.</returns>
         public override QueryStringParameter[] Parameters()
         {
             return new[]

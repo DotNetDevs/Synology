@@ -6,6 +6,9 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.Upload.Parameters
 {
+    /// <summary>
+    /// Upload parameters.
+    /// </summary>
     public class UploadParameters : PostParameters
     {
         /// <summary>

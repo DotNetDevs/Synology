@@ -2,6 +2,8 @@
 using Synology.Attributes;
 using Synology.FileStation.CheckPermission.Parameters;
 using Synology.Parameters;
+using System;
+using System.Threading.Tasks;
 
 namespace Synology.FileStation.CheckPermission
 {
@@ -12,13 +14,13 @@ namespace Synology.FileStation.CheckPermission
 		{
 		}
 
-		[RequestMethod("write")]
-		public ResultData Write(CheckPermissionWriteParameters parameters)
-		{
-			return GetData(new SynologyRequestParameters(this)
-			{
-				Additional = parameters
-			});
-		}
+        [RequestMethod("write")]
+        public async Task<ResultData> WriteAsync(CheckPermissionWriteParameters parameters)
+        {
+            return await this.GetDataAsync(new SynologyRequestParameters(this)
+            {
+                Additional = parameters
+            });
+        }
 	}
 }

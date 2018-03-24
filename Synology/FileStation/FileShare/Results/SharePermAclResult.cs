@@ -1,8 +1,11 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.FileShare.Results
 {
-    public class SharePermAclResult : TaskSharePermAclResult
+    /// <summary>
+    /// Share perm acl result.
+    /// </summary>
+    internal class SharePermAclResult : TaskSharePermAclResult, ISharePermAclResult
 	{
 	}
 }

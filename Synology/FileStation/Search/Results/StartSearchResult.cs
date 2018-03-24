@@ -2,7 +2,10 @@
 
 namespace Synology.FileStation.Search.Results
 {
-    public class StartSearchResult : TaskStartResult
+    /// <summary>
+    /// Start search result.
+    /// </summary>
+    internal class StartSearchResult : TaskStartResult, IStartSearchResult
 	{
 	}
 }

@@ -1,8 +1,12 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.VirtualFolder.Results
 {
-    public class VirtualFolderPermResult : TaskVirtualFolderPermResult<VirtualFolderPermAclResult>
+    /// <summary>
+    /// Virtual folder perm result.
+    /// </summary>
+    internal class VirtualFolderPermResult : TaskVirtualFolderPermResult<VirtualFolderPermAclResult>, IVirtualFolderPermResult
 	{
-	}
+        IVirtualFolderPermAclResult ITaskPermResult<IVirtualFolderPermAclResult>.Acl => Acl;
+    }
 }

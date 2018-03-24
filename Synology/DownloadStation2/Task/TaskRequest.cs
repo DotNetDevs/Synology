@@ -3,6 +3,8 @@ using Synology.DownloadStation2.Task.Parameters;
 using Synology.DownloadStation2.Task.Results;
 using Synology.Attributes;
 using Synology.Parameters;
+using System.Threading.Tasks;
+using System;
 
 namespace Synology.DownloadStation2.Task
 {
@@ -19,18 +21,18 @@ namespace Synology.DownloadStation2.Task
 		{
 		}
 
-		/// <summary>
-		/// Create a download by sending the file to the server (usually a torrent file)
-		/// </summary>
-		/// <param name="parameters">Parameters of the request</param>
-		/// <returns>The result of the create task operation with task id and list id if requested.</returns>
-		[RequestMethod("create")]
-		public ResultData<TaskCreateResult> Create(TaskCreateParameters parameters)
-		{
-			return PostData<TaskCreateResult>(new SynologyPostParameters(this)
-			{
-				Additional = parameters
-			});
-		}
+        /// <summary>
+        /// Create a download by sending the file to the server (usually a torrent file)
+        /// </summary>
+        /// <param name="parameters">Parameters of the request</param>
+        /// <returns>The result of the create task operation with task id and list id if requested.</returns>
+        [RequestMethod("create")]
+        public async Task<ResultData<ITaskCreateResult>> CreateAsync(TaskCreateParameters parameters)
+        {
+            return ResultData < ITaskCreateResult >.From(await this.PostDataAsync<TaskCreateResult>(new SynologyPostParameters(this)
+            {
+                Additional = parameters
+            }));
+        }
 	}
 }

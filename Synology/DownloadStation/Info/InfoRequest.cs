@@ -3,36 +3,42 @@ using Synology.Classes;
 using Synology.DownloadStation.Info.Results;
 using Synology.DownloadStation.Info.Parameters;
 using Synology.Parameters;
+using System;
+using System.Threading.Tasks;
 
 namespace Synology.DownloadStation.Info
 {
-	[Request("Info")]
-	internal class InfoRequest : DownloadStationRequest, IInfoRequest
-	{
-		public InfoRequest(IDownloadStationApi api) : base(api)
-		{
-		}
+    [Request("Info")]
+    internal class InfoRequest : DownloadStationRequest, IInfoRequest
+    {
+        public InfoRequest(IDownloadStationApi api) : base(api)
+        {
+        }
 
-		[RequestMethod("getinfo")]
-		public ResultData<InfoResult> GetInfo()
-		{
-			return GetData<InfoResult>(new SynologyRequestParameters(this));
-		}
+        [RequestMethod("getinfo")]
+        public async Task<ResultData<IInfoResult>> GetInfoAsync()
+        {
+            var res = await this.GetDataAsync<InfoResult>(new SynologyRequestParameters(this));
 
-		[RequestMethod("getconfig")]
-		public ResultData<ConfigResult> Config()
-		{
-			return GetData<ConfigResult>(new SynologyRequestParameters(this) { Version = 2 });
-		}
+            return ResultData<IInfoResult>.From(res);
+        }
 
-		[RequestMethod("setserverconfig")]
-		public ResultData SetConfig(SetConfigParameters parameters)
-		{
-			return GetData(new SynologyRequestParameters(this)
-			{
-				Version = 2,
-				Additional = parameters
-			});
-		}
-	}
+        [RequestMethod("getconfig")]
+        public async Task<ResultData<IConfigResult>> ConfigAsync()
+        {
+            var res = await this.GetDataAsync<ConfigResult>(new SynologyRequestParameters(this) { Version = 2 });
+
+            return ResultData<IConfigResult>.From(res);
+        }
+
+        [RequestMethod("setserverconfig")]
+        public async Task<ResultData> SetConfigAsync(SetConfigParameters parameters)
+        {
+            return await this.GetDataAsync(new SynologyRequestParameters(this)
+            {
+                Version = 2,
+                Additional = parameters
+            });
+        }
+    }
 }

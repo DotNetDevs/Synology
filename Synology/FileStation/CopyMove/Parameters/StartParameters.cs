@@ -6,6 +6,9 @@ using Synology.Parameters;
 
 namespace Synology.FileStation.CopyMove.Parameters
 {
+    /// <summary>
+    /// Start parameters.
+    /// </summary>
     public class StartParameters : RequestParameters
     {
         /// <summary>
@@ -62,6 +65,10 @@ namespace Synology.FileStation.CopyMove.Parameters
         [JsonProperty("search_taskid")]
         public string SearchTaskId { get; set; }
 
+        /// <summary>
+        /// Parameters this instance.
+        /// </summary>
+        /// <returns>The parameters.</returns>
         public override QueryStringParameter[] Parameters()
         {
             return new[]

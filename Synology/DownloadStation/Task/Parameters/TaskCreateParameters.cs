@@ -3,15 +3,46 @@ using Synology.Parameters;
 
 namespace Synology.DownloadStation.Task.Parameters
 {
+    /// <summary>
+    /// Task create parameters.
+    /// </summary>
 	public class TaskCreateParameters : RequestParameters
 	{
+        /// <summary>
+        /// Gets or sets the URI.
+        /// </summary>
+        /// <value>The URI.</value>
 		public string Uri { get; set; }
+        /// <summary>
+        /// Gets or sets the file.
+        /// </summary>
+        /// <value>The file.</value>
 		public string File { get; set; }
-		public string Username { get; set; }
-		public string Password { get; set; }
-		public string UnzipPassword { get; set; }
-		public string Destination { get; set; }
+		/// <summary>
+        /// Gets or sets the username.
+        /// </summary>
+        /// <value>The username.</value>
+        public string Username { get; set; }
+		/// <summary>
+        /// Gets or sets the password.
+        /// </summary>
+        /// <value>The password.</value>
+        public string Password { get; set; }
+		/// <summary>
+        /// Gets or sets the unzip password.
+        /// </summary>
+        /// <value>The unzip password.</value>
+        public string UnzipPassword { get; set; }
+		/// <summary>
+        /// Gets or sets the destination.
+        /// </summary>
+        /// <value>The destination.</value>
+        public string Destination { get; set; }
 
+        /// <summary>
+        /// Parameters this instance.
+        /// </summary>
+        /// <returns>The parameters.</returns>
 		public override QueryStringParameter[] Parameters()
 		{
 			return new[] {

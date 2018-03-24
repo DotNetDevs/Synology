@@ -2,7 +2,10 @@
 
 namespace Synology.FileStation.MD5.Results
 {
-    public class MD5StartResult : TaskStartResult
+    /// <summary>
+    /// MD 5 start result.
+    /// </summary>
+    internal class MD5StartResult : TaskStartResult, IMD5StartResult
 	{
 	}
 }

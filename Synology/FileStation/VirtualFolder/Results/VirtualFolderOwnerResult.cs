@@ -1,8 +1,12 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.VirtualFolder.Results
 {
-    public class VirtualFolderOwnerResult : TaskVirtualFolderOwnerResult
+
+    /// <summary>
+    /// Virtual folder owner result.
+    /// </summary>
+    internal class VirtualFolderOwnerResult : TaskVirtualFolderOwnerResult, IVirtualFolderOwnerResult
 	{
 	}
 }

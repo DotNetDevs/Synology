@@ -2,11 +2,22 @@
 
 namespace Synology.DownloadStation.Task.Results
 {
-	public class TaskMinimalResult
+    /// <summary>
+    /// Task minimal result.
+    /// </summary>
+	internal class TaskMinimalResult : ITaskMinimalResult
 	{
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [JsonProperty("id")]
 		public string Id { get; set; }
 
+        /// <summary>
+        /// Gets or sets the error.
+        /// </summary>
+        /// <value>The error.</value>
         [JsonProperty("error")]
 		public int Error{ get; set; }
 	}

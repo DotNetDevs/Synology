@@ -6,7 +6,7 @@ namespace Synology.DownloadStation2
 	/// <inheritdoc cref="SynologyApi" />
 	/// <summary>
 	/// </summary>
-	public class DownloadStation2Api : SynologyApi, IDownloadStation2Api
+    internal class DownloadStation2Api : SynologyApi, IDownloadStation2Api
 	{
 		/// <inheritdoc />
 		/// <summary>

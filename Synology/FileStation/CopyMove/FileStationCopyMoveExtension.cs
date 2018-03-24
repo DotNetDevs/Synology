@@ -1,9 +1,12 @@
-﻿using Synology.Extensions;
+﻿using Synology;
 using Synology.FileStation;
 using Synology.FileStation.CopyMove;
 
 namespace Synology
 {
+    /// <summary>
+    /// File station copy move extension.
+    /// </summary>
     public static class FileStationCopyMoveExtension
     {
         /// <summary>

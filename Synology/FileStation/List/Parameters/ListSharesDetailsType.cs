@@ -3,6 +3,9 @@ using System.ComponentModel;
 
 namespace Synology.FileStation.List.Parameters
 {
+    /// <summary>
+    /// List shares details type.
+    /// </summary>
     [Flags]
     public enum ListSharesDetailsType
     {

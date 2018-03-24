@@ -5,7 +5,7 @@ namespace Synology.Api.Auth.Results
 	/// <summary>
 	/// 
 	/// </summary>
-	public class AuthResult
+	internal class AuthResult : IAuthResult
 	{
 		/// <summary>
 		/// 

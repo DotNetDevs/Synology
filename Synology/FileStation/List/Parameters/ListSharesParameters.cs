@@ -5,6 +5,9 @@ using System.ComponentModel;
 
 namespace Synology.FileStation.List.Parameters
 {
+    /// <summary>
+    /// List shares parameters.
+    /// </summary>
     public class ListSharesParameters : RequestParameters
     {
         /// <summary>
@@ -62,6 +65,10 @@ namespace Synology.FileStation.List.Parameters
         [JsonProperty("additional")]
         public ListSharesDetailsType Additional { get; set; }
 
+        /// <summary>
+        /// Parameters this instance.
+        /// </summary>
+        /// <returns>The parameters.</returns>
         public override QueryStringParameter[] Parameters()
         {
             return new[]

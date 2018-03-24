@@ -1,8 +1,12 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.Rename.Results
 {
-    public class FilePermAclResult : TaskFilePermAclResult
+
+    /// <summary>
+    /// File perm acl result.
+    /// </summary>
+    internal class FilePermAclResult : TaskFilePermAclResult, IFilePermAclResult
 	{
 	}
 }

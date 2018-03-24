@@ -1,8 +1,13 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.FileShare.Results
 {
-    public class FilePermResult : TaskFilePermResult<FilePermAclResult>
+
+    /// <summary>
+    /// File perm result.
+    /// </summary>
+    internal class FilePermResult : TaskFilePermResult<FilePermAclResult>, IFilePermResult
 	{
-	}
+        IFilePermAclResult ITaskPermResult<IFilePermAclResult>.Acl => Acl;
+    }
 }

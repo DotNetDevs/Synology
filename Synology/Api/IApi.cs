@@ -2,9 +2,9 @@
 
 namespace Synology.Api
 {
-/// <inheritdoc />
-/// <summary>
-/// </summary>
+    /// <inheritdoc />
+    /// <summary>
+    /// </summary>
     public interface IApi : ISynologyApi
     {
     }

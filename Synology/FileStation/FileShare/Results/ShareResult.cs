@@ -2,8 +2,12 @@
 
 namespace Synology.FileStation.FileShare.Results
 {
-    public class ShareResult : TaskShareResult<ShareAdditionalResult, ShareOwnerResult, ShareTimeResult, SharePermResult, SharePermAclResult, ShareVolumeStatusResult, SharePermAdvRightResult>
+    /// <summary>
+    /// Share result.
+    /// </summary>
+    internal class ShareResult : TaskShareResult<ShareAdditionalResult, ShareOwnerResult, ShareTimeResult, SharePermResult, SharePermAclResult, ShareVolumeStatusResult, SharePermAdvRightResult>, IShareResult
     {
+        IShareAdditionalResult ITaskResult<IShareAdditionalResult, IShareOwnerResult, IShareTimeResult, ISharePermResult, ISharePermAclResult>.Additional => Additional;
     }
 }
 

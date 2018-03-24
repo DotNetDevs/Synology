@@ -2,7 +2,10 @@
 
 namespace Synology.FileStation.List.Results
 {
-    public class ShareVolumeStatusResult : TaskShareVolumeStatusResult
+    /// <summary>
+    /// Share volume status result.
+    /// </summary>
+    internal class ShareVolumeStatusResult : TaskShareVolumeStatusResult, IShareVolumeStatusResult
     {
     }
 }

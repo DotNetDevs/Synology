@@ -40,3 +40,5 @@ Thumbs.db
 #dotCover
 *.dotCover
 .vs/
+.idea/
+Synology.TestWebApplication/synosettings.json

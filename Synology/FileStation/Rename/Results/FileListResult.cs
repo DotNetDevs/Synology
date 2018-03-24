@@ -2,7 +2,10 @@
 
 namespace Synology.FileStation.Rename.Results
 {
-    public class FileListResult : TaskFileListResult<FileResult, FileListResult, FileAdditionalResult, FileOwnerResult, FileTimeResult, FilePermResult, FilePermAclResult>
+    /// <summary>
+    /// File list result.
+    /// </summary>
+    internal class FileListResult : TaskFileListResult<FileResult, FileListResult, FileAdditionalResult, FileOwnerResult, FileTimeResult, FilePermResult, FilePermAclResult>
 	{
 	}
 }

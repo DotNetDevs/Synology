@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Synology.Classes;
 using Synology.DownloadStation.Task.Parameters;
 using Synology.DownloadStation.Task.Results;
@@ -11,53 +13,53 @@ namespace Synology.DownloadStation.Task
 	/// </summary>
 	public interface ITaskRequest : ISynologyRequest
 	{
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		ResultData<TaskListResult> List(TaskListParameters parameters);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        Task<ResultData<ITaskListResult>> ListAsync(TaskListParameters parameters);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		ResultData<IEnumerable<TaskResult>> Info(TaskInfoParameters parameters);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        Task<ResultData<IEnumerable<ITaskResult>>> InfoAsync(TaskInfoParameters parameters);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		ResultData Create(TaskCreateParameters parameters);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        Task<ResultData> CreateAsync(TaskCreateParameters parameters);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		ResultData<IEnumerable<TaskMinimalResult>> Delete(TaskDeleteParameters parameters);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> DeleteAsync(TaskDeleteParameters parameters);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="ids"></param>
-		/// <returns></returns>
-		ResultData<IEnumerable<TaskMinimalResult>> Pause(params string[] ids);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> PauseAsync(params string[] ids);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="ids"></param>
-		/// <returns></returns>
-		ResultData<IEnumerable<TaskMinimalResult>> Resume(params string[] ids);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> ResumeAsync(params string[] ids);
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		ResultData<IEnumerable<TaskMinimalResult>> Edit(TaskEditParameters parameters);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        Task<ResultData<IEnumerable<ITaskMinimalResult>>> EditAsync(TaskEditParameters parameters);
 	}
 }

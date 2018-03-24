@@ -1,6 +1,6 @@
-﻿using Synology.DownloadStation;
+﻿using Synology;
+using Synology.DownloadStation;
 using Synology.DownloadStation.Schedule;
-using Synology.Extensions;
 
 namespace Synology
 {

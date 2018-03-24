@@ -1,8 +1,12 @@
-using Synology.FileStation.Common.Results;
+﻿using Synology.FileStation.Common.Results;
 
 namespace Synology.FileStation.Rename.Results
 {
-    public class FileTimeResult : TaskFileTimeResult
+
+    /// <summary>
+    /// File time result.
+    /// </summary>
+    internal class FileTimeResult : TaskFileTimeResult, IFileTimeResult
 	{
 	}
 }

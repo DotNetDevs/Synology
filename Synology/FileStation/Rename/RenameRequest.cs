@@ -3,29 +3,31 @@ using Synology.Classes;
 using Synology.FileStation.Rename.Results;
 using Synology.FileStation.Rename.Parameters;
 using Synology.Parameters;
+using System;
+using System.Threading.Tasks;
 
 namespace Synology.FileStation.Rename
 {
-	[Request("Rename")]
-	internal class RenameRequest : FileStationRequest, IRenameRequest
-	{
+    [Request("Rename")]
+    internal class RenameRequest : FileStationRequest, IRenameRequest
+    {
         public RenameRequest(IFileStationApi api) : base(api)
-		{
-		}
+        {
+        }
 
-		/// <summary>
-		/// Rename a file/folder
-		/// </summary>
-		/// <param name="parameters"></param>
-		/// <returns></returns>
-		[RequestMethod("rename")]
-		public ResultData<FileResult> Rename(RenameParameters parameters)
-		{
-			return GetData<FileResult>(new SynologyRequestParameters(this)
-			{
-				Version = 2,
-				Additional = parameters
-			});
-		}
-	}
+        /// <summary>
+        /// Renames the async.
+        /// </summary>
+        /// <returns>The async.</returns>
+        /// <param name="parameters">Parameters.</param>
+        [RequestMethod("rename")]
+        public async Task<ResultData<IFileResult>> RenameAsync(RenameParameters parameters)
+        {
+            return ResultData<IFileResult>.From(await this.GetDataAsync<FileResult>(new SynologyRequestParameters(this)
+            {
+                Version = 2,
+                Additional = parameters
+            }));
+        }
+    }
 }
