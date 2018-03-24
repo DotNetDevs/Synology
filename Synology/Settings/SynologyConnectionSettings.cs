@@ -49,11 +49,5 @@ namespace Synology.Settings
 		/// <summary>
 		/// </summary>
 		public int SslPort { get; set; }
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="T:Synology.Settings.SynologyConnectionSettings"/>
-        /// verify ssl.
-        /// </summary>
-        /// <value><c>true</c> if verify ssl; otherwise, <c>false</c>.</value>
-        public bool VerifySsl { get; set; }
 	}
 }

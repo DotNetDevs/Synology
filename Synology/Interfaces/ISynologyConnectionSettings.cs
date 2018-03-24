@@ -40,11 +40,5 @@
         /// </summary>
         /// <value>The ssl port.</value>
         int SslPort { get; set; }
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="T:Synology.Interfaces.ISynologyConnectionSettings"/>
-        /// verify ssl.
-        /// </summary>
-        /// <value><c>true</c> if verify ssl; otherwise, <c>false</c>.</value>
-        bool VerifySsl { get; set; }
     }
 }
