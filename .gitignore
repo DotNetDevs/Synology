@@ -42,3 +42,4 @@ Thumbs.db
 .vs/
 .idea/
 Synology.TestWebApplication/synosettings.json
+Synology.TestWebApplication/wwwroot/lib/
