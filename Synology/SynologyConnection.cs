@@ -45,7 +45,7 @@ namespace Synology
 
             Logger.LogDebug($"Creating new connection to {Settings.BaseHost} with{(Settings.Ssl ? "" : "out")} SSL to port {Settings.Port}");
 
-            Client = new HttpClient
+            Client = new HttpClient()
             {
                 BaseAddress = new Uri(Settings.WebApiUrl),
                 DefaultRequestHeaders =
