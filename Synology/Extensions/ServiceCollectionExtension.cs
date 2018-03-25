@@ -44,5 +44,19 @@ namespace Synology
 
             return services;
         }
+
+        internal static IServiceCollection AddRequest<TRequestInterface, TRequest>(this IServiceCollection services)
+            where TRequestInterface : class, ISynologyRequest
+            where TRequest : SynologyRequest, TRequestInterface
+        {
+            return services.AddTransient<TRequestInterface, TRequest>();
+        }
+
+        internal static IServiceCollection AddApi<TApiInterface, TApi>(this IServiceCollection services)
+            where TApiInterface : class, ISynologyApi
+            where TApi : SynologyApi, TApiInterface
+        {
+            return services.AddTransient<TApiInterface, TApi>();
+        }
     }
 }

@@ -31,73 +31,78 @@ namespace Synology.Classes
             Services = services;
         }
 
-        public IServiceCollection Services { get; }
+        private IServiceCollection Services { get; }
         
         public ISynologyBuilder AddApi()
         {
-            Services.AddTransient<IApi, Api.Api>();
-            Services.AddTransient<Api.Info.IInfoRequest, Api.Info.InfoRequest>();
-            Services.AddTransient<IAuthRequest, AuthRequest>();
+            Services.AddApi<IApi, Api.Api>();
+
+            Services.AddRequest<Api.Info.IInfoRequest, Api.Info.InfoRequest>();
+            Services.AddRequest<IAuthRequest, AuthRequest>();
 
             return this;
         }
 
         public ISynologyBuilder AddAudioStation()
         {
-            Services.AddTransient<IAudioStationApi, AudioStationApi>();
+            Services.AddApi<IAudioStationApi, AudioStationApi>();
 
             return this;
         }
 
         public ISynologyBuilder AddDownloadStation()
         {
-            Services.AddTransient<IDownloadStationApi, DownloadStationApi>();
-            Services.AddTransient<DownloadStation.Info.IInfoRequest, DownloadStation.Info.InfoRequest>();
-            Services.AddTransient<IScheduleRequest, ScheduleRequest>();
-            Services.AddTransient<DownloadStation.Task.ITaskRequest, DownloadStation.Task.TaskRequest>();
+            Services.AddApi<IDownloadStationApi, DownloadStationApi>();
+
+            Services.AddRequest<DownloadStation.Info.IInfoRequest, DownloadStation.Info.InfoRequest>();
+            Services.AddRequest<IScheduleRequest, ScheduleRequest>();
+            Services.AddRequest<DownloadStation.Task.ITaskRequest, DownloadStation.Task.TaskRequest>();
 
             return this;
         }
 
         public ISynologyBuilder AddDownloadStation2()
         {
-            Services.AddTransient<IDownloadStation2Api, DownloadStation2Api>();
-            Services.AddTransient<DownloadStation2.Task.ITaskRequest, DownloadStation2.Task.TaskRequest>();
+            Services.AddApi<IDownloadStation2Api, DownloadStation2Api>();
+
+            Services.AddRequest<DownloadStation2.Task.ITaskRequest, DownloadStation2.Task.TaskRequest>();
 
             return this;
         }
 
         public ISynologyBuilder AddFileStation()
         {
-            Services.AddTransient<IFileStationApi, FileStationApi>();
-            Services.AddTransient<FileStation.Info.IInfoRequest, FileStation.Info.InfoRequest>();
-            Services.AddTransient<ICheckPermissionRequest, CheckPermissionRequest>();
-            Services.AddTransient<ICopyMoveRequest, CopyMoveRequest>();
-            Services.AddTransient<IDirSizeRequest, DirSizeRequest>();
-            Services.AddTransient<IFavoriteRequest, FavoriteRequest>();
-            Services.AddTransient<IFileShareRequest, FileShareRequest>();
-            Services.AddTransient<IListRequest, ListRequest>();
-            Services.AddTransient<IMD5Request, MD5Request>();
-            Services.AddTransient<IRenameRequest, RenameRequest>();
-            Services.AddTransient<ISearchRequest, SearchRequest>();
-            Services.AddTransient<IThumbRequest, ThumbRequest>();
-            Services.AddTransient<IUploadRequest, UploadRequest>();
-            Services.AddTransient<IVirtualFolderRequest, VirtualFolderRequest>();
+            Services.AddApi<IFileStationApi, FileStationApi>();
+
+            Services.AddRequest<FileStation.Info.IInfoRequest, FileStation.Info.InfoRequest>();
+            Services.AddRequest<ICheckPermissionRequest, CheckPermissionRequest>();
+            Services.AddRequest<ICopyMoveRequest, CopyMoveRequest>();
+            Services.AddRequest<IDirSizeRequest, DirSizeRequest>();
+            Services.AddRequest<IFavoriteRequest, FavoriteRequest>();
+            Services.AddRequest<IFileShareRequest, FileShareRequest>();
+            Services.AddRequest<IListRequest, ListRequest>();
+            Services.AddRequest<IMD5Request, MD5Request>();
+            Services.AddRequest<IRenameRequest, RenameRequest>();
+            Services.AddRequest<ISearchRequest, SearchRequest>();
+            Services.AddRequest<IThumbRequest, ThumbRequest>();
+            Services.AddRequest<IUploadRequest, UploadRequest>();
+            Services.AddRequest<IVirtualFolderRequest, VirtualFolderRequest>();
 
             return this;
         }
 
         public ISynologyBuilder AddSurveillanceStation()
         {
-            Services.AddTransient<ISurveillanceStationApi, SurveillanceStationApi>();
-            Services.AddTransient<SurveillanceStation.Info.IInfoRequest, SurveillanceStation.Info.InfoRequest>();
+            Services.AddApi<ISurveillanceStationApi, SurveillanceStationApi>();
+
+            Services.AddRequest<SurveillanceStation.Info.IInfoRequest, SurveillanceStation.Info.InfoRequest>();
 
             return this;
         }
 
         public ISynologyBuilder AddVideoStation()
         {
-            Services.AddTransient<IVideoStationApi, VideoStationApi>();
+            Services.AddApi<IVideoStationApi, VideoStationApi>();
 
             return this;
         }
