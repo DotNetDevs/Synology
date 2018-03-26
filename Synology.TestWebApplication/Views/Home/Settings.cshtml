@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Settings";
 }
+<div asp-validation-summary="All" class="text-danger">
+</div>
 <form asp-controller="Home" asp-action="Settings" method="post">
   <div class="form-group">
     <label asp-for="SynologyHost">Hostname</label>

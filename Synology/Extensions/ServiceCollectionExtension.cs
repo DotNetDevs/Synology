@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Synology.Classes;
 using Synology.Interfaces;
 using Synology.Settings;
@@ -36,9 +38,10 @@ namespace Synology
             if (configure == null) throw new ArgumentNullException(nameof(configure));
 
             services.AddOptions();
-            services.AddSingleton<ISynologyConnectionSettings, SynologyConnectionSettings>();
-            services.AddSingleton<SidContainer, SidContainer>();
-            services.AddTransient<ISynologyConnection, SynologyConnection>();
+            services.AddScoped<ISynologyConnectionSettings, SynologyConnectionSettings>();
+            services.AddScoped<SidContainer>();
+            services.AddScoped<HttpClient>();
+            services.AddScoped<ISynologyConnection, SynologyConnection>(t => new SynologyConnection(t.GetService<ISynologyConnectionSettings>(), t.GetService<SidContainer>(), t.GetService<ILoggerFactory>(), t, t.GetService<HttpClient>()));
 
             configure(new SynologyBuilder(services));
 

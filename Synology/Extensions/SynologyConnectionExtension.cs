@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Synology.Classes;
 using Synology.Interfaces;
@@ -183,14 +184,14 @@ namespace Synology
 
         internal static string GetSid(this ISynologyConnection connection)
         {
-            var sidContainer = connection.ServiceProvider.GetService(typeof(SidContainer)) as SidContainer;
+            var sidContainer = connection.ServiceProvider.GetService<SidContainer>() as SidContainer;
 
             return sidContainer?.Sid;
         }
 
         internal static void SetSid(this ISynologyConnection connection, string value)
         {
-            if (connection.ServiceProvider.GetService(typeof(SidContainer)) is SidContainer sidContainer)
+            if (connection.ServiceProvider.GetService<SidContainer>() is SidContainer sidContainer)
                 sidContainer.Sid = value;
         }
     }
