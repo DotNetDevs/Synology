@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Synology.Classes;
 using Synology.Interfaces;
 using Synology.Settings;
@@ -36,13 +38,28 @@ namespace Synology
             if (configure == null) throw new ArgumentNullException(nameof(configure));
 
             services.AddOptions();
-            services.AddSingleton<ISynologyConnectionSettings, SynologyConnectionSettings>();
-            services.AddSingleton<SidContainer, SidContainer>();
-            services.AddTransient<ISynologyConnection, SynologyConnection>();
+            services.AddScoped<ISynologyConnectionSettings, SynologyConnectionSettings>();
+            services.AddScoped<SidContainer>();
+            services.AddScoped<HttpClient>();
+            services.AddScoped<ISynologyConnection, SynologyConnection>(t => new SynologyConnection(t.GetService<ISynologyConnectionSettings>(), t.GetService<SidContainer>(), t.GetService<ILoggerFactory>(), t, t.GetService<HttpClient>()));
 
             configure(new SynologyBuilder(services));
 
             return services;
+        }
+
+        internal static IServiceCollection AddRequest<TRequestInterface, TRequest>(this IServiceCollection services)
+            where TRequestInterface : class, ISynologyRequest
+            where TRequest : SynologyRequest, TRequestInterface
+        {
+            return services.AddTransient<TRequestInterface, TRequest>();
+        }
+
+        internal static IServiceCollection AddApi<TApiInterface, TApi>(this IServiceCollection services)
+            where TApiInterface : class, ISynologyApi
+            where TApi : SynologyApi, TApiInterface
+        {
+            return services.AddTransient<TApiInterface, TApi>();
         }
     }
 }

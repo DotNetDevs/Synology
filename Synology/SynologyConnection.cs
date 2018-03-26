@@ -2,6 +2,7 @@
 using System.Net.Http;
 using Microsoft.Extensions.Logging;
 using Synology.Interfaces;
+using Synology.Utilities;
 
 namespace Synology
 {
@@ -31,28 +32,29 @@ namespace Synology
         /// </summary>
         public IServiceProvider ServiceProvider { get; }
 
+        public SidContainer SidContainer { get; }
+
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="T:Synology.SynologyConnection"/> class.
         /// </summary>
-        /// <param name="settings"></param>
-        /// <param name="loggerFactory"></param>
-        /// <param name="serviceProvider"></param>
-        public SynologyConnection(ISynologyConnectionSettings settings, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
+        /// <param name="settings">Settings.</param>
+        /// <param name="sidContainer">Sid container.</param>
+        /// <param name="loggerFactory">Logger factory.</param>
+        /// <param name="serviceProvider">Service provider.</param>
+        /// <param name="client">Client.</param>
+        public SynologyConnection(ISynologyConnectionSettings settings, SidContainer sidContainer, ILoggerFactory loggerFactory, IServiceProvider serviceProvider, HttpClient client)
         {
             Settings = settings;
+            SidContainer = sidContainer;
             ServiceProvider = serviceProvider;
             Logger = loggerFactory.CreateLogger<SynologyConnection>();
 
             Logger.LogDebug($"Creating new connection to {Settings.BaseHost} with{(Settings.Ssl ? "" : "out")} SSL to port {Settings.Port}");
 
-            Client = new HttpClient
-            {
-                BaseAddress = new Uri(Settings.WebApiUrl),
-                DefaultRequestHeaders =
-                {
-                    ExpectContinue = false
-                }
-            };
+            Client = client;
+
+            Client.BaseAddress = new Uri(Settings.WebApiUrl);
+            Client.DefaultRequestHeaders.ExpectContinue = false;
         }
 
         /// <inheritdoc />
@@ -61,6 +63,7 @@ namespace Synology
         public void Dispose()
         {
             Logger.LogDebug("Closing connection");
+
             Client?.Dispose();
         }
     }
