@@ -30,6 +30,11 @@ namespace Synology
         /// <inheritdoc />
         /// <summary>
         /// </summary>
+        public HttpClientHandler ClientHandler { get; }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// </summary>
         public IServiceProvider ServiceProvider { get; }
 
         public SidContainer SidContainer { get; }
@@ -42,7 +47,8 @@ namespace Synology
         /// <param name="loggerFactory">Logger factory.</param>
         /// <param name="serviceProvider">Service provider.</param>
         /// <param name="client">Client.</param>
-        public SynologyConnection(ISynologyConnectionSettings settings, SidContainer sidContainer, ILoggerFactory loggerFactory, IServiceProvider serviceProvider, HttpClient client)
+        /// <param name="clientHandler">Client.</param>
+        public SynologyConnection(ISynologyConnectionSettings settings, SidContainer sidContainer, ILoggerFactory loggerFactory, IServiceProvider serviceProvider, HttpClient client, HttpClientHandler clientHandler)
         {
             Settings = settings;
             SidContainer = sidContainer;
@@ -51,6 +57,7 @@ namespace Synology
 
             Logger.LogDebug($"Creating new connection to {Settings.BaseHost} with{(Settings.Ssl ? "" : "out")} SSL to port {Settings.Port}");
 
+            ClientHandler = clientHandler;
             Client = client;
 
             Client.BaseAddress = new Uri(Settings.WebApiUrl);
@@ -65,6 +72,7 @@ namespace Synology
             Logger.LogDebug("Closing connection");
 
             Client?.Dispose();
+            ClientHandler?.Dispose();
         }
     }
 }
