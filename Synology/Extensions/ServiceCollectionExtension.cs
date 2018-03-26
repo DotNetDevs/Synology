@@ -40,8 +40,10 @@ namespace Synology
             services.AddOptions();
             services.AddScoped<ISynologyConnectionSettings, SynologyConnectionSettings>();
             services.AddScoped<SidContainer>();
-            services.AddScoped<HttpClient>();
-            services.AddScoped<ISynologyConnection, SynologyConnection>(t => new SynologyConnection(t.GetService<ISynologyConnectionSettings>(), t.GetService<SidContainer>(), t.GetService<ILoggerFactory>(), t, t.GetService<HttpClient>()));
+
+            services.AddScoped<HttpClientHandler>();
+            services.AddScoped(provider => new HttpClient(provider.GetService<HttpClientHandler>()));
+            services.AddScoped<ISynologyConnection, SynologyConnection>(provider => new SynologyConnection(provider.GetService<ISynologyConnectionSettings>(), provider.GetService<SidContainer>(), provider.GetService<ILoggerFactory>(), provider, provider.GetService<HttpClient>(), provider.GetService<HttpClientHandler>()));
 
             configure(new SynologyBuilder(services));
 
