@@ -1,0 +1,29 @@
+﻿@page
+@model SettingsModel
+@{
+}
+<div asp-validation-summary="All" class="text-danger">
+</div>
+<form asp-page="Settings" method="post">
+    <div class="form-group">
+        <label asp-for="SynologyHost">Hostname</label>
+        <input type="text" class="form-control" asp-for="SynologyHost" placeholder="Hostname">
+    </div>
+    <div class="form-group">
+        <label asp-for="SynologyPort">Port</label>
+        <input type="number" min="1" max="65535" step="1" class="form-control" asp-for="SynologyPort" placeholder="Port">
+    </div>
+    <div class="form-group">
+        <label asp-for="SynologyUser">Username</label>
+        <input type="text" class="form-control" asp-for="SynologyUser" placeholder="Username">
+    </div>
+    <div class="form-group">
+        <label asp-for="SynologyPass">Password</label>
+        <input type="password" class="form-control" asp-for="SynologyPass" placeholder="Password">
+    </div>
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" asp-for="UseSsl">
+        <label class="form-check-label" asp-for="UseSsl">Use SSL</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
