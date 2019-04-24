@@ -9,11 +9,10 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Synology.Interfaces;
 using Synology.TestWebApplication.Models;
+using IOFile = System.IO.File;
 
 namespace Synology.TestWebApplication.Controllers
 {
-    using IOFile = System.IO.File;
-
     public class HomeController : Controller
     {
         private readonly IServiceProvider _serviceProvider;
