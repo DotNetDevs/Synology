@@ -1,7 +1,7 @@
 ﻿using System;
-namespace Synology.TestWebApplication.Models
+namespace Synology.TestWebApplication.Classes
 {
-    public class SettingsViewModel
+    public class SettingsData
     {
         public string SynologyHost { get; set; }
         public int SynologyPort { get; set; }
